@@ -12,15 +12,19 @@
     </swiper>
   </view>
   
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd">
+    <block wx:for-items="{{list}}" wx:key="{{item._id}}">
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title weui-media-box__title_in-text">{{item.repo}}</view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view> 
+          <view class="weui-media-box__info__meta">Star: {{item.star}}</view>
+          <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
+        </view>
+        <view class="weui-media-box__desc">{{item.desc}}</view>
+      </view>
     </block>
-  </view>
-
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    </view>
   </view>
 </view>

@@ -4,10 +4,10 @@ const app = getApp()
 wx.cloud.init({
   env: 'test-3c9b5e'
 })
+const db = wx.cloud.database()
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
@@ -19,24 +19,16 @@ Page({
     duration: 1000,
     previousMargin: 0,
     nextMargin: 0,
+    list: [],
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+
   onLoad: function () {
-    wx.cloud.callFunction({
-      name: 'helloworld',
-      data: {
-        a: 12,
-        b: 19,
-      },
-      // 成功回调
-      complete: console.log
+    db.collection('github').orderBy('star', 'desc').get().then(res => {
+      console.log(res.data)
+      this.setData({list: res.data})
     })
+    
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -64,6 +56,7 @@ Page({
       })
     }
   },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
