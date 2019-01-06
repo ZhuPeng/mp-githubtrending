@@ -1,6 +1,9 @@
 //index.js
 //获取应用实例
 const app = getApp()
+wx.cloud.init({
+  env: 'test-3c9b5e'
+})
 
 Page({
   data: {
@@ -25,6 +28,15 @@ Page({
     })
   },
   onLoad: function () {
+    wx.cloud.callFunction({
+      name: 'helloworld',
+      data: {
+        a: 12,
+        b: 19,
+      },
+      // 成功回调
+      complete: console.log
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

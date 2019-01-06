@@ -15,6 +15,7 @@
 	"libVersion": "2.4.3",
 	"appid": "wx6204a7df95c7fb21",
 	"projectname": "wechatapp",
+    "cloudfunctionRoot": "./cloud-functions",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
