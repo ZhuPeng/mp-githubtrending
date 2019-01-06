@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "van-search": "../../thrid-party/vant-weapp/search/index"
+  }
+}

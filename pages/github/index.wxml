@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <van-search class="search"
+    value="{{ searchValue }}"
+    placeholder="请输入搜索关键词"
+    use-action-slot
+    bind:search="onSearch">
+    <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd">
+    <block wx:for-items="{{list}}" wx:key="{{item._id}}">
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title weui-media-box__title_in-text" src="{{item.url}}">{{item.repo}}</view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view> 
+          <view class="weui-media-box__info__meta">Star: {{item.star}}</view>
+          <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
+        </view>
+        <view class="weui-media-box__desc">{{item.desc}}</view>
+      </view>
+    </block>
+    </view>
+  </view>
+</view>

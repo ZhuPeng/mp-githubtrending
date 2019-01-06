@@ -4,18 +4,19 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"nodeModules": true,
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.3",
 	"appid": "wx6204a7df95c7fb21",
 	"projectname": "wechatapp",
-    "cloudfunctionRoot": "./cloud-functions",
+	"cloudfunctionRoot": "cloud-functions/",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

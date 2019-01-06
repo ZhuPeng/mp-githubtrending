@@ -11,20 +11,4 @@
       </block>
     </swiper>
   </view>
-  
-  <view class="weui-panel weui-panel_access">
-    <view class="weui-panel__bd">
-    <block wx:for-items="{{list}}" wx:key="{{item._id}}">
-      <view class="weui-media-box weui-media-box_text">
-        <view class="weui-media-box__title weui-media-box__title_in-text">{{item.repo}}</view>
-        <view class="weui-media-box__info">
-          <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view> 
-          <view class="weui-media-box__info__meta">Star: {{item.star}}</view>
-          <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
-        </view>
-        <view class="weui-media-box__desc">{{item.desc}}</view>
-      </view>
-    </block>
-    </view>
-  </view>
 </view>
