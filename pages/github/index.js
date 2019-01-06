@@ -70,12 +70,20 @@ Page({
 
   onSearch: function(e) {
     console.log("search: ", e.detail)
-    db.collection('github').where({
-      repo: db.RegExp({
-        regexp: e.detail,
-        options: 'i',
-      })
-    }).orderBy('star', 'desc').get().then(res => {
+    db.collection('github').where(_.or([
+      {
+        repo: db.RegExp({
+          regexp: e.detail,
+          options: 'i',
+        })
+      },
+      {
+        desc: db.RegExp({
+          regexp: e.detail,
+          options: 'i',
+        })
+      }
+    ])).orderBy('star', 'desc').get().then(res => {
       console.log(res.data)
       this.setData({ 
         list: res.data,
