@@ -7,6 +7,15 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    circular: false,
+    interval: 3000,
+    duration: 1000,
+    previousMargin: 0,
+    nextMargin: 0,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
