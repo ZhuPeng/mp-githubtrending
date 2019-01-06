@@ -1,12 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <van-search class="search"
-    value="{{ searchValue }}"
-    placeholder="请输入搜索关键词"
-    use-action-slot
-    bind:search="onSearch">
-    <view slot="action" bind:tap="onSearch">搜索</view>
-  </van-search>
+  <van-search class="search" value="{{ searchValue }}" placeholder="请输入搜索关键词" bind:search="onSearch" />
 
   <view class="weui-panel weui-panel_access">
     <view class="weui-panel__bd">
