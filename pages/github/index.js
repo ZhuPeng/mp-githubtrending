@@ -10,14 +10,14 @@ const _ = db.command
 Page({
   data: {
     searchValue: "",
-    order: wx.getStorageSync('github-order') || '_crawl_time',
+    order: wx.getStorageSync('github-order') || '时间',
     userInfo: {},
     hasUserInfo: false,
     previousMargin: 0,
     nextMargin: 0,
     list: [],
     orderList: ['时间', 'Star', 'Fork'],
-    orderMap: {0: '_crawl_time', 1: 'star', 2: 'fork'},
+    orderMap: {'时间': '_crawl_time', 'Star': 'star', 'Fork': 'fork'},
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
@@ -25,7 +25,7 @@ Page({
     if (this.data.searchValue) {
       this.search(this.data.searchValue, true)
     } else {
-      db.collection('github').orderBy(this.data.order, 'desc').skip(this.data.list.length).get().then(res => {
+      db.collection('github').orderBy(this.getOrder(), 'desc').skip(this.data.list.length).get().then(res => {
         this.appendList(res.data)
       })
     }
@@ -85,19 +85,25 @@ Page({
     })
   },
 
-  actionSheetTap() {
+  actionSheetTapOrder() {
+    this.actionSheepTap("order")
+  },
+
+  actionSheepTap(type) {
     var self = this;
+    var key = "github-" + type;
+
     wx.showActionSheet({
       itemList: self.data.orderList,
       success(e) {
-        var orderChar = self.data.orderMap[e.tapIndex];
-        console.log("change order:", orderChar);
-        if (orderChar != self.data.order) {
+        var order = self.data.orderList[e.tapIndex]
+        console.log("change:", type, order);
+        if (order != self.data.order) {
           self.setData({
-            order: orderChar,
+            order: order,
             list: []
           })
-          wx.setStorageSync('github-order', orderChar)
+          wx.setStorageSync(key, order)
           self.loadData()
         }
       }
@@ -125,6 +131,10 @@ Page({
       this.search(e.detail, false)
   },
 
+  getOrder() {
+    return this.data.orderMap[this.data.order]
+  },
+
   search: function(val, more) {
     console.log("search:", val)
     db.collection('github').where(_.or([
@@ -140,7 +150,7 @@ Page({
           options: 'i',
         })
       }
-    ])).orderBy(this.data.order, 'desc').skip(more ? this.data.list.length : 0).get().then(res => {
+    ])).orderBy(this.getOrder(), 'desc').skip(more ? this.data.list.length : 0).get().then(res => {
       if (more) {
         this.appendList(res.data)
       }else {

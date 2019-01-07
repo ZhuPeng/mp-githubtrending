@@ -4,7 +4,7 @@
 
   <view>
     <view>语言：所有</view>
-    <view bindtap="actionSheetTap">排序：时间</view>
+    <view bindtap="actionSheetTapOrder">排序：{{order}}</view>
   </view>
 
   <view class="weui-panel weui-panel_access"> 
