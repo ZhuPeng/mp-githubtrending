@@ -6,7 +6,7 @@
     <view class="weui-panel__bd">
     <block wx:for-items="{{list}}" wx:key="{{item._id}}">
       <view class="weui-media-box weui-media-box_text">
-        <view class="weui-media-box__title weui-media-box__title_in-text" src="{{item.url}}">{{item.repo}}</view>
+        <view class="weui-media-box__title weui-media-box__title_in-text" data-text="{{item.url}}" bindtap="copy">{{item.repo}}</view>
         <view class="weui-media-box__info">
           <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view> 
           <view class="weui-media-box__info__meta">Star: {{item.star}}</view>

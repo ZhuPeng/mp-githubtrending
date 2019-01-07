@@ -69,6 +69,20 @@ Page({
     })
   },
 
+  copy: function(e) {
+    console.log("copy:", e)
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.text,
+      success() {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'success',
+          duration: 1000
+        })
+      }
+    })
+  },
+
   onSearch: function(e) {
     console.log("search: ", e.detail)
     db.collection('github').where(_.or([
