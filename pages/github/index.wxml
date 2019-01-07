@@ -3,7 +3,7 @@
   <van-search class="search" placeholder="请输入搜索关键词" bind:search="onSearch" />
 
   <view>
-    <view>语言：所有</view>
+    <view bindtap="actionSheetTapLang">语言：{{lang}}</view>
     <view bindtap="actionSheetTapOrder">排序：{{order}}</view>
   </view>
 

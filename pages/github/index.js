@@ -11,21 +11,31 @@ Page({
   data: {
     searchValue: "",
     order: wx.getStorageSync('github-order') || '时间',
+    lang: wx.getStorageSync('github-lang') || 'All',
     userInfo: {},
     hasUserInfo: false,
     previousMargin: 0,
     nextMargin: 0,
     list: [],
+    langList: ['All', 'Go', 'Python', 'Java', 'C', 'JavaScript'],
     orderList: ['时间', 'Star', 'Fork'],
     orderMap: {'时间': '_crawl_time', 'Star': 'star', 'Fork': 'fork'},
     canIUse: wx.canIUse('button.open-type.getUserInfo')
+  },
+
+  getCollection() {
+    var col = db.collection('github')
+    if (this.data.lang != 'All') {
+      col = col.where({ 'lang': this.data.lang })
+    }
+    return col
   },
 
   loadData: function() {
     if (this.data.searchValue) {
       this.search(this.data.searchValue, true)
     } else {
-      db.collection('github').orderBy(this.getOrder(), 'desc').skip(this.data.list.length).get().then(res => {
+      this.getCollection().orderBy(this.getOrder(), 'desc').skip(this.data.list.length).get().then(res => {
         this.appendList(res.data)
       })
     }
@@ -89,21 +99,30 @@ Page({
     this.actionSheepTap("order")
   },
 
+  actionSheetTapLang() {
+    this.actionSheepTap("lang")
+  },
+
   actionSheepTap(type) {
     var self = this;
     var key = "github-" + type;
+    var list = self.data.orderList;
+    var target = self.data.order;
+    if (type == 'lang'){
+      list = self.data.langList
+      target = self.data.lang
+    }
 
     wx.showActionSheet({
-      itemList: self.data.orderList,
+      itemList: list,
       success(e) {
-        var order = self.data.orderList[e.tapIndex]
-        console.log("change:", type, order);
-        if (order != self.data.order) {
-          self.setData({
-            order: order,
-            list: []
-          })
-          wx.setStorageSync(key, order)
+        var changeval = list[e.tapIndex]
+        console.log("change:", type, changeval);
+        if (changeval != target) {
+          var data = {list: []}
+          data[type] = changeval
+          self.setData(data)
+          wx.setStorageSync(key, changeval)
           self.loadData()
         }
       }
@@ -137,7 +156,7 @@ Page({
 
   search: function(val, more) {
     console.log("search:", val)
-    db.collection('github').where(_.or([
+    this.getCollection().where(_.or([
       {
         repo: db.RegExp({
           regexp: val,
