@@ -10,19 +10,25 @@ const _ = db.command
 Page({
   data: {
     searchValue: "",
-    order: '_crawl_time',
+    order: wx.getStorageSync('github-order') || '_crawl_time',
     userInfo: {},
     hasUserInfo: false,
     previousMargin: 0,
     nextMargin: 0,
     list: [],
+    orderList: ['时间', 'Star', 'Fork'],
+    orderMap: {0: '_crawl_time', 1: 'star', 2: 'fork'},
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   loadData: function() {
-    db.collection('github').orderBy(this.data.order, 'desc').skip(this.data.list.length).get().then(res => {
+    if (this.data.searchValue) {
+      this.search(this.data.searchValue, true)
+    } else {
+      db.collection('github').orderBy(this.data.order, 'desc').skip(this.data.list.length).get().then(res => {
         this.appendList(res.data)
-    })
+      })
+    }
   },
 
   onLoad: function () {
@@ -79,13 +85,28 @@ Page({
     })
   },
 
+  actionSheetTap() {
+    var self = this;
+    wx.showActionSheet({
+      itemList: self.data.orderList,
+      success(e) {
+        var orderChar = self.data.orderMap[e.tapIndex];
+        console.log("change order:", orderChar);
+        if (orderChar != self.data.order) {
+          self.setData({
+            order: orderChar,
+            list: []
+          })
+          wx.setStorageSync('github-order', orderChar)
+          self.loadData()
+        }
+      }
+    })
+  },
+
   onReachBottom: function(e) {
     console.log("onReachBotton:", e)
-    if (this.data.searchValue) {
-      this.search(this.data.searchValue, true)
-    }else {
-      this.loadData()
-    }
+    this.loadData()
   },
 
   appendList: function(newList) {
