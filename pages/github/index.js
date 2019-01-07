@@ -119,7 +119,7 @@ Page({
           options: 'i',
         })
       }
-    ])).orderBy(this.data.order, 'desc').get().then(res => {
+    ])).orderBy(this.data.order, 'desc').skip(more ? this.data.list.length : 0).get().then(res => {
       if (more) {
         this.appendList(res.data)
       }else {
