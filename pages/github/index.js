@@ -13,24 +13,20 @@ Page({
     order: '_crawl_time',
     userInfo: {},
     hasUserInfo: false,
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    indicatorDots: true,
-    vertical: false,
-    autoplay: true,
-    circular: false,
-    interval: 3000,
-    duration: 1000,
     previousMargin: 0,
     nextMargin: 0,
     list: [],
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
-  onLoad: function () {
-    db.collection('github').orderBy(this.data.order, 'desc').get().then(res => {
-      console.log("data: ", res.data)
-      this.setData({list: res.data})
+  loadData: function() {
+    db.collection('github').orderBy(this.data.order, 'desc').skip(this.data.list.length).get().then(res => {
+        this.appendList(res.data)
     })
+  },
+
+  onLoad: function () {
+    this.loadData()
     
     if (app.globalData.userInfo) {
       this.setData({
@@ -83,27 +79,44 @@ Page({
     })
   },
 
-  onSearch: function(e) {
-    console.log("search: ", e.detail)
+  onReachBottom: function(e) {
+    console.log("onReachBotton:", e)
+    if (this.data.searchValue) {
+      this.onSearch(e)
+    }else {
+      this.loadData()
+    }
+  },
+
+  appendList: function(newList) {
+      console.log("newList:", newList)
+      var curList = this.data.list 
+      curList.push(...newList)
+      this.setData({ list: curList })
+  },
+
+  onSearch: function(e) { 
+      console.log("searchValue:", this.data.searchValue)
+      this.search(e.detail)
+  },
+
+  search: function(val) {
+    console.log("search:", val)
     db.collection('github').where(_.or([
       {
         repo: db.RegExp({
-          regexp: e.detail,
+          regexp: val,
           options: 'i',
         })
       },
       {
         desc: db.RegExp({
-          regexp: e.detail,
+          regexp: val,
           options: 'i',
         })
       }
-    ])).orderBy(this.data.order, 'desc').get().then(res => {
-      console.log(res.data)
-      this.setData({ 
-        list: res.data,
-        searchValue: e.detail
-      })
+    ])).orderBy(this.data.order, 'desc').skip(this.data.list.length).get().then(res => {
+      this.appendList(res.data)
     })
   }
 })
