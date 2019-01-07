@@ -2,9 +2,9 @@
 <view class="container">
   <van-search class="search" placeholder="请输入搜索关键词" bind:search="onSearch" />
 
-  <view>
-    <view bindtap="actionSheetTapLang">语言：{{lang}}</view>
-    <view bindtap="actionSheetTapOrder">排序：{{order}}</view>
+  <view class="weui-media-box__info">
+    <view class="weui-media-box__info__meta" bindtap="actionSheetTapLang">语言：{{lang}}</view>
+    <view class="weui-media-box__info__meta" bindtap="actionSheetTapOrder">排序：{{order}}</view>
   </view>
 
   <view class="weui-panel weui-panel_access"> 
