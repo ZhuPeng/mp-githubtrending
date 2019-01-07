@@ -10,6 +10,7 @@ const _ = db.command
 Page({
   data: {
     searchValue: "",
+    order: '_crawl_time',
     userInfo: {},
     hasUserInfo: false,
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
@@ -26,8 +27,8 @@ Page({
   },
 
   onLoad: function () {
-    db.collection('github').orderBy('star', 'desc').get().then(res => {
-      console.log(res.data)
+    db.collection('github').orderBy(this.data.order, 'desc').get().then(res => {
+      console.log("data: ", res.data)
       this.setData({list: res.data})
     })
     
@@ -83,7 +84,7 @@ Page({
           options: 'i',
         })
       }
-    ])).orderBy('star', 'desc').get().then(res => {
+    ])).orderBy(this.data.order, 'desc').get().then(res => {
       console.log(res.data)
       this.setData({ 
         list: res.data,
