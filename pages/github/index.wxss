@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.whitespacenormal {
+  white-space: normal;
+}
+
 .userinfo {
   display: flex;
   flex-direction: column;
