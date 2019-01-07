@@ -82,7 +82,7 @@ Page({
   onReachBottom: function(e) {
     console.log("onReachBotton:", e)
     if (this.data.searchValue) {
-      this.onSearch(e)
+      this.search(this.data.searchValue, true)
     }else {
       this.loadData()
     }
@@ -92,15 +92,19 @@ Page({
       console.log("newList:", newList)
       var curList = this.data.list 
       curList.push(...newList)
+      console.log("total count:", curList.length)
       this.setData({ list: curList })
   },
 
   onSearch: function(e) { 
+      this.setData({
+        searchValue: e.detail
+      })
       console.log("searchValue:", this.data.searchValue)
-      this.search(e.detail)
+      this.search(e.detail, false)
   },
 
-  search: function(val) {
+  search: function(val, more) {
     console.log("search:", val)
     db.collection('github').where(_.or([
       {
@@ -115,8 +119,12 @@ Page({
           options: 'i',
         })
       }
-    ])).orderBy(this.data.order, 'desc').skip(this.data.list.length).get().then(res => {
-      this.appendList(res.data)
+    ])).orderBy(this.data.order, 'desc').get().then(res => {
+      if (more) {
+        this.appendList(res.data)
+      }else {
+        this.setData({list: res.data})
+      }
     })
   }
 })
