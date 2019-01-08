@@ -1,3 +1,0 @@
-<view class="van-collapse van-hairline--top-bottom custom-class">
-  <slot />
-</view>
