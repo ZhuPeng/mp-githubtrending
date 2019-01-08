@@ -12,8 +12,7 @@ db.collection("admin").where({website: "github", type: "token"}).get().then(res 
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var owner = 'octokit';
-  var repo = 'rest.js';
+  var {owner, repo} = event;
   var ref = 'master';
   var res = await octokit.repos.getReadme({ owner, repo, ref })
   return {

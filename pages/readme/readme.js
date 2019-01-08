@@ -14,7 +14,7 @@ Page({
     dbutil.getDoc("github", options._id, function(doc){
       self.setData({item: doc})
     })
-    this.getReadMe(options._id)
+    this.getReadMe(options.repo)
   },
 
   copy: function (e) {
@@ -31,11 +31,14 @@ Page({
     })
   },
 
-  getReadMe: function(id) {
+  getReadMe: function(repo) {
+    var arr = repo.split(" / ")
+    console.log("arr:", arr)
     wx.cloud.callFunction({
       name: 'githubreadme',
       data: {
-        id: id
+        owner: arr[0],
+        repo: arr[1]
       },
       complete: res => {
         var md = util.base64Decode(res.result.content)

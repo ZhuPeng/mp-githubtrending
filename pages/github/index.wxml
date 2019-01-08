@@ -12,7 +12,7 @@
     <block wx:for-items="{{list}}" wx:key="{{item._id}}">
       <view class="weui-media-box weui-media-box_text">
         <view class="weui-media-box__title whitespacenormal">
-          <navigator url="/pages/readme/readme?_id={{item._id}}"
+          <navigator url="/pages/readme/readme?_id={{item._id}}&&repo={{item.repo}}"
     hover-class="navigator-hover">
             {{item.repo}}
           </navigator>
