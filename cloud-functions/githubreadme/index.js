@@ -1,9 +1,13 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
+cloud.init()
 const octokit = require('@octokit/rest')()
-octokit.authenticate({
-  type: 'oauth',
-  token: '9290eed67c5f824c32ead2b35b1b5d4e72899231'
+const db = cloud.database()
+db.collection("admin").where({website: "github", type: "token"}).get().then(res => {
+  octokit.authenticate({
+    type: 'oauth',
+    token: res[0].value
+  })
 })
 
 // 云函数入口函数

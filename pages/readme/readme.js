@@ -1,13 +1,11 @@
 // pages/readme/readme.js
 Page({
   data: {
-    readme: ''
+    readme: "",
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    var self = this;
     wx.cloud.callFunction({
       name: 'githubreadme',
       data: {
@@ -15,8 +13,10 @@ Page({
         b: 2,
       },
       complete: res => {
-        this.setData({
-          readme: res.content
+        console.log(res)
+        self.setData({
+          // base64 encode
+          readme: atob(res.result.content)
         })
       },
     })
