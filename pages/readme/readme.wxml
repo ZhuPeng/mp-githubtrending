@@ -1,0 +1,3 @@
+<view>
+  <wemark md="{{readme}}" link highlight type="wemark"></wemark>
+</view>
