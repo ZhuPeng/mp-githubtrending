@@ -25,12 +25,6 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/readme/readme",
-        "iconPath": "image/icon_API.png",
-        "selectedIconPath": "image/icon_API_HL.png",
-        "text": "readme"
-      },
-      {
         "pagePath": "pages/account/account",
         "iconPath": "image/wechat.png",
         "selectedIconPath": "image/wechatHL.png",

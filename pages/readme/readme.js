@@ -7,7 +7,10 @@ Page({
   },
 
   onLoad: function (options) {
-    var self = this;
+    this.getReadMe()
+  },
+
+  getReadMe: function() {
     wx.cloud.callFunction({
       name: 'githubreadme',
       data: {
@@ -16,7 +19,7 @@ Page({
       },
       complete: res => {
         console.log(res)
-        self.setData({
+        this.setData({
           // base64 encode
           readme: util.base64Decode(res.result.content)
         })

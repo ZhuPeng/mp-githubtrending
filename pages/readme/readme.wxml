@@ -1,3 +1,18 @@
 <view class="container">
+  <view class="weui-media-box weui-media-box_text">
+    <view class="weui-media-box__title whitespacenormal" data-text="{{item.url}}" bindtap="copy">
+      <navigator url="/pages/readme/readme?_id={{item._id}}"
+    hover-class="navigator-hover" open-type="switchTab">
+            {{item.repo}}
+      </navigator>
+        </view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view> 
+          <view class="weui-media-box__info__meta">Star: {{item.star}}</view>
+          <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
+        </view>
+        <view class="weui-media-box__desc">{{item.desc}}</view>
+      </view>
+  
   <wemark md="{{readme}}" link highlight type="wemark"></wemark>
 </view>
