@@ -1,4 +1,6 @@
 // pages/readme/readme.js
+const util = require('../../utils/util.js')
+
 Page({
   data: {
     readme: "",
@@ -16,7 +18,7 @@ Page({
         console.log(res)
         self.setData({
           // base64 encode
-          readme: atob(res.result.content)
+          readme: util.base64Decode(res.result.content)
         })
       },
     })

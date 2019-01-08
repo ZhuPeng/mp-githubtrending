@@ -1,4 +1,5 @@
 .container {
   padding-top: 10rpx;
   white-space: normal;
+  width: 100%;
 }
