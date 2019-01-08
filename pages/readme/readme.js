@@ -1,13 +1,34 @@
 // pages/readme/readme.js
 const util = require('../../utils/util.js')
+const dbutil = require('../../utils/db.js')
 
 Page({
   data: {
     readme: "",
+    item: {},
   },
 
   onLoad: function (options) {
+    console.log("options:", options)
+    var self = this
+    dbutil.getDoc("github", options._id, function(doc){
+      self.setData({item: doc})
+    })
     this.getReadMe()
+  },
+
+  copy: function (e) {
+    console.log("copy:", e)
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.text,
+      success() {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'success',
+          duration: 1000
+        })
+      }
+    })
   },
 
   getReadMe: function() {

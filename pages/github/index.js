@@ -1,10 +1,6 @@
-//index.js
-//获取应用实例
+const dbutil = require('../../utils/db.js')
 const app = getApp()
-wx.cloud.init({
-  env: 'test-3c9b5e'
-})
-const db = wx.cloud.database()
+const db = dbutil.getDB()
 const _ = db.command
 
 Page({
@@ -78,20 +74,6 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
-    })
-  },
-
-  copy: function(e) {
-    console.log("copy:", e)
-    wx.setClipboardData({
-      data: e.currentTarget.dataset.text,
-      success() {
-        wx.showToast({
-          title: '复制成功',
-          icon: 'success',
-          duration: 1000
-        })
-      }
     })
   },
 
