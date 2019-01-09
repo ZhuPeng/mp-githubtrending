@@ -5,6 +5,10 @@ const _ = db.command
 
 const icon = 'image/wechatHL.png'
 const buttons = [{
+      label: "Top",
+      icon,
+    },
+    {
         openType: 'share',
         label: 'Share',
         icon,
@@ -155,6 +159,16 @@ Page({
       })
       console.log("searchValue:", this.data.searchValue)
       this.search(e.detail, false)
+  },
+
+  onFabClick(e) {
+    console.log('onFabClick', e.detail)
+    if (e.detail.index == 0){
+        wx.pageScrollTo({
+            scrollTop: 0,
+            duration: 300
+        })
+    }
   },
 
   getOrder() {
