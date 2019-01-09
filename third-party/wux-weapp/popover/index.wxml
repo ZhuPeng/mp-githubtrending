@@ -1,0 +1,16 @@
+<wux-animation-group in="{{ popoverVisible }}" classNames="{{ classNames }}" bind:enter="onEnter">
+    <view class="wux-class {{ classes.wrap }}" style="{{ popoverStyle }}">
+        <view class="{{ classes.content }}">
+            <view class="{{ classes.arrow }}"></view>
+            <view class="{{ classes.inner }}">
+                <view class="{{ classes.title }}" wx:if="{{ title }}">{{ title }}</view>
+                <slot name="title" wx:else></slot>
+                <view class="{{ classes.innerContent }}" wx:if="{{ content }}">{{ content }}</view>
+                <slot name="content" wx:else></slot>
+            </view>
+        </view>
+    </view>
+</wux-animation-group>
+<view class="{{ classes.element }}" bindtap="onClick">
+    <slot></slot>
+</view>

@@ -1,0 +1,15 @@
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.hd }}" wx:if="{{ thumb || title || extra }}">
+        <view class="{{ classes.content }}" wx:if="{{ thumb || title }}">
+            <image class="{{ classes.thumb }}" src="{{ thumb }}" mode="aspectFit" style="{{ thumbStyle }}" wx:if="{{ thumb }}" />
+            <text>{{ title }}</text>
+        </view>
+        <view class="{{ classes.extra }}" wx:if="{{ extra }}">{{ extra }}</view>
+    </view>
+    <view class="{{ classes.bd }}">
+        <slot name="body"></slot>
+    </view>
+    <view class="{{ classes.ft }}">
+        <slot name="footer"></slot>
+    </view>
+</view>

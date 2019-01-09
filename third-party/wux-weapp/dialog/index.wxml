@@ -1,0 +1,31 @@
+<wux-popup visible="{{ in }}" z-index="{{ zIndex }}" closable="{{ closable }}" mask="{{ mask }}" mask-closable="{{ maskClosable }}" bind:close="onClose" bind:closed="onClosed">
+    <view slot="header">{{ title }}</view>
+    <view>
+        <text>{{ content }}</text>
+        <view class="{{ classes.prompt }}" wx:if="{{ prompt }}">
+            <label>
+                <input
+                    type="{{ prompt.fieldtype }}"
+                    class="{{ classes.input }}"
+                    value="{{ prompt.response }}"
+                    password="{{ prompt.password }}"
+                    placeholder="{{ prompt.placeholder }}"
+                    maxlength="{{ maxlength }}"
+                    bindinput="bindinput"
+                />
+            </label>
+        </view>
+    </view>
+    <view slot="footer" class="{{ classes.buttons }}">
+        <block wx:for="{{ buttons }}" wx:for-item="button" wx:key="">
+            <view
+                class="{{ classes.button[index].wrap }}"
+                hover-class="{{ classes.button[index].hover }}"
+                data-index="{{ index }}"
+                bindtap="buttonTapped"
+            >
+                {{ button.text }}
+            </view>
+        </block>
+    </view>
+</wux-popup>
