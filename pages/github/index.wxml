@@ -7,7 +7,7 @@
     <view class="weui-media-box__info__meta" bindtap="actionSheetTapOrder">排序：{{order}}</view>
   </view>
 
-  <view class="weui-panel weui-panel_access"> 
+  <view class="weui-panel weui-panel_access">
     <view class="weui-panel__bd">
     <block wx:for-items="{{list}}" wx:key="{{item._id}}">
       <view class="weui-media-box weui-media-box_text">
@@ -18,7 +18,7 @@
           </navigator>
         </view>
         <view class="weui-media-box__info">
-          <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view> 
+          <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view>
           <view class="weui-media-box__info__meta"><van-icon name="star"/> {{item.star}}</view>
           <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
         </view>
@@ -27,4 +27,6 @@
     </block>
     </view>
   </view>
+
+  <wux-fab-button position="{{ types[typeIndex] }}" theme="{{ colors[colorIndex] }}" direction="{{ dirs[dirIndex] }}" reverse="{{ reverse }}" spaceBetween="{{ spaceBetween }}" sAngle="{{ sAngle }}" eAngle="{{ eAngle }}" buttons="{{ buttons }}" bind:change="onChange" bind:click="onClick" bind:contact="onContact"/>
 </view>

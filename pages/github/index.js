@@ -3,6 +3,19 @@ const app = getApp()
 const db = dbutil.getDB()
 const _ = db.command
 
+const icon = 'image/wechatHL.png'
+const buttons = [{
+        openType: 'share',
+        label: 'Share',
+        icon,
+    },
+    {
+        openType: 'contact',
+        label: 'Contact',
+        icon,
+    }
+]
+
 Page({
   data: {
     searchValue: "",
@@ -16,7 +29,19 @@ Page({
     langList: ['All', 'Go', 'Python', 'Java', 'C', 'JavaScript'],
     orderList: ['时间', 'Star', 'Fork'],
     orderMap: {'时间': '_crawl_time', 'Star': 'star', 'Fork': 'fork'},
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+
+
+    types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight', 'center'],
+    typeIndex: 3,
+    colors: ['light', 'stable', 'positive', 'calm', 'balanced', 'energized', 'assertive', 'royal', 'dark'],
+    colorIndex: 4,
+    dirs: ['horizontal', 'vertical', 'circle'],
+    dirIndex: 0,
+    sAngle: 0,
+    eAngle: 360,
+    spaceBetween: 10,
+    buttons,
   },
 
   getCollection() {
@@ -39,7 +64,7 @@ Page({
 
   onLoad: function () {
     this.loadData()
-    
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -118,13 +143,13 @@ Page({
 
   appendList: function(newList) {
       console.log("newList:", newList)
-      var curList = this.data.list 
+      var curList = this.data.list
       curList.push(...newList)
       console.log("total count:", curList.length)
       this.setData({ list: curList })
   },
 
-  onSearch: function(e) { 
+  onSearch: function(e) {
       this.setData({
         searchValue: e.detail
       })

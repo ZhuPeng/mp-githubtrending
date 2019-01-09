@@ -13,8 +13,9 @@
     "navigationBarTextStyle": "black"
   },
   "usingComponents": {
-    "van-search": "../../third-party/vant-weapp/search/index",
-    "van-icon": "../../third-party/vant-weapp/icon/index",
-    "wemark": "../../third-party/wemark/wemark"
+    "van-search": "third-party/vant-weapp/search/index",
+    "van-icon": "third-party/vant-weapp/icon/index",
+    "wux-fab-button": "third-party/wux-weapp/fab-button/index",
+    "wemark": "third-party/wemark/wemark"
   }
 }
