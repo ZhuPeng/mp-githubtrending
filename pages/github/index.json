@@ -1,6 +1,3 @@
 {
-  "usingComponents": {
-    "van-search": "../../third-party/vant-weapp/search/index",
-    "van-icon": "../../third-party/vant-weapp/icon/index"
-  }
+  "usingComponents": {}
 }

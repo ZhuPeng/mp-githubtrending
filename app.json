@@ -11,5 +11,10 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "GitHub Trending",
     "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "van-search": "../../third-party/vant-weapp/search/index",
+    "van-icon": "../../third-party/vant-weapp/icon/index",
+    "wemark": "../../third-party/wemark/wemark"
   }
 }
