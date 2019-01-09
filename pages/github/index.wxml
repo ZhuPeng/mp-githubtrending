@@ -19,7 +19,7 @@
         </view>
         <view class="weui-media-box__info">
           <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view> 
-          <view class="weui-media-box__info__meta">Star: {{item.star}}</view>
+          <view class="weui-media-box__info__meta"><van-icon name="star"/> {{item.star}}</view>
           <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
         </view>
         <view class="weui-media-box__desc">{{item.desc}}</view>
