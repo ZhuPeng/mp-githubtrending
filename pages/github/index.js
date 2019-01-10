@@ -3,20 +3,22 @@ const app = getApp()
 const db = dbutil.getDB()
 const _ = db.command
 
-const icon = '../../../image/wechatHL.png'
+const share = "../../../image/Paper-Plane.png"
+const chat = "../../../image/Chat.png"
+const top = "../../../image/up.png"
 const buttons = [{
       label: "Top",
-      icon,
+      icon: top,
     },
     {
         openType: 'share',
         label: 'Share',
-        icon,
+        icon: share,
     },
     {
-        openType: 'contact',
-        label: 'Contact',
-        icon,
+      openType: 'contact',
+      label: 'Contact',
+      icon: chat,
     }
 ]
 
@@ -39,7 +41,7 @@ Page({
     types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight', 'center'],
     typeIndex: 3,
     colors: ['light', 'stable', 'positive', 'calm', 'balanced', 'energized', 'assertive', 'royal', 'dark'],
-    colorIndex: 8,
+    colorIndex: 0,
     dirs: ['horizontal', 'vertical', 'circle'],
     dirIndex: 0,
     sAngle: 0,
