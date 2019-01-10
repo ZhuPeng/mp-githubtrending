@@ -11,11 +11,9 @@
     <view class="weui-panel__bd">
     <block wx:for-items="{{list}}" wx:key="{{item._id}}">
       <view class="weui-media-box weui-media-box_text">
+      <navigator url="/pages/readme/readme?_id={{item._id}}" hover-class="navigator-hover">
         <view class="weui-media-box__title whitespacenormal">
-          <navigator url="/pages/readme/readme?_id={{item._id}}"
-    hover-class="navigator-hover">
             {{item.repo}}
-          </navigator>
         </view>
         <view class="weui-media-box__info">
           <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view>
@@ -23,6 +21,7 @@
           <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
         </view>
         <view class="weui-media-box__desc">{{item.desc}}</view>
+      </navigator>
       </view>
     </block>
     </view>
