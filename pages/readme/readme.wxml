@@ -1,10 +1,20 @@
 <view class="page">
   <view class="page__bd">
+    <view class="margin-padding">
     <wux-card bindtap="copy" data-text="{{item.url}}" hover-class="navigator-hover"
       title="{{item.repo}}" extra="">
       <view slot="body">Lang: {{item.lang}}  Star: {{item.star}}  Fork: {{item.fork}}</view>
       <view slot="footer">{{item.desc}}</view>
     </wux-card>
+    </view>
+
+    <view class="margin-padding">
+    <wux-card bindtap="copy" data-text="{{item.url}}" hover-class="navigator-hover"
+      title="{{item.repo}}" extra="">
+      <view slot="body">Lang: {{item.lang}}  Star: {{item.star}}  Fork: {{item.fork}}</view>
+      <view slot="footer">{{item.desc}}</view>
+    </wux-card>
+    </view>
     <wemark md="{{readme}}" link highlight type="wemark"></wemark>
   </view>
 </view>
