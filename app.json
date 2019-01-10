@@ -9,7 +9,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "GitHub Trending",
+    "navigationBarTitleText": "GitHub Trending Hub",
     "navigationBarTextStyle": "black"
   },
   "usingComponents": {
