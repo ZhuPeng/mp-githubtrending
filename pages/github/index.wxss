@@ -7,6 +7,6 @@
   width: 100%;
 }
 
-.whitespacenormal {
-  white-space: normal;
+.padding-left {
+  margin-left: 30rpx;
 }

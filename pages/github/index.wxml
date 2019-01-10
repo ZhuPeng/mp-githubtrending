@@ -1,18 +1,20 @@
-<!--index.wxml-->
-<view class="container">
+<view class="page">
+<view class="page__hd">
   <van-search class="search" placeholder="请输入搜索关键词" bind:search="onSearch" />
 
-  <view class="weui-media-box__info">
+  <view class="weui-media-box__info padding-left">
     <view class="weui-media-box__info__meta" bindtap="actionSheetTapLang">语言：{{lang}}</view>
     <view class="weui-media-box__info__meta" bindtap="actionSheetTapOrder">排序：{{order}}</view>
   </view>
+</view>
 
+<view class="page__bd">
   <view class="weui-panel weui-panel_access">
     <view class="weui-panel__bd">
     <block wx:for-items="{{list}}" wx:key="{{item._id}}">
       <view class="weui-media-box weui-media-box_text">
       <navigator url="/pages/readme/readme?_id={{item._id}}" hover-class="navigator-hover">
-        <view class="weui-media-box__title whitespacenormal">
+        <view class="weui-media-box__title">
             {{item.repo}}
         </view>
         <view class="weui-media-box__info">
@@ -26,6 +28,6 @@
     </block>
     </view>
   </view>
-
+</view>
   <wux-fab-button position="{{ types[typeIndex] }}" theme="{{ colors[colorIndex] }}" direction="{{ dirs[dirIndex] }}" reverse="{{ reverse }}" spaceBetween="{{ spaceBetween }}" sAngle="{{ sAngle }}" eAngle="{{ eAngle }}" buttons="{{ buttons }}" bind:change="onChange" bind:click="onFabClick" bind:contact="onContact"/>
 </view>
