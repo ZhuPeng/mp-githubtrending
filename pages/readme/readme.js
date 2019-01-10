@@ -13,8 +13,8 @@ Page({
     var self = this
     dbutil.getDoc("github", options._id, function(doc){
       self.setData({item: doc})
+      self.getReadMe(doc.repo)
     })
-    this.getReadMe(options.repo)
   },
 
   copy: function (e) {
