@@ -1,6 +1,7 @@
 module.exports = {
   getDB: getDB,
-  getDoc: getDoc
+  getDoc: getDoc,
+  getDocWithCondition: getDocWithCondition, 
 }
 
 wx.cloud.init({
@@ -13,7 +14,11 @@ function getDB() {
 }
 
 function getDoc(table, id, callBack) {
-  getDB().collection(table).where({ _id: parseInt(id, 10)}).get().then(res => {
+  getDocWithCondition(table, {_id: parseInt(id, 10)}, callBack)
+}
+
+function getDocWithCondition(table, conditions, callBack) {
+  getDB().collection(table).where(conditions).get().then(res => {
     console.log("getDoc:", table, id, res.data[0])
     callBack(res.data[0])
   })
