@@ -11,7 +11,7 @@
 <view class="page__bd">
   <block wx:for-items="{{list}}" wx:key="{{item._id}}">
     <view class='line'></view>
-    <view class=".padding-left">
+    <view class=".padding-card">
       <navigator url="/pages/readme/readme?_id={{item._id}}" hover-class="navigator-hover">
         <view class="weui-media-box__title">
           {{item.repo}}
