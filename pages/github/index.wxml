@@ -10,9 +10,9 @@
 
 <view class="page__bd">
   <block wx:for-items="{{list}}" wx:key="{{item._id}}">
+    <navigator url="/pages/readme/readme?_id={{item._id}}" hover-class="navigator-hover">
     <view class='line'></view>
     <view class=".padding-card">
-      <navigator url="/pages/readme/readme?_id={{item._id}}" hover-class="navigator-hover">
         <view class="weui-media-box__title">
           {{item.repo}}
         </view>
@@ -22,8 +22,8 @@
           <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
         </view>
         <view class="weui-media-box__desc">{{item.desc}}</view>
-      </navigator>
     </view>
+    </navigator>
   </block>
 
   <wux-fab-button position="{{ types[typeIndex] }}" theme="{{ colors[colorIndex] }}" direction="{{ dirs[dirIndex] }}" reverse="{{ reverse }}" spaceBetween="{{ spaceBetween }}" sAngle="{{ sAngle }}" eAngle="{{ eAngle }}" buttons="{{ buttons }}" bind:change="onChange" bind:click="onFabClick" bind:contact="onContact"/>
