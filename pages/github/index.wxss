@@ -1,12 +1,15 @@
-/**index.wxss**/
-.container {
-  padding-top: 10rpx;
-}
-
 .search {
   width: 100%;
 }
 
 .padding-left {
   margin-left: 30rpx;
+}
+
+.line{
+  margin-bottom: 10rpx;
+  margin-top: 10rpx;
+  width: 100%;
+  height: 2rpx;
+  background-color: #D8D8D8;
 }

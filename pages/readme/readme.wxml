@@ -1,5 +1,6 @@
 <view class="page">
   <view class="page__hd">
+  <view class="weui-panel weui-panel_access">
   <view class="weui-media-box weui-media-box_text" bindtap="copy" data-text="{{item.url}}" hover-class="navigator-hover">
     <view class="weui-media-box__title">
         {{item.repo}}
@@ -12,8 +13,11 @@
     <view class="weui-media-box__desc">{{item.desc}}</view>
   </view>
   </view>
+  </view>
 
   <view class="page__bd">
+  <wux-wing-blank size="default">
     <wemark md="{{readme}}" link highlight type="wemark"></wemark>
+  </wux-wing-blank>
   </view>
 </view>
