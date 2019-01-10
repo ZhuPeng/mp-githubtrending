@@ -11,14 +11,21 @@
 <view class="page__bd">
   <block wx:for-items="{{list}}" wx:key="{{item._id}}">
     <navigator url="/pages/readme/readme?_id={{item._id}}" hover-class="navigator-hover">
-    <view class='line'></view>
+    <wux-divider class="remove-margin" position="right">
+      <wux-timeago class="timeago-padding" to="{{item._crawl_time}}" lang="en" />
+    </wux-divider>
     <view class=".padding-card">
         <view class="weui-media-box__title">
           {{item.repo}}
         </view>
         <view class="weui-media-box__info">
           <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view>
-          <view class="weui-media-box__info__meta"><van-icon name="star"/> {{item.star}}</view>
+          
+          <view class="weui-media-box__info__meta">
+            <van-icon name="star"/> 
+            {{item.star}}
+          </view>
+          
           <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
         </view>
         <view class="weui-media-box__desc">{{item.desc}}</view>
