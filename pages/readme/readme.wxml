@@ -1,20 +1,19 @@
 <view class="page">
-  <view class="page__bd">
-    <view class="margin-padding">
-    <wux-card bindtap="copy" data-text="{{item.url}}" hover-class="navigator-hover"
-      title="{{item.repo}}" extra="">
-      <view slot="body">Lang: {{item.lang}}  Star: {{item.star}}  Fork: {{item.fork}}</view>
-      <view slot="footer">{{item.desc}}</view>
-    </wux-card>
+  <view class="page__hd">
+  <view class="weui-media-box weui-media-box_text" bindtap="copy" data-text="{{item.url}}" hover-class="navigator-hover">
+    <view class="weui-media-box__title">
+        {{item.repo}}
     </view>
+    <view class="weui-media-box__info">
+      <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view>
+      <view class="weui-media-box__info__meta"><van-icon name="star"/> {{item.star}}</view>
+      <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
+    </view>
+    <view class="weui-media-box__desc">{{item.desc}}</view>
+  </view>
+  </view>
 
-    <view class="margin-padding">
-    <wux-card bindtap="copy" data-text="{{item.url}}" hover-class="navigator-hover"
-      title="{{item.repo}}" extra="">
-      <view slot="body">Lang: {{item.lang}}  Star: {{item.star}}  Fork: {{item.fork}}</view>
-      <view slot="footer">{{item.desc}}</view>
-    </wux-card>
-    </view>
+  <view class="page__bd">
     <wemark md="{{readme}}" link highlight type="wemark"></wemark>
   </view>
 </view>
