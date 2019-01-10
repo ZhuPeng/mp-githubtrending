@@ -48,6 +48,8 @@ Page({
     eAngle: 360,
     spaceBetween: 10,
     buttons,
+
+    spinning: true
   },
 
   getCollection() {
@@ -66,6 +68,16 @@ Page({
         this.appendList(res.data)
       })
     }
+    this.setData({spinning: false})
+  },
+
+  onPullDownRefresh: function () {
+    console.log("onPulldowRefresh")
+    this.setData({list: [], spinning: true})
+    setTimeout(() => {
+      this.loadData()
+      wx.stopPullDownRefresh()
+    }, 1000)
   },
 
   onLoad: function () {

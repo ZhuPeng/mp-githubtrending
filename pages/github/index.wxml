@@ -9,6 +9,7 @@
   </view>
 
 <view class="page__bd">
+  <wux-spin nested spinning="{{ spinning }}" tip="Loading ..."/>
   <block wx:for-items="{{list}}" wx:key="{{item._id}}">
     <navigator url="/pages/readme/readme?_id={{item._id}}" hover-class="navigator-hover">
     <wux-divider class="remove-margin" position="right">
@@ -33,6 +34,6 @@
     </navigator>
   </block>
 
-  <wux-fab-button position="{{ types[typeIndex] }}" theme="{{ colors[colorIndex] }}" direction="{{ dirs[dirIndex] }}" reverse="{{ reverse }}" spaceBetween="{{ spaceBetween }}" sAngle="{{ sAngle }}" eAngle="{{ eAngle }}" buttons="{{ buttons }}" bind:change="onChange" bind:click="onFabClick" bind:contact="onContact" />
+  <wux-fab-button position="{{ types[typeIndex] }}" theme="{{ colors[colorIndex] }}" direction="{{ dirs[dirIndex] }}" reverse="{{ reverse }}" spaceBetween="{{ spaceBetween }}" sAngle="{{ sAngle }}" eAngle="{{ eAngle }}" buttons="{{ buttons }}" bind:click="onFabClick" bind:contact="onContact" />
 </view>
 </view>

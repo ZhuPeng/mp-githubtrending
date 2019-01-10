@@ -6,6 +6,7 @@ Page({
   data: {
     readme: "",
     item: {},
+    spinning: true,
   },
 
   onLoad: function (options) {
@@ -44,7 +45,8 @@ Page({
         var md = util.base64Decode(res.result.content)
         this.setData({
           // base64 encode
-          readme: md
+          readme: md,
+          spinning: false,
         })
       },
     })

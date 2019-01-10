@@ -17,7 +17,9 @@
 
   <view class="page__bd">
   <wux-wing-blank size="default">
+    <wux-spin nested spinning="{{ spinning }}" tip="Loading ...">
     <wemark md="{{readme}}" link highlight type="wemark"></wemark>
+    </wux-spin>
   </wux-wing-blank>
   </view>
 </view>
