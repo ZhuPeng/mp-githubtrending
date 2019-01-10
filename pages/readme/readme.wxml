@@ -1,20 +1,10 @@
-<view class="container">
-  <view class="weui-panel__bd">
-  <view class="weui-media-box weui-media-box_text">
-    <view class="weui-media-box__title whitespacenormal" data-text="{{item.url}}" bindtap="copy" hover-class="navigator-hover">
-      {{item.repo}}
-    </view>
-    <view class="weui-media-box__info">
-      <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view> 
-      <view class="weui-media-box__info__meta">Star: {{item.star}}</view>
-      <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
-    </view>
-      <view class="weui-media-box__desc">{{item.desc}}</view>
-  </view>
-
-  <view class="weui-media-box weui-media-box_text">
-    Readme
+<view class="page">
+  <view class="page__bd">
+    <wux-card bindtap="copy" data-text="{{item.url}}" hover-class="navigator-hover"
+      title="{{item.repo}}" extra="">
+      <view slot="body">Lang: {{item.lang}}  Star: {{item.star}}  Fork: {{item.fork}}</view>
+      <view slot="footer">{{item.desc}}</view>
+    </wux-card>
     <wemark md="{{readme}}" link highlight type="wemark"></wemark>
-  </view>
   </view>
 </view>

@@ -16,6 +16,10 @@
     "van-search": "third-party/vant-weapp/search/index",
     "van-icon": "third-party/vant-weapp/icon/index",
     "wux-fab-button": "third-party/wux-weapp/fab-button/index",
+    "wux-card": "third-party/wux-weapp/card/index",
+    "van-row": "third-party/vant-weapp/row/index",
+    "van-col": "third-party/vant-weapp/col/index",
+    "van-panel": "third-party/vant-weapp/panel/index",
     "wemark": "third-party/wemark/wemark"
   }
 }
