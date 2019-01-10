@@ -3,7 +3,7 @@ const app = getApp()
 const db = dbutil.getDB()
 const _ = db.command
 
-const icon = 'image/wechatHL.png'
+const icon = '../../../image/wechatHL.png'
 const buttons = [{
       label: "Top",
       icon,
@@ -39,7 +39,7 @@ Page({
     types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight', 'center'],
     typeIndex: 3,
     colors: ['light', 'stable', 'positive', 'calm', 'balanced', 'energized', 'assertive', 'royal', 'dark'],
-    colorIndex: 4,
+    colorIndex: 8,
     dirs: ['horizontal', 'vertical', 'circle'],
     dirIndex: 0,
     sAngle: 0,
