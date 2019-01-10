@@ -19,7 +19,7 @@ function getDoc(table, id, callBack) {
 
 function getDocWithCondition(table, conditions, callBack) {
   getDB().collection(table).where(conditions).get().then(res => {
-    console.log("getDoc:", table, id, res.data[0])
+    console.log("getDoc:", table, conditions, res.data[0])
     callBack(res.data[0])
   })
 }
