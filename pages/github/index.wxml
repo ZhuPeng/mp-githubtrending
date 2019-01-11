@@ -20,14 +20,12 @@
           {{item.repo}}
         </view>
         <view class="weui-media-box__info">
-          <view class="weui-media-box__info__meta">Lang: {{item.lang}}</view>
+          <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-create" />  {{item.lang}}</view>
           
           <view class="weui-media-box__info__meta">
-            <van-icon name="star"/> 
-            {{item.star}}
-          </view>
+            <wux-icon size="13" type="md-star" />  {{item.star}}</view>
           
-          <view class="weui-media-box__info__meta">Fork: {{item.fork}}</view>
+          <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-git-network" />  {{item.fork}}</view>
         </view>
         <view class="weui-media-box__desc">{{item.desc}}</view>
     </view>
