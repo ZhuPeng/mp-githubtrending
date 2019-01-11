@@ -149,6 +149,7 @@ Page({
 
   search: function(val, more) {
     console.log("search:", val)
+    val = val.trim()
     this.getCollection().where(_.or([
       {
         repo: db.RegExp({
