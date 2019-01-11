@@ -7,3 +7,8 @@
 .margin-padding {
   margin-bottom: 10rpx;
 }
+
+.margin-left-right {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}

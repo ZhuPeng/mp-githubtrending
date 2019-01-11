@@ -5,6 +5,7 @@ const dbutil = require('../../utils/db.js')
 Page({
   data: {
     readme: "",
+    releases: [],
     item: {},
     spinning: true,
   },
@@ -14,8 +15,16 @@ Page({
     var self = this
     dbutil.getDoc("github", options._id, function(doc){
       self.setData({item: doc})
-      self.getReadMe(doc.repo)
+      self.getGitHubData(doc.repo, "readme", function preprocess(content) {
+        return util.base64Decode(content)
+      })
     })
+  },
+
+  onClick(event) {
+    if (event.detail.index == 1) {
+      this.getGitHubData(this.data.item.repo, "releases")
+    }
   },
 
   copy: function (e) {
@@ -32,20 +41,24 @@ Page({
     })
   },
 
-  getReadMe: function(repo) {
+  getGitHubData: function(repo, type, callback) {
     var arr = repo.split(" / ")
     console.log("arr:", arr)
     wx.cloud.callFunction({
-      name: 'githubreadme',
+      name: 'github',
       data: {
         owner: arr[0],
-        repo: arr[1]
+        repo: arr[1],
+        type: type
       },
       complete: res => {
-        var md = util.base64Decode(res.result.content)
+        var d = res.result.content
+        if (callback) {
+          d = callback(d)
+        }
         this.setData({
           // base64 encode
-          readme: md,
+          [type]: d,
           spinning: false,
         })
       },
