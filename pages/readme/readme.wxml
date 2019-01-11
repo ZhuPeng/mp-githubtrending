@@ -21,5 +21,7 @@
     <wemark md="{{readme}}" link highlight type="wemark"></wemark>
     </wux-spin>
   </wux-wing-blank>
+
+  <fabbutton/>
   </view>
 </view>

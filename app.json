@@ -27,6 +27,7 @@
     "van-row": "third-party/vant-weapp/row/index",
     "van-col": "third-party/vant-weapp/col/index",
     "van-panel": "third-party/vant-weapp/panel/index",
-    "wemark": "third-party/wemark/wemark"
+    "wemark": "third-party/wemark/wemark",
+    "fabbutton": "pages/component/fabbutton/fabbutton"
   }
 }

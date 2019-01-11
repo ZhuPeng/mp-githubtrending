@@ -34,6 +34,6 @@
     </navigator>
   </block>
 
-  <wux-fab-button position="{{ types[typeIndex] }}" theme="{{ colors[colorIndex] }}" direction="{{ dirs[dirIndex] }}" reverse="{{ reverse }}" spaceBetween="{{ spaceBetween }}" sAngle="{{ sAngle }}" eAngle="{{ eAngle }}" buttons="{{ buttons }}" bind:click="onFabClick" bind:contact="onContact" />
+  <fabbutton/>
 </view>
 </view>
