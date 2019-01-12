@@ -7,7 +7,7 @@ Page({
     readme: "",
     releases: [],
     commits: [],
-    item: {},
+    meta: {},
     spinning: true,
   },
 
@@ -15,7 +15,7 @@ Page({
     console.log("options:", options)
     var self = this
     dbutil.getDoc("github", options._id, function(doc){
-      self.setData({item: doc})
+      self.setData({meta: doc})
       self.getGitHubData(doc.repo, "readme", function preprocess(content) {
         return util.base64Decode(content)
       })
@@ -25,10 +25,10 @@ Page({
   onClick(event) {
     if (event.detail.index == 1 && this.data.releases.length == 0) {
       this.setData({ spinning: true })
-      this.getGitHubData(this.data.item.repo, "releases")
+      this.getGitHubData(this.data.meta.repo, "releases")
     } else if (event.detail.index==2 && this.data.commits.length == 0) {
       this.setData({ spinning: true })
-      this.getGitHubData(this.data.item.repo, "commits")
+      this.getGitHubData(this.data.meta.repo, "commits")
     }
   },
 

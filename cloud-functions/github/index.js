@@ -10,7 +10,7 @@ db.collection("admin").where({website: "github", type: "token"}).get().then(res 
   })
 })
 
-const per_page = 10;
+const per_page = 30;
 
 // 云函数入口函数
 exports.main = async (event, context) => {
