@@ -7,6 +7,7 @@ Page({
     readme: "",
     releases: [],
     commits: [],
+    issues: [],
     meta: {},
     spinning: true,
   },
@@ -29,6 +30,9 @@ Page({
     } else if (event.detail.index==2 && this.data.commits.length == 0) {
       this.setData({ spinning: true })
       this.getGitHubData(this.data.meta.repo, "commits")
+    } else if (event.detail.index==3 && this.data.issues.length==0) {
+      this.setData({ spinning: true })
+      this.getGitHubData(this.data.meta.repo, "issues")
     }
   },
 

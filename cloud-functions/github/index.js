@@ -11,6 +11,7 @@ db.collection("admin").where({website: "github", type: "token"}).get().then(res 
 })
 
 const per_page = 30;
+const page = 1;
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -24,15 +25,14 @@ exports.main = async (event, context) => {
       name: res['data']['name'],
     }
   } else if (type == "releases") {
-    res = await octokit.repos.listReleases({ owner, repo, per_page, page: 1 })
-    return {
-      content: res['data']
-    }
+    res = await octokit.repos.listReleases({ owner, repo, per_page, page })
+    return { content: res['data']}
   } else if (type == "commits") {
     res = await octokit.repos.listCommits({ owner, repo, per_page })
-    return {
-      content: res['data']
-    }
+    return {content: res['data']}
+  } else if (type == "issues") {
+    res = await octokit.issues.listForRepo({ owner, repo, sort: "updated", per_page, page })   
+    return {content: res['data']}
   }
   
   return {
