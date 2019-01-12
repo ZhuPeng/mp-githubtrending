@@ -12,3 +12,7 @@
   margin-left: 20rpx;
   margin-right: 20rpx;
 }
+
+.padding-right {
+  margin-right: 10rpx;
+}
