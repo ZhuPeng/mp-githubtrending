@@ -16,3 +16,8 @@
 .padding-right {
   margin-right: 10rpx;
 }
+
+.padding {
+  margin-top: 12rpx;
+  margin-bottom: 12rpx;
+}
