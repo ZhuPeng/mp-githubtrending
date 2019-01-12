@@ -6,6 +6,7 @@ Page({
   data: {
     readme: "",
     releases: [],
+    commits: [],
     item: {},
     spinning: true,
   },
@@ -24,6 +25,8 @@ Page({
   onClick(event) {
     if (event.detail.index == 1) {
       this.getGitHubData(this.data.item.repo, "releases")
+    } else if (event.detail.index==2) {
+      this.getGitHubData(this.data.item.repo, "commits")
     }
   },
 

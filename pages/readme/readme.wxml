@@ -29,10 +29,20 @@
           <view>
             <wux-icon class=".padding-right" size="16" type="ios-rocket" />
             <wux-tag>published_at</wux-tag>
-            <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.published_at}}" lang="en" />
-            </wux-tag>
+            <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.published_at}}" lang="en" /></wux-tag>
           </view>
           <wemark md="{{item.body}}" link highlight type="wemark"></wemark>
+        </block>
+        </view>
+      </van-tab>
+      <van-tab title="Commits">
+        <view class=".margin-left-right" >
+        <block wx:for-items="{{commits}}" wx:key="{{item.sha}}">
+          <view>
+          {{item.commit.message}}
+          <wux-tag>{{item.commit.author.email}}</wux-tag>
+          <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.commit.author.date}}" lang="en" /></wux-tag>
+          </view>
         </block>
         </view>
       </van-tab>
