@@ -56,10 +56,15 @@
       <block wx:for-items="{{issues}}" wx:key="{{item.id}}">
       <view>
           <view class="weui-media-box__title" bindtap="copy" data-text="{{meta.url}}/issues/{{item.number}}">{{item.title}}</view>
+
           <view class="weui-media-box__desc">
-          <wux-tag>{{item.user.login}}</wux-tag>
-          <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.updated_at}}" lang="en" /></wux-tag>
+          <view class='margin-padding'>
+            <wux-tag>{{item.user.login}}</wux-tag>
+            <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.updated_at}}" lang="en" /></wux-tag>
           </view>
+          <view>{{item.body}}</view>
+          </view>
+          
           <view class="padding"><wux-divider show-text="{{ false }}"></wux-divider></view>
           </view>
       </block>
