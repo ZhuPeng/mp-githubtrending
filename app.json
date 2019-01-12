@@ -16,6 +16,7 @@
   "usingComponents": {
     "van-search": "third-party/vant-weapp/search/index",
     "van-icon": "third-party/vant-weapp/icon/index",
+    "van-toast": "third-party/vant-weapp/toast/index",
     "wux-fab-button": "third-party/wux-weapp/fab-button/index",
     "wux-card": "third-party/wux-weapp/card/index",
     "wux-wing-blank": "third-party/wux-weapp/wing-blank/index",

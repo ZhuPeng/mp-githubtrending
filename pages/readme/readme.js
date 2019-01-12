@@ -1,6 +1,7 @@
 // pages/readme/readme.js
 const util = require('../../utils/util.js')
 const dbutil = require('../../utils/db.js')
+import Toast from '../../third-party/vant-weapp/toast/toast';
 
 Page({
   data: {
@@ -13,6 +14,10 @@ Page({
   },
 
   onLoad: function (options) {
+    wx.onPageNotFound(function callback(e) {
+      console.log("onPageNotFound:", e)
+    })
+
     console.log("options:", options)
     var self = this
     dbutil.getDoc("github", options._id, function(doc){
@@ -21,6 +26,12 @@ Page({
         return util.base64Decode(content)
       })
     })
+  },
+
+  onMDClick(e) {
+    var clickurl = e.detail.currentTarget.dataset.text
+    console.log("onMDClick url:", clickurl)
+    this.copyText(clickurl)
   },
 
   onClick(event) {
@@ -38,14 +49,15 @@ Page({
 
   copy: function (e) {
     console.log("copy:", e)
+    this.copyText(e.currentTarget.dataset.text)
+  },
+
+  copyText(text) {
     wx.setClipboardData({
-      data: e.currentTarget.dataset.text,
+      data: text,
       success() {
-        wx.showToast({
-          title: '复制成功',
-          icon: 'success',
-          duration: 1000
-        })
+        wx.hideToast()
+        Toast('复制成功 ' + text)
       }
     })
   },

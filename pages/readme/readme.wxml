@@ -1,4 +1,5 @@
 <view class="page">
+  <van-toast id="van-toast" />
   <view class="page__hd">
   <view class="weui-panel weui-panel_access">
   <view class="weui-media-box weui-media-box_text" bindtap="copy" data-text="{{meta.url}}" hover-class="navigator-hover">
@@ -20,7 +21,7 @@
     <van-tabs animated bind:click="onClick">
       <van-tab title="Readme">
         <view class=".margin-left-right" >
-        <wemark class=".margin-left-right" md="{{readme}}" link highlight type="wemark"></wemark>
+        <wemark bind:click="onMDClick" class=".margin-left-right" md="{{readme}}" link highlight type="wemark"></wemark>
         </view>
       </van-tab>
       <van-tab title="Releases">
