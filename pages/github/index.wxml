@@ -3,7 +3,26 @@
     <van-search class="search" placeholder="请输入搜索关键词" bind:search="onSearch" />
 
     <view class="weui-media-box__info padding-left">
-      <view class="weui-media-box__info__meta" bindtap="actionSheetTapLang">语言：{{lang}}</view>
+      <van-action-sheet show="{{sheetShow}}" bind:close="onSheetClose" title="Select Filter Language">
+        <van-cell title="All" clickable data-name="All" >
+          <van-checkbox value="{{selectLangList==0?true:false}}" catch:tap="selectAll" class="checkboxes-All" name="All" />
+        </van-cell>
+        <van-checkbox-group value="{{ selectLangList }}" bind:change="onChange">
+        <van-cell-group >
+          <van-cell
+            wx:for="{{ langList }}"
+            wx:key="index"
+            title="{{ item }}"
+            clickable
+            data-name="{{ item }}"
+            bind:click="toggle"
+           >
+           <van-checkbox catch:tap="noop" class="checkboxes-{{ item }}" name="{{ item }}" />
+          </van-cell>
+        </van-cell-group>
+        </van-checkbox-group>
+      </van-action-sheet>
+      <view class="weui-media-box__info__meta" bindtap="actionSheetTapLang">语言：{{selectLangList.length>0 ? selectLangList : 'All'}}</view>
       <view class="weui-media-box__info__meta" bindtap="actionSheetTapOrder">排序：{{order}}</view>
     </view>
   </view>

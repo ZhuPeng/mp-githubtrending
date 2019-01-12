@@ -6,25 +6,54 @@ const _ = db.command
 Page({
   data: {
     searchValue: "",
+    sheetShow: false,
     order: wx.getStorageSync('github-order') || '时间',
-    lang: wx.getStorageSync('github-lang') || 'All',
     userInfo: {},
     hasUserInfo: false,
     previousMargin: 0,
     nextMargin: 0,
     list: [],
-    langList: ['All', 'Go', 'Python', 'Java', 'C', 'JavaScript'],
+    langList: ['Go', 'Python', 'Java', 'C', 'JavaScript'],
+    selectLangList: wx.getStorageSync('github-lang-filter') || [],
     orderList: ['时间', 'Star', 'Fork'],
     orderMap: {'时间': '_crawl_time', 'Star': 'star', 'Fork': 'fork'},
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     spinning: true
   },
 
+  onSheetClose() {
+    console.log("onSheetClose")
+    this.setData({list: [], sheetShow: false})
+    this.loadData()
+  },
+
+  onChange(event) {
+    console.log("onChange:", event.detail)
+    this.setData({
+      selectLangList: event.detail
+    });
+    wx.setStorageSync("github-lang-filter", event.detail)
+  },
+
+  toggle(event) {
+    const { name } = event.currentTarget.dataset;
+    console.log("toggle:", name)
+    const checkbox = this.selectComponent(`.checkboxes-${name}`);
+    checkbox.toggle();
+  },
+
+  noop() {},
+  selectAll() {this.setData({selectLangList: []})},
+
   getCollection() {
     var col = db.collection('github')
-    if (this.data.lang != 'All') {
-      col = col.where({ 'lang': this.data.lang })
-    }
+    var filter = []
+    this.data.selectLangList.map(function(lang) {
+      filter.push({'lang': lang})
+    })
+    if (filter.length > 0) {
+      col = col.where(_.or(filter))
+    }  
     return col
   },
 
@@ -93,7 +122,7 @@ Page({
   },
 
   actionSheetTapLang() {
-    this.actionSheepTap("lang")
+    this.setData({sheetShow: true})
   },
 
   actionSheepTap(type) {
