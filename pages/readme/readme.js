@@ -23,9 +23,11 @@ Page({
   },
 
   onClick(event) {
-    if (event.detail.index == 1) {
+    if (event.detail.index == 1 && this.data.releases.length == 0) {
+      this.setData({ spinning: true })
       this.getGitHubData(this.data.item.repo, "releases")
-    } else if (event.detail.index==2) {
+    } else if (event.detail.index==2 && this.data.commits.length == 0) {
+      this.setData({ spinning: true })
       this.getGitHubData(this.data.item.repo, "commits")
     }
   },
