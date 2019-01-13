@@ -13,7 +13,7 @@ Page({
     previousMargin: 0,
     nextMargin: 0,
     list: [],
-    langList: ['Go', 'Python', 'Java', 'C', 'JavaScript', 'R','	Shell', 'PHP', 'CSS',
+    langList: ['Go', 'Python', 'Java', 'C', 'JavaScript', 'R','Shell', 'PHP', 'CSS',
     'Ruby', 'Lua', 'Vue', 'Objective-C', 'C++', 'Kotlin', 'Rust', 'TypeScript', 'C#',
     'Swift', 'HTML', 'Jupyter Notebook', 'Dart', 'Makefile', 'TeX', 'DIGITAL Command Language',
     'Common Lisp', 'Cuda', 'Assembly', 'CoffeeScript', 'Julia', 'Verilog', 'Emacs Lisp'],
@@ -52,7 +52,7 @@ Page({
     var col = db.collection('github')
     var filter = []
     this.data.selectLangList.map(function(lang) {
-      filter.push({'lang': lang})
+      filter.push({ 'lang': lang.trim()})
     })
     if (filter.length > 0) {
       col = col.where(_.or(filter))
