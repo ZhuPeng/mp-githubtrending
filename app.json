@@ -39,6 +39,7 @@
     "van-tabs": "third-party/vant-weapp/tabs/index",
     "van-tab": "third-party/vant-weapp/tab/index",
     "wemark": "third-party/wemark/wemark",
-    "fabbutton": "pages/component/fabbutton/fabbutton"
+    "fabbutton": "pages/component/fabbutton/fabbutton",
+    "repolist": "pages/component/repolist/repolist"
   }
 }

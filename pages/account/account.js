@@ -4,7 +4,17 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    list: [{
+      "_id": 1,
+      "_crawl_time": '2018-02-04 16:40:04.193149',
+      "desc": 'Video editing with Python',
+      "fork": '569',
+      "lang": 'Python',
+      "repo": 'Zulko / moviepy',
+      "star": '3,868',
+      "today": '576 stars today',
+      "url": 'https://github.com/Zulko/moviepy',
+    }],
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -43,6 +53,7 @@ Page({
       })
     }
   },
+
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
