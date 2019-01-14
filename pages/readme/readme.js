@@ -19,12 +19,14 @@ Page({
     })
 
     console.log("options:", options)
+    var repo = decodeURIComponent(options.repo)
     var self = this
-    dbutil.getDoc("github", options._id, function(doc){
+    // TODO: get from git real time
+    dbutil.getDocWithCondition("github", {repo}, function(doc){
       self.setData({meta: doc})
-      self.getGitHubData(doc.repo, "readme", function preprocess(content) {
-        return util.base64Decode(content)
-      })
+    })
+    self.getGitHubData(repo, "readme", function preprocess(content) {
+      return util.base64Decode(content)
     })
   },
 
@@ -63,13 +65,13 @@ Page({
   },
 
   getGitHubData: function(repo, type, callback) {
-    var arr = repo.split(" / ")
+    var arr = repo.split("/")
     console.log("arr:", arr)
     wx.cloud.callFunction({
       name: 'github',
       data: {
-        owner: arr[0],
-        repo: arr[1],
+        owner: arr[0].trim(),
+        repo: arr[1].trim(),
         type: type
       },
       complete: res => {

@@ -30,7 +30,7 @@
 <view class="page__bd">
   <wux-spin nested spinning="{{ spinning }}" tip="Loading ..."/>
   <block wx:for-items="{{list}}" wx:key="{{item._id}}">
-    <navigator url="/pages/readme/readme?_id={{item._id}}" hover-class="navigator-hover">
+    <navigator url="/pages/readme/readme?_id={{item._id}}&repo={{item.repo}}" hover-class="navigator-hover">
     <wux-divider class="remove-margin" position="right">
       <wux-timeago class="timeago-padding" to="{{item._crawl_time}}" lang="en" />
     </wux-divider>
