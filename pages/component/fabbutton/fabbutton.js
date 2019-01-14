@@ -2,6 +2,7 @@
 const share = "../../../image/Paper-Plane.png"
 const chat = "../../../image/Chat.png"
 const top = "../../../image/up.png"
+const setting = "../../../image/Settings.png"
 const buttons = [{
   label: "Top",
   icon: top,
@@ -13,6 +14,9 @@ const buttons = [{
   openType: 'contact',
   label: 'Contact',
   icon: chat,
+}, {
+  label: 'Account',
+    icon: setting,
 }]
 
 Component({
@@ -49,6 +53,10 @@ Component({
         wx.pageScrollTo({
           scrollTop: 0,
           duration: 300
+        })
+      } else if (e.detail.index == 3) {
+        wx.navigateTo({
+          url: '/pages/account/account',
         })
       }
     },
