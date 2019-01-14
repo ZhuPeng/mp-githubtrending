@@ -1,5 +1,3 @@
-//index.js
-//获取应用实例
 const app = getApp()
 
 Page({
@@ -25,7 +23,22 @@ Page({
       url: '../logs/logs'
     })
   },
+
+  loadHistory: function() {
+    wx.cloud.callFunction({
+      name: 'github',
+      data: {type: 'history'},
+      complete: res => {
+        var d = res.result.content
+        this.setData({
+          list: d,
+        })
+      }
+    })
+  },
+
   onLoad: function () {
+    this.loadHistory()
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

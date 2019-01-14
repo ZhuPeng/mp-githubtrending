@@ -3,6 +3,7 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 const octokit = require('@octokit/rest')()
 const db = cloud.database()
+const _ = db.command
 db.collection("admin").where({website: "github", type: "token"}).get().then(res => {
   octokit.authenticate({
     type: 'oauth',
@@ -43,6 +44,23 @@ function trace(OPENID, owner, repo, type) {
   }).then(res => { console.log(res) }).catch(console.error)
 }
 
+async function getHistory(openid) {
+  var historys = await db.collection('history').where({openid, type:'readme'}).get()
+  var col = db.collection('github')
+  var filter = []
+  historys.data.map(function(h) {
+    filter.push({
+      repo: h.owner + ' / ' + h.repo,
+    })
+  })
+  if (filter.length == 0) {
+    return []
+    
+  }
+  var result = await col.where(_.or(filter)).get()
+  return result.data 
+}
+
 // 云函数入口函数
 exports.main = async (event, context) => {
   var {owner, repo, type} = event;
@@ -65,6 +83,8 @@ exports.main = async (event, context) => {
   } else if (type == "issues") {
     res = await octokit.issues.listForRepo({ owner, repo, sort: "updated", per_page, page })   
     return {content: res['data']}
+  } else if (type == 'history') {
+    return {content: await getHistory()}
   }
   
   return {
