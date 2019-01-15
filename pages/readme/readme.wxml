@@ -20,9 +20,7 @@
     <wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin>
     <van-tabs animated bind:click="onClick">
       <van-tab title="Readme">
-        <view class=".margin-left-right" >
         <md md="{{readme}}"></md>
-        </view>
       </van-tab>
       <van-tab title="Releases">
         <view class=".margin-left-right" >

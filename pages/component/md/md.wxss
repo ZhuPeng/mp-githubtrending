@@ -1,1 +1,5 @@
 /* pages/component/md/md.wxss */
+.margin-left-right {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}

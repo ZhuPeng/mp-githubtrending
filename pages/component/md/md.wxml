@@ -1,1 +1,3 @@
+<view class=".margin-left-right" >
 <wemark bind:click="onMDClick" md="{{md}}" link highlight type="wemark"></wemark>
+</view>

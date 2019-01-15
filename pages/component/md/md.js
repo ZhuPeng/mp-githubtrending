@@ -25,7 +25,13 @@ Component({
     onMDClick(e) {
       var clickurl = e.detail.currentTarget.dataset.text
       console.log("onMDClick url:", clickurl)
-      this.copyText(clickurl)
+      if (clickurl.endsWith('.md')) {
+        wx.navigateTo({
+          url: '/pages/gitfile/gitfile?file=' + clickurl,
+        })
+      } else {
+        this.copyText(clickurl)
+      }
     },
 
     copyText(text) {
