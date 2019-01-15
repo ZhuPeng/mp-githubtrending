@@ -8,6 +8,8 @@ Page({
    */
   data: {
     file: '',
+    repo: '',
+    owner: '',
     content: '',
     spinning: false,
   },
@@ -16,9 +18,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({file: options.file, spinning: true})
+    this.setData({file: options.file, spinning: true, owner: options.owner, repo: options.repo})
     var self = this;
-    cloudclient.callFunction({repo: 'system-design-primer', owner: "donnemartin", path: options.file, type: 'file'}, function(d) {
+    cloudclient.callFunction({repo: options.repo, owner: options.owner, path: options.file, type: 'file'}, function(d) {
       self.setData({ content: util.base64Decode(d), spinning: false})
     })
   },

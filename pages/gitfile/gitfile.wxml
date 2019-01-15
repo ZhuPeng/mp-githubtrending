@@ -4,6 +4,6 @@
 </view>
 <view class="page__bd">
   <wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin>
-  <md md="{{content}}"></md>
+  <md md="{{content}}" owner="{{owner}}" repo="{{repo}}"></md>
 </view>
 </view>

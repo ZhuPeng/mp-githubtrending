@@ -9,6 +9,14 @@ Component({
       type: String,
       value: ''
     },
+    owner: {
+      type: String,
+      value: ''
+    },
+    repo: {
+      type: String,
+      value: '' 
+    }
   },
 
   /**
@@ -27,7 +35,7 @@ Component({
       console.log("onMDClick url:", clickurl)
       if (clickurl.endsWith('.md')) {
         wx.navigateTo({
-          url: '/pages/gitfile/gitfile?file=' + clickurl,
+          url: '/pages/gitfile/gitfile?file=' + clickurl + '&owner=' + this.data.owner + '&repo=' + this.data.repo,
         })
       } else {
         this.copyText(clickurl)

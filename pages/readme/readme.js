@@ -11,6 +11,7 @@ Page({
     commits: [],
     issues: [],
     meta: {},
+    query: {},
     spinning: true,
   },
 
@@ -21,6 +22,8 @@ Page({
 
     console.log("options:", options)
     var repo = decodeURIComponent(options.repo)
+    var arr = repo.split("/")
+    this.setData({query: {owner: arr[0].trim(), repo: arr[1].trim()}})
     var self = this
     // TODO: get from git real time
     dbutil.getDocWithCondition("github", {repo}, function(doc){

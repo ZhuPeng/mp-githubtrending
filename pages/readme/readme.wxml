@@ -20,7 +20,7 @@
     <wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin>
     <van-tabs animated bind:click="onClick">
       <van-tab title="Readme">
-        <md md="{{readme}}"></md>
+        <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
       </van-tab>
       <van-tab title="Releases">
         <view class=".margin-left-right" >
@@ -30,7 +30,7 @@
             <wux-tag>published_at</wux-tag>
             <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.published_at}}" lang="en" /></wux-tag>
           </view>
-          <md md="{{item.body}}"></md>
+          <md md="{{item.body}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
         </block>
         </view>
       </van-tab>
