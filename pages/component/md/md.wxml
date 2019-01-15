@@ -1,0 +1,1 @@
+<wemark bind:click="onMDClick" md="{{md}}" link highlight type="wemark"></wemark>
