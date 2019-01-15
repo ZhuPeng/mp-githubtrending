@@ -21,7 +21,7 @@
     <van-tabs animated bind:click="onClick">
       <van-tab title="Readme">
         <view class=".margin-left-right" >
-        <wemark bind:click="onMDClick" class=".margin-left-right" md="{{readme}}" link highlight type="wemark"></wemark>
+        <md md="{{readme}}"></md>
         </view>
       </van-tab>
       <van-tab title="Releases">
@@ -32,7 +32,7 @@
             <wux-tag>published_at</wux-tag>
             <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.published_at}}" lang="en" /></wux-tag>
           </view>
-          <wemark md="{{item.body}}" link highlight type="wemark"></wemark>
+          <md md="{{item.body}}"></md>
         </block>
         </view>
       </van-tab>

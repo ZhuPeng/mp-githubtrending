@@ -31,12 +31,6 @@ Page({
     })
   },
 
-  onMDClick(e) {
-    var clickurl = e.detail.currentTarget.dataset.text
-    console.log("onMDClick url:", clickurl)
-    this.copyText(clickurl)
-  },
-
   onClick(event) {
     if (event.detail.index == 1 && this.data.releases.length == 0) {
       this.setData({ spinning: true })
