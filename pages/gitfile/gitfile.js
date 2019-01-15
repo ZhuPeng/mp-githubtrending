@@ -9,16 +9,17 @@ Page({
   data: {
     file: '',
     content: '',
+    spinning: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({file: options.file})
+    this.setData({file: options.file, spinning: true})
     var self = this;
     cloudclient.callFunction({repo: 'system-design-primer', owner: "donnemartin", path: options.file, type: 'file'}, function(d) {
-      self.setData({ content: util.base64Decode(d)})
+      self.setData({ content: util.base64Decode(d), spinning: false})
     })
   },
 

@@ -3,6 +3,7 @@
   <view>{{file}}</view>
 </view>
 <view class="page__bd">
+  <wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin>
   <md md="{{content}}"></md>
 </view>
 </view>
