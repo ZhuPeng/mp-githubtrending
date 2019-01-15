@@ -1,6 +1,7 @@
 // pages/readme/readme.js
 const util = require('../../utils/util.js')
 const dbutil = require('../../utils/db.js')
+const cloudclient = require('../../utils/cloudclient.js')
 import Toast from '../../third-party/vant-weapp/toast/toast';
 
 Page({
@@ -67,24 +68,20 @@ Page({
   getGitHubData: function(repo, type, callback) {
     var arr = repo.split("/")
     console.log("arr:", arr)
-    wx.cloud.callFunction({
-      name: 'github',
-      data: {
+    var self = this
+    cloudclient.callFunction({
         owner: arr[0].trim(),
         repo: arr[1].trim(),
         type: type
-      },
-      complete: res => {
-        var d = res.result.content
+      }, function (d) {
         if (callback) {
           d = callback(d)
         }
-        this.setData({
+        self.setData({
           // base64 encode
           [type]: d,
           spinning: false,
         })
-      },
     })
   },
 

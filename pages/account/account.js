@@ -1,3 +1,4 @@
+const cloudclient = require('../../utils/cloudclient.js')
 const app = getApp()
 
 Page({
@@ -15,15 +16,9 @@ Page({
   },
 
   loadHistory: function() {
-    wx.cloud.callFunction({
-      name: 'github',
-      data: {type: 'history'},
-      complete: res => {
-        var d = res.result.content
-        this.setData({
-          list: d,
-        })
-      }
+    var self = this
+    cloudclient.callFunction({type: 'history'}, function(d) {
+      self.setData({list: d})
     })
   },
 
