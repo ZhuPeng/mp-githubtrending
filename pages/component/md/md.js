@@ -1,4 +1,5 @@
 // pages/component/md/md.js
+const util = require('../../../utils/util.js')
 import Toast from '../../../third-party/vant-weapp/toast/toast';
 Component({
   /**
@@ -33,9 +34,25 @@ Component({
     onMDClick(e) {
       var clickurl = e.detail.currentTarget.dataset.text
       console.log("onMDClick url:", clickurl)
-      if (clickurl.endsWith('.md')) {
+      var filepath = clickurl
+      var owner = this.data.owner
+      var repo = this.data.repo
+      if (clickurl.startsWith("https://github.com")) {
+        var [tmpowner, tmprepo, tmpfilepath] = util.parseGitHub(clickurl)
+        console.log("parseGitHub url:", tmpowner, tmprepo, tmpfilepath)
+        if (tmpowner && tmprepo) {
+          owner = tmpowner
+          repo = tmprepo
+          filepath = tmpfilepath
+        }
+        console.log("change owner repo:", owner, repo, filepath)
+      }
+      if (filepath == "") {
+        wx.navigateTo({url: '/pages/readme/readme?repo='+owner+"/"+repo})
+      }
+      else if (filepath.endsWith('.md')) {
         wx.navigateTo({
-          url: '/pages/gitfile/gitfile?file=' + clickurl + '&owner=' + this.data.owner + '&repo=' + this.data.repo,
+          url: '/pages/gitfile/gitfile?file=' + filepath + '&owner=' + owner + '&repo=' + repo,
         })
       } else {
         this.copyText(clickurl)

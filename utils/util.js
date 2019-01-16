@@ -16,7 +16,21 @@ const formatNumber = n => {
 
 module.exports = {
   formatTime: formatTime,
-  base64Decode: base64_decode
+  base64Decode: base64_decode,
+  parseGitHub: parseGitHub,
+}
+
+function parseGitHub(url) {
+  if (!url.startsWith("https://github.com")) {
+    return ["", "", ""]
+  }
+  var arr = url.split('/')
+  if (arr.length == 5) {
+    return [arr[3], arr[4], ""]
+  } else if (arr.length > 5) {
+    return [arr[3], arr[4], url.slice(("https://github.com/"+arr[3]+"/"+arr[4]).length)]
+  }
+  return ["", "", ""]
 }
 
 function base64_decode(input) {
