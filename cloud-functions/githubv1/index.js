@@ -45,20 +45,40 @@ function trace(OPENID, owner, repo, type) {
 }
 
 async function getHistory(openid) {
-  var historys = await db.collection('history').where({openid, type:'readme'}).get()
+  var historys = await db.collection('history').where({openid, type:'readme'}).orderBy('requesttime', 'desc').get()
   var col = db.collection('github')
   var filter = []
-  historys.data.map(function(h) {
+  var historyDict = {}
+  var historyNoDup = []
+  historys.data.map(function(d) {
+    var key = d.owner + ' / ' + d.repo
     filter.push({
-      repo: h.owner + ' / ' + h.repo,
+      repo: key,
     })
+    if (!(key in historyDict)) {
+      historyDict[key] = true
+      historyNoDup.push(d)
+    }
   })
   if (filter.length == 0) {
     return []
     
   }
   var result = await col.where(_.or(filter)).get()
-  return result.data 
+  var resultDict = {}
+  result.data.map(function(d) {
+    resultDict[d.repo] = d
+  })
+  var historyList = []
+  historyNoDup.map(function(d){
+    var key = d.owner + ' / ' + d.repo
+    if (key in resultDict) {
+      var r = resultDict[key]
+      r["requesttime"] = d.requesttime
+      historyList.push(r)
+    }
+  })
+  return historyList
 }
 
 // 云函数入口函数

@@ -13,7 +13,7 @@
  <view class="page__hd">
   <van-tabs animated bind:click="onClick">
     <van-tab title="History">
-      <repolist list="{{list}}"/>
+      <repolist list="{{list}}" timeKey="requesttime"/>
     </van-tab>
   </van-tabs>
 </view>

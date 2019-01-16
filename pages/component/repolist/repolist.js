@@ -6,8 +6,12 @@ Component({
   properties: {
     list: {
       type: Array,
-      value: []
+      value: [],
     },
+    timeKey: {
+      type: String,
+      value: '_crawl_time'
+    }
   },
 
   /**
