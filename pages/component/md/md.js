@@ -48,7 +48,7 @@ Component({
         console.log("change owner repo:", owner, repo, filepath)
       }
       if (filepath == "") {
-        wx.navigateTo({url: '/pages/readme/readme?repo='+owner+"/"+repo})
+        wx.navigateTo({url: '/pages/readme/readme?repo='+owner+" / "+repo})
       }
       else if (filepath.endsWith('.md')) {
         wx.navigateTo({

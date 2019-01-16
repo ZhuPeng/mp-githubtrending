@@ -23,10 +23,11 @@ Page({
     console.log("options:", options)
     var repo = decodeURIComponent(options.repo)
     var arr = repo.split("/")
+    var dbrepo = arr[0].trim() + " / " + arr[1].trim()
     this.setData({query: {owner: arr[0].trim(), repo: arr[1].trim()}})
     var self = this
     // TODO: get from git real time
-    dbutil.getDocWithCondition("github", {repo}, function(doc){
+    dbutil.getDocWithCondition("github", {repo: dbrepo}, function(doc){
       self.setData({meta: doc})
     })
     self.getGitHubData(repo, "readme", function preprocess(content) {
