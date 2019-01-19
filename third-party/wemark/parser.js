@@ -3,6 +3,7 @@ var parser = new Remarkable({
 	html: true
 });
 var prism = require('./prism');
+var idDict = {}
 
 function parse(md, options){
 
@@ -53,6 +54,7 @@ function parse(md, options){
 					ret.push({
 						type: env || token.type,
 						content: token.content,
+            id: idDict[token.content] || '',
 						data: tokenData
 					});
 					env = '';
@@ -88,6 +90,10 @@ function parse(md, options){
 						tokenData = {
 							href: token.href
 						};
+            if (token.href.startsWith('#')) {
+              // console.log("link:", token, token.href, inlineToken.children[index + 1].content)
+              idDict[inlineToken.children[index+1].content] = token.href.substr(1)
+            }
 					}
 				}else if(token.type === 'image'){
 					ret.push({

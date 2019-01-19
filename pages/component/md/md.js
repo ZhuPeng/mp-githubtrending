@@ -33,7 +33,8 @@ Component({
   methods: {
     onMDClick(e) {
       var clickurl = e.detail.currentTarget.dataset.text
-      console.log("onMDClick url:", clickurl)
+      var text = e.detail._relatedInfo.anchorTargetText
+      console.log("onMDClick url:", clickurl, text)
       var filepath = clickurl
       var owner = this.data.owner
       var repo = this.data.repo

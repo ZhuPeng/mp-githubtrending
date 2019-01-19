@@ -29,7 +29,23 @@ Component({
     },
     methods: {
         onTap(e) {
-            this.triggerEvent('click', e)   
+            // console.log("onTap:", e)
+            var clickurl = e.target.dataset.text
+            if(clickurl.startsWith('#')) {
+              console.log("onTap url:", clickurl)
+              var query = this.createSelectorQuery()
+              query.select(clickurl).boundingClientRect()
+              query.selectViewport().scrollOffset()
+              query.exec(function (res) {
+                // console.log('selector query:', res)
+                wx.pageScrollTo({
+                  scrollTop: res[0].top + res[1].scrollTop,
+                  duration: 300
+                })
+              })
+            } else {
+              this.triggerEvent('click', e)   
+            }
         },
       
         parseMd(){
