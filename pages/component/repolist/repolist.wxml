@@ -1,4 +1,4 @@
-<wux-spin nested spinning="{{ list.length==0 ? true:false }}" tip="Loading ..."/>
+<view class="padding-top" wx:if="{{ist.length==0 ? true:false}}"><wux-spin nested spinning="{{ list.length==0 ? true:false }}" tip="Loading ..."/></view>
 <block wx:for-items="{{list}}" wx:key="{{item._id}}">
     <navigator url="/pages/readme/readme?_id={{item._id}}&repo={{item.repo}}" hover-class="navigator-hover">
     <wux-divider class="remove-margin" position="right">

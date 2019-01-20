@@ -17,12 +17,14 @@
   </view>
 
   <view class="page__bd">
-    <wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin>
     <van-tabs animated bind:click="onClick">
       <van-tab title="Readme">
+        <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
         <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
       </van-tab>
+
       <van-tab title="Releases">
+        <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
         <view class=".margin-left-right" >
         <block wx:for-items="{{releases}}" wx:key="{{item.id}}">
           <view>
@@ -36,6 +38,7 @@
       </van-tab>
 
       <van-tab title="Commits">
+        <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
         <view class=".margin-left-right" >
         <block wx:for-items="{{commits}}" wx:key="{{item.sha}}">
           <view>
@@ -51,6 +54,7 @@
       </van-tab>
 
       <van-tab title="Issues">
+      <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
       <view class=".margin-left-right" >
       <block wx:for-items="{{issues}}" wx:key="{{item.id}}">
       <view>
