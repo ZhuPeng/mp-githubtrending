@@ -4,7 +4,7 @@
   <view class="weui-panel weui-panel_access">
   <view class="weui-media-box weui-media-box_text" bindtap="copy" data-text="{{meta.url}}" hover-class="navigator-hover">
     <view class="weui-media-box__title">
-        {{meta.repo}}
+        {{query.owner}} / {{query.repo}}
     </view>
     <view class="weui-media-box__info">
       <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-create" />  {{meta.lang}}</view>

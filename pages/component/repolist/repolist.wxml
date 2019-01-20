@@ -1,22 +1,22 @@
 <view class="padding-top" wx:if="{{ist.length==0 ? true:false}}"><wux-spin nested spinning="{{ list.length==0 ? true:false }}" tip="Loading ..."/></view>
 <block wx:for-items="{{list}}" wx:key="{{item._id}}">
-    <navigator url="/pages/readme/readme?_id={{item._id}}&repo={{item.repo}}" hover-class="navigator-hover">
+    <navigator url="/pages/readme/readme?_id={{item._id}}&repo={{item.repo || item.full_name}}" hover-class="navigator-hover">
     <wux-divider class="remove-margin" position="right">
       <wux-timeago class="timeago-padding" to="{{item[timeKey]}}" lang="en" />
     </wux-divider>
     <view class=".padding-card">
         <view class="weui-media-box__title">
-          {{item.repo}}
+          {{item.repo || item.full_name}}
         </view>
         <view class="weui-media-box__info">
-          <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-create" />  {{item.lang}}</view>
+          <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-create" />  {{item.lang || item.language}}</view>
           
           <view class="weui-media-box__info__meta">
-            <wux-icon size="13" type="md-star" />  {{item.star}}</view>
+            <wux-icon size="13" type="md-star" />  {{item.star || item.stargazers_count}}</view>
           
-          <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-git-network" />  {{item.fork}}</view>
+          <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-git-network" />  {{item.forks_count || item.fork}}</view>
         </view>
-        <view class="weui-media-box__desc">{{item.desc}}</view>
+        <view class="weui-media-box__desc">{{item.desc || item.description}}</view>
     </view>
   </navigator>
 </block>

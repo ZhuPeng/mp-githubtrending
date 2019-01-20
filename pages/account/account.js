@@ -4,6 +4,7 @@ const app = getApp()
 Page({
   data: {
     list: [],
+    repos: [],
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -20,6 +21,18 @@ Page({
     cloudclient.callFunction({type: 'history'}, function(d) {
       self.setData({list: d})
     })
+  },
+
+  onClick(event) {
+    var self = this;
+    if (event.detail.index == 1 && this.data.repos.length == 0) {
+      cloudclient.callFunction({
+        type: 'repos',
+        owner: 'ZhuPeng',
+      }, function (d) {
+        self.setData({repos: d})
+      })
+    }
   },
 
   onLoad: function () {

@@ -28,9 +28,9 @@ Page({
     var self = this
     // TODO: get from git real time
     dbutil.getDocWithCondition("github", {repo: dbrepo}, function(doc){
-      self.setData({meta: doc})
+      self.setData({meta: doc || ''})
     })
-    self.getGitHubData(repo, "readme", function preprocess(content) {
+    self.getGitHubData("readme", function preprocess(content) {
       return util.base64Decode(content)
     })
   },
@@ -38,13 +38,13 @@ Page({
   onClick(event) {
     if (event.detail.index == 1 && this.data.releases.length == 0) {
       this.setData({ spinning: true })
-      this.getGitHubData(this.data.meta.repo, "releases")
+      this.getGitHubData("releases")
     } else if (event.detail.index==2 && this.data.commits.length == 0) {
       this.setData({ spinning: true })
-      this.getGitHubData(this.data.meta.repo, "commits")
+      this.getGitHubData("commits")
     } else if (event.detail.index==3 && this.data.issues.length==0) {
       this.setData({ spinning: true })
-      this.getGitHubData(this.data.meta.repo, "issues")
+      this.getGitHubData("issues")
     }
   },
 
@@ -63,13 +63,11 @@ Page({
     })
   },
 
-  getGitHubData: function(repo, type, callback) {
-    var arr = repo.split("/")
-    console.log("arr:", arr)
+  getGitHubData: function(type, callback) {
     var self = this
     cloudclient.callFunction({
-        owner: arr[0].trim(),
-        repo: arr[1].trim(),
+        owner: this.data.query.owner,
+        repo: this.data.query.repo,
         type: type
       }, function (d) {
         if (callback) {
