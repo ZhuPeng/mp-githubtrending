@@ -39,12 +39,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "Account",
-					"pathName": "pages/account/account"
+					"pathName": "pages/account/account",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "GitHub Trending Hub Readme",
+					"pathName": "pages/readme/readme",
+					"query": "_id=&repo=ZhuPeng/mp-githubtrending"
 				}
 			]
 		}
