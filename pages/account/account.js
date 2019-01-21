@@ -3,6 +3,7 @@ const app = getApp()
 
 Page({
   data: {
+    meta: {},
     list: [],
     repos: [],
     userInfo: {},
@@ -23,12 +24,19 @@ Page({
     })
   },
 
+  loadMeta: function() {
+    var self = this
+    cloudclient.callFunction({ type: 'get', path: '/users/ZhuPeng'}, function(d){
+      self.setData({meta: d})
+    })
+  },
+
   onClick(event) {
     var self = this;
     if (event.detail.index == 1 && this.data.repos.length == 0) {
       cloudclient.callFunction({
         type: 'repos',
-        owner: 'ZhuPeng',
+        owner: self.data.meta.name,
       }, function (d) {
         self.setData({repos: d})
       })
@@ -36,6 +44,7 @@ Page({
   },
 
   onLoad: function () {
+    this.loadMeta()
     this.loadHistory()
     if (app.globalData.userInfo) {
       this.setData({

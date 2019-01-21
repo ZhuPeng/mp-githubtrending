@@ -111,6 +111,9 @@ exports.main = async (event, context) => {
   } else if (type == 'repos') {
     var d = await octokit.repos.listForUser({ username: owner, sort: 'updated', per_page, page })
     return {content: d['data'], 'owner': owner}
+  } else if (type == 'get') {
+    var d = await octokit.request('GET ' + path)
+    return {content: d['data']}
   }
   
   return {
