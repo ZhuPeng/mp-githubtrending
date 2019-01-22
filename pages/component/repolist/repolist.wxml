@@ -14,7 +14,7 @@
           <view class="weui-media-box__info__meta">
             <wux-icon size="13" type="md-star" />  {{item.star || item.stargazers_count}}</view>
           
-          <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-git-network" />  {{item.forks_count || item.fork}}</view>
+          <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-git-network" />  {{item.forks_count>=0 ? item.forks_count : item.fork}}</view>
         </view>
         <view class="weui-media-box__desc">{{item.desc || item.description}}</view>
     </view>
