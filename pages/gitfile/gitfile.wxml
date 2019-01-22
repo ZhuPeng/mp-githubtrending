@@ -4,5 +4,6 @@
 <view class="page__bd">
   <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
   <md md="{{content}}" owner="{{owner}}" repo="{{repo}}"></md>
+  <fabbutton/>
 </view>
 </view>

@@ -10,7 +10,7 @@
   </view>
   </view>
 
- <view class="page__hd">
+<view class="page__hd">
   <van-tabs animated bind:click="onClick">
     <van-tab title="History">
       <repolist list="{{list}}" timeKey="requesttime"/>
@@ -20,5 +20,6 @@
       <repolist list="{{repos}}" timeKey="updated_at"/>
     </van-tab>
   </van-tabs>
+  <fabbutton/>
 </view>
 </view>
