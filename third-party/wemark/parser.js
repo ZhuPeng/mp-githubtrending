@@ -25,14 +25,21 @@ function parse(md, options){
 		var ret = [];
 		var env;
 		var tokenData = {};
-
+    // console.log(inlineToken);
 		if(inlineToken.type === 'htmlblock'){
 			// 匹配video
 			// 兼容video[src]和video > source[src]
 			var videoRegExp = /<video.*?src\s*=\s*['"]*([^\s^'^"]+).*?(poster\s*=\s*['"]*([^\s^'^"]+).*?)?(?:\/\s*>|<\/video>)/g;
+      var imgRegExp = /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*>|<\/img>)/g;
 
 			var match;
 			var html = inlineToken.content.replace(/\n/g, '');
+      while(match = imgRegExp.exec(html)) {
+        if (match[1]) {
+          console.log("match image src:", match[1])
+          ret.push({type: 'image', src: match[1]});
+        }
+      }
 			while(match = videoRegExp.exec(html)){
 				if(match[1]){
 					var retParam = {
@@ -48,7 +55,6 @@ function parse(md, options){
 				}
 			}
 		}else{
-			// console.log(inlineToken);
 			inlineToken.children && inlineToken.children.forEach(function(token, index){
 				if(['text', 'code'].indexOf(token.type) > -1){
 					ret.push({
