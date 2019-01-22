@@ -1,12 +1,3 @@
-# 微信小程序 GitHub Trending Hub
-
-GitHub Trending 仓库集合，以 Feed 流形式展现，能够及时查看最近更新的热门仓库，同时提供搜索、查看仓库详情等功能。欢迎通过微信 WeChat 扫码体验。
-
-![qrcode](https://raw.githubusercontent.com/ZhuPeng/mp-githubtrending/master/image/qrcode.jpg)
-
-## 说明
-小程序中数据通过 [trackupdates](https://github.com/ZhuPeng/trackupdates) 抓取获得，并通过如下代码 [sync2db.js](sync2db.js) 同步到小程序云开发数据库。
-```javascript
 // 初始化示例
 const tcb = require('tcb-admin-node');
 const sqlite3 = require('sqlite3').verbose();
@@ -48,7 +39,7 @@ db.collection('github').orderBy('_id', 'desc').limit(1).get().then(res => {
         }
         rows.forEach((row) => {
             row['_id'] = row.id
-            delete row["id"];
+            delete row["id"]; 
             console.log("row:", row);
             db.collection('github').add(row).then(res => {
                 console.log(res)
@@ -57,4 +48,3 @@ db.collection('github').orderBy('_id', 'desc').limit(1).get().then(res => {
         });
     });
 })
-```
