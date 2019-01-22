@@ -28,7 +28,7 @@ function parseGitHub(url) {
   if (arr.length == 5) {
     return [arr[3], arr[4], ""]
   } else if (arr.length > 5) {
-    return [arr[3], arr[4], url.slice(("https://github.com/"+arr[3]+"/"+arr[4]).length)]
+    return [arr[3], arr[4], url.slice(("https://github.com/"+arr[3]+"/"+arr[4]+"/").length)]
   }
   return ["", "", ""]
 }
