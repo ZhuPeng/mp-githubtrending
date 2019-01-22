@@ -36,7 +36,7 @@ function parse(md, options){
 			var html = inlineToken.content.replace(/\n/g, '');
       while(match = imgRegExp.exec(html)) {
         if (match[1]) {
-          console.log("match image src:", match[1])
+          // console.log("match image src:", match[1])
           ret.push({type: 'image', src: match[1]});
         }
       }
