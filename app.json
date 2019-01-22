@@ -5,7 +5,8 @@
     "pages/account/account",
     "pages/logs/logs",
     "pages/readme/readme",
-    "pages/gitfile/gitfile"
+    "pages/gitfile/gitfile",
+    "pages/stat/stat"
   ],
   "window": {
     "backgroundTextStyle": "light",
