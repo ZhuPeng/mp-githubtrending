@@ -28,7 +28,7 @@ Page({
 
     db.collection('history').where({
       openid: _.neq(this.data.users[0])
-    }).orderBy('openid', 'desc').get().then(res => {
+    }).orderBy('requesttime', 'desc').get().then(res => {
       res.data.map(d => {
         console.log(d.type, d.openid, d.requesttime)
       })
