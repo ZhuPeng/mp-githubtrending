@@ -23,7 +23,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('app: ', app)
     wx.setNavigationBarTitle({title: options.file})
     this.setData({file: options.file, spinning: true, owner: options.owner, repo: options.repo})
     var self = this;
