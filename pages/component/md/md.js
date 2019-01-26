@@ -64,6 +64,8 @@ Component({
       wx.setClipboardData({
         data: text,
         success() {
+          wx.hideToast()
+          Toast('复制成功 ' + text)
         }
       })
     },
