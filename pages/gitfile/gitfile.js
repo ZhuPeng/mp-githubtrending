@@ -12,17 +12,23 @@ Page({
     owner: '',
     content: '',
     spinning: false,
+    openid: '',
+    dange: {
+      typeId: '1',
+      appId: 'wx6204a7df95c7fb21',
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('app: ', app)
     wx.setNavigationBarTitle({title: options.file})
     this.setData({file: options.file, spinning: true, owner: options.owner, repo: options.repo})
     var self = this;
-    cloudclient.callFunction({repo: options.repo, owner: options.owner, path: options.file, type: 'file'}, function(d) {
-      self.setData({ content: util.base64Decode(d), spinning: false})
+    cloudclient.callFunctionWithRawResponse({repo: options.repo, owner: options.owner, path: options.file, type: 'file'}, function(d) {
+      self.setData({ content: util.base64Decode(d.content), spinning: false, openid: d.openid})
     })
   },
 

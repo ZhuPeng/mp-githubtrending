@@ -107,7 +107,7 @@ exports.main = async (event, context) => {
     return {content: await getHistory()}
   } else if (type == 'file') {
     var d = await octokit.repos.getContents({ owner, repo, path, ref })
-    return {content: d['data']['content'], name: d['data']['name']}
+    return {content: d['data']['content'], name: d['data']['name'], openid: OPENID}
   } else if (type == 'repos') {
     var d = await octokit.repos.listForUser({ username: owner, sort: 'updated', per_page, page })
     return {content: d['data'], 'owner': owner}

@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -56,7 +56,14 @@
 				{
 					"id": -1,
 					"name": "Stat",
-					"pathName": "pages/stat/stat"
+					"pathName": "pages/stat/stat",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "Gitfile",
+					"pathName": "pages/gitfile/gitfile",
+					"query": "owner=ZhuPeng&repo=grab_huaban_board&file=花瓣备份指南.md"
 				}
 			]
 		}
