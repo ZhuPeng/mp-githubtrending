@@ -1,5 +1,3 @@
-<!--pages/stat/stat.wxml-->
-<view>Total: {{total}}</view>
-<block wx:for-items="{{count}}" wx:key="{{item.openid}}">
-  <view>User: {{item.openid}}, Total: {{item.total}}</view>
-</block>
+<md md="{{total}}"></md>
+<md md="{{devtotal}}"></md>
+<md md="{{log}}"></md>
