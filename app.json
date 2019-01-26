@@ -46,9 +46,5 @@
     "repolist": "pages/component/repolist/repolist"
   },
   "plugins": {
-    "myPlugin": {
-      "version": "1.0.1",
-      "provider": "wx466783b5f2b1d495"
-    }
   }
 }

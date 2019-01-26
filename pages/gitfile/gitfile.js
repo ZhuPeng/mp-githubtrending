@@ -12,11 +12,6 @@ Page({
     owner: '',
     content: '',
     spinning: false,
-    openid: '',
-    dange: {
-      typeId: '1',
-      appId: 'wx6204a7df95c7fb21',
-    }
   },
 
   /**
@@ -27,7 +22,7 @@ Page({
     this.setData({file: options.file, spinning: true, owner: options.owner, repo: options.repo})
     var self = this;
     cloudclient.callFunctionWithRawResponse({repo: options.repo, owner: options.owner, path: options.file, type: 'file'}, function(d) {
-      self.setData({ content: util.base64Decode(d.content), spinning: false, openid: d.openid})
+      self.setData({ content: util.base64Decode(d.content), spinning: false})
     })
   },
 

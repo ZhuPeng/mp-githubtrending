@@ -4,10 +4,6 @@
 <view class="page__bd">
   <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
   <md md="{{content}}" owner="{{owner}}" repo="{{repo}}"></md>
-
-  <view class="margin-dianzan">
-  <dange typeId='{{dange.typeId}}' openId='{{openid}}' appId='{{dange.appId}}' pid='{{owner + repo + file}}' />
-  </view>
   <fabbutton/>
 </view>
 </view>
