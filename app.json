@@ -1,9 +1,7 @@
 {
   "pages": [
     "pages/github/index",
-    "pages/index/index",
     "pages/account/account",
-    "pages/logs/logs",
     "pages/readme/readme",
     "pages/gitfile/gitfile",
     "pages/stat/stat",
