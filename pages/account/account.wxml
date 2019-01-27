@@ -2,10 +2,9 @@
 <view class="page">
   <view class="page__hd">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image class="userinfo-avatar" src="{{meta.avatar_url}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{meta.name}}</text>
+    <block>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{meta.avatar_url}}" mode="cover"></image>
+      <text bindtap="bindViewTap" class="userinfo-nickname">{{owner || '未设置'}}</text>
     </block>
   </view>
   </view>
@@ -16,7 +15,7 @@
       <repolist list="{{list}}" timeKey="requesttime"/>
     </van-tab>
 
-    <van-tab title='Repos'>
+    <van-tab wx:if="{{this.data.owner != ''}}" title='Repos'>
       <repolist list="{{repos}}" timeKey="updated_at"/>
     </van-tab>
   </van-tabs>

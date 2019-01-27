@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -64,6 +64,12 @@
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
 					"query": "owner=ZhuPeng&repo=grab_huaban_board&file=花瓣备份指南.md"
+				},
+				{
+					"id": 4,
+					"name": "Settings",
+					"pathName": "pages/settings/settings",
+					"query": ""
 				}
 			]
 		}

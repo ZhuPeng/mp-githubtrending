@@ -3,7 +3,7 @@ const app = getApp()
 
 Page({
   data: {
-    meta: {},
+    owner: wx.getStorageSync("github-name") || '',
     list: [],
     repos: [],
     userInfo: {},
@@ -13,7 +13,7 @@ Page({
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../settings/settings'
     })
   },
 
@@ -26,7 +26,8 @@ Page({
 
   loadMeta: function() {
     var self = this
-    cloudclient.callFunction({ type: 'get', path: '/users/ZhuPeng'}, function(d){
+    if (this.data.owner == "") {return}
+    cloudclient.callFunction({ type: 'get', path: '/users/' + this.data.owner}, function(d){
       self.setData({meta: d})
     })
   },
@@ -36,7 +37,7 @@ Page({
     if (event.detail.index == 1 && this.data.repos.length == 0) {
       cloudclient.callFunction({
         type: 'repos',
-        owner: self.data.meta.name,
+        owner: self.data.owner,
       }, function (d) {
         self.setData({repos: d})
       })
