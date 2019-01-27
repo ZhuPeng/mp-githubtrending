@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="page__hd padding">GitHub Settings</view>
+<view class="padding">
+<van-cell-group>
+  <van-field
+    value="{{ username }}"
+    clearable
+    label="Name"
+    placeholder="Hello World"
+    bind:change="onChange"
+  />
+</van-cell-group>
+</view>
+</view>
