@@ -75,7 +75,7 @@ Page({
         }
         self.setData({
           // base64 encode
-          [type]: d,
+          [type]: d || 'No Data Found.',
           spinning: false,
         })
     })
