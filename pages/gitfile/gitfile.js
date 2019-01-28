@@ -2,10 +2,6 @@
 const cloudclient = require('../../utils/cloudclient.js')
 const util = require('../../utils/util.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     file: '',
     repo: '',
@@ -14,9 +10,6 @@ Page({
     spinning: false,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     wx.setNavigationBarTitle({title: options.file})
     this.setData({file: options.file, spinning: true, owner: options.owner, repo: options.repo})

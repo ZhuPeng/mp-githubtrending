@@ -8,7 +8,7 @@ function callFunction(data, completeFunc) {
     name: 'githubv1',
     data: data,
     complete: res => {
-      completeFunc(res.result.content)
+      completeFunc(res.result.content || '')
     },
   })
 }

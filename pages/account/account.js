@@ -10,7 +10,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
+  
   bindViewTap: function () {
     wx.navigateTo({
       url: '../settings/settings'
@@ -82,5 +82,13 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+
+  onShow: function() {
+    var sname = wx.getStorageSync("github-name")
+    if (sname != this.data.owner) {
+      this.setData({owner: sname})
+      this.onLoad()
+    }
   }
 })
