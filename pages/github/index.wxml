@@ -2,7 +2,7 @@
   <view class="page__hd">
     <van-search class="search" placeholder="请输入搜索关键词" bind:search="onSearch" />
 
-    <view class="weui-media-box__info padding-left">
+    <view class="weui-media-box__info margin-left-right">
       <van-action-sheet show="{{sheetShow}}" bind:close="onSheetClose" title="Select Filter Language">
         <van-cell title="All" clickable data-name="All" >
           <van-checkbox value="{{selectLangList==0?true:false}}" catch:tap="selectAll" class="checkboxes-All" name="All" />

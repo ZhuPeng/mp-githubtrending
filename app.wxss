@@ -1,5 +1,9 @@
-/**app.wxss**/
 @import 'style/weui.wxss';
+
+.margin-left-right {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
 
 .container {
   height: 100%;

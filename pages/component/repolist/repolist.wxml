@@ -4,7 +4,7 @@
     <wux-divider class="remove-margin" position="right">
       <wux-timeago class="timeago-padding" to="{{item[timeKey]}}" lang="en" />
     </wux-divider>
-    <view class=".padding-card">
+    <view class="margin-left-right">
         <view class="weui-media-box__title">
           {{item.repo || item.full_name}}
         </view>
