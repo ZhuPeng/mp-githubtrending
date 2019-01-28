@@ -2,10 +2,6 @@ const dbutil = require('../../utils/db.js')
 var db = dbutil.getDB()
 const _ = db.command
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     users: ["ooqTr4hMz05xwBHOU8VgokLyyoU0"],
     log: '',

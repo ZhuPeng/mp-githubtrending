@@ -8,7 +8,11 @@ function callFunction(data, completeFunc) {
     name: 'githubv1',
     data: data,
     complete: res => {
-      completeFunc(res.result.content || '')
+      var content = ''
+      if (res.result) {
+        content = res.result.content || ''
+      }
+      completeFunc(content)
     },
   })
 }
