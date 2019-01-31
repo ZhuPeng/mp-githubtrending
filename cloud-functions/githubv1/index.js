@@ -32,7 +32,7 @@ function dateFtt(fmt, date) { //author: meizz
   return fmt;
 } 
 
-function trace(OPENID, owner, repo, type) {
+async function trace(OPENID, owner, repo, type) {
   db.collection('history').add({
     data: {
       openid: OPENID,
@@ -83,9 +83,14 @@ async function getHistory(openid) {
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var {owner, repo, type, path} = event;
+  var { owner, repo, type, path } = event;
   const { OPENID, APPID } = cloud.getWXContext()
   trace(OPENID, owner, repo, type)
+  res = await execute(owner, repo, type, path, OPENID)
+  return res;
+}
+
+async function execute(owner, repo, type, path, openid) { 
   var ref = 'master';
   var res;
   if (!type || type == "readme") {
@@ -104,10 +109,10 @@ exports.main = async (event, context) => {
     res = await octokit.issues.listForRepo({ owner, repo, sort: "updated", per_page, page })   
     return {content: res['data']}
   } else if (type == 'history') {
-    return {content: await getHistory()}
+    return {content: await getHistory(openid)}
   } else if (type == 'file') {
     var d = await octokit.repos.getContents({ owner, repo, path, ref })
-    return {content: d['data']['content'], name: d['data']['name'], openid: OPENID}
+    return {content: d['data']['content'], name: d['data']['name'], openid: openid}
   } else if (type == 'repos') {
     var d = await octokit.repos.listForUser({ username: owner, sort: 'updated', per_page, page })
     return {content: d['data'], 'owner': owner}
