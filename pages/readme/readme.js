@@ -14,21 +14,22 @@ Page({
     spinning: true,
   },
 
-  onLoad: function (options) {
-    wx.onPageNotFound(function callback(e) {
-      console.log("onPageNotFound:", e)
+  getMeta: function () {
+    var self = this;
+    cloudclient.callFunction({ type: 'get', path: '/repos/' + self.data.query.owner + '/' + self.data.query.repo}, function (c) {
+        var meta = { 'fork': c.forks_count, 'star': c.stargazers_count, 'lang': c.language, }
+        self.setData({ meta })
     })
+  },
 
+  onLoad: function (options) {
     console.log("options:", options)
     var repo = decodeURIComponent(options.repo)
     var arr = repo.split("/")
     var dbrepo = arr[0].trim() + " / " + arr[1].trim()
     this.setData({query: {owner: arr[0].trim(), repo: arr[1].trim()}})
     var self = this
-    // TODO: get from git real time
-    dbutil.getDocWithCondition("github", {repo: dbrepo}, function(doc){
-      self.setData({meta: doc || ''})
-    })
+    self.getMeta()
     self.getGitHubData("readme", function preprocess(content) {
       return util.base64Decode(content)
     })
