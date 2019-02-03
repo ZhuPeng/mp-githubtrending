@@ -17,7 +17,7 @@ Page({
   getMeta: function () {
     var self = this;
     cloudclient.callFunction({ type: 'get', path: '/repos/' + self.data.query.owner + '/' + self.data.query.repo}, function (c) {
-        var meta = { 'fork': c.forks_count, 'star': c.stargazers_count, 'lang': c.language, url: c.url}
+      var meta = { 'fork': c.forks_count, 'star': c.stargazers_count, 'lang': c.language, url: c.html_url}
         self.setData({ meta })
     })
   },
