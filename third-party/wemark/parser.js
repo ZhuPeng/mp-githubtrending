@@ -31,13 +31,18 @@ function parse(md, options){
 			// 兼容video[src]和video > source[src]
 			var videoRegExp = /<video.*?src\s*=\s*['"]*([^\s^'^"]+).*?(poster\s*=\s*['"]*([^\s^'^"]+).*?)?(?:\/\s*>|<\/video>)/g;
       var imgRegExp = /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*>|<\/img>)/g;
+      var p = /<p>(.*?)<\/p>/g;
 
 			var match;
 			var html = inlineToken.content.replace(/\n/g, '');
       while(match = imgRegExp.exec(html)) {
         if (match[1]) {
-          // console.log("match image src:", match[1])
           ret.push({type: 'image', src: match[1]});
+        }
+      }
+      while(match = p.exec(html)) {
+        if (match[1]) {
+          ret.push({type: 'text', content: match[1]})
         }
       }
 			while(match = videoRegExp.exec(html)){

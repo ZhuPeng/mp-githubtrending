@@ -14,6 +14,7 @@
 			<view wx:if="{{renderBlock.type === 'code'}}">{{renderBlock.content}}</view>
 			<video wx:if="{{renderBlock.type == 'video'}}" class="wemark_block_video" src="{{renderBlock.src}}" poster="{{renderBlock.poster}}" controls></video>
       <image mode="widthFix" class="wemark_inline_image" src="{{renderBlock.src}}" wx:if="{{renderBlock.type === 'image'}}"></image>
+      <text class="wemark_inline_{{renderInline.type}}" wx:if="{{renderBlock.type === 'text'}}">{{renderBlock.content}}</text>
 		</block>
 	</view>
 </block>
