@@ -18,8 +18,12 @@ repo 对应具体的仓库路径，格式是 owner/reponame，下图中为 ZhuPe
 
 ## 仓库中文件（暂时只支持显示 Markdown）
 
-`pages/gitfile/gitfile?`owner=<owner>&repo=<repo>&file=<file>
+`pages/gitfile/gitfile?owner=<owner>&repo=<repo>&file=<file>`
 
 显示仓库中具体的某个文件，下图中链接为 `owner=ZhuPeng&repo=grab_huaban_board&file=花瓣备份指南.md`
 
 ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/md.jpeg)
+
+
+
+通过如上提供的两个 API，可以通过 GitHub 构建自己的 Markdown 小程序个人博客，只需通过 Git 管理自己 Markdown 文件，轻松管理发布同时便于管理版本。
