@@ -4,8 +4,16 @@ GitHub Trending 仓库集合，以 Feed 流形式展现，能够及时查看最�
 
 ![qrcode](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/qrcode.jpg?sign=d350a14b8d342714aa7c7246cd6a41fa&t=1548588526)
 
+
+
+## 文档
+
+* [公众号文章链接 GitHub 仓库指南](doc/api.md)
+
+
+
 ## 说明
-小程序中数据通过 [trackupdates](https://github.com/ZhuPeng/trackupdates) 抓取获得，并通过如下代码 [sync2db.js](sync2db.js) 同步到小程序云开发数据库。
+小程序中数据通过 [trackupdates](https://github.com/ZhuPeng/trackupdates) 抓取获得，并通过如下代码 [sync2db.js](sync2db.js) 同步到小程序云开发数据库，提升访问速度和体验。
 ```javascript
 // 初始化示例
 const tcb = require('tcb-admin-node');
