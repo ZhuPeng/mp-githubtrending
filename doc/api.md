@@ -8,7 +8,7 @@
 
 ## 仓库详情页
 
-`/pages/readme/readme?repo=<repo>`
+`pages/readme/readme?repo=<repo>`
 
 repo 对应具体的仓库路径，格式是 owner/reponame，下图中为 ZhuPeng/mp-githubtrending
 
