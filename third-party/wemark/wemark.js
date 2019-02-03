@@ -14,6 +14,10 @@ Component({
 			type: String,
 			value: 'wemark'
 		},
+    baseurl: {
+      type: String,
+      value: ''
+    },
 		link: {
 			type: Boolean,
 			value: false
@@ -52,6 +56,7 @@ Component({
 			if (this.data.md) {
 				var parsedData = parser.parse(this.data.md, {
 					link: this.data.link,
+          baseurl: this.data.baseurl,
 					highlight: this.data.highlight
 				});
 				// console.log('parsedData:', parsedData);

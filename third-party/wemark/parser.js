@@ -5,6 +5,13 @@ var parser = new Remarkable({
 var prism = require('./prism');
 var idDict = {}
 
+function urlModify(baseurl, url) {
+  if (url == "" || url == undefined || url.startsWith('http')) {
+    return url
+  }
+  return baseurl + url;
+}
+
 function parse(md, options){
 
 	if(!options) options = {};
@@ -25,19 +32,19 @@ function parse(md, options){
 		var ret = [];
 		var env;
 		var tokenData = {};
-    // console.log(inlineToken);
-		if(inlineToken.type === 'htmlblock'){
+		if(inlineToken.type === 'htmlblock' || (inlineToken.type === 'inline' && inlineToken.content.startsWith('<'))){
 			// 匹配video
 			// 兼容video[src]和video > source[src]
 			var videoRegExp = /<video.*?src\s*=\s*['"]*([^\s^'^"]+).*?(poster\s*=\s*['"]*([^\s^'^"]+).*?)?(?:\/\s*>|<\/video>)/g;
-      var imgRegExp = /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*>|<\/img>)/g;
+      var imgRegExp = /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*|<\/img)?>/g;
       var p = /<p>(.*?)<\/p>/g;
-
+      
 			var match;
 			var html = inlineToken.content.replace(/\n/g, '');
+      // console.log('html: ', html)
       while(match = imgRegExp.exec(html)) {
         if (match[1]) {
-          ret.push({type: 'image', src: match[1]});
+          ret.push({type: 'image', src: urlModify(options.baseurl, match[1])});
         }
       }
       while(match = p.exec(html)) {
@@ -109,7 +116,7 @@ function parse(md, options){
 				}else if(token.type === 'image'){
 					ret.push({
 						type: token.type,
-						src: token.src
+            src: urlModify(options.baseurl, token.src)
 					});
 				}
 			});
