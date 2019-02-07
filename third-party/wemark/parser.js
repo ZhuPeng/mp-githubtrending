@@ -38,10 +38,11 @@ function parse(md, options){
 			var videoRegExp = /<video.*?src\s*=\s*['"]*([^\s^'^"]+).*?(poster\s*=\s*['"]*([^\s^'^"]+).*?)?(?:\/\s*>|<\/video>)/g;
       var imgRegExp = /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*|<\/img)?>/g;
       var p = /<p>(.*?)<\/p>/g;
+      var h2 = /<h2.*?>(.*?)<\/h2>/g;
       
 			var match;
 			var html = inlineToken.content.replace(/\n/g, '');
-      // console.log('html: ', html)
+      //  console.log('html: ', html)
       while(match = imgRegExp.exec(html)) {
         if (match[1]) {
           ret.push({type: 'image', src: urlModify(options.baseurl, match[1])});
@@ -50,6 +51,11 @@ function parse(md, options){
       while(match = p.exec(html)) {
         if (match[1]) {
           ret.push({type: 'text', content: match[1]})
+        }
+      }
+      while (match = h2.exec(html)) {
+        if (match[1]) {
+          ret.push({ type: 'text', content: match[1] })
         }
       }
 			while(match = videoRegExp.exec(html)){
