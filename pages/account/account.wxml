@@ -11,12 +11,11 @@
 
 <view class="page__hd">
   <van-tabs animated bind:click="onClick">
-    <van-tab title="History">
-      <repolist list="{{list}}" timeKey="requesttime"/>
-    </van-tab>
-
-    <van-tab wx:if="{{this.data.owner != ''}}" title='Repos'>
+    <van-tab title='Repos'>
       <repolist list="{{repos}}" timeKey="updated_at"/>
+    </van-tab>
+    <van-tab wx:if="{{showHistory}}" title="History">
+      <repolist list="{{list}}" timeKey="requesttime"/>
     </van-tab>
   </van-tabs>
   <fabbutton/>

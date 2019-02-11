@@ -46,7 +46,7 @@ Component({
         })
       } else if (e.detail.index == 3) {
         wx.navigateTo({
-          url: '/pages/account/account',
+          url: '/pages/account/account?history',
         })
       }
     },
