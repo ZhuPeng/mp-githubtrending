@@ -22,3 +22,5 @@
 .padding-top {
   margin-top: 80rpx;
 }
+
+.flex-wrp {display: flex;}

@@ -2,11 +2,15 @@
   <van-toast id="van-toast" />
   <view class="page__hd">
   <view class="weui-panel weui-panel_access">
-  <view class="weui-media-box weui-media-box_text" bindtap="copy" data-text="{{meta.url}}" hover-class="navigator-hover">
+  <view class="weui-media-box weui-media-box_text">
     <view class="weui-media-box__title">
-        {{query.owner}} / {{query.repo}}
+      <view class="flex-wrp" style="flex-direction:row;">
+        <view class="padding-right"><navigator url="{{'/pages/account/account?owner=' + query.owner}}" style="color: blue;">{{query.owner}}</navigator></view>
+        <view class="padding-right">/</view>
+        <view>{{query.repo}}</view>
+      </view>
     </view>
-    <view class="weui-media-box__info">
+    <view class="weui-media-box__info" bindtap="copy" data-text="{{meta.url}}">
       <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-create" />  {{meta.lang}}</view>
       <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-star" />  {{meta.star}}</view>
       <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-git-network" /> {{meta.fork}}</view>
