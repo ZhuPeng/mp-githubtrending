@@ -64,7 +64,7 @@ Page({
 
   onShow: function() {
     var sname = wx.getStorageSync("github-name")
-    if (sname != this.data.owner) {
+    if (this.data.showHistory && sname != this.data.owner) {
       this.setData({owner: sname, repos: []})
       this.onLoad()
     }
