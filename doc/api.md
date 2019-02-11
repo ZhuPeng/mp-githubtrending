@@ -6,6 +6,16 @@
 
 
 
+## 个人账户页
+
+`pages/account/account?owner=<owner>`
+
+owner 对应登陆 GitHub 后的名称
+
+![owner](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/owner.jpeg)
+
+
+
 ## 仓库详情页
 
 `pages/readme/readme?repo=<repo>`
