@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -84,6 +84,13 @@
 					"name": "Broken-Image",
 					"pathName": "pages/readme/readme",
 					"query": "repo=derailed / k9s",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "Wiki",
+					"pathName": "pages/readme/readme",
+					"query": "repo=alibaba / Sentinel",
 					"scene": null
 				}
 			]
