@@ -28,6 +28,11 @@ Component({
       var filepath = clickurl
       var owner = this.data.owner
       var repo = this.data.repo
+      if (clickurl.startsWith('http') && !clickurl.startsWith('https://github.com')) {
+        this.copyText(clickurl)
+        return
+      }
+
       if (clickurl.startsWith("https://github.com")) {
         var [tmpowner, tmprepo, tmpfilepath] = util.parseGitHub(clickurl)
         console.log("parseGitHub url:", tmpowner, tmprepo, tmpfilepath)
