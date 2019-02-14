@@ -10,10 +10,20 @@ Page({
   },
 
   onLoad: function (options) {
-    wx.setNavigationBarTitle({title: options.file})
-    this.setData({file: options.file, spinning: true, owner: options.owner, repo: options.repo})
+    var file = options.file
+    wx.setNavigationBarTitle({title: file})
+    var ref = 'master'
+    if (file.startsWith('./')) {file = file.slice(2)}
+    if (file.startsWith('blob/')) {
+      var arr = file.split('/')
+      if (arr.length > 2) {
+        ref = arr[1]
+        file = file.slice((arr[0] + '/' + arr[1] + '/').length)
+      }
+    }
+    this.setData({file: file, spinning: true, owner: options.owner, repo: options.repo})
     var self = this;
-    cloudclient.callFunctionWithRawResponse({repo: options.repo, owner: options.owner, path: options.file, type: 'file'}, function(d) {
+    cloudclient.callFunctionWithRawResponse({repo: options.repo, owner: options.owner, path: file, type: 'file', ref: ref}, function(d) {
       self.setData({ content: util.base64Decode(d.content), spinning: false})
     })
   },

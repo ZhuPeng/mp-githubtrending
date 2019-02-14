@@ -83,15 +83,15 @@ async function getHistory(openid) {
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var { owner, repo, type, path } = event;
+  var { owner, repo, type, path, ref } = event;
   const { OPENID, APPID } = cloud.getWXContext()
   trace(OPENID, owner, repo, type)
   res = await execute(owner, repo, type, path, OPENID)
   return res;
 }
 
-async function execute(owner, repo, type, path, openid) { 
-  var ref = 'master';
+async function execute(owner, repo, type, path, openid, ref) { 
+  if (!ref) { ref = 'master'; }
   var res;
   if (!type || type == "readme") {
     res = await octokit.repos.getReadme({ owner, repo, ref })
