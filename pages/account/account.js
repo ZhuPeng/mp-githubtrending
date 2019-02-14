@@ -30,6 +30,15 @@ Page({
     })
   },
 
+  loadEvents() {
+    var self = this
+    if (this.data.owner == "") { return }
+    cloudclient.callFunction({ type: 'get', path: '/users/' + this.data.owner + '/events' }, function (d) {
+      console.log('events: ', d)
+      self.setData({ events: d })
+    })
+  },
+
   loadRepos() {
     var self = this;
     if (this.data.repos.length == 0) {
@@ -58,7 +67,6 @@ Page({
     this.loadRepos()
     if (options.history) {
       this.setData({showHistory: true})
-      this.loadHistory()
     }  
   },
 
