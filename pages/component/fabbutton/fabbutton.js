@@ -10,12 +10,11 @@ const buttons = [{
   label: 'Share',
   icon: share,
 }, {
-  openType: 'contact',
   label: 'Contact',
   icon: chat,
 }, {
   label: 'Account',
-    icon: setting,
+  icon: setting,
 }]
 
 Component({
@@ -47,6 +46,10 @@ Component({
       } else if (e.detail.index == 3) {
         wx.navigateTo({
           url: '/pages/account/account?history',
+        })
+      } else if (e.detail.index == 2) {
+        wx.navigateTo({
+          url: '/pages/gitfile/gitfile?owner=ZhuPeng&repo=mp-githubtrending&file=README.md',
         })
       }
     },
