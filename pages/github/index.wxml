@@ -23,7 +23,7 @@
         </van-checkbox-group>
       </van-action-sheet>
       <view class="weui-media-box__info__meta" bindtap="actionSheetTapLang">语言：{{selectLangList.length>0 ? selectLangList : 'All'}}</view>
-      <view class="weui-media-box__info__meta" bindtap="actionSheetTapOrder">排序：{{order}}</view>
+      <!-- <view class="weui-media-box__info__meta" bindtap="actionSheetTapOrder">排序：{{order}}</view> -->
     </view>
   </view>
 
