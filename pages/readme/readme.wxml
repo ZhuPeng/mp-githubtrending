@@ -57,7 +57,7 @@
         </view>
       </van-tab>
 
-      <van-tab title="Issues">
+      <van-tab title="Issues" info="{{meta.issue_count}}">
       <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
       <view class=".margin-left-right" >
       <block wx:for-items="{{issues}}" wx:key="{{item.id}}">
