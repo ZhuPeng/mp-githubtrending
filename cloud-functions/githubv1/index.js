@@ -4,12 +4,13 @@ cloud.init()
 const octokit = require('@octokit/rest')()
 const db = cloud.database()
 const _ = db.command
-db.collection("admin").where({website: "github", type: "token"}).get().then(res => {
-  octokit.authenticate({
-    type: 'oauth',
-    token: res[0].value
-  })
-})
+
+async function getToken() {
+  var res = await db.collection("admin").where({website: "github", type: "token"}).get()
+  var index = Math.floor(Math.random() * res.data.length);
+  return res.data[index].value;
+}
+
 const per_page = 30;
 const page = 1;
 
@@ -83,6 +84,12 @@ async function getHistory(openid) {
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  var token = await getToken()
+  octokit.authenticate({
+    type: 'oauth',
+    token: token,
+  })
+
   var { owner, repo, type, path, ref } = event;
   const { OPENID, APPID } = cloud.getWXContext()
   trace(OPENID, owner, repo, type)
