@@ -10,12 +10,14 @@
         <view>{{query.repo}}</view>
       </view>
     </view>
-    <view class="weui-media-box__info" bindtap="copy" data-text="{{meta.url}}">
+    <view bindtap="copy" data-text="{{meta.url}}">
+    <view class="weui-media-box__info">
       <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-create" />  {{meta.lang}}</view>
       <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-star" />  {{meta.star}}</view>
       <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-git-network" /> {{meta.fork}}</view>
     </view>
     <view class="weui-media-box__desc">{{meta.desc}}</view>
+    </view>
   </view>
   </view>
   </view>
