@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -98,6 +98,13 @@
 					"name": "encodeError",
 					"pathName": "pages/readme/readme",
 					"query": "repo=NervJS / taro",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "defaultNotMaster",
+					"pathName": "pages/readme/readme",
+					"query": "repo=RGLab / flowWorkspace",
 					"scene": null
 				}
 			]
