@@ -12,8 +12,10 @@ function urlModify(baseurl, url) {
   return baseurl + url;
 }
 
-function parse(md, options){
+var reg = new RegExp("<br/>", "g"); 
 
+function parse(md, options){
+  md = md.replace(reg, '\n')
 	if(!options) options = {};
 	var tokens = parser.parse(md, {});
 
@@ -42,7 +44,7 @@ function parse(md, options){
       
 			var match;
 			var html = inlineToken.content.replace(/\n/g, '');
-      //  console.log('html: ', html)
+      // console.log('html: ', html)
       while(match = imgRegExp.exec(html)) {
         if (match[1]) {
           ret.push({type: 'image', src: urlModify(options.baseurl, match[1])});
