@@ -46,7 +46,7 @@ Component({
       if (filepath == "") {
         wx.navigateTo({url: '/pages/readme/readme?repo='+owner+" / "+repo})
       }
-      else if (filepath.endsWith('.md')) {
+      else if (filepath.endsWith('.md') || util.isCodeFile(filepath)) {
         wx.navigateTo({
           url: '/pages/gitfile/gitfile?file=' + filepath + '&owner=' + owner + '&repo=' + repo,
         })

@@ -20,6 +20,27 @@ module.exports = {
   formatTime: formatTime,
   base64Decode: base64_decode,
   parseGitHub: parseGitHub,
+  isCodeFile,
+}
+
+const CodeFileExtentsions = {
+  "java": "java",
+  "py": "python",
+  "go": "go",
+  "sh": "shell",
+  "js": "javascript",
+  "php": "php",
+  'c': 'c',
+  'json': 'json',
+}
+
+function isCodeFile(file) {
+  for (var key in CodeFileExtentsions) {
+    if (file.endsWith('.' + key)) {
+      return CodeFileExtentsions[key];
+    }
+  }
+  return false;
 }
 
 function parseGitHub(url) {

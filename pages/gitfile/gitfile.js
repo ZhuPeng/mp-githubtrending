@@ -24,7 +24,12 @@ Page({
     this.setData({file: file, spinning: true, owner: options.owner, repo: options.repo})
     var self = this;
     cloudclient.callFunctionWithRawResponse({repo: options.repo, owner: options.owner, path: file, type: 'file', ref: ref}, function(d) {
-      self.setData({ content: util.base64Decode(d.content), spinning: false})
+      var content = util.base64Decode(d.content)
+      var code = util.isCodeFile(file)
+      if (code) {
+        content = "```" + code + "\n" + content + "\n```";
+      }
+      self.setData({ content: content, spinning: false})
     })
   },
 
