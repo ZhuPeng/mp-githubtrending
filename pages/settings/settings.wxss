@@ -1,4 +1,3 @@
-/* pages/settings/settings.wxss */
 .padding {
   margin: 20rpx;
 }

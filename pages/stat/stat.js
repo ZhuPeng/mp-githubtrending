@@ -35,16 +35,4 @@ Page({
       self.setData({log: log})
     })
   },
-
-  onLoad: function (options) {
-    this.stat()
-  },
-
-  onPullDownRefresh: function () {
-
-  },
-
-  onReachBottom: function () {
-
-  },
 })

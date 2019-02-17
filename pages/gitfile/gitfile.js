@@ -32,32 +32,4 @@ Page({
       self.setData({ content: content, spinning: false})
     })
   },
-
-  onReady: function () {
-
-  },
-
-  onShow: function () {
-
-  },
-
-  onHide: function () {
-
-  },
-
-  onUnload: function () {
-
-  },
-
-  onPullDownRefresh: function () {
-
-  },
-
-  onReachBottom: function () {
-
-  },
-
-  onShareAppMessage: function () {
-
-  }
 })

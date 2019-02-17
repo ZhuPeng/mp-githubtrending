@@ -1,4 +1,3 @@
-/* pages/gitfile/gitfile.wxss */
 .padding-top {
   margin-top: 80rpx;
 }
