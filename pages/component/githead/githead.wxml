@@ -1,0 +1,10 @@
+<view class="margin-left-right">
+<view class="weui-media-box__title">
+  <view class="flex-wrp" style="flex-direction:row;">
+    <wux-icon class="padding-right" size="18" type="logo-github" />
+    <view class="padding-right"><navigator url="{{'/pages/account/account?owner=' + owner}}" style="color: blue;">{{owner}}</navigator></view>
+    <view class="padding-right">/</view>
+    <navigator url="{{'/pages/readme/readme?repo=' + owner + '/' + repo}}" style="color: blue;">{{repo}}</navigator>
+  </view>
+</view>
+</view>

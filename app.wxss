@@ -14,3 +14,9 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.flex-wrp {display: flex;}
+
+.padding-right {
+  margin-right: 15rpx;
+}

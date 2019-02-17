@@ -43,7 +43,8 @@
     "wemark": "third-party/wemark/wemark",
     "fabbutton": "pages/component/fabbutton/fabbutton",
     "md": "pages/component/md/md",
-    "repolist": "pages/component/repolist/repolist"
+    "repolist": "pages/component/repolist/repolist",
+    "githead": "pages/component/githead/githead"
   },
   "plugins": {}
 }
