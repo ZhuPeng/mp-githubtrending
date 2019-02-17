@@ -36,14 +36,15 @@ Component({
       if (clickurl.startsWith("https://github.com")) {
         var [tmpowner, tmprepo, tmpfilepath] = util.parseGitHub(clickurl)
         console.log("parseGitHub url:", tmpowner, tmprepo, tmpfilepath)
-        if (tmpowner && tmprepo) {
-          owner = tmpowner
-          repo = tmprepo
-          filepath = tmpfilepath
-        }
+        owner = tmpowner
+        repo = tmprepo
+        filepath = tmpfilepath
         console.log("change owner repo:", owner, repo, filepath)
       }
-      if (filepath == "") {
+      if (filepath == "" && repo == "") {
+        wx.navigateTo({ url: '/pages/account/account?owner=' + owner})
+      }
+      else if (filepath == "") {
         wx.navigateTo({url: '/pages/readme/readme?repo='+owner+" / "+repo})
       }
       else if (filepath.endsWith('.md') || util.isCodeFile(filepath)) {

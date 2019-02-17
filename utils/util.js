@@ -54,7 +54,10 @@ function parseGitHub(url) {
     return ["", "", ""]
   }
   var arr = url.split('/')
-  if (arr.length == 5) {
+  if (arr.length == 4){
+    return [arr[3], "", ""]
+  }
+  else if (arr.length == 5) {
     return [arr[3], arr[4], ""]
   } else if (arr.length > 5) {
     return [arr[3], arr[4], url.slice(("https://github.com/"+arr[3]+"/"+arr[4]+"/").length)]
