@@ -32,6 +32,12 @@ const CodeFileExtentsions = {
   "php": "php",
   'c': 'c',
   'json': 'json',
+  'cpp': 'C++',
+  'html': 'html',
+  'yml': 'yaml',
+  'yaml': 'yaml',
+  'R': 'R',
+  'swift': 'swift',
 }
 
 function isCodeFile(file) {
