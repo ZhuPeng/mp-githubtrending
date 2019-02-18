@@ -1,18 +1,11 @@
-// pages/resume/resume.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    owner: '',
+    spinning: false,
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.setData({spinning: true, owner: options.name})
   },
 
   /**

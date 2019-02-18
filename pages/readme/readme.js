@@ -9,7 +9,7 @@ Page({
     releases: [],
     commits: [],
     issues: [],
-    meta: {},
+    meta: {desc: 'loadding...'},
     query: {},
     spinning: true,
   },
