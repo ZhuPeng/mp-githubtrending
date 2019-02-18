@@ -5,7 +5,9 @@
     "pages/readme/readme",
     "pages/gitfile/gitfile",
     "pages/stat/stat",
-    "pages/settings/settings"
+    "pages/settings/settings",
+    "pages/resume/resume",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

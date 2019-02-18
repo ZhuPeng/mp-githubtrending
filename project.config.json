@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -91,6 +91,13 @@
 					"name": "ShowCode",
 					"pathName": "pages/readme/readme",
 					"query": "repo=QzwJuHao / AndroidMore",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "Resume",
+					"pathName": "pages/resume/resume",
+					"query": "name=ZhuPeng",
 					"scene": null
 				}
 			]
