@@ -5,6 +5,9 @@ Page({
     owner: '',
     view: {},
     info: '',
+    languages: [],
+    langDist: '',
+    maxLanguages: 9,
     spinning: false,
   },
 
@@ -31,15 +34,110 @@ Page({
     this.setData({info, spinning: false})
   },
 
+  genLangDistMd: function (languages, languageTotal) {
+    if (!languages || languages.length == 0) {
+      return
+    }
+    var langDist = '## Languages\n'
+    languages.map(function (lang){
+        var percent = parseInt((lang.popularity / languageTotal) * 100);
+        langDist += '* ' + lang.name + ' (' + percent + '%)\n';
+    })
+    this.setData({langDist})
+  },
+
   onLoad: function (options) {
     var self = this;
     this.setData({spinning: true, owner: options.name})
     this.getUser(options.name, function callback(data) {
       self.getView(options.name, data);
     })
+    this.github_user_repos(options.name, this.githubLangsDist, 0, [])
   },
 
-  getView: function getView(username, data) {
+  githubLangsDist: function (data) {
+    var sorted = [],
+      languages = {},
+      popularity;
+
+    data.map(function (repo, i) {
+      if (repo.fork !== false) {
+        return;
+      }
+
+      if (repo.language) {
+        if (repo.language in languages) {
+          languages[repo.language]++;
+        } else {
+          languages[repo.language] = 1;
+        }
+      }
+
+      popularity = repo.watchers + repo.forks;
+      sorted.push({ position: i, popularity: popularity, info: repo });
+      
+    });
+
+    function sortByPopularity(a, b) {
+      return b.popularity - a.popularity;
+    };
+
+    sorted.sort(sortByPopularity);
+
+    var languageTotal = 0;
+    var self = this;
+    function sortLanguages(languages, limit) {
+      var sorted_languages = [];
+
+      for (var lang in languages) {
+        if (typeof (lang) !== "string") {
+          continue;
+        }
+        sorted_languages.push({
+          name: lang,
+          popularity: languages[lang],
+          toString: function () {
+            return '<a href="https://github.com/search?q=user%3A'
+              + self.data.view.username + '&l=' + encodeURIComponent(this.name) + '">'
+              + this.name + '</a>';
+          }
+        });
+
+        languageTotal += languages[lang];
+      }
+
+      if (limit) {
+        sorted_languages = sorted_languages.slice(0, limit);
+      }
+
+      return sorted_languages.sort(sortByPopularity);
+    }
+    languages = sortLanguages(languages, this.data.maxLanguages);
+    console.log(languages)
+    this.setData({languages})
+    this.genLangDistMd(languages, languageTotal);
+  },
+
+  github_user_repos: function (username, callback, page_number, prev_data) {
+    var page = (page_number ? page_number : 1),
+      url = '/users/' + username + '/repos?per_page=100',
+      data = (prev_data ? prev_data : []);
+
+    if (page_number > 1) {
+      url += '&page=' + page_number;
+    }
+    var self = this
+    cloudclient.callFunction({ type: 'get', path: url }, function (c) {
+      data = data.concat(c)
+      if (c.length == 100) {
+        self.github_user_repos(username, callback, page + 1, data);
+      } else {
+        callback(data)
+      }
+    })
+  },
+
+  getView: function (username, data) {
     var sinceDate = new Date(data.created_at);
     var sinceMonth = sinceDate.getMonth();
     var since = sinceDate.getFullYear();
@@ -104,12 +202,11 @@ Page({
 
   getUser: function getUser(owner, callback) {
     cloudclient.callFunction({ type: 'get', path: '/users/' + owner }, function (c) {
-      console.log(c)
       callback(c)
     })
   },
 
-  getUserStatus: function getUserStatus(view, data) {
+  getUserStatus: function (view, data) {
     var COEF_REPOS = 2;
     var COEF_GISTS = 0.25;
     var COEF_FOLLOWERS = 0.5;

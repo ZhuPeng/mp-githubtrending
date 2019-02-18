@@ -3,10 +3,12 @@
   <van-toast id="van-toast" />
   <githead owner="{{owner}}" repo="" />
 </view>
+
 <view class="page__bd">
   <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
 
   <md md="{{info}}"></md>
+  <md wx:if="{{langDist}}" md="{{langDist}}" />
   <fabbutton/>
 </view>
 </view>
