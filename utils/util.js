@@ -21,6 +21,7 @@ module.exports = {
   base64Decode: base64_decode,
   parseGitHub: parseGitHub,
   isCodeFile,
+  mdLink,
 }
 
 const CodeFileExtentsions = {
@@ -47,6 +48,10 @@ function isCodeFile(file) {
     }
   }
   return false;
+}
+
+function mdLink(text, link) {
+  return '[' + text + '](' + link + ')'
 }
 
 function parseGitHub(url) {
