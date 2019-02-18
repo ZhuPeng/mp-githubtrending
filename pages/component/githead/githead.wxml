@@ -5,6 +5,7 @@
     <view class="padding-right"><navigator url="{{'/pages/account/account?owner=' + owner}}" style="color: blue;">{{owner}}</navigator></view>
     <view wx:if="{{repo}}" class="padding-right">/</view>
     <navigator wx:if="{{repo}}" url="{{'/pages/readme/readme?repo=' + owner + '/' + repo}}" style="color: blue;">{{repo}}</navigator>
+    <view wx:if="{{tail}}">{{tail}}</view>
   </view>
 </view>
 </view>

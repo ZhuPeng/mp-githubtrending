@@ -1,7 +1,7 @@
 <view class="page">
 <view class="page__hd">
   <van-toast id="van-toast" />
-  <githead owner="{{owner}}" repo="" />
+  <githead owner="{{owner}}" repo="" tail="Resume" />
 </view>
 
 <view class="page__bd">

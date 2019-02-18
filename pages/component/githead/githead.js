@@ -7,7 +7,11 @@ Component({
     repo: {
       type: String,
       value: ''
-    }
+    },
+    tail: {
+      type: String,
+      value: ''
+    },
   },
 
   data: {

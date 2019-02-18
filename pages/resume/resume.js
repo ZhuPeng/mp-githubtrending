@@ -47,6 +47,7 @@ Page({
   },
 
   onLoad: function (options) {
+    wx.setNavigationBarTitle({ title: 'GitHub Resume' })
     var self = this;
     this.setData({spinning: true, owner: options.name})
     this.getUser(options.name, function callback(data) {
