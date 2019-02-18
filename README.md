@@ -9,60 +9,19 @@ GitHub Trending 仓库集合，以 Feed 流形式展现，能够及时查看最�
 ## 文档
 
 * [公众号文章链接 GitHub 仓库指南](doc/api.md)
+* [使用文档（尽情期待）](doc/help.md)
 
 
 
 ## 说明
-小程序中数据通过 [trackupdates](https://github.com/ZhuPeng/trackupdates) 抓取获得，并通过如下代码 [sync2db.js](sync2db.js) 同步到小程序云开发数据库，提升访问速度和体验。
-```javascript
-// 初始化示例
-const tcb = require('tcb-admin-node');
-const sqlite3 = require('sqlite3').verbose();
+GitHub Trending 是根据仓库的最近热门程度展示的，该小程序希望准确获取最近新出现的仓库集合，使用该小程序能够根据语言筛选，获取每天新出现的 Trending 仓库。小程序中首页的数据通过 [trackupdates](https://github.com/ZhuPeng/trackupdates) 抓取获得，展示最近一个月出现在 Trending 上的仓库（只在第一次出现仓库时展示），并通过如下代码 [sync2db.js](sync2db.js) 同步到小程序云开发数据库，提升访问速度和体验。使用微信的云开发方式，极大的简化了小程序的运维。有任何问题，欢迎提交 Issue 和 Pull Request。
 
-// 初始化资源
-// 云函数下不需要secretId和secretKey(从腾讯云后台可以生成), env如果不指定将使用默认环境(小程序开发工具可以查看 env)
-const app = tcb.init({
-  secretId: '',
-  secretKey: '',
-  env: ''
-})
 
-let sqldb = new sqlite3.Database('/path/to/trackupdates/github.db', sqlite3.OPEN_READWRITE, (err) => {
-    if (err) {
-        console.error(err.message);
-    }
-    console.log('Success connected to the database.');
-});
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms))
-}
+## 依赖的开源项目
 
-var maxid = 0
-const db = app.database();
-const _ = db.command
-
-db.collection('github').orderBy('_id', 'desc').limit(1).get().then(res => {
-    console.log("data:", res)
-    maxid = res.data[0]._id
-    console.log("maxid:", maxid)
-
-    let sql = `SELECT * FROM python where id > ` + maxid;
-    console.log("sql:", sql)
-
-    sqldb.all(sql, [], (err, rows) => {
-        if (err) {
-            throw err;
-        }
-        rows.forEach((row) => {
-            row['_id'] = row.id
-            delete row["id"];
-            console.log("row:", row);
-            db.collection('github').add(row).then(res => {
-                console.log(res)
-            }).catch(console.error)
-            sleep(1000)
-        });
-    });
-})
-```
+* [TooBug/wemark](https://github.com/TooBug/wemark): 小程序中的 Markdown 渲染仓库
+* [youzan/vant-weapp](https://github.com/youzan/vant-weapp): 轻量、可靠的小程序 UI 组件库
+* [wux-weapp/wux-weapp](https://github.com/wux-weapp/wux-weapp): 一套组件化、可复用、易扩展的微信小程序 UI 组件库
+* [dankogai/js-base64](https://github.com/dankogai/js-base64/): base64 编解码库
+* [weui/weui-wxss](https://github.com/weui/weui-wxss): 微信官方的 UI 库
