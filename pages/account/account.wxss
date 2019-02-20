@@ -1,7 +1,7 @@
 .userinfo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: left;
 }
 
 .userinfo-avatar {

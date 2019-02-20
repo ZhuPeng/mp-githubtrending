@@ -24,3 +24,7 @@
 .padding-bottom {
   margin-bottom: 15rpx;
 }
+
+.padding-top {
+  margin-top: 10rpx;
+}

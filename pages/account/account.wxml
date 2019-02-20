@@ -1,11 +1,19 @@
 <view class="page">
   <view class="page__hd">
-  <view class="userinfo">
+  <view class="userinfo margin-left-right">
     <block>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{meta.avatar_url}}" mode="cover"></image>
-      <text bindtap="bindViewTap" class="userinfo-nickname">{{owner || '未设置'}}</text>
     </block>
+    <view class="margin-left-right padding-top">
+      <wux-icon class="padding-right" size="17" type="md-contact" />
+      <text bindtap="bindViewTap" class="userinfo-nickname">{{owner || '未设置'}}</text>
+      <view wx:if="{{owner}}" class="flex-wrp padding-right">
+        <wux-icon class="padding-right" size="17" type="md-reorder" />
+        <navigator wx:if="{{owner}}" url="{{'/pages/resume/resume?name=' + owner}}" style="color: blue;">Resume</navigator>
+      </view>
+    </view>
   </view>
+  
   </view>
 
 <view class="page__hd">
