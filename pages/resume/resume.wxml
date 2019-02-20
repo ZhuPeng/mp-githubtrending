@@ -9,6 +9,7 @@
 
   <md md="{{info}}"></md>
   <md wx:if="{{langDist}}" md="{{langDist}}" />
+  <md md="## 其他数据敬请期待"/>
   <fabbutton/>
 </view>
 </view>
