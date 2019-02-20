@@ -94,7 +94,7 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 8,
 					"name": "Resume",
 					"pathName": "pages/resume/resume",
 					"query": "name=ZhuPeng",

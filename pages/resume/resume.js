@@ -28,7 +28,7 @@ Page({
       info += ' without any public repository for now'
     }
     if (v.followers) {
-      info += ' and ' + util.mdLink(v.followers + ' ' + v.followersLabel, 'https://github.com/' + v.username + '/followers');
+      info += ' and ' + util.mdLink(v.followers + ' ' + v.followersLabel, 'https://github.com/' + v.username + '?tab=followers');
     }
     info += '.'
     this.setData({info, spinning: false})
@@ -168,8 +168,7 @@ Page({
 
     var avatar = '';
     if (data.type == 'Organization') {
-      avatar = data.avatar_url.match(/https:\/\/secure.gravatar.com\/avatar\/[0-9a-z]+/)[0];
-      avatar += '?s=140&amp;d=https://github.com/images/gravatars/gravatar-140.png';
+      // avatar handle temp remove
     }
 
     var view = {
