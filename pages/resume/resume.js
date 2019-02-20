@@ -73,7 +73,6 @@ Page({
         repos[issue.repository_url].popularity += 1;
       }
     });
-    console.log(repos)
     for (var repo in repos) {
       var obj = repos[repo]
       sorted.push({ repo: repo, popularity: obj.popularity });
@@ -84,7 +83,6 @@ Page({
     };
 
     sorted.sort(sortByPopularity);
-    console.log(sorted)
     if (sorted.length > 0) {
       var view, template, html, repoUrl, repoName, commitsUrl;
       sorted.map(function (repo, index) {
@@ -94,6 +92,7 @@ Page({
         var link = util.mdLink(repoName, repoUrl)
         contrib += '* ' + link + '\n\n'
         contrib +=  username + ' has contributed for ' + link + ' with ' + util.mdLink(repo.popularity + ' commit(s)', commitsUrl)
+        contrib += '\n'
       })
       self.setData({contrib})
     }
@@ -101,12 +100,12 @@ Page({
 
   github_user_issues: function (username, callback, page_number, prev_data) {
     var page = (page_number ? page_number : 1),
-      url = '/search/issues?q=type:pr+is:merged+author:' + username + '&per_page=100',
+      url = '/search/issues?q=' + encodeURIComponent('type:pr is:merged author:' + username + '') + '&per_page=100',
       data = (prev_data ? prev_data : []);
     url += '&page=' + page_number;
     var self = this
+    console.log('url: ', url)
     cloudclient.callFunction({ type: 'get', path: url }, function (c) {
-      console.log('raw: ', c)
       data = data.concat(c.items)
       if (c.length == 100) {
         self.github_user_issues(username, callback, page + 1, data);
