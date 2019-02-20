@@ -4,9 +4,10 @@ Page({
   data: {
     owner: '',
     view: {},
-    info: '',
+    info: '## Loading...',
     languages: [],
     langDist: '',
+    contrib: '',
     maxLanguages: 9,
     spinning: false,
   },
@@ -53,7 +54,66 @@ Page({
     this.getUser(options.name, function callback(data) {
       self.getView(options.name, data);
     })
-    this.github_user_repos(options.name, this.githubLangsDist, 0, [])
+    this.github_user_repos(options.name, this.githubLangsDist, 1, [])
+    this.github_user_issues(options.name, this.handleIssues, 1, [])
+  },
+
+  handleIssues: function(username, data) {
+    console.log('handleIssues: ', data)
+    var contrib = '## Contributions\n'
+    var self = this
+
+    var sorted = [],
+      repos = {};
+
+    data.map(function (issue, i) {
+      if (repos[issue.repository_url] === undefined) {
+        repos[issue.repository_url] = { popularity: 1 }
+      } else {
+        repos[issue.repository_url].popularity += 1;
+      }
+    });
+    console.log(repos)
+    for (var repo in repos) {
+      var obj = repos[repo]
+      sorted.push({ repo: repo, popularity: obj.popularity });
+    }
+
+    function sortByPopularity(a, b) {
+      return b.popularity - a.popularity;
+    };
+
+    sorted.sort(sortByPopularity);
+    console.log(sorted)
+    if (sorted.length > 0) {
+      var view, template, html, repoUrl, repoName, commitsUrl;
+      sorted.map(function (repo, index) {
+        repoUrl = repo.repo.replace(/https:\/\/api\.github\.com\/repos/, 'https://github.com');
+        repoName = repo.repo.replace(/https:\/\/api\.github\.com\/repos\//, '');
+        commitsUrl = repoUrl + '/commits?author=' + username;
+        var link = util.mdLink(repoName, repoUrl)
+        contrib += '* ' + link + '\n\n'
+        contrib +=  username + ' has contributed for ' + link + ' with ' + util.mdLink(repo.popularity + ' commit(s)', commitsUrl)
+      })
+      self.setData({contrib})
+    }
+  },
+
+  github_user_issues: function (username, callback, page_number, prev_data) {
+    var page = (page_number ? page_number : 1),
+      url = '/search/issues?q=type:pr+is:merged+author:' + username + '&per_page=100',
+      data = (prev_data ? prev_data : []);
+    url += '&page=' + page_number;
+    var self = this
+    cloudclient.callFunction({ type: 'get', path: url }, function (c) {
+      console.log('raw: ', c)
+      data = data.concat(c.items)
+      if (c.length == 100) {
+        self.github_user_issues(username, callback, page + 1, data);
+      } else {
+        callback(username, data)
+      }
+    })
   },
 
   githubLangsDist: function (data) {
@@ -114,7 +174,6 @@ Page({
       return sorted_languages.sort(sortByPopularity);
     }
     languages = sortLanguages(languages, this.data.maxLanguages);
-    console.log(languages)
     this.setData({languages})
     this.genLangDistMd(languages, languageTotal);
   },
