@@ -4,7 +4,7 @@ Page({
   data: {
     owner: '',
     view: {},
-    info: '## Loading...',
+    info: '## GitHub Profile',
     languages: [],
     langDist: '',
     contrib: '',
