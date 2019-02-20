@@ -29,7 +29,7 @@ Component({
       var owner = this.data.owner
       var repo = this.data.repo
       if (clickurl.startsWith('http') && !clickurl.startsWith('https://github.com')) {
-        this.copyText(clickurl)
+        util.copyOnlyText(clickurl)
         return
       }
 
@@ -52,18 +52,8 @@ Component({
           url: '/pages/gitfile/gitfile?file=' + filepath + '&owner=' + owner + '&repo=' + repo,
         })
       } else {
-        this.copyText(clickurl)
+        util.copyOnlyText(clickurl)
       }
-    },
-
-    copyText(text) {
-      wx.setClipboardData({
-        data: text,
-        success() {
-          wx.hideToast()
-          Toast('复制成功 ' + text)
-        }
-      })
     },
   }
 })

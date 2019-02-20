@@ -49,18 +49,7 @@ Page({
   },
 
   copy: function (e) {
-    console.log("copy:", e)
-    this.copyText(e.currentTarget.dataset.text)
-  },
-
-  copyText(text) {
-    wx.setClipboardData({
-      data: text,
-      success() {
-        wx.hideToast()
-        Toast('复制成功 ' + text)
-      }
-    })
+    util.copyText(e)
   },
 
   getGitHubData: function(type, callback) {

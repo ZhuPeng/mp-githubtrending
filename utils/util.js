@@ -1,6 +1,17 @@
 var base64 = require('base64.js').Base64;
- 
- const formatTime = date => {
+import Toast from '../third-party/vant-weapp/toast/toast';
+
+module.exports = {
+  formatTime: formatTime,
+  base64Decode: base64_decode,
+  parseGitHub: parseGitHub,
+  isCodeFile,
+  mdLink,
+  copyOnlyText,
+  copyText,
+}
+
+const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -16,12 +27,20 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-module.exports = {
-  formatTime: formatTime,
-  base64Decode: base64_decode,
-  parseGitHub: parseGitHub,
-  isCodeFile,
-  mdLink,
+function copyText (e) {
+  console.log("copy:", e)
+  var text = e.currentTarget.dataset.text
+  copyOnlyText(text)
+}
+
+function copyOnlyText(text) {
+  wx.setClipboardData({
+    data: text,
+    success() {
+      wx.hideToast()
+      Toast('复制成功 ' + text)
+    }
+  })
 }
 
 const CodeFileExtentsions = {

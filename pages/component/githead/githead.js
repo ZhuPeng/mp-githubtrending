@@ -1,3 +1,4 @@
+const util = require('../../../utils/util.js')
 Component({
   properties: {
     owner: {
@@ -19,6 +20,8 @@ Component({
   },
 
   methods: {
-
+    copy: function (e) {
+      util.copyText(e)
+    },
   }
 })
