@@ -9,6 +9,7 @@ module.exports = {
   mdLink,
   copyOnlyText,
   copyText,
+  isGitHubPage,
 }
 
 const formatTime = date => {
@@ -73,8 +74,12 @@ function mdLink(text, link) {
   return '[' + text + '](' + link + ')'
 }
 
+function isGitHubPage(url) {
+  return url.startsWith("https://github.com") || url.startsWith("http://github.com")
+}
+
 function parseGitHub(url) {
-  if (!url.startsWith("https://github.com")) {
+  if (!isGitHubPage(url)) {
     return ["", "", ""]
   }
   var arr = url.split('/')

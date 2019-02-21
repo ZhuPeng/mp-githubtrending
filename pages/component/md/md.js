@@ -28,12 +28,12 @@ Component({
       var filepath = clickurl
       var owner = this.data.owner
       var repo = this.data.repo
-      if (clickurl.startsWith('http') && !clickurl.startsWith('https://github.com')) {
+      if (clickurl.startsWith('http') && !util.isGitHubPage(clickurl)) {
         util.copyOnlyText(clickurl)
         return
       }
 
-      if (clickurl.startsWith("https://github.com")) {
+      if (util.isGitHubPage(clickurl)) {
         var [tmpowner, tmprepo, tmpfilepath] = util.parseGitHub(clickurl)
         console.log("parseGitHub url:", tmpowner, tmprepo, tmpfilepath)
         owner = tmpowner

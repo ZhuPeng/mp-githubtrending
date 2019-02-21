@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -98,6 +98,13 @@
 					"name": "Resume",
 					"pathName": "pages/resume/resume",
 					"query": "name=ZhuPeng",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "Top Null",
+					"pathName": "pages/readme/readme",
+					"query": "repo=wzpan / wukong-robot",
 					"scene": null
 				}
 			]

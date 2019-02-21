@@ -41,6 +41,7 @@ Component({
               query.selectViewport().scrollOffset()
               query.exec(function (res) {
                 if (res.length < 2) {return}
+                if (res[0] == null) {return}
                 wx.pageScrollTo({
                   scrollTop: (res[0].top||0) + res[1].scrollTop,
                   duration: 300
