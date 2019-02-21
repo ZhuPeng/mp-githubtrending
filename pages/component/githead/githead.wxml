@@ -1,11 +1,11 @@
 <view class="margin-left-right">
 <view class="weui-media-box__title">
   <view class="flex-wrp" style="flex-direction:row;">
-    <wux-icon class="padding-right" size="18" type="logo-github" />
+    <wux-icon class="padding-right" size="17" type="logo-github" />
     <view class="padding-right"><navigator url="{{'/pages/account/account?owner=' + owner}}" style="color: blue;">{{owner}}</navigator></view>
     <view wx:if="{{repo}}" class="padding-right">/</view>
     <navigator class="padding-right" wx:if="{{repo}}" url="{{'/pages/readme/readme?repo=' + owner + '/' + repo}}" style="color: blue;">{{repo}}</navigator>
-    <view wx:if="{{repo}}" bindtap="copy" data-text="{{'https://github.com/' + owner + '/' + repo}}"><wux-icon class="padding-right" size="18" type="md-copy" /></view>
+    <view wx:if="{{repo}}" bindtap="copy" data-text="{{'https://github.com/' + owner + '/' + repo}}"><wux-icon class="padding-right" size="17" type="md-copy" /></view>
     <view wx:if="{{tail}}">{{tail}}</view>
   </view>
 </view>
