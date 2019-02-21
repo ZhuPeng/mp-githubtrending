@@ -10,7 +10,7 @@
   <md md="{{info}}"></md>
   <md wx:if="{{langDist}}" md="{{langDist}}" />
   <md wx:if="{{contrib}}" md="{{contrib}}"/>
-  <md md="## 其他数据敬请期待"/>
+  <md md="{{about}}"/>
   <fabbutton/>
 </view>
 </view>

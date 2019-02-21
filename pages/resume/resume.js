@@ -9,6 +9,7 @@ Page({
     langDist: '',
     contrib: '',
     maxLanguages: 9,
+    about: '## About This Resume\nThis resume is generated automatically using public information from the developer\'s GitHub account. The repositories are ordered by popularity based on a very simple popularity heuristic that defines the popularity of a repository by its sum of watchers and forks. This was a Wechat mini-program version, which inspired by [resume/resume.github.com](https://github.com/resume/resume.github.com).',
     spinning: false,
   },
 
