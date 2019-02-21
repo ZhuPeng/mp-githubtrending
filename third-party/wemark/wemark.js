@@ -33,7 +33,6 @@ Component({
     },
     methods: {
         onTap(e) {
-            // console.log("onTap:", e)
             var clickurl = e.target.dataset.text
             if(clickurl.startsWith('#')) {
               console.log("onTap url:", clickurl)
@@ -41,9 +40,9 @@ Component({
               query.select(clickurl).boundingClientRect()
               query.selectViewport().scrollOffset()
               query.exec(function (res) {
-                // console.log('selector query:', res)
+                if (res.length < 2) {return}
                 wx.pageScrollTo({
-                  scrollTop: res[0].top + res[1].scrollTop,
+                  scrollTop: (res[0].top||0) + res[1].scrollTop,
                   duration: 300
                 })
               })
