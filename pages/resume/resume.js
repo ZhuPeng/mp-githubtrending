@@ -5,12 +5,43 @@ Page({
     owner: '',
     view: {},
     info: '## GitHub Profile',
+    repos: [],
+    reposMd: '',
     languages: [],
     langDist: '',
     contrib: '',
     maxLanguages: 9,
+    maxItems: 5,
     about: '## About This Resume\nThis resume is generated automatically using public information from the developer\'s GitHub account. The repositories are ordered by popularity based on a very simple popularity heuristic that defines the popularity of a repository by its sum of watchers and forks. This was a Wechat mini-program version, which inspired by [resume/resume.github.com](https://github.com/resume/resume.github.com).',
     spinning: false,
+  },
+
+  genReposMd: function(repos) {
+    if (repos.length == 0) {return}
+    var reposMd = '## Popular Repositories\n'
+    var since, until, date, view, template, html;
+    var self = this
+    repos.map(function(repo, index){
+      if (index >= self.data.maxItems) {
+        return;
+      }
+      since = new Date(repo.info.created_at);
+      since = since.getFullYear();
+      until = new Date(repo.info.pushed_at);
+      until = until.getFullYear();
+      if (since == until) {
+        date = since;
+      } else {
+        date = since + ' &ndash; ' + until;
+      }
+      var watchersLabel = repo.info.watchers == 0 || repo.info.watchers > 1 ? ' stars ' : ' star '
+      var forksLabel = repo.info.forks == 0 || repo.info.forks > 1 ? ' forks ' : ' fork '
+
+      reposMd += '* ' + util.mdLink(repo.info.name, repo.info.html_url) + '\n\n'
+      reposMd += repo.info.language + ' ' + repo.info.watchers + watchersLabel + repo.info.forks + forksLabel + ' (' + date + ') ' + '\n\n' 
+      reposMd += repo.info.description + '\n'
+    })
+    this.setData({reposMd})
   },
 
   genProfile: function genProfile() {
@@ -144,6 +175,8 @@ Page({
     };
 
     sorted.sort(sortByPopularity);
+    this.setData({'repos': sorted})
+    this.genReposMd(sorted)
 
     var languageTotal = 0;
     var self = this;

@@ -9,6 +9,7 @@
 
   <md md="{{info}}"></md>
   <md wx:if="{{langDist}}" md="{{langDist}}" />
+  <md wx:if="{{reposMd}}" md="{{reposMd}}"/>
   <md wx:if="{{contrib}}" md="{{contrib}}"/>
   <md md="{{about}}"/>
   <fabbutton/>
