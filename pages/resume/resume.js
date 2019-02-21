@@ -6,7 +6,7 @@ Page({
     view: {},
     info: '## GitHub Profile',
     repos: [],
-    reposMd: '',
+    reposMd: '## Popular Repositories\n',
     languages: [],
     langDist: '',
     contrib: '',
@@ -17,8 +17,13 @@ Page({
   },
 
   genReposMd: function(repos) {
-    if (repos.length == 0) {return}
     var reposMd = '## Popular Repositories\n'
+    if (repos.length == 0) {
+      reposMd += 'Unfortunately, this user does not seem to have any public repositories, or all repositories seem to be forks.\n'
+      this.setData({reposMd})
+      return
+    }
+    
     var since, until, date, view, template, html;
     var self = this
     repos.map(function(repo, index){
