@@ -35,5 +35,11 @@ repo 对应具体的仓库路径，格式是 owner/reponame，下图中为 ZhuPe
 ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/md.jpeg)
 
 
+## 用户简历
 
-通过如上提供的两个 API，可以通过 GitHub 构建自己的 Markdown 小程序个人博客，只需通过 Git 管理自己 Markdown 文件，轻松管理发布同时便于管理版本。
+`pages/resume/resume?name=<name>`
+
+`name` 是 GitHub 对应的用户名称
+
+
+另外通过如上提供的 API，可以通过 GitHub 构建自己的 Markdown 小程序个人博客，只需通过 Git 管理自己 Markdown 文件，轻松管理发布同时便于管理版本。

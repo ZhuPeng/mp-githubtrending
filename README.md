@@ -25,3 +25,4 @@ GitHub Trending 是根据仓库的最近热门程度展示的，该小程序希�
 * [wux-weapp/wux-weapp](https://github.com/wux-weapp/wux-weapp): 一套组件化、可复用、易扩展的微信小程序 UI 组件库
 * [dankogai/js-base64](https://github.com/dankogai/js-base64/): base64 编解码库
 * [weui/weui-wxss](https://github.com/weui/weui-wxss): 微信官方的 UI 库
+* [resume/resume.github.com](https://github.com/resume/resume.github.com): 自动生成 GitHub 简历
