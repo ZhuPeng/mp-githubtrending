@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -112,6 +112,13 @@
 					"name": "TableLinkMissing",
 					"pathName": "pages/readme/readme",
 					"query": "repo=faif / python-patterns",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "Code",
+					"pathName": "pages/gitfile/gitfile",
+					"query": "file=patterns/creational/abstract_factory.py&owner=faif&repo=python-patterns",
 					"scene": null
 				}
 			]
