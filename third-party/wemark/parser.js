@@ -242,7 +242,7 @@ function parse(md, options){
 		}else if(blockToken.type === 'td_open'){
 			tmp.content.push({
 				type: 'table_td',
-				content: getInlineContent(tokens[index+1]).map(function(inline){return inline.content;}).join('')
+				content: getInlineContent(tokens[index+1])
 			});
 		}
 	};

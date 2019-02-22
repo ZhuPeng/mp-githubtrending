@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -105,6 +105,13 @@
 					"name": "Top Null",
 					"pathName": "pages/readme/readme",
 					"query": "repo=wzpan / wukong-robot",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "TableLinkMissing",
+					"pathName": "pages/readme/readme",
+					"query": "repo=faif / python-patterns",
 					"scene": null
 				}
 			]
