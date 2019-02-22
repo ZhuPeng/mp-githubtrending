@@ -170,6 +170,7 @@ function parse(md, options){
 		}else if(blockToken.type === 'fence' || blockToken.type === 'code'){
 			content = blockToken.content;
 			var highlight = false;
+      if (!blockToken.params){blockToken.params = 'python'}
 			if(options.highlight && blockToken.params && prism.languages[blockToken.params]){
 				content = prism.tokenize(content, prism.languages[blockToken.params]);
 				highlight = true;
