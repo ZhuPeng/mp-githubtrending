@@ -1,7 +1,9 @@
 <view class="margin-left-right">
 <view class="weui-media-box__title">
   <view class="flex-wrp" style="flex-direction:row;">
-    <wux-icon class="padding-right" size="17" type="logo-github" />
+    <navigator url="/pages/github/index">
+      <wux-icon class="padding-right" size="17" type="logo-github" />
+    </navigator>
     <view class="padding-right"><navigator url="{{'/pages/account/account?owner=' + owner}}" style="color: blue;">{{owner}}</navigator></view>
     <view wx:if="{{repo}}" class="padding-right">/</view>
     <navigator class="padding-right" wx:if="{{repo}}" url="{{'/pages/readme/readme?repo=' + owner + '/' + repo}}" style="color: blue;">{{repo}}</navigator>
