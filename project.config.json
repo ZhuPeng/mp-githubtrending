@@ -115,11 +115,18 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 11,
 					"name": "Code",
-					"pathName": "pages/gitfile/gitfile",
-					"query": "file=patterns/creational/abstract_factory.py&owner=faif&repo=python-patterns",
+					"pathName": "https://github.com/faif/python-patterns/patterns/creational/abstract_factory.py",
+					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "OriginGitHubLink",
+					"pathName": "https://github.com/ZhuPeng/mp-githubtrending",
+					"query": "",
+					"scene": 1058
 				}
 			]
 		}
