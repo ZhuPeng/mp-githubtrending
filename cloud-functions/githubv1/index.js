@@ -33,13 +33,14 @@ function dateFtt(fmt, date) { //author: meizz
   return fmt;
 } 
 
-async function trace(OPENID, owner, repo, type) {
+async function trace(OPENID, owner, repo, type, path) {
   db.collection('history').add({
     data: {
       openid: OPENID,
       owner,
       repo,
       type,
+      path: path || '',
       requesttime: dateFtt("yyyy-MM-dd HH:mm:ss.S", new Date()),
     }
   }).then(res => { console.log(res) }).catch(console.error)
@@ -92,7 +93,7 @@ exports.main = async (event, context) => {
 
   var { owner, repo, type, path, ref } = event;
   const { OPENID, APPID } = cloud.getWXContext()
-  trace(OPENID, owner, repo, type)
+  trace(OPENID, owner, repo, type, path)
   res = await execute(owner, repo, type, path, OPENID)
   return res;
 }
