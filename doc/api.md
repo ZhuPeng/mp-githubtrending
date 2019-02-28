@@ -4,6 +4,7 @@
 
 ![image-20190204010240928](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/mini.png)
 
+在小程序插入地址填写要访问的 GitHub 地址，如 `https://github.com/ZhuPeng/mp-githubtrending` 会自动转换为小程序可以识别的页面路由
 
 
 ## 个人账户页
@@ -18,6 +19,8 @@ owner 对应登陆 GitHub 后的名称
 
 ## 仓库详情页
 
+在小程序插入地址填写要访问的 GitHub 地址，如 `https://github.com/ZhuPeng/mp-githubtrending` 会自动转换为小程序可以识别的如下页面路由
+
 `pages/readme/readme?repo=<repo>`
 
 repo 对应具体的仓库路径，格式是 owner/reponame，下图中为 ZhuPeng/mp-githubtrending
@@ -26,7 +29,9 @@ repo 对应具体的仓库路径，格式是 owner/reponame，下图中为 ZhuPe
 
 
 
-## 仓库中文件（暂时只支持显示 Markdown）
+## 仓库中文件
+
+在小程序插入地址填写要访问的 GitHub 地址，如 `https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/api.md` 会自动转换为小程序可以识别的如下页面路由
 
 `pages/gitfile/gitfile?owner=<owner>&repo=<repo>&file=<file>`
 
