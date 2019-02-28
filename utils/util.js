@@ -1,5 +1,7 @@
 var base64 = require('base64.js').Base64;
 import Toast from '../third-party/vant-weapp/toast/toast';
+const timeago = require('../third-party/wux-weapp/timeago/core/index.js')
+import locales from '../third-party/wux-weapp/timeago/locales/index'
 
 module.exports = {
   formatTime: formatTime,
@@ -10,7 +12,13 @@ module.exports = {
   copyOnlyText,
   copyText,
   isGitHubPage,
-  GetPercent
+  GetPercent,
+  timeAgo,
+}
+
+function timeAgo(d) {
+  var a = timeago.format(timeago.diff(d, new Date()), locales['en'])
+  return a;
 }
 
 function GetPercent(num, total) {

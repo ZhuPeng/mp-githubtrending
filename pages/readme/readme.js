@@ -2,8 +2,6 @@ const util = require('../../utils/util.js')
 const dbutil = require('../../utils/db.js')
 const cloudclient = require('../../utils/cloudclient.js')
 import Toast from '../../third-party/vant-weapp/toast/toast';
-const timeago = require('../../third-party/wux-weapp/timeago/core/index.js')
-import locales from '../../third-party/wux-weapp/timeago/locales/index'
 
 Page({
   data: {
@@ -63,7 +61,7 @@ Page({
       type: 'get', path: '/repos/' + this.data.query.owner + '/' + this.data.query.repo + '/stats/contributors'
     }, function (c) {
       var statsMd = '## Summary\n\n'
-      statsMd += 'Repo Age: ' + timeago.format(timeago.diff(self.data.meta.created_at, new Date()), locales['en']) + '\n\n'
+      statsMd += 'Repo Age: ' + util.timeAgo(self.data.meta.created_at) + '\n\n'
       var total = 0;
       c.map(function (s) {
         total += s.total

@@ -1,3 +1,4 @@
+const util = require('../../../utils/util.js')
 Component({
   properties: {
     list: {
@@ -14,6 +15,10 @@ Component({
   },
 
   methods: {
-
+    toTimeAgo: function (d) {
+      var a = util.timeAgo(d)
+      console.log('to: ', a)
+      return a;
+    }
   }
 })

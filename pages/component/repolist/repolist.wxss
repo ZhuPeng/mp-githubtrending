@@ -4,3 +4,18 @@
 .padding-top {
   margin-top: 80rpx;
 }
+
+.kind-list {
+  background: #f2f2f2
+}
+
+.kind-list-item {
+  background-color: #FFFFFF;
+  border-radius: 4rpx;
+  overflow: hidden;
+  margin: 18rpx;
+}
+
+.kind-list-item-box {
+  margin: 20rpx;
+}

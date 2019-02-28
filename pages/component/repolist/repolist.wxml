@@ -1,13 +1,13 @@
-<view class="padding-top" wx:if="{{ist.length==0 ? true:false}}"><wux-spin nested spinning="{{ list.length==0 ? true:false }}" tip="Loading ..."/></view>
+<view class="kind-list">
+  <view wx:if="{{ist.length==0 ? true:false}}"><wux-spin nested spinning="{{ list.length==0 ? true:false }}" tip="Loading ..."/></view>
+
 <block wx:for-items="{{list}}" wx:key="{{item._id}}">
+  <view class="kind-list-item">
     <navigator url="/pages/readme/readme?_id={{item._id}}&repo={{item.repo || item.full_name}}" hover-class="navigator-hover">
-    <wux-divider class="remove-margin" position="right">
-      <wux-timeago class="timeago-padding" to="{{item[timeKey]}}" lang="en" />
-    </wux-divider>
-    <view class="margin-left-right">
-        <view class="weui-media-box__title">
-          {{item.repo || item.full_name}}
-        </view>
+    <view class="kind-list-item-box">
+      <view class="weui-media-box__title">
+        {{item.repo || item.full_name}}
+      </view>
         <view class="weui-media-box__info">
           <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-create" />  {{item.lang || item.language}}</view>
           
@@ -17,6 +17,12 @@
           <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-git-network" />  {{item.forks_count>=0 ? item.forks_count : item.fork}}</view>
         </view>
         <view class="weui-media-box__desc">{{item.desc || item.description}}</view>
+        <view class="flex-wrp" style="flex-direction:row;">
+          <view class="weui-media-box__desc">{{item.today}}</view>
+          <view class="weui-media-box__desc">{{methods[toTimeAgo](item[timeKey])}}</view>
+        </view>
     </view>
   </navigator>
+  </view>
 </block>
+</view>
