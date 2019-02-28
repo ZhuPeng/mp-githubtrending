@@ -5,12 +5,12 @@
 		<block wx:if="{{renderBlock.isArray}}" wx:for="{{renderBlock.content}}" wx:key="inlineIndex" wx:for-index="inlineIndex" wx:for-item="renderInline">
 			<text id="{{renderInline.id}}" class="wemark_inline_{{renderInline.type}}" wx:if="{{renderInline.type === 'text' || renderInline.type === 'code' || renderInline.type === 'strong' || renderInline.type === 'strong_em' || renderInline.type === 'deleted' || renderInline.type === 'em' || renderInline.type === 'table_th'}}">{{renderInline.content}}</text>
 
-      <view id="{{renderInline.id}}" class="wemark_inline_{{renderInline.type}}" wx:if="{{renderInline.type === 'table_td'}}">
-        <block wx:for="{{renderInline.content}}" wx:key="inIndex" wx:for-index="inIndex" wx:for-item="inner">
-          <text wx:if="{{inner.type!=='link'}}">{{inner.content}}</text>
-          <navigator bindtap="onTap" data-text="{{inner.data.href}}" class="wemark_inline_link" url="{{inner.data.href}}" wx:if="{{inner.type === 'link'}}">{{inner.content}}</navigator>
-        </block>
-      </view>
+            <view id="{{renderInline.id}}" class="wemark_inline_{{renderInline.type}}" wx:if="{{renderInline.type === 'table_td'}}">
+              <block wx:for="{{renderInline.content}}" wx:key="inIndex" wx:for-index="inIndex" wx:for-item="inner">
+                <text wx:if="{{inner.type!=='link'}}">{{inner.content}}</text>
+                <navigator bindtap="onTap" data-text="{{inner.data.href}}" class="wemark_inline_link" url="{{inner.data.href}}" wx:if="{{inner.type === 'link'}}">{{inner.content}}</navigator>
+              </block>
+            </view>
 
 			<!-- 代码高亮 -->
 			<text class="wemark_inline_code_{{renderInline.type}}" wx:if="{{renderInline.type&&renderBlock.highlight}}">{{renderInline.content}}</text>
@@ -21,8 +21,8 @@
 		<block wx:if="{{!renderBlock.isArray}}">
 			<view wx:if="{{renderBlock.type === 'code'}}">{{renderBlock.content}}</view>
 			<video wx:if="{{renderBlock.type == 'video'}}" class="wemark_block_video" src="{{renderBlock.src}}" poster="{{renderBlock.poster}}" controls></video>
-      <image mode="widthFix" class="wemark_inline_image" src="{{renderBlock.src}}" wx:if="{{renderBlock.type === 'image'}}"></image>
-      <text class="wemark_inline_{{renderInline.type}}" wx:if="{{renderBlock.type === 'text'}}">{{renderBlock.content}}</text>
+            <image mode="widthFix" class="wemark_inline_image" src="{{renderBlock.src}}" wx:if="{{renderBlock.type === 'image'}}"></image>
+            <text class="wemark_inline_{{renderInline.type}}" wx:if="{{renderBlock.type === 'text'}}">{{renderBlock.content}}</text>
 		</block>
 	</view>
 </block>

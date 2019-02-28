@@ -15,7 +15,7 @@ function urlModify(baseurl, url) {
 var reg = new RegExp("<br/>", "g"); 
 
 function parse(md, options){
-  md = md.replace(reg, '\n')
+    md = md.replace(reg, '\n')
 	if(!options) options = {};
 	var tokens = parser.parse(md, {});
 
@@ -38,28 +38,28 @@ function parse(md, options){
 			// 匹配video
 			// 兼容video[src]和video > source[src]
 			var videoRegExp = /<video.*?src\s*=\s*['"]*([^\s^'^"]+).*?(poster\s*=\s*['"]*([^\s^'^"]+).*?)?(?:\/\s*>|<\/video>)/g;
-      var imgRegExp = /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*|<\/img)?>/g;
-      var p = /<p>(.*?)<\/p>/g;
-      var h2 = /<h2.*?>(.*?)<\/h2>/g;
-      
-			var match;
-			var html = inlineToken.content.replace(/\n/g, '');
-      // console.log('html: ', html)
-      while(match = imgRegExp.exec(html)) {
-        if (match[1]) {
-          ret.push({type: 'image', src: urlModify(options.baseurl, match[1])});
-        }
-      }
-      while(match = p.exec(html)) {
-        if (match[1]) {
-          ret.push({type: 'text', content: match[1]})
-        }
-      }
-      while (match = h2.exec(html)) {
-        if (match[1]) {
-          ret.push({ type: 'text', content: match[1] })
-        }
-      }
+            var imgRegExp = /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*|<\/img)?>/g;
+            var p = /<p>(.*?)<\/p>/g;
+            var h2 = /<h2.*?>(.*?)<\/h2>/g;
+            
+	          	var match;
+	          	var html = inlineToken.content.replace(/\n/g, '');
+            // console.log('html: ', html)
+            while(match = imgRegExp.exec(html)) {
+              if (match[1]) {
+                ret.push({type: 'image', src: urlModify(options.baseurl, match[1])});
+              }
+            }
+            while(match = p.exec(html)) {
+              if (match[1]) {
+                ret.push({type: 'text', content: match[1]})
+              }
+            }
+            while (match = h2.exec(html)) {
+              if (match[1]) {
+                ret.push({ type: 'text', content: match[1] })
+              }
+            }
 			while(match = videoRegExp.exec(html)){
 				if(match[1]){
 					var retParam = {
@@ -170,35 +170,54 @@ function parse(md, options){
 		}else if(blockToken.type === 'fence' || blockToken.type === 'code'){
 			content = blockToken.content;
 			var highlight = false;
-      if (!blockToken.params){blockToken.params = 'python'}
+            if (!blockToken.params){blockToken.params = 'python'}
 			if(options.highlight && blockToken.params && prism.languages[blockToken.params]){
 				content = prism.tokenize(content, prism.languages[blockToken.params]);
 				highlight = true;
 			}
 
-			// flatten nested tokens in html
-			if (blockToken.params === 'html') {
-				const flattenTokens = (tokensArr, result = [], parentType = '') => {
-					if (tokensArr.constructor === Array) {
-						tokensArr.forEach(el => {
-							if (typeof el === 'object') {
-								el.type = parentType + ' wemark_inline_code_' + el.type
-								flattenTokens(el.content, result, el.type)
-							} else {
-								const obj = {}
-								obj.type = parentType + ' wemark_inline_code_'
-								obj.content = el
-								result.push(obj)
-							}
-						})
-						return result
-					} else {
-						result.push(tokensArr)
-						return result
-					}
-				}
-				content = flattenTokens(content)
-			}
+            const flattenTokens = (tokensArr, result = [], parentType = '') => {
+                if (Array.isArray(tokensArr)) {
+                    tokensArr.forEach(el => {
+                        if (typeof el === 'object') {
+                            // el.type = parentType + ' wemark_inline_code_' + el.type;
+                            if(Array.isArray(el.content)){
+                                flattenTokens(el.content, result, el.type);
+                            }else{
+                                flattenTokens(el, result, el.type);
+                            }
+                        } else {
+                            const obj = {};
+                            obj.type = parentType || 'text';
+                            // obj.type = parentType + ' wemark_inline_code_';
+                            obj.content = el;
+                            result.push(obj);
+                        }
+                    })
+                    return result
+                } else {
+                    result.push(tokensArr)
+                    return result
+                }
+            }
+
+            if(highlight){
+                var tokenList = content;
+                content = [];
+                tokenList.forEach((token) => {
+                    // let contentListForToken = [];
+                    if(Array.isArray(token.content)){
+                        content = content.concat(flattenTokens(token.content, [], ''));
+                    }else{
+                        content.push(token);
+                    }
+                });
+            }
+            // flatten nested tokens in html
+            // if (blockToken.params === 'html') {
+            // content = flattenTokens(content)
+            // }
+            // console.log(content);
 
 			return {
 				type: 'code',
