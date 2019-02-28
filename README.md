@@ -9,7 +9,7 @@ GitHub Trending 仓库集合，以 Feed 流形式展现，能够及时查看最�
 ## 文档
 
 * [公众号文章链接 GitHub 仓库指南](doc/api.md)
-* [使用文档（尽情期待）](doc/help.md)
+* [使用文档](doc/help.md)
 
 
 
@@ -20,9 +20,13 @@ GitHub Trending 是根据仓库的最近热门程度展示的，该小程序希�
 
 ## 依赖的开源项目
 
+* [octokit/rest.js](https://github.com/octokit/rest.js): GitHub REST API client for JavaScript
 * [TooBug/wemark](https://github.com/TooBug/wemark): 小程序中的 Markdown 渲染仓库
 * [youzan/vant-weapp](https://github.com/youzan/vant-weapp): 轻量、可靠的小程序 UI 组件库
 * [wux-weapp/wux-weapp](https://github.com/wux-weapp/wux-weapp): 一套组件化、可复用、易扩展的微信小程序 UI 组件库
 * [dankogai/js-base64](https://github.com/dankogai/js-base64/): base64 编解码库
 * [weui/weui-wxss](https://github.com/weui/weui-wxss): 微信官方的 UI 库
 * [resume/resume.github.com](https://github.com/resume/resume.github.com): 自动生成 GitHub 简历
+
+
+有任何问题，欢迎提交 Issue 或者 PullRequest。
