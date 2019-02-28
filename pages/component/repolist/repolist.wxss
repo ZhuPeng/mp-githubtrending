@@ -5,8 +5,12 @@
   margin-top: 80rpx;
 }
 
-.kind-list {
+.box {
   background: #f2f2f2
+}
+
+.kind-list {
+  padding: 1rpx;
 }
 
 .kind-list-item {

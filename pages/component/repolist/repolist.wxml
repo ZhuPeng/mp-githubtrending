@@ -1,3 +1,4 @@
+<view class="box">
 <view class="kind-list">
   <view wx:if="{{ist.length==0 ? true:false}}"><wux-spin nested spinning="{{ list.length==0 ? true:false }}" tip="Loading ..."/></view>
 
@@ -25,4 +26,5 @@
   </navigator>
   </view>
 </block>
+</view>
 </view>
