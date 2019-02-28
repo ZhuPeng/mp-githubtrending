@@ -19,7 +19,7 @@
         <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
       </van-tab>
 
-      <van-tab title="Releases">
+      <van-tab wx:if="{{false}}" title="Releases">
         <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
         <view class=".margin-left-right" >
         <block wx:for-items="{{releases}}" wx:key="{{item.id}}">
@@ -69,6 +69,11 @@
       </block>
       </view>
       </van-tab> 
+
+       <van-tab title="Stats" info="1">
+        <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
+        <md md="{{statsMd}}"/>
+      </van-tab>
     </van-tabs>
   <fabbutton/>
   </view>

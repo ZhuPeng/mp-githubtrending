@@ -2,6 +2,8 @@ const util = require('../../utils/util.js')
 const dbutil = require('../../utils/db.js')
 const cloudclient = require('../../utils/cloudclient.js')
 import Toast from '../../third-party/vant-weapp/toast/toast';
+const timeago = require('../../third-party/wux-weapp/timeago/core/index.js')
+import locales from '../../third-party/wux-weapp/timeago/locales/index'
 
 Page({
   data: {
@@ -9,6 +11,8 @@ Page({
     releases: [],
     commits: [],
     issues: [],
+    stats: [],
+    statsMd: '',
     meta: {desc: 'loadding...'},
     query: {},
     spinning: true,
@@ -17,7 +21,8 @@ Page({
   getMeta: function () {
     var self = this;
     cloudclient.callFunction({ type: 'get', path: '/repos/' + self.data.query.owner + '/' + self.data.query.repo}, function (c) {
-      var meta = { 'fork': c.forks_count, 'star': c.stargazers_count, 'lang': c.language, url: c.html_url, 'desc': c.description, 'issue_count': c.open_issues_count}
+      console.log('meta: ', c)
+      var meta = { 'fork': c.forks_count, 'star': c.stargazers_count, 'lang': c.language, url: c.html_url, 'desc': c.description, 'issue_count': c.open_issues_count, 'created_at': c.created_at}
         self.setData({ meta })
     })
   },
@@ -36,16 +41,41 @@ Page({
   },
 
   onClick(event) {
-    if (event.detail.index == 1 && this.data.releases.length == 0) {
+    console.log(event)
+    if (event.detail.title == 'Releases' && this.data.releases.length == 0) {
       this.setData({ spinning: true })
       this.getGitHubData("releases")
-    } else if (event.detail.index==2 && this.data.commits.length == 0) {
+    } else if (event.detail.title == 'Commits' && this.data.commits.length == 0) {
       this.setData({ spinning: true })
       this.getGitHubData("commits")
-    } else if (event.detail.index==3 && this.data.issues.length==0) {
+    } else if (event.detail.title == 'Issues' && this.data.issues.length==0) {
       this.setData({ spinning: true })
       this.getGitHubData("issues")
+    } else if(event.detail.title == 'Stats' && this.data.issues.length == 0) {
+      this.setData({ spinning: true })
+      this.genStatsMd()
     }
+  },
+
+  genStatsMd: function() {
+    var self = this
+    cloudclient.callFunction({
+      type: 'get', path: '/repos/' + this.data.query.owner + '/' + this.data.query.repo + '/stats/contributors'
+    }, function (c) {
+      var statsMd = '## Summary\n\n'
+      statsMd += 'Repo Age: ' + timeago.format(timeago.diff(self.data.meta.created_at, new Date()), locales['en']) + '\n\n'
+      var total = 0;
+      c.map(function (s) {
+        total += s.total
+      })
+      statsMd += 'Commits: ' + total + '\n'
+      statsMd += '## Authors\n\n'
+      statsMd += 'Commit Count | Author | Percentage \n-- | -- | -- \n'
+      c.reverse().map(function (s) {
+        statsMd += s.total + ' | ' + util.mdLink(s.author.login, s.author.html_url) + ' | ' + util.GetPercent(s.total, total) + '\n'
+      })
+      self.setData({ spinning: false, stats: c, statsMd })
+    })
   },
 
   copy: function (e) {
