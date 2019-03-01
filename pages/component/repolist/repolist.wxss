@@ -27,11 +27,3 @@
 .footer {
   margin-top: 25rpx;
 }
-
-.timeago {
-  float: left;
-}
-
-.star-today {
-  text-align: right;
-}

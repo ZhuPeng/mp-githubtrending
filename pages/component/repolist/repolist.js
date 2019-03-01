@@ -4,6 +4,9 @@ Component({
     list: {
       type: Array,
       value: [],
+      observer() {
+        this.handleList();
+      }
     },
     timeKey: {
       type: String,
@@ -12,13 +15,18 @@ Component({
   },
 
   data: {
+    parsedList: []
   },
 
   methods: {
-    toTimeAgo: function (d) {
-      var a = util.timeAgo(d)
-      console.log('to: ', a)
-      return a;
+    handleList: function() {
+      console.log('lhandle ist:', this.data.list)
+      var parsedList = []
+      this.data.list.map(d => {
+        d.timeago = util.timeAgo(d[this.data.timeKey])
+        parsedList.push(d)
+      })
+      this.setData({parsedList})
     }
   }
 })

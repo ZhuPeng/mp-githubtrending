@@ -2,7 +2,7 @@
 <view class="kind-list">
   <view wx:if="{{ist.length==0 ? true:false}}"><wux-spin nested spinning="{{ list.length==0 ? true:false }}" tip="Loading ..."/></view>
 
-<block wx:for-items="{{list}}" wx:key="{{item._id}}">
+<block wx:for-items="{{parsedList}}" wx:key="{{item._id}}">
   <view class="kind-list-item">
     <navigator url="/pages/readme/readme?_id={{item._id}}&repo={{item.repo || item.full_name}}" hover-class="navigator-hover">
     <view class="kind-list-item-box">
@@ -18,11 +18,9 @@
           <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-git-network" />  {{item.forks_count>=0 ? item.forks_count : item.fork}}</view>
         </view>
         <view class="weui-media-box__desc">{{item.desc || item.description}}</view>
-        <view class="footer">
-        <view>
-          <view class="weui-media-box__desc timeago">{{item[timeKey]}}</view>
-          <view class="star-today"><view class="weui-media-box__desc">{{item.today}}</view></view>
-        </view>
+        <view class="footer flex-wrp" style="justify-content: space-between;">
+          <view class="weui-media-box__desc">{{item.timeago}}</view>
+          <view class="weui-media-box__desc">{{item.today}}</view>
         </view>
     </view>
   </navigator>
