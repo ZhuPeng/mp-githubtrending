@@ -49,7 +49,7 @@ Page({
     } else if (event.detail.title == 'Issues' && this.data.issues.length==0) {
       this.setData({ spinning: true })
       this.getGitHubData("issues")
-    } else if(event.detail.title == 'Stats' && this.data.issues.length == 0) {
+    } else if(event.detail.title == 'Stats' && this.data.statsMd == '') {
       this.setData({ spinning: true })
       this.genStatsMd()
     }
