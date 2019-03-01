@@ -46,7 +46,6 @@ Page({
     var log = ''
     log += '## 访问记录\ntime | type | repo | path | cache \n-- | -- | -- | -- | -- \n'
     history.map(d => {
-      if (d.openid == this.data.users[0]) { return }
       log += d.requesttime.substring(0, 19) + ' | ' + d.type + ' | ' + d.owner + '/' + d.repo + ' | ' + d.path +  '|' + d.fromcache + '\n';
     })
     this.setData({ log: log })
@@ -57,9 +56,7 @@ Page({
     var history = this.data.history
     db.collection('history').orderBy('requesttime', 'desc').skip(skip).get().then(res => {
       res.data.map(d => {
-        if (d.openid != self.data.users[0]) {
-          history.push(d)
-        }
+        history.push(d)
       })
       self.setData({history})
       if (history.length > 50) {
