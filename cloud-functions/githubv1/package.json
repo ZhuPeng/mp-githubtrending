@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "wx-server-sdk": "latest",
-    "@octokit/rest": "latest"
+    "@octokit/rest": "latest",
+    "node-cache": "^4.2.0",
+    "wx-server-sdk": "latest"
   }
 }

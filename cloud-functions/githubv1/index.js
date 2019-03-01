@@ -4,6 +4,8 @@ cloud.init()
 const octokit = require('@octokit/rest')()
 const db = cloud.database()
 const _ = db.command
+const NodeCache = require( "node-cache" );
+const CACHE = new NodeCache({ stdTTL: 600, checkperiod: 100 });
 
 async function getToken() {
   var res = await db.collection("admin").where({website: "github", type: "token"}).get()
@@ -33,7 +35,7 @@ function dateFtt(fmt, date) { //author: meizz
   return fmt;
 } 
 
-async function trace(OPENID, owner, repo, type, path) {
+async function trace(OPENID, owner, repo, type, path, fromcache) {
   db.collection('history').add({
     data: {
       openid: OPENID,
@@ -41,6 +43,7 @@ async function trace(OPENID, owner, repo, type, path) {
       repo,
       type,
       path: path || '',
+      fromcache: fromcache || '0',
       requesttime: dateFtt("yyyy-MM-dd HH:mm:ss.S", new Date()),
     }
   }).then(res => { console.log(res) }).catch(console.error)
@@ -93,8 +96,22 @@ exports.main = async (event, context) => {
 
   var { owner, repo, type, path, ref } = event;
   const { OPENID, APPID } = cloud.getWXContext()
-  trace(OPENID, owner, repo, type, path)
-  res = await execute(owner, repo, type, path, OPENID)
+  res = await executeWithCache(owner, repo, type, path, OPENID, ref)
+  trace(OPENID, owner, repo, type, path, res['_from_cache'])
+  return res;
+}
+
+const grayCache = {'readme': true, 'get': true, 'file': true}
+async function executeWithCache(owner, repo, type, path, openid, ref) { 
+  var key = owner + repo + type + path + ref
+  var res = CACHE.get(key);
+  if (res == undefined) {
+    res = await execute(owner, repo, type, path, openid, ref)
+    if (type in grayCache) {
+        res['_from_cache'] = '1'
+        CACHE.set(key, res)
+    }
+  }
   return res;
 }
 
