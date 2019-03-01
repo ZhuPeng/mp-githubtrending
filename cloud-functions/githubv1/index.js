@@ -108,9 +108,10 @@ async function executeWithCache(owner, repo, type, path, openid, ref) {
   if (res == undefined) {
     res = await execute(owner, repo, type, path, openid, ref)
     if (type in grayCache) {
-        res['_from_cache'] = '1'
         CACHE.set(key, res)
     }
+  } else {
+    res['_from_cache'] = '1'
   }
   return res;
 }
