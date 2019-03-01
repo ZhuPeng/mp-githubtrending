@@ -18,9 +18,11 @@
           <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-git-network" />  {{item.forks_count>=0 ? item.forks_count : item.fork}}</view>
         </view>
         <view class="weui-media-box__desc">{{item.desc || item.description}}</view>
-        <view class="flex-wrp" style="flex-direction:row;">
-          <view class="weui-media-box__desc">{{item.today}}</view>
-          <view class="weui-media-box__desc">{{methods[toTimeAgo](item[timeKey])}}</view>
+        <view class="footer">
+        <view>
+          <view class="weui-media-box__desc timeago">{{item[timeKey]}}</view>
+          <view class="star-today"><view class="weui-media-box__desc">{{item.today}}</view></view>
+        </view>
         </view>
     </view>
   </navigator>

@@ -23,3 +23,15 @@
 .kind-list-item-box {
   margin: 20rpx;
 }
+
+.footer {
+  margin-top: 25rpx;
+}
+
+.timeago {
+  float: left;
+}
+
+.star-today {
+  text-align: right;
+}
