@@ -20,7 +20,7 @@
         <view class="weui-media-box__desc">{{item.desc || item.description}}</view>
         <view class="footer flex-wrp" style="justify-content: space-between;">
           <view class="weui-media-box__desc">{{item.timeago}}</view>
-          <view class="weui-media-box__desc">{{item.today}}</view>
+          <view class="weui-media-box__desc"><wux-icon size="13" type="md-star" />  {{item.today}}</view>
         </view>
     </view>
   </navigator>
