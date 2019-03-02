@@ -10,4 +10,7 @@ Page({
   onShow: function () {
     this.setData({ username: wx.getStorageSync("github-name") || '',})
   },
+  
+  onShareAppMessage: function () {
+  }
 })

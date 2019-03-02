@@ -32,4 +32,7 @@ Page({
       self.setData({ content: content, spinning: false})
     })
   },
+
+  onShareAppMessage: function () {
+  }
 })

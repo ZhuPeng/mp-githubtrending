@@ -76,5 +76,8 @@ Page({
       this.setData({owner: sname, repos: []})
       this.onLoad({owner: sname})
     }
+  },
+
+  onShareAppMessage: function () {
   }
 })

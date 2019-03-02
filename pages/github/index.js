@@ -163,5 +163,8 @@ Page({
         this.setData({list: res.data})
       }
     })
+  },
+
+  onShareAppMessage: function () {
   }
 })
