@@ -51,17 +51,21 @@ Page({
       this.getGitHubData("issues")
     } else if(event.detail.title == 'Stats' && this.data.statsMd == '') {
       this.setData({ spinning: true })
-      this.genStatsMd()
+      this.genStatsMd(true)
     }
   },
 
-  genStatsMd: function() {
+  genStatsMd: function(retry) {
     var self = this
     cloudclient.callFunction({
       type: 'get', path: '/repos/' + this.data.query.owner + '/' + this.data.query.repo + '/stats/contributors'
     }, function (c) {
       var statsMd = '## Summary\n\n'
       statsMd += 'Repo Age: ' + util.timeAgo(self.data.meta.created_at) + '\n\n'
+      if (c.length == 0 && retry) { 
+        self.setData({ spinning: false, stats: c, statsMd })
+        self.genStatsMd(false)
+      }
       var total = 0;
       c.map(function (s) {
         total += s.total

@@ -144,6 +144,9 @@ async function execute(owner, repo, type, path, openid, ref) {
     return {content: d['data'], 'owner': owner}
   } else if (type == 'get') {
     var d = await octokit.request('GET ' + path)
+    if (d['status'] == 202) {
+      d = await octokit.request('GET ' + path)
+    }
     return {content: d['data']}
   }
   
