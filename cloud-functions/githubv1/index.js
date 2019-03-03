@@ -5,7 +5,7 @@ const octokit = require('@octokit/rest')()
 const db = cloud.database()
 const _ = db.command
 const NodeCache = require( "node-cache" );
-const CACHE = new NodeCache({ stdTTL: 600, checkperiod: 100 });
+const CACHE = new NodeCache({ stdTTL: 1800, checkperiod: 200 });
 
 async function getToken() {
   var res = await db.collection("admin").where({website: "github", type: "token"}).get()
