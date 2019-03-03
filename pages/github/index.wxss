@@ -5,3 +5,28 @@
 .padding-left {
   margin-left: 20rpx;
 }
+
+.language-box{
+  background: #f2f2f2;
+}
+
+.language {
+  vertical-align: middle;
+  font-size: 16px;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.language-tag {
+  margin-left: 10rpx;
+  vertical-align: middle;
+}
+
+.heart {
+  color: red;
+}
+
+.favorite {
+  // min-height: 30rpx;
+  // line-height: 30rpx;
+}

@@ -11,6 +11,7 @@ Page({
     previousMargin: 0,
     nextMargin: 0,
     list: [],
+    tagColor: ['magenta', 'volcano', 'green'],
     langList: ['Go', 'Python', 'Java', 'C', 'JavaScript', 'R','Shell', 'PHP', 'CSS',
     'Ruby', 'Lua', 'Vue', 'Objective-C', 'C++', 'Kotlin', 'Rust', 'TypeScript', 'C#',
     'Swift', 'HTML', 'Jupyter Notebook', 'Dart', 'Makefile', 'TeX', 'DIGITAL Command Language',
@@ -29,10 +30,12 @@ Page({
 
   onChange(event) {
     console.log("onChange:", event.detail)
-    this.setData({
-      selectLangList: event.detail
-    });
-    wx.setStorageSync("github-lang-filter", event.detail)
+    this.updateLangFilter(event.detail)
+  },
+
+  updateLangFilter: function(list) {
+    this.setData({ selectLangList: list})
+    wx.setStorageSync("github-lang-filter", list)
   },
 
   toggle(event) {
@@ -43,7 +46,9 @@ Page({
   },
 
   noop() {},
-  selectAll() {this.setData({selectLangList: []})},
+  selectAll() {
+    this.updateLangFilter([])
+  },
 
   getCollection() {
     var col = db.collection('github')

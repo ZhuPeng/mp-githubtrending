@@ -2,10 +2,10 @@
   <view class="page__hd">
     <van-search class="search" placeholder="请输入搜索关键词" bind:search="onSearch" />
 
-    <view class="weui-media-box__info margin-left-right">
-      <van-action-sheet show="{{sheetShow}}" bind:close="onSheetClose" title="Select Filter Language">
-        <van-cell title="All" clickable data-name="All" >
-          <van-checkbox value="{{selectLangList==0?true:false}}" catch:tap="selectAll" class="checkboxes-All" name="All" />
+    <view class="language-box">
+      <van-action-sheet show="{{sheetShow}}" bind:close="onSheetClose" title="Favorite Languages">
+        <van-cell title="All Languages" clickable data-name="All Languages" >
+          <van-checkbox value="{{selectLangList==0?true:false}}" catch:tap="selectAll" class="checkboxes-All" name="All Languages" />
         </van-cell>
         <van-checkbox-group value="{{ selectLangList }}" bind:change="onChange">
         <van-cell-group >
@@ -22,7 +22,21 @@
         </van-cell-group>
         </van-checkbox-group>
       </van-action-sheet>
-      <view class="weui-media-box__info__meta" bindtap="actionSheetTapLang">语言：{{selectLangList.length>0 ? selectLangList : 'All'}}</view>
+      <view class="language flex-wrp" bindtap="actionSheetTapLang">
+        <view>
+          <wux-button bordered clsss="favorite flex-wrp" size="small" type="light">
+            <wux-icon class="heart" size="13" type="md-heart" />                                 Languages
+            <wux-icon size="13" type="ios-arrow-down"></wux-icon>
+          </wux-button>
+        </view>
+        <view class="language-tag flex-wrp">
+          <block wx:for-items="{{selectLangList}}" wx:key="{{item}}">
+            <view><wux-tag color="{{tagColor[index]}}" wx:if="{{index < 3}}">{{item}}</wux-tag></view>
+          </block>
+          <wux-tag color="{{tagColor[0]}}" wx:if="{{selectLangList.length==0}}">All  Languages</wux-tag>
+          <wux-tag color="geekblue" wx:if="{{selectLangList.length>=3}}">more..</wux-tag>
+        </view>
+      </view>
       <!-- <view class="weui-media-box__info__meta" bindtap="actionSheetTapOrder">排序：{{order}}</view> -->
     </view>
   </view>

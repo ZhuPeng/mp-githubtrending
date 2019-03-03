@@ -42,6 +42,7 @@
     "wux-tag": "third-party/wux-weapp/tag/index",
     "wux-icon": "third-party/wux-weapp/icon/index",
     "wux-spin": "third-party/wux-weapp/spin/index",
+    "wux-button": "third-party/wux-weapp/button/index",
     "wemark": "third-party/wemark/wemark",
     "fabbutton": "pages/component/fabbutton/fabbutton",
     "md": "pages/component/md/md",
