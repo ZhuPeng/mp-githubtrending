@@ -1,7 +1,8 @@
-const share = "../../../image/Paper-Plane.png"
-const chat = "../../../image/Chat.png"
-const top = "../../../image/up.png"
-const setting = "../../../image/Settings.png"
+const base = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/icon/'
+const share = base + "Paper-Plane.png"
+const chat = base + "Chat.png"
+const top = base + "up.png"
+const setting = base + "Settings.png"
 const buttons = [{
   label: "Top",
   icon: top,
