@@ -14,13 +14,15 @@ GitHub Trending 仓库集合，以 Feed 流形式展现，能够及时查看最�
 
 
 ## 说明
-GitHub Trending 是根据仓库的最近热门程度展示的，该小程序希望准确获取最近新出现的仓库集合，使用该小程序能够根据语言筛选，获取每天新出现的 Trending 仓库。小程序中首页的数据通过 [trackupdates](https://github.com/ZhuPeng/trackupdates) 抓取获得，展示最近一个月出现在 Trending 上的仓库（只在第一次出现仓库时展示），并通过如下代码 [sync2db.js](sync2db.js) 同步到小程序云开发数据库，提升访问速度和体验。使用微信的云开发方式，极大的简化了小程序的运维。有任何问题，欢迎提交 Issue 和 Pull Request。
+小程序中首页的数据通过 [trackupdates](https://github.com/ZhuPeng/trackupdates) 抓取 GitHub Trending 页面获得，展示最近一个月出现在 Trending 上的仓库（只在第一次出现仓库时展示，意思昨天出现了今天就不会在首页的 Feed 流里面了），并通过如下代码 [sync2db.js](sync2db.js) 同步到小程序云开发数据库，提升访问速度和体验。除此之外还整合了 GitHub 的仓库统计信息和 [GitHub Resume](https://github.com/resume/resume.github.com) 等功能。 
+整个小程序的后端是使用微信的云开发方式，无服务化极大的简化了小程序的运维。
 
 
 
 ## 依赖的开源项目
 
 * [octokit/rest.js](https://github.com/octokit/rest.js): GitHub REST API client for JavaScript
+* [ZhuPeng/trackupdates](https://github.com/ZhuPeng/trackupdates): A simple yaml-based xpath crawler
 * [TooBug/wemark](https://github.com/TooBug/wemark): 小程序中的 Markdown 渲染仓库
 * [youzan/vant-weapp](https://github.com/youzan/vant-weapp): 轻量、可靠的小程序 UI 组件库
 * [wux-weapp/wux-weapp](https://github.com/wux-weapp/wux-weapp): 一套组件化、可复用、易扩展的微信小程序 UI 组件库
