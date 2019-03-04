@@ -79,7 +79,7 @@ Page({
     setTimeout(() => {
       this.loadData()
       wx.stopPullDownRefresh()
-    }, 1000)
+    }, 3000)
   },
 
   onLoad: function () {
@@ -113,7 +113,7 @@ Page({
           var data = {list: []}
           data[type] = changeval
           self.setData(data)
-          wx.setStorageSync(key, changeval)
+          wx.setStorageSync(key, changeval) 
           self.loadData()
         }
       }
