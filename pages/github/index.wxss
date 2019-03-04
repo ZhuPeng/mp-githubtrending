@@ -1,5 +1,5 @@
-.search {
-  width: 100%;
+.search .van-search {
+  padding: 7px 18rpx;
 }
 
 .padding-left {
@@ -13,7 +13,7 @@
 .language {
   vertical-align: middle;
   font-size: 16px;
-  margin-left: 30rpx;
+  margin-left: 18rpx;
   margin-right: 30rpx;
 }
 
@@ -26,7 +26,10 @@
   color: red;
 }
 
-.favorite {
-  // min-height: 30rpx;
-  // line-height: 30rpx;
+.lang-tag .wux-tag {
+  height: 24px;
+}
+
+.favorite .wux-button--small {
+  line-height: 24px;
 }
