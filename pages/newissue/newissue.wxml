@@ -1,0 +1,21 @@
+<van-cell-group>
+  <van-field
+    value="{{ title }}"
+    clearable
+    label="Title"
+    placeholder="Hello World"
+    bind:change="onTitleChange"
+  />
+</van-cell-group>
+
+<van-cell-group>
+  <van-field
+    value="{{ content }}"
+    clearable
+    label="Content"
+    placeholder="Hello World"
+    bind:change="onContentChange"
+  />
+</van-cell-group>
+
+<wux-button bind:click="onButtonClick" block type="balanced">Confirm</wux-button>
