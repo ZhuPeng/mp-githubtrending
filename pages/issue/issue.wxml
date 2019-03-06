@@ -1,4 +1,4 @@
-<md md="# {{issue.title}}" />
+<md md="## {{issue.title}}" />
 
 <md md="\> {{issue.user.login}}  {{issue.created_at}}" />
 <md md="{{issue.body}}"/>

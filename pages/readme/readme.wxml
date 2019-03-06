@@ -38,12 +38,14 @@
         <view class=".margin-left-right" >
         <block wx:for-items="{{commits}}" wx:key="{{item.sha}}">
           <view>
-          <view class="weui-media-box__title" bindtap="copy" data-text="{{meta.url}}/commit/{{item.sha}}">{{item.commit.message}}</view>
+          <navigator url="{{'/pages/commit/commit?url=' + item.url}}" >
+          <view class="weui-media-box__title">{{item.commit.message}}</view>
           <view class="weui-media-box__desc">
           <wux-tag>{{item.commit.author.email}}</wux-tag>
           <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.commit.author.date}}" lang="en" /></wux-tag>
           </view>
           <view class="padding"><wux-divider show-text="{{ false }}"></wux-divider></view>
+          </navigator>
           </view>
         </block>
         </view>
