@@ -1,8 +1,8 @@
-<md md="{{'## ' + commit.commit.message}}" />
+<md md="## {{ commit.commit.message}}" />
 
 <md md="\> {{commit.commit.author.name}}  + {{commit.stats.additions}} -{{commit.stats.deletions}}  {{commit.commit.author.date}}" />
 
 <block wx:for-items="{{commit.files}}" wx:key="{{item.sha}}">
   <md md="\> +{{item.additions}} -{{item.deletions}}  {{item.filename}}" />
-  <md md="{{'```' + item.patch + '```'}}"/>
+  <md md="{{'```' + item.extension + '\\n' + item.patch + '\\n```'}}"/>
 </block>

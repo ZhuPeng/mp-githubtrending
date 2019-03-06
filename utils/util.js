@@ -77,6 +77,7 @@ const CodeFileExtentsions = {
   'yaml': 'yaml',
   'R': 'R',
   'swift': 'swift',
+  'wxml': 'html',
 }
 
 function isCodeFile(file) {
