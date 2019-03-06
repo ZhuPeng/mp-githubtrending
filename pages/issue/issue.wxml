@@ -1,0 +1,9 @@
+<md md="# {{issue.title}}" />
+
+<md md="\> {{issue.user.login}}  {{issue.created_at}}" />
+<md md="{{issue.body}}"/>
+
+<block wx:for-items="{{comments}}" wx:key="{{item.id}}">
+  <md md="\> {{item.user.login}}  {{item.created_at}}" />
+  <md md="{{item.body}}"/>
+</block>

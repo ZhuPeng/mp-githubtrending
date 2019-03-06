@@ -7,7 +7,8 @@
     "pages/stat/stat",
     "pages/settings/settings",
     "pages/resume/resume",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/issue/issue"
   ],
   "window": {
     "backgroundTextStyle": "light",

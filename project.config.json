@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -127,6 +127,13 @@
 					"pathName": "https://github.com/ZhuPeng/mp-githubtrending",
 					"query": "",
 					"scene": 1058
+				},
+				{
+					"id": 13,
+					"name": "Issue",
+					"pathName": "pages/issue/issue",
+					"query": "issue=https://api.github.com/repos/alibaba/Sentinel/issues/400",
+					"scene": null
 				}
 			]
 		}
