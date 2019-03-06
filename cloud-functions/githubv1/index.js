@@ -96,17 +96,17 @@ exports.main = async (event, context) => {
 
   var { owner, repo, type, path, ref } = event;
   const { OPENID, APPID } = cloud.getWXContext()
-  res = await executeWithCache(owner, repo, type, path, OPENID, ref)
+  res = await executeWithCache(owner, repo, type, path, OPENID, ref, event)
   await trace(OPENID, owner, repo, type, path, res['_from_cache'])
   return res;
 }
 
 const grayCache = {'readme': true, 'get': true, 'file': true}
-async function executeWithCache(owner, repo, type, path, openid, ref) { 
+async function executeWithCache(owner, repo, type, path, openid, ref, data) { 
   var key = owner + repo + type + path + ref
   var res = CACHE.get(key);
   if (res == undefined) {
-    res = await execute(owner, repo, type, path, openid, ref)
+    res = await execute(owner, repo, type, path, openid, ref, data)
     if (type in grayCache) {
         CACHE.set(key, res)
     }
@@ -116,7 +116,7 @@ async function executeWithCache(owner, repo, type, path, openid, ref) {
   return res;
 }
 
-async function execute(owner, repo, type, path, openid, ref) { 
+async function execute(owner, repo, type, path, openid, ref, data) { 
   if (!ref) { ref = 'master'; }
   var res;
   if (!type || type == "readme") {
@@ -148,6 +148,14 @@ async function execute(owner, repo, type, path, openid, ref) {
       d = await octokit.request('GET ' + path)
     }
     return {content: d['data']}
+  } else if (type == 'createissue') {
+    var d = await octokit.issues.create(data)
+    return { content: d['data'] }
+  } else if (type == 'post') {
+    console.log('post: ', data)
+    var d = await octokit.request('POST ' + path, {data: data})
+    console.log('response: ', d)
+    return { content: d['data'] }
   }
   
   return {

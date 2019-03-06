@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 14,
 			"list": [
 				{
 					"id": -1,
@@ -133,6 +133,13 @@
 					"name": "Issue",
 					"pathName": "pages/issue/issue",
 					"query": "issue=https://api.github.com/repos/alibaba/Sentinel/issues/400",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "NewIssue",
+					"pathName": "pages/newissue/newissue",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -9,7 +9,8 @@
     "pages/resume/resume",
     "pages/search/search",
     "pages/issue/issue",
-    "pages/commit/commit"
+    "pages/commit/commit",
+    "pages/newissue/newissue"
   ],
   "window": {
     "backgroundTextStyle": "light",
