@@ -6,16 +6,20 @@ const version = 'githubv1'
 
 function callFunction(data, completeFunc) {
   var token = wx.getStorageSync('github-token')
-  if (data.type == 'post' && (token == undefined || token == '')) {
-    wx.showToast({
-      title: '未设置 Token',
-      icon: 'error',
-      duration: 6000
-    })
-    return
-  }
   if (token) {
     data['token'] = token
+  } else if(data.type == 'post') {
+      wx.showToast({
+        title: '未设置 Token',
+        icon: 'error',
+        duration: 6000,
+        success: function(){
+          wx.navigateTo({
+            url: '/pages/settings/settings',
+          })
+        }
+      })
+      return
   }
   wx.cloud.callFunction({
     name: version,
