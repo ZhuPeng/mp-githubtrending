@@ -1,11 +1,14 @@
 const cloudclient = require('../../utils/cloudclient.js')
+const util = require('../../utils/util.js')
 Page({
   data: {
+    repourl: '',
     title: '',
     content: '',
   },
 
   onLoad: function (options) {
+    this.setData({repourl: options.url})
   },
 
   onTitleChange: function(e) {
@@ -24,8 +27,7 @@ Page({
         duration: 4000
       })
     }
-    var owner = 'ZhuPeng'
-    var repo = 'mp-githubtrending'
+    var [owner, repo, filepath] = util.parseGitHub(this.data.repourl)
     var suffix = '\n\n\n> From WeChat Mini Programe: [GitHub Trending Hub](https://github.com/ZhuPeng/mp-githubtrending)'
     cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues', title: this.data.title, body: this.data.content + suffix}, function (c) {
       console.log(c)
