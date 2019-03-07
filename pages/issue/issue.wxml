@@ -7,3 +7,17 @@
   <md md="\> {{item.user.login}}  {{item.created_at}}" />
   <md md="{{item.body}}"/>
 </block>
+
+<van-cell-group>
+  <van-field
+    value="{{ content }}"
+    clearable
+    label="Content"
+    placeholder="Hello World"
+    bind:change="onContentChange"
+  />
+</van-cell-group>
+
+<wux-button bind:click="onButtonClick" block type="balanced">Confirm</wux-button>
+
+<fabbutton/>

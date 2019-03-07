@@ -6,3 +6,5 @@
   <md md="\> +{{item.additions}} -{{item.deletions}}  {{item.filename}}" />
   <md md="{{'```' + item.extension + '\\n' + item.patch + '\\n```'}}"/>
 </block>
+
+<fabbutton/>
