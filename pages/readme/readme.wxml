@@ -17,6 +17,7 @@
       <van-tab title="Readme">
         <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
         <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
+        <wux-button wx:if="{{readme}}" bind:click="onButtonClick" block type="balanced">New Issue</wux-button>
       </van-tab>
 
       <van-tab wx:if="{{false}}" title="Releases">
@@ -52,6 +53,7 @@
       </van-tab>
 
       <van-tab title="Issues" info="{{meta.issue_count}}">
+        <wux-button bind:click="onButtonClick" block type="balanced">New Issue</wux-button>
       <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
       <view class=".margin-left-right" >
       <block wx:for-items="{{issues}}" wx:key="{{item.id}}">
