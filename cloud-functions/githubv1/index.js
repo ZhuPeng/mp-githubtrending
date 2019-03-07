@@ -88,7 +88,10 @@ async function getHistory(openid) {
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var token = await getToken()
+  var { owner, repo, type, path, ref, token } = event;
+  if (token == undefined || token == "") {
+    token = await getToken()
+  }
   octokit.authenticate({
     type: 'oauth',
     token: token,

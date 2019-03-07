@@ -13,7 +13,10 @@ Page({
   },
 
   onShow: function () {
-    this.setData({ username: wx.getStorageSync("github-name") || '',})
+    this.setData({ 
+      username: wx.getStorageSync("github-name") || '',
+      token: wx.getStorageSync("github-token") || '',
+    })
   },
   
   onShareAppMessage: function () {

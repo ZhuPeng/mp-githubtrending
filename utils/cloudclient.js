@@ -5,13 +5,17 @@ module.exports = {
 const version = 'githubv1'
 
 function callFunction(data, completeFunc) {
-  if (data.type == 'post' && wx.getStorageSync('github-token') == '') {
+  var token = wx.getStorageSync('github-token')
+  if (data.type == 'post' && (token == undefined || token == '')) {
     wx.showToast({
       title: '未设置 Token',
       icon: 'error',
       duration: 6000
     })
     return
+  }
+  if (token) {
+    data['token'] = token
   }
   wx.cloud.callFunction({
     name: version,
