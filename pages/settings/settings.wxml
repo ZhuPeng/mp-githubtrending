@@ -9,6 +9,14 @@
     placeholder="Hello World"
     bind:change="onChange"
   />
+
+  <van-field
+    value="{{ token }}"
+    clearable
+    label="Token"
+    placeholder="xxxyyyzzz"
+    bind:change="onTokenChange"
+  />
 </van-cell-group>
 </view>
 </view>

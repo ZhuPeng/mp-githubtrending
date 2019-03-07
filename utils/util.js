@@ -14,6 +14,7 @@ module.exports = {
   isGitHubPage,
   GetPercent,
   timeAgo,
+  toast,
 }
 
 function timeAgo(d) {
@@ -56,10 +57,14 @@ function copyOnlyText(text) {
   wx.setClipboardData({
     data: text,
     success() {
-      wx.hideToast()
-      Toast('复制成功 ' + text)
+      toast('复制成功 ' + text)
     }
   })
+}
+
+function toast(text) {
+  wx.hideToast()
+  Toast(text)
 }
 
 const CodeFileExtentsions = {

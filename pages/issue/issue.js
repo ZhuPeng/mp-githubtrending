@@ -15,7 +15,7 @@ Page({
       wx.showToast({
         icon: 'none',
         title: 'Content was empty!',
-        duration: 2000
+        duration: 4000
       })
     }
     var owner = 'ZhuPeng'
@@ -25,8 +25,8 @@ Page({
       console.log(c)
       wx.showToast({
         icon: 'none',
-        title: 'Success',
-        duration: 2000
+        title: 'Create Success',
+        duration: 4000
       })
       wx.navigateTo({
         url: '/pages/issue/issue?issue=' + c.issue_url,
