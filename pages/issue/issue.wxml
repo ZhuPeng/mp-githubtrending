@@ -2,10 +2,12 @@
 
 <md md="\> {{issue.user.login}}  {{issue.created_at}}" />
 <md md="{{issue.body}}"/>
+<wux-divider show-text="{{ false }}"></wux-divider>
 
 <block wx:for-items="{{comments}}" wx:key="{{item.id}}">
   <md md="\> {{item.user.login}}  {{item.created_at}}" />
   <md md="{{item.body}}"/>
+  <wux-divider show-text="{{ false }}"></wux-divider>
 </block>
 
 <van-cell-group>

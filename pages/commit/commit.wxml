@@ -1,10 +1,12 @@
 <md md="## {{ commit.commit.message}}" />
 
 <md md="\> {{commit.commit.author.name}}  + {{commit.stats.additions}} -{{commit.stats.deletions}}  {{commit.commit.author.date}}" />
+<wux-divider show-text="{{ false }}"></wux-divider>
 
 <block wx:for-items="{{commit.files}}" wx:key="{{item.sha}}">
   <md md="\> +{{item.additions}} -{{item.deletions}}  {{item.filename}}" />
   <md md="{{'```' + item.extension + '\\n' + item.patch + '\\n```'}}"/>
+  <wux-divider show-text="{{ false }}"></wux-divider>
 </block>
 
 <fabbutton/>
