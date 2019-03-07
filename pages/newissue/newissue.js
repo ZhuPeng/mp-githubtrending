@@ -24,9 +24,19 @@ Page({
         duration: 2000
       })
     }
-    var suffix = '\n\n> From WeChat Mini Programe [GitHub Trending Hub](https://github.com/ZhuPeng/mp-githubtrending)'
-    cloudclient.callFunction({ type: 'createissue', owner: 'ZhuPeng', repo: 'mp-githubtrending', title: this.data.title, body: this.data.content + suffix}, function (c) {
+    var owner = 'ZhuPeng'
+    var repo = 'mp-githubtrending'
+    var suffix = '\n\n\n> From WeChat Mini Programe: [GitHub Trending Hub](https://github.com/ZhuPeng/mp-githubtrending)'
+    cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues', title: this.data.title, body: this.data.content + suffix}, function (c) {
       console.log(c)
+      wx.showToast({
+        icon: 'none',
+        title: 'Success',
+        duration: 2000
+      })
+      wx.navigateTo({
+        url: '/pages/issue/issue?issue=' + c.url,
+      })
     })
   },
 

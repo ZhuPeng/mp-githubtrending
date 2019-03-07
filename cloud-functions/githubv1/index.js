@@ -148,13 +148,8 @@ async function execute(owner, repo, type, path, openid, ref, data) {
       d = await octokit.request('GET ' + path)
     }
     return {content: d['data']}
-  } else if (type == 'createissue') {
-    var d = await octokit.issues.create(data)
-    return { content: d['data'] }
   } else if (type == 'post') {
-    console.log('post: ', data)
     var d = await octokit.request('POST ' + path, {data: data})
-    console.log('response: ', d)
     return { content: d['data'] }
   }
   
