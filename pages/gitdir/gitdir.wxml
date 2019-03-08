@@ -1,0 +1,8 @@
+<githead owner="{{owner}}" repo="{{repo}}"/>
+
+<view class="margin-left-right">
+<block wx:for-items="{{list}}" wx:key="{{item.sha}}">
+  <navigator wx:if="{{item.type=='dir'}}" url="{{'/pages/gitdir/gitdir?owner=' + owner + '&repo=' + repo + '&apiurl=' + item.url}}" style="color: blue">{{item.name}}</navigator>
+  <navigator wx:if="{{item.type!='dir'}}" url="{{'/pages/gitfile/gitfile?owner=' + owner + '&repo=' + repo + '&file=' + item.path}}" style="color: blue">{{item.name}}</navigator>
+</block>
+</view>

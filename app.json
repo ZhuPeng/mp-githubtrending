@@ -10,7 +10,8 @@
     "pages/search/search",
     "pages/issue/issue",
     "pages/commit/commit",
-    "pages/newissue/newissue"
+    "pages/newissue/newissue",
+    "pages/gitdir/gitdir"
   ],
   "window": {
     "backgroundTextStyle": "light",

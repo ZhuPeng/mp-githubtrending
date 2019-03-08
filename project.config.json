@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 15,
 			"list": [
 				{
 					"id": -1,
@@ -140,6 +140,13 @@
 					"name": "NewIssue",
 					"pathName": "pages/newissue/newissue",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 15,
+					"name": "Dir",
+					"pathName": "pages/gitdir/gitdir",
+					"query": "apiurl=https://api.github.com/repos/ZhuPeng/mp-githubtrending/contents&owner=ZhuPeng&repo=mp-githubtrending",
 					"scene": null
 				}
 			]
