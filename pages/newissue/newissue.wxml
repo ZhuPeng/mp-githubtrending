@@ -1,3 +1,5 @@
+<githead url="{{repourl}}"/>
+
 <van-cell-group>
   <van-field
     value="{{ title }}"

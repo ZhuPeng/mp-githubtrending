@@ -1,4 +1,5 @@
-<md md="## {{issue.title}}" />
+<githead url="{{issue.html_url}}"/>
+<md md="## {{issue.title}} #{{issue.number}}" />
 
 <md md="\> {{issue.user.login}}  {{issue.created_at}}" />
 <md md="{{issue.body}}"/>
