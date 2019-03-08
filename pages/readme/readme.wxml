@@ -19,7 +19,7 @@
         <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
 
         <view class="flex-wrp margin-left-right">
-          <wux-button class="padding-right" wx:if="{{readme}}" bind:click="onCodeClick" block type="balanced">View Code</wux-button>
+          <wux-button class="padding-right" wx:if="{{readme}}" bind:click="onCodeClick" block type="dark">View Code</wux-button>
           <wux-button wx:if="{{readme}}" bind:click="onButtonClick" block type="balanced">New Issue</wux-button>
         </view>
       </van-tab>
