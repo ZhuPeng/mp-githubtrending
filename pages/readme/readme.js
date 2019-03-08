@@ -22,6 +22,14 @@ Page({
     })
   },
 
+  onCodeClick: function () {
+    var {owner, repo} = this.data.query
+    var apiurl = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents'
+    wx.navigateTo({
+      url: '/pages/gitdir/gitdir?owner=' + owner + '&repo=' + repo + '&apiurl=' + apiurl,
+    })
+  },
+
   getMeta: function () {
     var self = this;
     cloudclient.callFunction({ type: 'get', path: '/repos/' + self.data.query.owner + '/' + self.data.query.repo}, function (c) {
