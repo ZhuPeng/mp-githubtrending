@@ -1,4 +1,5 @@
 const dbutil = require('../../utils/db.js')
+const cloudclient = require('../../utils/cloudclient.js')
 const app = getApp()
 const db = dbutil.getDB()
 const _ = db.command
@@ -133,9 +134,18 @@ Page({
       this.setData({ list: curList })
   },
 
+  searchGithub(value) {
+    var url = '/search/repositories?per_page=10&q=' + value
+    var self = this
+    cloudclient.callFunction({ type: 'get', path: url }, function (c) {
+      self.appendList(c.items)
+    })
+  },
+
   onSearch: function(e) {
       this.setData({
-        searchValue: e.detail
+        searchValue: e.detail,
+        spinning: true
       })
       console.log("searchValue:", this.data.searchValue)
       this.search(e.detail, false)
@@ -166,7 +176,11 @@ Page({
         this.appendList(res.data)
       }else {
         this.setData({list: res.data})
+        if (res.data.length <= 5) {
+          this.searchGithub(val)
+        }
       }
+      this.setData({spinning: false})
     })
   },
 

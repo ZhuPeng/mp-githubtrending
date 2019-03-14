@@ -23,7 +23,7 @@ Component({
       console.log('lhandle ist:', this.data.list)
       var parsedList = []
       this.data.list.map(d => {
-        d.timeago = util.timeAgo(d[this.data.timeKey])
+        d.timeago = util.timeAgo(d[this.data.timeKey] || d['updated_at'] || '')
         parsedList.push(d)
       })
       this.setData({parsedList})
