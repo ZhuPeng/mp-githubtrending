@@ -32,6 +32,12 @@ Component({
 		richTextNodes: []
     },
     methods: {
+        onImgTap(e) {
+          wx.previewImage({
+            current: e.target.dataset.text, 
+            urls: [e.target.dataset.text]
+          })
+        },
         onTap(e) {
             var clickurl = e.target.dataset.text
             if(clickurl.startsWith('#')) {

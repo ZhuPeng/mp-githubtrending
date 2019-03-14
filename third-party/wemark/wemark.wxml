@@ -16,12 +16,12 @@
 			<text class="wemark_inline_code_{{renderInline.type}}" wx:if="{{renderInline.type&&renderBlock.highlight}}">{{renderInline.content}}</text>
 			<text class="wemark_inline_code_text" wx:if="{{!renderInline.type}}">{{renderInline}}</text>
 			<navigator bindtap="onTap" data-text="{{renderInline.data.href}}" class="wemark_inline_link" url="{{renderInline.data.href}}" wx:if="{{renderInline.type === 'link'}}">{{renderInline.content}}</navigator>
-			<image mode="widthFix" class="wemark_inline_image" src="{{renderInline.src}}" wx:if="{{renderInline.type === 'image'}}"></image>
+			<image bindtap="onImgTap" data-text="{{renderInline.src}}" mode="widthFix" class="wemark_inline_image" src="{{renderInline.src}}" wx:if="{{renderInline.type === 'image'}}"></image>
 		</block>
 		<block wx:if="{{!renderBlock.isArray}}">
 			<view wx:if="{{renderBlock.type === 'code'}}">{{renderBlock.content}}</view>
 			<video wx:if="{{renderBlock.type == 'video'}}" class="wemark_block_video" src="{{renderBlock.src}}" poster="{{renderBlock.poster}}" controls></video>
-            <image mode="widthFix" class="wemark_inline_image" src="{{renderBlock.src}}" wx:if="{{renderBlock.type === 'image'}}"></image>
+            <image bindtap="onImgTap" data-text="{{renderBlock.src}}" mode="widthFix" class="wemark_inline_image" src="{{renderBlock.src}}" wx:if="{{renderBlock.type === 'image'}}"></image>
             <text class="wemark_inline_{{renderInline.type}}" wx:if="{{renderBlock.type === 'text'}}">{{renderBlock.content}}</text>
 		</block>
 	</view>
