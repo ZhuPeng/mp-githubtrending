@@ -63,9 +63,12 @@ Page({
     return col
   },
 
-  loadData: function() {
+  loadData: function(more) {
+    if (!more) {
+      this.setData({list: []})
+    }
     if (this.data.searchValue) {
-      this.search(this.data.searchValue, true)
+      this.search(this.data.searchValue)
     } else {
       this.getCollection().orderBy(this.getOrder(), 'desc').skip(this.data.list.length).get().then(res => {
         this.appendList(res.data)
@@ -78,13 +81,13 @@ Page({
     console.log("onPulldowRefresh")
     this.setData({list: [], spinning: true})
     setTimeout(() => {
-      this.loadData()
+      this.loadData(true)
       wx.stopPullDownRefresh()
     }, 3000)
   },
 
   onLoad: function () {
-    this.loadData()
+    this.loadData(false)
   },
 
   actionSheetTapOrder() {
@@ -123,7 +126,7 @@ Page({
 
   onReachBottom: function(e) {
     console.log("onReachBotton:", e)
-    this.loadData()
+    this.loadData(true)
   },
 
   appendList: function(newList) {
@@ -145,7 +148,8 @@ Page({
   onSearch: function(e) {
       this.setData({
         searchValue: e.detail,
-        spinning: true
+        spinning: true,
+        list: []
       })
       console.log("searchValue:", this.data.searchValue)
       this.search(e.detail, false)
@@ -155,7 +159,7 @@ Page({
     return this.data.orderMap[this.data.order]
   },
 
-  search: function(val, more) {
+  search: function(val) {
     console.log("search:", val)
     val = val.trim()
     this.getCollection().where(_.or([
@@ -171,14 +175,10 @@ Page({
           options: 'i',
         })
       }
-    ])).orderBy(this.getOrder(), 'desc').skip(more ? this.data.list.length : 0).get().then(res => {
-      if (more) {
-        this.appendList(res.data)
-      }else {
-        this.setData({list: res.data})
-        if (res.data.length <= 5) {
-          this.searchGithub(val)
-        }
+    ])).orderBy(this.getOrder(), 'desc').skip(this.data.list.length).get().then(res => {
+      this.appendList(res.data)
+      if (res.data.length + this.data.list.length <= 5) {
+        this.searchGithub(val)
       }
       this.setData({spinning: false})
     })
