@@ -1,7 +1,7 @@
 <githead url="{{commit.html_url}}"/>
 <md md="## {{ commit.commit.message}}" />
 
-<md md="\> {{commit.commit.author.name}}  +{{commit.stats.additions}} -{{commit.stats.deletions}}  {{commit.commit.author.date}}" />
+<avatar action="committed" url="{{commit.author.avatar_url}}" login="{{commit.commit.author.name}}" created_at="{{commit.commit.author.date}}" diff="+{{commit.stats.additions}} -{{commit.stats.deletions}}" />
 <wux-divider show-text="{{ false }}"></wux-divider>
 
 <block wx:for-items="{{commit.files}}" wx:key="{{item.sha}}">

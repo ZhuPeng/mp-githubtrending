@@ -51,6 +51,7 @@
     "fabbutton": "pages/component/fabbutton/fabbutton",
     "md": "pages/component/md/md",
     "repolist": "pages/component/repolist/repolist",
+    "avatar": "pages/component/avatar/avatar",
     "githead": "pages/component/githead/githead"
   },
   "plugins": {}
