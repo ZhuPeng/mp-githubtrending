@@ -138,10 +138,12 @@ Page({
   },
 
   searchGithub(value) {
-    var url = '/search/repositories?per_page=10&q=' + value
+    var url = '/search/repositories?per_page=10&page=' + (this.data.list.length/10+1) + '&q=' + value
     var self = this
     cloudclient.callFunction({ type: 'get', path: url }, function (c) {
-      self.appendList(c.items)
+      if (self.data.list.length < c.total_count) {
+        self.appendList(c.items)
+      }
     })
   },
 
@@ -161,7 +163,10 @@ Page({
 
   search: function(val) {
     console.log("search:", val)
-    val = val.trim()
+    if (val) {
+      val = val.trim()
+    }
+    this.searchGithub(val)
     this.getCollection().where(_.or([
       {
         repo: db.RegExp({
@@ -177,11 +182,8 @@ Page({
       }
     ])).orderBy(this.getOrder(), 'desc').skip(this.data.list.length).get().then(res => {
       this.appendList(res.data)
-      if (res.data.length + this.data.list.length <= 5) {
-        this.searchGithub(val)
-      }
-      this.setData({spinning: false})
     })
+    this.setData({ spinning: false })
   },
 
   onShareAppMessage: function () {
