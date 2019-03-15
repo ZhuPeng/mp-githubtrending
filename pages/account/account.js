@@ -6,6 +6,7 @@ Page({
     owner: wx.getStorageSync("github-name") || '',
     list: [],
     repos: [],
+    events: [],
     showHistory: false,
   },
   
@@ -27,6 +28,20 @@ Page({
     if (this.data.owner == "") {return}
     cloudclient.callFunction({ type: 'get', path: '/users/' + this.data.owner}, function(d){
       self.setData({meta: d})
+    })
+  },
+
+  loadNotifications: function () {
+    var self = this
+    if (this.data.owner == "" || !wx.getStorageSync('github-token')) { return }
+    cloudclient.callFunction({ type: 'get', path: '/users/' + this.data.owner + '/events?per_page=10&page=' + (this.data.events.length/10+1)}, function (d) {
+      var events = self.data.events
+      d.map(function(e) {
+        e.repo = e.repo.name || e.repo
+        e.desc = e.type + ' by ' + e.actor.login
+        events.push(e)
+      })
+      self.setData({ events })
     })
   },
 
@@ -68,6 +83,7 @@ Page({
     if (options.history) {
       this.setData({showHistory: true})
     }  
+    this.loadNotifications()
   },
 
   onShow: function() {

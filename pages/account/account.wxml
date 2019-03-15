@@ -22,6 +22,9 @@
     <van-tab title='Repos'>
       <repolist list="{{repos}}" timeKey="updated_at"/>
     </van-tab>
+    <van-tab title='Events'>
+      <repolist list="{{events}}" timeKey="created_at"/>
+    </van-tab>
     <van-tab wx:if="{{showHistory}}" title="History">
       <repolist list="{{list}}" timeKey="requesttime"/>
     </van-tab>
