@@ -40,14 +40,14 @@
 
       <van-tab title="Commits">
         <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
-        <view class=".margin-left-right" >
+        <view class="margin-left-right" >
         <block wx:for-items="{{commits}}" wx:key="{{item.sha}}">
-          <view>
+          <view class="commit">
           <navigator url="{{'/pages/commit/commit?url=' + item.url}}" >
           <view class="weui-media-box__title">{{item.commit.message}}</view>
-          <view class="weui-media-box__desc">
-          <wux-tag>{{item.commit.author.email}}</wux-tag>
-          <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.commit.author.date}}" lang="en" /></wux-tag>
+          <view class="weui-media-box__desc commit">
+            <wux-tag>{{item.commit.author.email}}</wux-tag>
+            <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.commit.author.date}}" lang="en" /></wux-tag>
           </view>
           <view class="padding"><wux-divider show-text="{{ false }}"></wux-divider></view>
           </navigator>

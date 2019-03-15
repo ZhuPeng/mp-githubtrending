@@ -18,3 +18,7 @@
 .padding-top {
   margin-top: 80rpx;
 }
+
+.commit {
+  margin-top: 15rpx;
+}
