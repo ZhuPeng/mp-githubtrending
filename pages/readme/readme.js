@@ -36,6 +36,11 @@ Page({
       console.log('meta: ', c)
       var meta = { 'fork': c.forks_count, 'star': c.stargazers_count, 'lang': c.language, url: c.html_url, 'desc': c.description, 'issue_count': c.open_issues_count, 'created_at': c.created_at}
         self.setData({ meta })
+
+        // preload
+        self.getGitHubData("commits")
+        self.getGitHubData("issues")
+        self.genStatsMd(true)
     })
   },
 
@@ -46,10 +51,10 @@ Page({
     var dbrepo = arr[0].trim() + " / " + arr[1].trim()
     this.setData({query: {owner: arr[0].trim(), repo: arr[1].trim()}})
     var self = this
-    self.getMeta()
     self.getGitHubData("readme", function preprocess(content) {
       return util.base64Decode(content)
     })
+    self.getMeta()
   },
 
   onClick(event) {
