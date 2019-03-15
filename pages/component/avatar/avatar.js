@@ -27,6 +27,13 @@ Component({
   },
 
   methods: {
+    onImgTap(e) {
+      wx.previewImage({
+        current: e.target.dataset.text,
+        urls: [e.target.dataset.text]
+      })
+    },
+    
     handleTimeago: function () {
       this.setData({ timeago: util.timeAgo(this.data.created_at)})
     },
