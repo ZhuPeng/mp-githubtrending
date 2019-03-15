@@ -2,7 +2,7 @@
 <block>
   <image class="userinfo-avatar" src="{{url}}" mode="cover"></image>
 </block>
-<view >
+<view class="action-info">
   <navigator url="{{'/pages/account/account?owner=' + login}}" style="color: blue;">{{login}}</navigator>
   <view>{{action}} {{timeago}}</view>
 </view>

@@ -10,3 +10,8 @@
   flex-direction: row;
   align-items: left;
 }
+
+.action-info {
+  margin: 20rpx;
+  font-size: 17px;
+}
