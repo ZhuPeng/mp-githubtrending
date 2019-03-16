@@ -1,0 +1,2 @@
+<van-toast id="van-toast" />
+<md md="{{blogmd}}" />

@@ -11,7 +11,8 @@
     "pages/issue/issue",
     "pages/commit/commit",
     "pages/newissue/newissue",
-    "pages/gitdir/gitdir"
+    "pages/gitdir/gitdir",
+    "pages/blog/blog"
   ],
   "window": {
     "backgroundTextStyle": "light",
