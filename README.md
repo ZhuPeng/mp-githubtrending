@@ -18,6 +18,9 @@ GitHub Trending 仓库集合，以 Feed 流形式展现，能够及时查看最�
 整个小程序的后端是使用微信的云开发方式，无服务化极大的简化了小程序的运维。
 
 
+## Stargazers over time
+
+[![Stargazers over time](https://starcharts.herokuapp.com/ZhuPeng/mp-githubtrending.svg)](https://starcharts.herokuapp.com/ZhuPeng/mp-githubtrending)
 
 ## 依赖的开源项目
 
