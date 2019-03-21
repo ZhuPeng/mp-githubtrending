@@ -29,7 +29,7 @@ function parse(md, options){
 	var orderNum = [0, 0];
 	var tmp;
   var parseHtml = function(html, ret) {
-    var list = [/<h2.*?>(.*?)<\/h2>/g, /<h1.*?>(.*?)<\/h1>/g, /<p.*?>(.*?)<\/p>/g]
+    var list = [/<h2.*?>(.*?)<\/h2>/g, /<h1.*?>(.*?)<\/h1>/g, /<p.*?>(.*?)<\/p>/g, /<a.*?>(.*?)<\/a>/g]
     var match;
     list.map(function(p) {
       while (match = p.exec(html)) {
@@ -44,7 +44,7 @@ function parse(md, options){
 		var ret = [];
 		var env;
 		var tokenData = {};
-		if(inlineToken.type === 'htmlblock' || (inlineToken.type === 'inline' && inlineToken.content.startsWith('<'))){
+    if (inlineToken.type === 'htmlblock' || (inlineToken.type === 'inline' && inlineToken.content.startsWith('<') && inlineToken.content.endsWith('>'))){
 			// 匹配video
 			// 兼容video[src]和video > source[src]
 			var videoRegExp = /<video.*?src\s*=\s*['"]*([^\s^'^"]+).*?(poster\s*=\s*['"]*([^\s^'^"]+).*?)?(?:\/\s*>|<\/video>)/g;
