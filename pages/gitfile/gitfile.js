@@ -42,10 +42,14 @@ Page({
     var md = '';
     json.cells.map(function(cell) {
       // console.log(cell)
+      var c = ""
       cell.source.map(function(s) {
-        md += s 
+        c += s
       })
-      md += '\n'
+      if (cell.cell_type == 'code') { 
+        c = "```" + 'python' + "\n" + c + "\n```";
+      }
+      md += c + '\n'
     })
     return md;
   },
