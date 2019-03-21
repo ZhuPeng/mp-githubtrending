@@ -63,7 +63,7 @@
 					"id": 3,
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
-					"query": "owner=selfteaching&repo=the-craft-of-selfteaching&file=blob/master/00.cover.ipynb",
+					"query": "owner=selfteaching&repo=the-craft-of-selfteaching&file=T-appendix.jupyter-installation-and-setup.ipynb",
 					"scene": null
 				},
 				{
