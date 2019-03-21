@@ -29,8 +29,24 @@ Page({
       if (code) {
         content = "```" + code + "\n" + content + "\n```";
       }
+      if (file.endsWith('ipynb')) {
+        content = self.convertIpynb(content)
+      }
       self.setData({ content: content, spinning: false})
     })
+  },
+
+  convertIpynb: function (content) {
+    var json = JSON.parse(content)
+    if (!json.cells) {return content}
+    var md = '';
+    json.cells.map(function(cell) {
+      // console.log(cell)
+      cell.source.map(function(s) {
+        md += s + '\n'
+      })
+    })
+    return md;
   },
 
   onShareAppMessage: function () {

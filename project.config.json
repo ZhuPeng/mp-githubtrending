@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -63,7 +63,7 @@
 					"id": 3,
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
-					"query": "owner=ZhuPeng&repo=grab_huaban_board&file=blob/master/花瓣备份指南.md",
+					"query": "owner=selfteaching&repo=the-craft-of-selfteaching&file=blob/master/00.cover.ipynb",
 					"scene": null
 				},
 				{
