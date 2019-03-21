@@ -83,6 +83,7 @@ const CodeFileExtentsions = {
   'R': 'R',
   'swift': 'swift',
   'wxml': 'html',
+  'ipynb': 'ipynb'
 }
 
 function isCodeFile(file) {

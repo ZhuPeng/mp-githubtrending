@@ -26,12 +26,12 @@ Page({
     cloudclient.callFunctionWithRawResponse({repo: options.repo, owner: options.owner, path: file, type: 'file', ref: ref}, function(d) {
       var content = util.base64Decode(d.content)
       var code = util.isCodeFile(file)
-      if (code) {
-        content = "```" + code + "\n" + content + "\n```";
-      }
       if (file.endsWith('ipynb')) {
         content = self.convertIpynb(content)
+      } else if (code) {
+        content = "```" + code + "\n" + content + "\n```";
       }
+      
       self.setData({ content: content, spinning: false})
     })
   },

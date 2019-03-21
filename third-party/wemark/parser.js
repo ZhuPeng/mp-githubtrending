@@ -28,7 +28,17 @@ function parse(md, options){
 	// 记录第N级ol的顺序
 	var orderNum = [0, 0];
 	var tmp;
-
+  var parseHtml = function(html, ret) {
+    var list = [/<h2.*?>(.*?)<\/h2>/g, /<h1.*?>(.*?)<\/h1>/g, /<p.*?>(.*?)<\/p>/g]
+    var match;
+    list.map(function(p) {
+      while (match = p.exec(html)) {
+        if (match[1]) {
+          ret.push({ type: 'text', content: match[1] })
+        }
+      }
+    })
+  }
 	// 获取inline内容
 	var getInlineContent = function(inlineToken){
 		var ret = [];
@@ -39,8 +49,6 @@ function parse(md, options){
 			// 兼容video[src]和video > source[src]
 			var videoRegExp = /<video.*?src\s*=\s*['"]*([^\s^'^"]+).*?(poster\s*=\s*['"]*([^\s^'^"]+).*?)?(?:\/\s*>|<\/video>)/g;
             var imgRegExp = /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*|<\/img)?>/g;
-            var p = /<p>(.*?)<\/p>/g;
-            var h2 = /<h2.*?>(.*?)<\/h2>/g;
             
 	          	var match;
 	          	var html = inlineToken.content.replace(/\n/g, '');
@@ -50,16 +58,8 @@ function parse(md, options){
                 ret.push({type: 'image', src: urlModify(options.baseurl, match[1])});
               }
             }
-            while(match = p.exec(html)) {
-              if (match[1]) {
-                ret.push({type: 'text', content: match[1]})
-              }
-            }
-            while (match = h2.exec(html)) {
-              if (match[1]) {
-                ret.push({ type: 'text', content: match[1] })
-              }
-            }
+            parseHtml(html, ret)
+
 			while(match = videoRegExp.exec(html)){
 				if(match[1]){
 					var retParam = {
