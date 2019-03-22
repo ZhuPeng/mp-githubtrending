@@ -3,7 +3,7 @@
   <image bindtap="onImgTap" data-text="{{url}}" class="userinfo-avatar" src="{{url}}" mode="cover"></image>
 </block>
 <view class="action-info">
-  <navigator url="{{'/pages/account/account?owner=' + login}}" style="color: blue;">{{login}}</navigator>
+  <navigator url="{{'/pages/account/account?owner=' + login}}" style="color: blue;">{{login}}    <wux-tag wx:if="{{tag != 'NONE' && tag != ''}}" size="13">{{tag}}</wux-tag></navigator>
   <view>{{action}} {{timeago}}</view>
 </view>
 </view>

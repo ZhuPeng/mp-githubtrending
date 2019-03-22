@@ -13,6 +13,10 @@ Component({
       type: String,
       value: ''
     },
+    tag: {
+      type: String,
+      value: ''
+    },
     created_at: {
       type: String,
       value: '',
