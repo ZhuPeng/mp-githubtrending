@@ -90,6 +90,7 @@ Page({
       if ((!c || c.length == 0) && retry) { 
         self.setData({ spinning: false, stats: c, statsMd })
         self.genStatsMd(false)
+        return
       }
       var total = 0;
       c.map(function (s) {
