@@ -24,7 +24,7 @@ Page({
     this.setData({file: file, spinning: true, owner: options.owner, repo: options.repo})
     var self = this;
     cloudclient.callFunctionWithRawResponse({repo: options.repo, owner: options.owner, path: file, type: 'file', ref: ref}, function(d) {
-      var content = util.base64Decode(d.content)
+      var content = util.base64Decode(d.content || 'No data found, may be network broken.')
       var code = util.isCodeFile(file)
       if (file.endsWith('ipynb')) {
         content = self.convertIpynb(content)

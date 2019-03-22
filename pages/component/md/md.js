@@ -23,7 +23,7 @@ Component({
   methods: {
     onMDClick(e) {
       var clickurl = e.detail.currentTarget.dataset.text
-      var text = e.detail._relatedInfo.anchorTargetText
+      var text = e.detail._relatedInfo.anchorTargetText || 'No anchorTargetText found'
       console.log("onMDClick url:", clickurl, text)
       var filepath = clickurl
       var owner = this.data.owner
