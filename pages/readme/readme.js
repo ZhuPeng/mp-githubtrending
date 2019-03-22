@@ -77,12 +77,17 @@ Page({
   genStatsMd: function(retry) {
     var self = this
     var repo = this.data.query.owner + '/' + this.data.query.repo
+    var starHistory = 'https://starcharts.herokuapp.com/' + repo
+    var statsMd = '## Stargazers over time\n\n[![Stargazers over time](' + starHistory + '.svg)](' + starHistory + ')\n'
+
+    statsMd += '## Summary\n\n'
+    statsMd += 'Repo Age: ' + util.timeAgo(self.data.meta.created_at) + '\n\n'
+    this.setData({statsMd})
+
     cloudclient.callFunction({
       type: 'get', path: '/repos/' + repo + '/stats/contributors'
     }, function (c) {
-      var statsMd = '## Summary\n\n'
-      statsMd += 'Repo Age: ' + util.timeAgo(self.data.meta.created_at) + '\n\n'
-      if (c.length == 0 && retry) { 
+      if ((!c || c.length == 0) && retry) { 
         self.setData({ spinning: false, stats: c, statsMd })
         self.genStatsMd(false)
       }
@@ -91,9 +96,7 @@ Page({
         total += s.total
       })
       statsMd += 'Commits: ' + total + '\n'
-
-      var statsHistory = 'https://starcharts.herokuapp.com/' + repo
-      statsMd += '## Stargazers over time\n\n[![Stargazers over time](' + statsHistory + '.svg)](' + statsHistory + ')\n'
+      
       statsMd += '## Authors\n\n'
       statsMd += 'Commit Count | Author | Percentage \n-- | -- | -- \n'
       c.reverse().map(function (s) {
