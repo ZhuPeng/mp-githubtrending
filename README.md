@@ -9,6 +9,7 @@ GitHub Trending 仓库集合，以 Feed 流形式展现，能够及时查看最�
 ## 文档
 
 * [公众号文章链接 GitHub 仓库指南](doc/api.md)
+* [适合手机查看的优秀仓库合集](doc/excellent_repo_for_mobile_reading.md)
 * [使用文档](doc/help.md)
 
 
