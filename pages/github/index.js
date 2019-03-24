@@ -6,6 +6,8 @@ const _ = db.command
 
 Page({
   data: {
+    interval: 5000,
+    duration: 1000,
     searchValue: "",
     sheetShow: false,
     order: wx.getStorageSync('github-order') || '时间',
@@ -21,6 +23,17 @@ Page({
     orderList: ['时间', 'Star', 'Fork'],
     orderMap: {'时间': '_crawl_time', 'Star': 'star', 'Fork': 'fork'},
     spinning: true
+  },
+
+  getLastestBlog: function () {
+    var self = this
+    wx.request({
+      url: 'http://39.106.218.104:5000/api/items?jobname=blogcoreos',
+      success(res) {
+        console.log('bloglist:', res.data)
+        self.setData({ blogList: res.data })
+      }
+    })
   },
 
   onSheetClose() {
@@ -87,6 +100,7 @@ Page({
   },
 
   onLoad: function () {
+    this.getLastestBlog()
     this.loadData(false)
   },
 

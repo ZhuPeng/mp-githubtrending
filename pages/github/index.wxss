@@ -1,3 +1,8 @@
+.slide-image {
+  width: 100%;
+  height: auto;
+}
+
 .search .van-search {
   padding: 7px 18rpx;
 }

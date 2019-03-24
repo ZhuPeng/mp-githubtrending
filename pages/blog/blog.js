@@ -7,7 +7,7 @@ Page({
   onLoad: function (options) {
     var self = this
     wx.request({
-      url: 'http://39.106.218.104:5000/api/items?jobname=' + options.name + '&id=' + options.id,
+      url: 'http://39.106.218.104:5000/api/items?jobname=' + options.jobname + '&id=' + options.id,
       success(res) {
         self.setData({blog: res.data})
         self.genMd(res.data)
