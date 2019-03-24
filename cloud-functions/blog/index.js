@@ -52,6 +52,7 @@ async function getLastest() {
     var d = await getItems(k, undefined, 6 / Object.keys(BlogMap).length)
     all.push(...d.data)
   }
+  all.sort(function (a, b) { return new Date(a['_crawl_time']) < new Date(b['_crawl_time']) }); 
   return {'data': all}
 }
 
