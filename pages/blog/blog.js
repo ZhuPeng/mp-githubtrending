@@ -32,6 +32,7 @@ Page({
       meta['article-body'] = 'No Contents'
     }
     blogmd += meta['article-body'] + '\n'
+    blogmd += '> Link: [' + meta.url + ']('+ meta.url + ')\n\n'
     this.setData({blogmd})
   },
 
