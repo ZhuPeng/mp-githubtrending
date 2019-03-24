@@ -53,6 +53,7 @@
     "md": "pages/component/md/md",
     "repolist": "pages/component/repolist/repolist",
     "avatar": "pages/component/avatar/avatar",
+    "blogcard": "pages/component/blogcard/blogcard",
     "githead": "pages/component/githead/githead"
   },
   "plugins": {}

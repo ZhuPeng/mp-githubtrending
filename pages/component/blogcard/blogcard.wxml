@@ -1,0 +1,4 @@
+<navigator url="/pages/blog/blog?id={{id}}&jobname={{jobname}}">
+  <image src="{{image_url}}" class="slide-image" />
+  <view class="title">{{title}}</view>
+</navigator>

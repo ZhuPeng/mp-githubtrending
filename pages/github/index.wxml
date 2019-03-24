@@ -3,10 +3,7 @@
     <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{blogList.data}}" wx:key="{item.id}">
       <swiper-item>
-        <navigator url="/pages/blog/blog?id={{item.id}}&jobname={{item['__tablename__']}}">
-        <image src="{{item['article-image_url']}}" class="slide-image" mode="widthFix" />
-        <view>{{item.title}}</view>
-        </navigator>
+        <blogcard id="{{item.i}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}"/>
       </swiper-item>
     </block>
   </swiper>

@@ -1,0 +1,10 @@
+.slide-image {
+  width: 100%;
+  height: 110px;
+}
+
+.title {
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.1em;
+}
