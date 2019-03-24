@@ -5,7 +5,16 @@ cloud.init()
 const BlogMap = {
   'blogcoreos': {'article-image_url': [
     'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/trackupdates/coreos.png',
-  ]}
+    ]
+  },'githubblog': {
+    'article-image_url': [
+      'https://github.blog/wp-content/uploads/2019/01/Community@2x.png',
+      'https://github.blog/wp-content/uploads/2019/01/Company@2x-2.png',
+      'https://github.blog/wp-content/uploads/2019/01/Engineering@2x.png',
+      'https://github.blog/wp-content/uploads/2019/01/Enterprise@2x-2.png',
+      'https://github.blog/wp-content/uploads/2019/01/Product@2x.png',
+    ]
+  }
 }
 
 async function getItems(jobname, id, num) {
@@ -27,7 +36,7 @@ async function getItems(jobname, id, num) {
   var base_url = data.yaml.parser_config.base_url + '/'
   if (data.data) {
     data.data.map(function (d) {
-      if (d['article-image_url'] == base_url) {
+      if (!d['article-image_url'] || d['article-image_url'] == base_url) {
         d['article-image_url'] = BlogMap[jobname]['article-image_url'][0]
       }
     })
@@ -36,7 +45,12 @@ async function getItems(jobname, id, num) {
 }
 
 async function getLastest() {
-  return await getItems('blogcoreos')
+  var all = []
+  for (var k in BlogMap) {
+    var d = await getItems(k, undefined, 6 / Object.keys(BlogMap).length)
+    all.push(...d.data)
+  }
+  return {'data': all}
 }
 
 // 云函数入口函数
