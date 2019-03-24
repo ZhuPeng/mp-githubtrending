@@ -27,12 +27,9 @@ Page({
 
   getLastestBlog: function () {
     var self = this
-    wx.request({
-      url: 'http://39.106.218.104:5000/api/items?jobname=blogcoreos',
-      success(res) {
-        console.log('bloglist:', res.data)
-        self.setData({ blogList: res.data })
-      }
+
+    cloudclient.callFunctionWithBlog({type: 'lastest'}, function (c) {
+      self.setData({ blogList: c })
     })
   },
 

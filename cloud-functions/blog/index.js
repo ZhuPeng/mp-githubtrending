@@ -35,9 +35,16 @@ async function getItems(jobname, id, num) {
   return data || {}
 }
 
+async function getLastest() {
+  return await getItems('blogcoreos')
+}
+
 // 云函数入口函数
 exports.main = async (event, context) => {
   var { type, jobname, id } = event;
+  if (type == 'lastest') {
+    return await getLastest()
+  }
 
   return await getItems(jobname, id)
 }
