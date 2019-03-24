@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 17,
 			"list": [
 				{
 					"id": -1,
@@ -160,7 +160,7 @@
 					"id": 17,
 					"name": "Blog",
 					"pathName": "pages/blog/blog",
-					"query": "name=blogcoreos&id=9",
+					"query": "jobname=blogcoreos&id=9",
 					"scene": null
 				}
 			]

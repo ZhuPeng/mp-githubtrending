@@ -1,3 +1,4 @@
+const cloudclient = require('../../utils/cloudclient.js')
 Page({
   data: {
     blog: {},
@@ -6,12 +7,10 @@ Page({
 
   onLoad: function (options) {
     var self = this
-    wx.request({
-      url: 'http://39.106.218.104:5000/api/items?jobname=' + options.jobname + '&id=' + options.id,
-      success(res) {
-        self.setData({blog: res.data})
-        self.genMd(res.data)
-      }
+
+    cloudclient.callFunctionWithBlog({ jobname: options.jobname, id: options.id }, function (c) {
+      self.setData({ blog: c })
+      self.genMd(c)
     })
   },
 
@@ -22,9 +21,6 @@ Page({
     var base_url = yaml.parser_config.base_url + '/'
     var blogmd = '> From: [' + yaml.view + '](' + meta.url + ') ' + ' \n\n'
     
-    if (meta['article-image_url'] == base_url) {
-      meta['article-image_url'] = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/trackupdates/coreos.png'
-    }
     blogmd += '![](' + meta['article-image_url'] + ')\n'
     blogmd += '## ' + meta.title + '\n\n' 
     blogmd += meta['article-date'] + ' ' + meta['article-author'] + '\n\n'

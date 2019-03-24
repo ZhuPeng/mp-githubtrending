@@ -1,5 +1,6 @@
 module.exports = {
   callFunction,
+  callFunctionWithBlog,
   callFunctionWithRawResponse
 }
 const version = 'githubv1'
@@ -35,11 +36,19 @@ function callFunction(data, completeFunc) {
 }
 
 function callFunctionWithRawResponse(data, completeFunc) {
+  callFunctionWithName(version, data, completeFunc)
+}
+
+function callFunctionWithName(apiname, data, completeFunc) {
   wx.cloud.callFunction({
-    name: version,
+    name: apiname,
     data: data,
     complete: res => {
       completeFunc(res.result)
     },
   })
+}
+
+function callFunctionWithBlog(data, completeFunc) {
+  callFunctionWithName('blog', data, completeFunc)
 }
