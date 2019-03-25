@@ -38,8 +38,7 @@ async function getItems(jobname, id, num) {
     data.data.map(function (d) {
       if (!d['article-image_url'] || d['article-image_url'] == base_url) {
         var images = BlogMap[jobname]['article-image_url']
-        var index = Math.floor(Math.random() * images.length);
-        d['article-image_url'] = images[index]
+        d['article-image_url'] = images[d.id % images.length]
       }
     })
   }
