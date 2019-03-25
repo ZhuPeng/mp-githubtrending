@@ -3,7 +3,7 @@
     <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{blogList.data}}" wx:key="{item.id}">
       <swiper-item>
-        <blogcard id="{{item.i}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}"/>
+        <blogcard blogid="{{item.id}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}"/>
       </swiper-item>
     </block>
   </swiper>

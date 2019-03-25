@@ -1,7 +1,7 @@
 Component({
   properties: {
-    id: {
-      type: Int32Array,
+    blogid: {
+      type: String,
       value: ''
     },
     title: {
