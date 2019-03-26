@@ -11,7 +11,13 @@ Page({
 
   onLoad: function (options) {
     var file = options.file
-    wx.setNavigationBarTitle({title: file})
+    if (!options.repo && !options.owner) {
+      var [owner, repo, filepath] = util.parseGitHub(file)
+      file = filepath
+      options.repo = repo
+      options.owner = owner
+    }
+    wx.setNavigationBarTitle({ title: file })
     var ref = 'master'
     if (file.startsWith('./')) {file = file.slice(2)}
     if (file.startsWith('blob/') || file.startsWith('tree/')) {

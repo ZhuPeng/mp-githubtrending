@@ -1,4 +1,4 @@
-<navigator url="/pages/blog/blog?id={{blogid}}&jobname={{jobname}}">
+<view bindtap="onClick">
   <image src="{{image_url}}" class="slide-image" />
   <view class="title">{{title}}</view>
-</navigator>
+</view>
