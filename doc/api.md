@@ -1,3 +1,5 @@
+![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/WechatGithub.jpeg)
+
 微信公众号对外链的访问有严格的控制，文章中除特殊的链接都不能点击，但是对小程序的跳转是没有限制的。故提供如下能力，在公众号文章中可以插入 GitHub 仓库的小程序链接，方便访问仓库的详情提升阅读体验。
 
 公众号写作过程中在编辑器中点击小程序，搜索 `GitHub Trending Hub` 即可添加。
@@ -5,6 +7,12 @@
 ![image-20190204010240928](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/mini.png)
 
 在小程序路径填写要访问的 GitHub 地址，如 `https://github.com/ZhuPeng/mp-githubtrending` 会自动转换为小程序可以识别的页面路由
+
+***
+
+分割线。后续是小程序内详细 API 的介绍，只需要按上面的操作在公众号添加 GitHub 对应的链接即可。
+
+
 
 
 ## 个人账户页
