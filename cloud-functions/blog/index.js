@@ -1,10 +1,11 @@
 const cloud = require('wx-server-sdk')
 var rp = require('request-promise');
 cloud.init()
+const baseUrl = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la'
 
 const BlogMap = {
   'blogcoreos': {'article-image_url': [
-    'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/trackupdates/coreos.png',
+    baseUrl + '/trackupdates/coreos.png',
     ]
   },'githubblog': {
     'article-image_url': [
@@ -51,8 +52,8 @@ async function getLastestGitHubBlog() {
     '__tablename__': 'github',
     'title': '微信公众号文章链接 GitHub 仓库指南',
     'url': 'https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/api.md',
-    '_crawl_time': '2019-03-27', 
-    'article-image_url': 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/trackupdates/coreos.png',
+    '_crawl_time': '2019-04-10', 
+    'article-image_url': baseUrl + '/mp-githubtrending/WechatGithub.jpeg',
     }]
 }
 
