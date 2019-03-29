@@ -8,9 +8,7 @@
 
 在小程序路径填写要访问的 GitHub 地址，如 `https://github.com/ZhuPeng/mp-githubtrending` 会自动转换为小程序可以识别的页面路由
 
-***
-
-分割线。后续是小程序内详细 API 的介绍，只需要按上面的操作在公众号添加 GitHub 对应的链接即可。
+后续是小程序详细 API 的介绍，如果只需要在公众号添加 GitHub 对应的链接，按上面的操作即可。
 
 
 
