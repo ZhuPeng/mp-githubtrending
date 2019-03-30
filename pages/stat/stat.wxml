@@ -1,4 +1,0 @@
-<md md="{{total}}"></md>
-<md md="{{devtotal}}"></md>
-<md md="{{cachePercent}}"></md>
-<md md="{{log}}"></md>
