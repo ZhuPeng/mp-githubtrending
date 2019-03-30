@@ -1,0 +1,7 @@
+.header {
+  text-align: center;
+}
+
+.card-gap {
+  margin-bottom: 20px;
+}

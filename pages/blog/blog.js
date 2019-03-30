@@ -19,7 +19,8 @@ Page({
     var meta = blog.data[0]
     var yaml = blog.yaml
     var base_url = yaml.parser_config.base_url + '/'
-    var blogmd = '> From: [' + yaml.view + '](' + meta.url + ') ' + ' \n\n'
+    var bloglist = '/pages/bloglist/bloglist?jobname=' + yaml.name
+    var blogmd = '> From: [' + yaml.view + '](' + bloglist + ') ' + ' \n\n'
     
     blogmd += '![](' + meta['article-image_url'] + ')\n'
     blogmd += '## ' + meta.title + '\n\n' 

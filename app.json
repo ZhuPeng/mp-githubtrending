@@ -4,7 +4,6 @@
     "pages/account/account",
     "pages/readme/readme",
     "pages/gitfile/gitfile",
-    "pages/stat/stat",
     "pages/settings/settings",
     "pages/resume/resume",
     "pages/search/search",
@@ -12,7 +11,8 @@
     "pages/commit/commit",
     "pages/newissue/newissue",
     "pages/gitdir/gitdir",
-    "pages/blog/blog"
+    "pages/blog/blog",
+    "pages/bloglist/bloglist"
   ],
   "window": {
     "backgroundTextStyle": "light",
