@@ -8,8 +8,15 @@ const NodeCache = require( "node-cache" );
 const CACHE = new NodeCache({ stdTTL: 1800, checkperiod: 200 });
 
 async function getToken() {
+  var key = 'github-token'
+  var cache = CACHE.get(key);
+  if (cache != undefined) {
+    return cache
+  }
+
   var res = await db.collection("admin").where({website: "github", type: "token"}).get()
   var index = Math.floor(Math.random() * res.data.length);
+  CACHE.set(key, res.data[index].value)
   return res.data[index].value;
 }
 
