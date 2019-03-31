@@ -1,3 +1,4 @@
+const rate = require('./ratelimit.js')
 module.exports = {
   callFunction,
   callFunctionWithBlog,
@@ -6,6 +7,9 @@ module.exports = {
 const version = 'githubv1'
 
 function callFunction(data, completeFunc) {
+  if (rate.RateLimit()) {
+    return
+  }
   var token = wx.getStorageSync('github-token')
   if (token) {
     data['token'] = token
