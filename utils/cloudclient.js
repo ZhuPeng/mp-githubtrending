@@ -44,6 +44,9 @@ function callFunctionWithRawResponse(data, completeFunc) {
 }
 
 function callFunctionWithName(apiname, data, completeFunc) {
+  if (rate.RateLimit()) {
+    return
+  }
   wx.cloud.callFunction({
     name: apiname,
     data: data,

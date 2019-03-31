@@ -1,3 +1,4 @@
+const rate = require('./ratelimit.js')
 module.exports = {
   getDB: getDB,
   getDoc: getDoc,
@@ -10,6 +11,9 @@ wx.cloud.init({
 const db = wx.cloud.database()
 
 function getDB() {
+  if (rate.RateLimit()) {
+    return
+  }
   return db
 }
 
