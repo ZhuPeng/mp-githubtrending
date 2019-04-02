@@ -1,6 +1,6 @@
 # 微信小程序 GitHub Trending Hub
 
-小程序 `GitHub Trending Hub` 是一个以 Feed 流形式查看 GitHub Trending 仓库集合的工具，通过它可以及时查看最近更新的热门仓库，同时提供搜索、查看仓库详情等功能。欢迎通过微信 WeChat 扫码体验。
+小程序 `GitHub Trending Hub` 是一个以 Feed 流形式查看 GitHub Trending 仓库集合的工具，通过它可以及时查看最近更新的热门仓库。通过微信 WeChat 扫码体验。
 
 ![qrcode](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/qrcode.jpg?sign=d350a14b8d342714aa7c7246cd6a41fa&t=1548588526)
 
@@ -8,6 +8,7 @@
 
 ## 文档
 
+* [微信小程序 GitHub Trending Hub 的由来](doc/why.md)
 * [公众号文章链接 GitHub 仓库指南](doc/api.md)
 * [适合手机查看的优秀仓库合集](doc/excellent_repo_for_mobile_reading.md)
 * [使用文档](doc/help.md)
