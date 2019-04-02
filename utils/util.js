@@ -32,6 +32,9 @@ function GitHubNavi(path, naviFunc) {
     naviFunc({ url: '/pages/account/account?owner=' + owner })
   } else if (filepath == "") {
     naviFunc({ url: '/pages/readme/readme?repo=' + owner + " / " + repo })
+  } else if (filepath.startsWith('issues/')) {
+    var issue = 'https://api.github.com/repos/' + owner + '/' + repo + '/' + filepath
+    naviFunc({url: '/pages/issue/issue?issue='+issue})
   } else {
     naviFunc({
       url: '/pages/gitfile/gitfile?file=' + filepath + '&owner=' + owner + '&repo=' + repo,
