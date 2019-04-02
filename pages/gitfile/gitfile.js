@@ -29,7 +29,15 @@ Page({
     }
     this.setData({file: file, spinning: true, owner: options.owner, repo: options.repo})
     var self = this;
-    cloudclient.callFunctionWithRawResponse({repo: options.repo, owner: options.owner, path: file, type: 'file', ref: ref}, function(d) {
+
+    var apiurl = 'https://api.github.com/repos/' + options.owner + '/' + options.repo + '/contents/' + file
+    cloudclient.callFunction({ type: 'get', path: apiurl}, function(d) {
+      if (Array.isArray(d)) {
+        wx.redirectTo({
+          url: '/pages/gitdir/gitdir?&owner=' + options.owner + '&repo=' + options.repo + '&apiurl='+apiurl,
+        })
+      }
+      
       var content = util.base64Decode(d.content || 'No data found, may be network broken.')
       var code = util.isCodeFile(file)
       if (file.endsWith('ipynb')) {
