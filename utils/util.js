@@ -12,9 +12,31 @@ module.exports = {
   copyOnlyText,
   copyText,
   isGitHubPage,
+  GitHubNavi,
   GetPercent,
   timeAgo,
   toast,
+}
+
+function GitHubNavi(path, naviFunc) {
+  if (!isGitHubPage(path)) {
+    return
+  }
+  if (naviFunc == undefined) {
+    naviFunc = wx.navigateTo
+  }
+  var [owner, repo, filepath] = parseGitHub(path)
+  console.log("parseGitHub url:", owner, repo, filepath)
+  if (owner == "") { return }
+  if (filepath == "" && repo == "") {
+    naviFunc({ url: '/pages/account/account?owner=' + owner })
+  } else if (filepath == "") {
+    naviFunc({ url: '/pages/readme/readme?repo=' + owner + " / " + repo })
+  } else {
+    naviFunc({
+      url: '/pages/gitfile/gitfile?file=' + filepath + '&owner=' + owner + '&repo=' + repo,
+    })
+  }
 }
 
 function timeAgo(d) {

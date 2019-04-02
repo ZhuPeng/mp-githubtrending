@@ -1,3 +1,4 @@
+const util = require('../../../utils/util.js')
 Component({
   properties: {
     blogid: {
@@ -29,9 +30,7 @@ Component({
   methods: {
     onClick(e) {
       if (this.data.jobname == 'github') {
-        wx.navigateTo({
-          url: '/pages/gitfile/gitfile?file=' + this.data.url,
-        })
+        util.GitHubNavi(this.data.url)
       } else {
         wx.navigateTo({
           url: '/pages/blog/blog?id=' + this.data.blogid + '&jobname=' + this.data.jobname,

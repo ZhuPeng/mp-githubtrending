@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -116,7 +116,7 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 11,
 					"name": "OriginGitHubLink",
 					"pathName": "https://github.com/ZhuPeng/mp-githubtrending",
 					"query": "",
