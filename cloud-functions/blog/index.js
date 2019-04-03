@@ -54,6 +54,14 @@ async function getLastestGitHubBlog() {
     'url': 'https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/api.md',
     '_crawl_time': '2019-04-10', 
     'article-image_url': baseUrl + '/mp-githubtrending/WechatGithub.jpeg',
+    },
+    {
+      'id': 2,
+      '__tablename__': 'github',
+      'title': '小程序 GitHub Trending Hub 的由来',
+      'url': 'https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/why.md',
+      '_crawl_time': '2019-04-30',
+      'article-image_url': baseUrl + '/qrcode.jpg',
     }]
 }
 

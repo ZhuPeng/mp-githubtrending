@@ -1,5 +1,3 @@
-## 小程序 GitHub Trending Hub 的由来
-
 小程序 `GitHub Trending Hub` 是一个以 Feed 流形式查看 GitHub Trending 仓库集合的工具，通过它可以及时查看最近更新的热门仓库。通过微信 WeChat 扫码体验。
 
 ![qrcode](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/qrcode.jpg?sign=d350a14b8d342714aa7c7246cd6a41fa&t=1548588526)
@@ -10,9 +8,11 @@
 
 相信很多人会有这样的疑问，通过官方提供的 GitHub Trending 页面就能查看，为什么还要开发一个小程序？细心的同学可能会发现 GitHub Trending 上榜大致是按照当天新增的 Star 数来确定的，Star 数会随着时间变动，意味着 Trending 榜单也是随时在变的。那么对于像我一样经常浏览 GitHub Trending 页面的人会存在一些不便的地方：
 
-* 每次访问 GitHub Trending 获取的新仓库数量相对少，那些比较热门的项目往往长期霸占 Trending 榜单，有时候今天看了，需要过几天再去看才能在上面发现一些新的有意思的项目
-* 对于那些短期出现在 Trending 上的项目由于没有及时查看而丢失了
-* 不能按多语言过滤，关注多个编程语言的人还是比较多的
+1. 每次访问 GitHub Trending 获取的新仓库数量相对少，那些比较热门的项目往往长期霸占 Trending 榜单，有时候今天看了，需要过几天再去看才能在上面发现一些新的有意思的项目
+
+2. 对于那些短期出现在 Trending 上的项目由于没有及时查看而丢失了
+
+3. 不能按多语言过滤，关注多个编程语言的人还是比较多的
 
 这大概就是最开始的需求，希望能够及时的追踪到 GitHub Trending 榜单的变化，形成历史信息方便查看更新。很自然就会想到用爬虫解决这个问题，当时还没有小程序，开发小程序是因为工作关系了解到 Serverless 相关的知识，同时微信小程序有对应的云开发方式，迫切希望了解一下具体的应用场景。所以就有了开发这个小程序的想法。
 
@@ -82,44 +82,42 @@ parsers:
 
 这就是小程序 GitHub Trending Hub 的由来，在整个开发过程有两点感觉有必要分享一下：
 
-* GitHub API 设计
+1. GitHub API 设计
 
-  为了降低开发成本，同时提高后续更换 API 的便捷性，GitHub API 的返回结果中会包含你可能访问的其他 API，对于开发者来说就不需要去理解和拼接 API 了。
+为了降低开发成本，同时提高后续更换 API 的便捷性，GitHub API 的返回结果中会包含你可能访问的其他 API，对于开发者来说就不需要去理解和拼接 API 了。官方是这样解释的：
 
-  >All resources may have one or more `*_url` properties linking to other resources. These are meant to provide explicit URLs so that proper API clients don't need to construct URLs on their own. It is highly recommended that API clients use these. Doing so will make future upgrades of the API easier for developers. All URLs are expected to be proper [RFC 6570](http://tools.ietf.org/html/rfc6570) URI templates.
+>All resources may have one or more `*_url` properties linking to other resources. These are meant to provide explicit URLs so that proper API clients don't need to construct URLs on their own. It is highly recommended that API clients use these. Doing so will make future upgrades of the API easier for developers. All URLs are expected to be proper [RFC 6570](http://tools.ietf.org/html/rfc6570) URI templates.
 
-  
 
-  ```json
-  {
-      "id": 1296269,
-      "name": "Hello-World",
-      "full_name": "octocat/Hello-World",
-      "html_url": "https://github.com/octocat/Hello-World",
-      "description": "This your first repo!",
-      "url": "https://api.github.com/repos/octocat/Hello-World",
-      "archive_url": "http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}",
-      "assignees_url": "http://api.github.com/repos/octocat/Hello-World/assignees{/user}"
-  }
-  ```
 
-  整体给我的启发就是设计 API 是一门学问，同时方便开发者便捷使用 API 也很重要。现在 GitHub 已经推荐使用 GraphQL API v4 版本了，将小程序 API 迁移到 GraphQL 版本已经列入下一个学习计划了。
+```json
+{
+    "id": 1296269,
+    "name": "Hello-World",
+    "full_name": "octocat/Hello-World",
+    "html_url": "https://github.com/octocat/Hello-World",
+    "description": "This your first repo!",
+    "url": "https://api.github.com/repos/octocat/Hello-World",
+    "archive_url": "http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}",
+    "assignees_url": "http://api.github.com/repos/octocat/Hello-World/assignees{/user}"
+}
+```
 
-  
+整体给我的启发就是设计 API 是一门学问，同时方便开发者便捷使用 API 也很重要。现在 GitHub 已经推荐使用 GraphQL API v4 版本了，将小程序 API 迁移到 GraphQL 版本已经列入下一个学习计划了。
 
-* 小程序云开发
+2. 小程序云开发
 
-  云开发里面打包了常用的基础组件，如数据库、存储、无服务框架、监控和数据统计报表等，极大简化了服务的运维部署成本，不用关心服务在哪里运行，不用关心是否需要扩容，可以让开发更多的关注业务逻辑。如下就是一个简单的服务：
+云开发里面打包了常用的基础组件，如数据库、存储、无服务框架、监控和数据统计报表等，极大简化了服务的运维部署成本，不用关心服务在哪里运行，不用关心是否需要扩容，可以让开发更多的关注业务逻辑。如下就是一个简单的服务：
 
-  ```
-  const cloud = require('wx-server-sdk')
-  
-  exports.main = async (event, context) => ({
-    sum: event.a + event.b
-  })
-  ```
+```
+const cloud = require('wx-server-sdk')
 
-  但是相对来说成熟度还不够，如果碰到问题，查起来比较困难。例如我就碰到了小程序的 API 被爬虫抓取了（后来查到是微信自己的爬虫，尴尬了~），导致云开发套餐的流量被瞬间用完了，由于云开发暴露的能力有限不好去排查以及解决这个问题。
+exports.main = async (event, context) => ({
+  sum: event.a + event.b
+})
+```
+
+但是相对来说成熟度还不够，如果碰到问题，查起来比较困难。例如我就碰到了小程序的 API 被爬虫抓取了（后来查到是微信自己的爬虫，尴尬了~），导致云开发套餐的流量被瞬间用完了，由于云开发暴露的能力有限不好去排查以及解决这个问题。
 
 ***
 
