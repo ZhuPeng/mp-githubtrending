@@ -42,9 +42,9 @@ parsers:
 
 ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/trackupdates/webui.png)
 
-可以访问体验：https://zhupeng.github.io/trackupdates/
+可以访问体验：[https://zhupeng.github.io/trackupdates/](https://zhupeng.github.io/trackupdates/)
 
->项目地址：https://github.com/ZhuPeng/trackupdates
+>项目地址：[https://github.com/ZhuPeng/trackupdates](https://github.com/ZhuPeng/trackupdates)
 >
 >欢迎 Star 和 Fork，有任何问题欢迎提交 Issue。
 
@@ -60,7 +60,7 @@ parsers:
 
 目前有 GitHub精选、AI研习社两个公众号在文章中附加小程序链接的方式，来提升访问 GitHub 仓库详情的阅读体验。如果你的公众号文章中分享了 GitHub 相关的项目可以扫描如下二维码查看添加小程序指南。
 
-二维码
+![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/minip-github-apidoc.png)
 
 除此之外，小程序还提供了查看仓库统计和个人简历的功能。
 
@@ -72,13 +72,15 @@ parsers:
 
 小程序使用的是微信原生的框架开发，如果你希望学习小程序开发的话，应该能对你有所帮助。
 
-> 项目地址：https://github.com/ZhuPeng/mp-githubtrending
+> 项目地址：[https://github.com/ZhuPeng/mp-githubtrending](https://github.com/ZhuPeng/mp-githubtrending)
 >
 > 欢迎 Star 和 Fork，有任何问题欢迎提交 Issue。
 
 
 
-### 开发感想和总结
+### 总结
+
+这就是小程序 GitHub Trending Hub 的由来，在整个开发过程有两点感觉有必要分享一下：
 
 * GitHub API 设计
 
@@ -101,7 +103,7 @@ parsers:
   }
   ```
 
-  现在 GitHub 已经推荐使用 GraphQL API v4 版本了，将小程序 API 迁移到 GraphQL 版本已经列入下一个学习的计划了。
+  整体给我的启发就是设计 API 是一门学问，同时方便开发者便捷使用 API 也很重要。现在 GitHub 已经推荐使用 GraphQL API v4 版本了，将小程序 API 迁移到 GraphQL 版本已经列入下一个学习计划了。
 
   
 
@@ -118,3 +120,10 @@ parsers:
   ```
 
   但是相对来说成熟度还不够，如果碰到问题，查起来比较困难。例如我就碰到了小程序的 API 被爬虫抓取了（后来查到是微信自己的爬虫，尴尬了~），导致云开发套餐的流量被瞬间用完了，由于云开发暴露的能力有限不好去排查以及解决这个问题。
+
+***
+
+欢迎扫码体验
+
+![qrcode](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/qrcode.jpg?sign=d350a14b8d342714aa7c7246cd6a41fa&t=1548588526)
+
