@@ -12,7 +12,7 @@ Page({
     console.log(options)
     this.setData({apiurl: options.apiurl, owner: options.owner, repo: options.repo})
     var self = this
-    cloudclient.callFunction({ type: 'get', path: options.apiurl }, function (c) {
+    cloudclient.callFunction({ type: 'get', path: options.apiurl, repo: options.repo, owner: options.owner }, function (c) {
       self.setData({ list: c })
     })
   },

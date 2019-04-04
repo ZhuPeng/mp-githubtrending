@@ -154,6 +154,10 @@ async function execute(owner, repo, type, path, openid, ref, data) {
     var d = await octokit.repos.listForUser({ username: owner, sort: 'updated', per_page, page })
     return {content: d['data'], 'owner': owner}
   } else if (type == 'get') {
+    var wikitag = "/contents/wiki"
+    if (path.indexOf(wikitag) != -1) {
+      path = 'http://39.106.218.104:8080/repos/' + owner + '__' + repo + '.wiki/contents' + path.slice(path.indexOf(wikitag) + wikitag.length) + '.md'
+    }
     var d = await octokit.request('GET ' + path)
     if (d['status'] == 202) {
       d = await octokit.request('GET ' + path)
