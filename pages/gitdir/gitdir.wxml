@@ -8,7 +8,7 @@
   </view>
   <view wx:if="{{item.type!='dir'}}" class="flex-wrp" >
     <wux-icon class="padding-right" size="17" type="md-document" />
-    <navigator url="{{'/pages/gitfile/gitfile?owner=' + owner + '&repo=' + repo + '&file=' + item.path}}" style="color: blue">{{item.name}}</navigator>
+    <navigator url="{{'/pages/gitfile/gitfile?owner=' + owner + '&repo=' + repo + '&file=' + item.url}}" style="color: blue">{{item.name}}</navigator>
   </view>
 </block>
 </view>

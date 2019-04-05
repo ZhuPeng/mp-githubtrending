@@ -11,12 +11,6 @@ Page({
 
   onLoad: function (options) {
     var file = options.file
-    if (!options.repo && !options.owner) {
-      var [owner, repo, filepath] = util.parseGitHub(file)
-      file = filepath
-      options.repo = repo
-      options.owner = owner
-    }
     wx.setNavigationBarTitle({ title: file })
     var ref = 'master'
     if (file.startsWith('./')) {file = file.slice(2)}
@@ -31,6 +25,9 @@ Page({
     var self = this;
 
     var apiurl = 'https://api.github.com/repos/' + options.owner + '/' + options.repo + '/contents/' + file
+    if (file.startsWith('http')) {
+      apiurl = file
+    }
     cloudclient.callFunction({ type: 'get', path: apiurl, repo: options.repo, owner: options.owner}, function(d) {
       if (Array.isArray(d)) {
         wx.redirectTo({
