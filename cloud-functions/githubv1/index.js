@@ -158,8 +158,9 @@ async function execute(owner, repo, type, path, openid, ref, data) {
     if (path.indexOf(wikitag) != -1) {
       var npath = 'http://39.106.218.104:8080/repos/' + owner + '__' + repo + '.wiki/contents' 
       var sufix = path.slice(path.indexOf(wikitag) + wikitag.length)
-      if (sufix.length > 1) {sufix += '.md'}
-      path = npath + sufix
+      if (sufix.length == 0) {sufix += '/Home'}
+      else if (sufix.length == 1) {sufix += 'Home'}
+      path = npath + sufix + '.md'
     }
     var d = await octokit.request('GET ' + path)
     if (d['status'] == 202) {

@@ -25,7 +25,7 @@ Page({
   onWikiClick: function () {
     var { owner, repo } = this.data.query
     wx.navigateTo({
-      url: '/pages/gitdir/gitdir?owner=' + owner + '&repo=' + repo + '&apiurl=/contents/wiki',
+      url: '/pages/gitfile/gitfile?owner=' + owner + '&repo=' + repo + '&file=wiki',
     })
   },
 
