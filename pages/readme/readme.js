@@ -22,6 +22,13 @@ Page({
     })
   },
 
+  onWikiClick: function () {
+    var { owner, repo } = this.data.query
+    wx.navigateTo({
+      url: '/pages/gitdir/gitdir?owner=' + owner + '&repo=' + repo + '&apiurl=/contents/wiki',
+    })
+  },
+
   onCodeClick: function () {
     var {owner, repo} = this.data.query
     var apiurl = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents'
@@ -34,7 +41,7 @@ Page({
     var self = this;
     cloudclient.callFunction({ type: 'get', path: '/repos/' + self.data.query.owner + '/' + self.data.query.repo}, function (c) {
       console.log('meta: ', c)
-      var meta = { 'fork': c.forks_count, 'star': c.stargazers_count, 'lang': c.language, url: c.html_url, 'desc': c.description, 'issue_count': c.open_issues_count, 'created_at': c.created_at}
+      var meta = { 'fork': c.forks_count, 'star': c.stargazers_count, 'lang': c.language, url: c.html_url, 'desc': c.description, 'issue_count': c.open_issues_count, 'created_at': c.created_at, 'has_wiki': c.has_wiki}
         self.setData({ meta })
 
         // preload
