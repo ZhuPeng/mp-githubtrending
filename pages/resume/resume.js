@@ -349,8 +349,21 @@ Page({
   },
 
   onCreateQrCode() {
-    cloudclient.callFunctionWithQrCode({path: '/pages/github/index'}, function(d) {
-      console.log(d)
+    var pages = getCurrentPages()
+    var page = pages[pages.length - 1]
+    var path = page.route
+    var param = ''
+    for (var k in page.options) {
+      param += '&' + k + '=' + page.options[k]
+    }
+    if (param) {path += '?' + param}
+    cloudclient.callFunctionWithQrCode({ path: path}, function(d) {
+      console.log('qrcode: ', d)
+      var qr = "data:image/png;base64," + wx.arrayBufferToBase64(d.buffer.data)
+      wx.previewImage({
+        current: qr,
+        urls: [qr]
+      })
     })
   },
 })
