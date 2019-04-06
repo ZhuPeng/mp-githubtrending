@@ -2,6 +2,7 @@ const rate = require('./ratelimit.js')
 module.exports = {
   callFunction,
   callFunctionWithBlog,
+  callFunctionWithQrCode,
   callFunctionWithRawResponse
 }
 const version = 'githubv1'
@@ -58,4 +59,8 @@ function callFunctionWithName(apiname, data, completeFunc) {
 
 function callFunctionWithBlog(data, completeFunc) {
   callFunctionWithName('blog', data, completeFunc)
+}
+
+function callFunctionWithQrCode(data, completeFunc) {
+  callFunctionWithName('qrcode', data, completeFunc)
 }

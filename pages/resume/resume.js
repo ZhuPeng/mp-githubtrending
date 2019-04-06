@@ -264,7 +264,6 @@ Page({
       name = data.name;
     }
 
-    var avatar = '';
     if (data.type == 'Organization') {
       // avatar handle temp remove
     }
@@ -277,7 +276,7 @@ Page({
       earlyAdopter: 0,
       location: data.location || '',
       gravatar_id: data.gravatar_id,
-      avatar_url: avatar,
+      avatar_url: data.avatar_url,
       repos: data.public_repos,
       reposLabel: data.public_repos > 1 ? 'repositories' : 'repository',
       followers: data.followers,
@@ -347,5 +346,11 @@ Page({
   },
 
   onShareAppMessage: function () {
-  }
+  },
+
+  onCreateQrCode() {
+    cloudclient.callFunctionWithQrCode({path: '/pages/github/index'}, function(d) {
+      console.log(d)
+    })
+  },
 })

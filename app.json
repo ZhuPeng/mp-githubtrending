@@ -56,5 +56,6 @@
     "blogcard": "pages/component/blogcard/blogcard",
     "githead": "pages/component/githead/githead"
   },
-  "plugins": {}
+  "plugins": {},
+  "sitemapLocation": "sitemap.json"
 }

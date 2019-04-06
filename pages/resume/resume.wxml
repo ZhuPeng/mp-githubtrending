@@ -12,6 +12,8 @@
   <md wx:if="{{reposMd}}" md="{{reposMd}}"/>
   <md wx:if="{{contrib}}" md="{{contrib}}"/>
   <md md="{{about}}"/>
+
+  <button bindtap="onCreateQrCode">Share</button>
   <fabbutton/>
 </view>
 </view>
