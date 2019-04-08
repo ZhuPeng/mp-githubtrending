@@ -55,6 +55,7 @@ Page({
     console.log("options:", options)
     var repo = decodeURIComponent(options.repo)
     var arr = repo.split("/")
+    if (arr.length < 2) {return}
     var dbrepo = arr[0].trim() + " / " + arr[1].trim()
     this.setData({query: {owner: arr[0].trim(), repo: arr[1].trim()}})
     var self = this
@@ -88,7 +89,7 @@ Page({
     var statsMd = '## Stargazers over time\n\n[![Stargazers over time](' + starHistory + '.svg)](' + starHistory + ')\n'
 
     statsMd += '## Summary\n\n'
-    statsMd += 'Repo Age: ' + util.timeAgo(self.data.meta.created_at) + '\n\n'
+    statsMd += 'Repo Age: ' + util.timeAgo(self.data.meta.created_at || '') + '\n\n'
     this.setData({statsMd})
 
     cloudclient.callFunction({
