@@ -68,8 +68,12 @@ async function getLastestGitHubBlog() {
 async function getLastest() {
   var all = []
   for (var k in BlogMap) {
-    var d = await getItems(k, undefined, 6 / Object.keys(BlogMap).length)
-    all.push(...d.data)
+    try {
+      var d = await getItems(k, undefined, 6 / Object.keys(BlogMap).length)
+      all.push(...d.data)
+    } catch (err) {
+      console.log('getItems error:', err)
+    }
   }
   all.push(...await getLastestGitHubBlog())
   all.sort(function (a, b) { return new Date(a['_crawl_time']) < new Date(b['_crawl_time']) }); 
