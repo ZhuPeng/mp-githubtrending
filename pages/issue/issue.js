@@ -4,7 +4,10 @@ Page({
   data: {
     issue: {},
     comments: [],
+    prDiff: '',
     content: '',
+    owner: '',
+    repo: '',
   },
 
   onContentChange: function (e) {
@@ -19,7 +22,7 @@ Page({
         duration: 4000
       })
     }
-    var [owner, repo, filepath] = util.parseGitHub(this.data.issue.html_url)
+    var {owner, repo} = this.data
     var suffix = '\n\n\n> From WeChat Mini Programe: [GitHub Trending Hub](https://github.com/ZhuPeng/mp-githubtrending)'
     cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues/' + this.data.issue.number + '/comments', body: this.data.content + suffix, owner, repo }, function (c) {
       console.log(c)
@@ -38,8 +41,19 @@ Page({
     var self = this
     console.log("issue: ", options.issue)
     cloudclient.callFunction({ type: 'get', path: options.issue }, function (c) {
-      self.setData({issue: c})
+      var [owner, repo, filepath] = util.parseGitHub(c.html_url)
+      self.setData({issue: c, owner, repo})
+      if (c.pull_request) { self.loadDiff() }
       self.loadComments(c.comments_url)
+    })
+  },
+
+  loadDiff() {
+    var self = this
+    var { owner, repo } = this.data
+    cloudclient.callFunction({ type: 'pr', owner, repo, path: self.data.issue.number }, function (c) {
+      var code = 'python'
+      self.setData({ prDiff: "```" + code + "\n" + c.data + "\n```" })
     })
   },
 

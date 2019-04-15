@@ -153,6 +153,9 @@ async function execute(owner, repo, type, path, openid, ref, data) {
   } else if (type == 'repos') {
     var d = await octokit.repos.listForUser({ username: owner, sort: 'updated', per_page, page })
     return {content: d['data'], 'owner': owner}
+  } else if (type == 'pr') {
+    var d = await octokit.pulls.get({ owner, repo, number: path, mediaType: { format: 'diff' }})
+    return {content: d['data']}
   } else if (type == 'get') {
     var wikitag = "/contents/wiki"
     if (path.indexOf(wikitag) != -1) {

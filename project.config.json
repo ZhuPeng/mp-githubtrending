@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -126,10 +126,10 @@
 					"scene": 1058
 				},
 				{
-					"id": 13,
+					"id": 12,
 					"name": "Issue",
 					"pathName": "pages/issue/issue",
-					"query": "issue=https://api.github.com/repos/ZhuPeng/mp-githubtrending/issues/1",
+					"query": "issue=https://api.github.com/repos/TooBug/wemark/issues/70",
 					"scene": null
 				},
 				{

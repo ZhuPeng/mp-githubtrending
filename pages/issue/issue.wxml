@@ -3,6 +3,7 @@
 
 <avatar action="commented" url="{{issue.user.avatar_url}}" login="{{issue.user.login}}" created_at="{{issue.created_at}}" tag="{{issue.author_association}}" />
 <md md="{{issue.body}}"/>
+<md md="{{prDiff}}" wx:if="{{issue.pull_request}}" />
 <wux-divider show-text="{{ false }}"></wux-divider>
 
 <block wx:for-items="{{comments}}" wx:key="{{item.id}}">
