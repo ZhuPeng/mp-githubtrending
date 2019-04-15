@@ -53,7 +53,7 @@ Page({
     var { owner, repo } = this.data
     cloudclient.callFunction({ type: 'pr', owner, repo, path: self.data.issue.number }, function (c) {
       var code = 'python'
-      self.setData({ prDiff: "```" + code + "\n" + c.data + "\n```" })
+      self.setData({ prDiff: "```" + code + "\n" + c + "\n```" })
     })
   },
 
