@@ -20,8 +20,8 @@
 
         <view class="flex-wrp margin-left-right">
           <wux-button class="padding-right" wx:if="{{readme}}" bind:click="onCodeClick" block type="dark">View Code</wux-button>
-          <wux-button class="padding-right" wx:if="{{readme}}" bind:click="onButtonClick" block type="balanced">New Issue</wux-button>
-          <wux-button class="padding-right" wx:if="{{readme && meta.has_wiki}}" bind:click="onWikiClick" block type="dark">Wiki</wux-button>
+          <wux-button class="padding-right" wx:if="{{readme && meta.has_wiki}}" bind:click="onWikiClick" block type="balanced">Wiki</wux-button>
+          <wux-button class="padding-right" wx:if="{{readme}}" bind:click="onCreateQrCode" block type="dark">Share</wux-button>
         </view>
       </van-tab>
 
