@@ -3,8 +3,8 @@ cloud.init()
 exports.main = async (event, context) => {
   var { scene, page, width, type } = event;
   console.log('event:', event)
-  if (scene) {
-    scene += '&a=1'
+  if (!scene) {
+    scene = 'a=1'
   }
   try {
     var result;
