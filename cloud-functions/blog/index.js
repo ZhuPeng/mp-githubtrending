@@ -64,10 +64,10 @@ async function getLastestGitHubBlog() {
     }, {
       'id': 3,
       '__tablename__': 'github',
-      'title': 'HelloGitHub 分享第36 期',
+      'title': 'HelloGitHub 分享第 36 期',
       'url': 'https://github.com/521xueweihan/HelloGitHub/blob/master/content/36/HelloGitHub36.md',
       '_crawl_time': '2019-04-18',
-      'article-image_url': 'https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/01/img/hello-github.jpg',
+      'article-image_url': baseUrl + '/mp-githubtrending/blog/hello-github.jpg',
     }]
 }
 
