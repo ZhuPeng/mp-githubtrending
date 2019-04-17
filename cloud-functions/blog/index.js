@@ -54,14 +54,20 @@ async function getLastestGitHubBlog() {
     'url': 'https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/api.md',
     '_crawl_time': '2019-04-10', 
     'article-image_url': baseUrl + '/mp-githubtrending/WechatGithub.jpeg',
-    },
-    {
+    }, {
       'id': 2,
       '__tablename__': 'github',
       'title': '小程序 GitHub Trending Hub 的由来',
       'url': 'https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/why.md',
-      '_crawl_time': '2019-04-30',
+      '_crawl_time': '2019-04-17',
       'article-image_url': baseUrl + '/qrcode.jpg',
+    }, {
+      'id': 2,
+      '__tablename__': 'github',
+      'title': 'HelloGitHub 分享第36 期',
+      'url': 'https://github.com/521xueweihan/HelloGitHub/blob/master/content/36/HelloGitHub36.md',
+      '_crawl_time': '2019-04-18',
+      'article-image_url': 'https://raw.githubusercontent.com/521xueweihan/img/master/hellogithub/01/img/hello-github.jpg',
     }]
 }
 
