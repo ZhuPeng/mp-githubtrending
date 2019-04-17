@@ -4,10 +4,10 @@ cloud.init()
 const baseUrl = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la'
 
 const BlogMap = {
-  'blogcoreos': {'article-image_url': [
-    baseUrl + '/trackupdates/coreos.png',
-    ]
-  },'githubblog': {
+  'blogcoreos': {
+      'article-image_url': [baseUrl + '/trackupdates/coreos.png']
+  },
+  'githubblog': {
     'article-image_url': [
       'https://github.blog/wp-content/uploads/2019/01/Community@2x.png',
       'https://github.blog/wp-content/uploads/2019/01/Company@2x-2.png',
@@ -62,7 +62,7 @@ async function getLastestGitHubBlog() {
       '_crawl_time': '2019-04-17',
       'article-image_url': baseUrl + '/qrcode.jpg',
     }, {
-      'id': 2,
+      'id': 3,
       '__tablename__': 'github',
       'title': 'HelloGitHub 分享第36 期',
       'url': 'https://github.com/521xueweihan/HelloGitHub/blob/master/content/36/HelloGitHub36.md',
@@ -75,7 +75,7 @@ async function getLastest() {
   var all = []
   for (var k in BlogMap) {
     try {
-      var d = await getItems(k, undefined, 6 / Object.keys(BlogMap).length)
+      var d = await getItems(k, undefined, 3)
       all.push(...d.data)
     } catch (err) {
       console.log('getItems error:', err)
@@ -83,7 +83,7 @@ async function getLastest() {
   }
   all.push(...await getLastestGitHubBlog())
   all.sort(function (a, b) { return new Date(a['_crawl_time']) < new Date(b['_crawl_time']) }); 
-  return {'data': all}
+  return {'data': all.slice(0, 6)}
 }
 
 // 云函数入口函数
