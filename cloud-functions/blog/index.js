@@ -68,6 +68,13 @@ async function getLastestGitHubBlog() {
       'url': 'https://github.com/521xueweihan/HelloGitHub/blob/master/content/36/HelloGitHub36.md',
       '_crawl_time': '2019-04-18',
       'article-image_url': baseUrl + '/mp-githubtrending/blog/hello-github.jpg',
+    }, {
+      'id': 4,
+      '__tablename__': 'github',
+      'title': 'GitHub 开源项目发布雷达',
+      'url': 'https://github.com/ZhuPeng/zhupeng.github.io/blob/master/_posts/github_release_radar_201903.md',
+      '_crawl_time': '2019-04-19',
+      'article-image_url': baseUrl + '/GitHub%E7%B2%BE%E9%80%89/radar/radar-march2019.png',
     }]
 }
 
@@ -75,7 +82,7 @@ async function getLastest() {
   var all = []
   for (var k in BlogMap) {
     try {
-      var d = await getItems(k, undefined, 3)
+      var d = await getItems(k, undefined, 2)
       all.push(...d.data)
     } catch (err) {
       console.log('getItems error:', err)
