@@ -75,6 +75,13 @@ async function getLastestGitHubBlog() {
       'url': 'https://github.com/ZhuPeng/zhupeng.github.io/blob/master/_posts/github_release_radar_201903.md',
       '_crawl_time': '2019-04-19',
       'article-image_url': baseUrl + '/GitHub%E7%B2%BE%E9%80%89/radar/radar-march2019.png',
+    }, {
+      'id': 5,
+      '__tablename__': 'github',
+      'title': '阮一峰技术分享周刊第 52 期',
+      'url': 'https://github.com/ruanyf/weekly/blob/master/docs/issue-52.md',
+      '_crawl_time': '2019-04-21',
+      'article-image_url': 'https://camo.githubusercontent.com/aab243a902a257907b613ad07c4ec3bb8d2f974f/68747470733a2f2f7777772e77616e67626173652e636f6d2f626c6f67696d672f61737365742f3230313930342f6267323031393034313930312e6a7067',
     }]
 }
 
