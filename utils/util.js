@@ -18,7 +18,7 @@ module.exports = {
   toast,
 }
 
-function GitHubNavi(path, naviFunc) {
+function GitHubNavi(path, naviFunc, withSubscribe) {
   if (!isGitHubPage(path)) {
     return
   }
@@ -37,7 +37,7 @@ function GitHubNavi(path, naviFunc) {
     naviFunc({url: '/pages/issue/issue?issue='+issue})
   } else {
     naviFunc({
-      url: '/pages/gitfile/gitfile?file=' + filepath + '&owner=' + owner + '&repo=' + repo,
+      url: '/pages/gitfile/gitfile?file=' + filepath + '&owner=' + owner + '&repo=' + repo + (withSubscribe ? '&withsubscribe=true': ''),
     })
   }
 }

@@ -7,6 +7,7 @@ Page({
     owner: '',
     content: '',
     spinning: false,
+    withSubscribe: false,
   },
 
   onLoad: function (options) {
@@ -21,7 +22,7 @@ Page({
         file = file.slice((arr[0] + '/' + arr[1] + '/').length)
       }
     }
-    this.setData({file: file, spinning: true, owner: options.owner, repo: options.repo})
+    this.setData({file: file, spinning: true, owner: options.owner, repo: options.repo, withSubscribe: options.withsubscribe || false})
     var self = this;
 
     var apiurl = 'https://api.github.com/repos/' + options.owner + '/' + options.repo + '/contents/' + file

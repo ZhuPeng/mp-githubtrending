@@ -30,7 +30,7 @@ Component({
   methods: {
     onClick(e) {
       if (this.data.jobname == 'github') {
-        util.GitHubNavi(this.data.url)
+        util.GitHubNavi(this.data.url, undefined, true)
       } else {
         wx.navigateTo({
           url: '/pages/blog/blog?id=' + this.data.blogid + '&jobname=' + this.data.jobname,
