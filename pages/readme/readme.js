@@ -17,7 +17,9 @@ Page({
     spinning: true,
   },
 
-  onButtonClick: function () {
+  onButtonClick: function (e) {
+    console.log(e)
+    cloudclient.uploadFormID(e.detail.formId, 'NewIssue')
     wx.navigateTo({
       url: '/pages/newissue/newissue?url=' + this.data.meta.url,
     })

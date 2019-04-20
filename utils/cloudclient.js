@@ -3,6 +3,7 @@ module.exports = {
   callFunction,
   callFunctionWithBlog,
   callFunctionWithQrCode,
+  uploadFormID,
   callFunctionWithRawResponse
 }
 const version = 'githubv1'
@@ -63,4 +64,9 @@ function callFunctionWithBlog(data, completeFunc) {
 
 function callFunctionWithQrCode(data, completeFunc) {
   callFunctionWithName('qrcode', data, completeFunc)
+}
+
+function uploadFormID(id, source) {
+  if (id.indexOf('mock') >= 0) {return}
+  callFunctionWithName('collectformid', {formId: id, source}, function(r) {console.log(r)})
 }
