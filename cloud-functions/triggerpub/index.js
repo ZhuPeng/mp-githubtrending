@@ -25,6 +25,7 @@ exports.main = async (event, context) => {
 }
 
 async function getFormId(openid) {
+  // formid 有效期7天内
   var formid = await db.collection('formid').where({openid, status: 'new'}).limit(1).get()
   // console.log(formid)
   if (formid.data.length == 0) {

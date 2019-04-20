@@ -51,6 +51,7 @@
     "wemark": "third-party/wemark/wemark",
     "fabbutton": "pages/component/fabbutton/fabbutton",
     "md": "pages/component/md/md",
+    "subscribe": "pages/component/subscribe/subscribe",
     "repolist": "pages/component/repolist/repolist",
     "avatar": "pages/component/avatar/avatar",
     "blogcard": "pages/component/blogcard/blogcard",
