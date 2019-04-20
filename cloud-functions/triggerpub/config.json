@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "openapi": [
+      "templateMessage.send"
+    ]
+  },
+  "triggers": [
+    {
+      "name": "triggerpub",
+      "type": "timer",
+      // 秒	分钟	小时	日	月	星期	年
+      "config": "0 */10 * * * * *"
+    }
+  ]
+}

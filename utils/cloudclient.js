@@ -5,6 +5,7 @@ module.exports = {
   callFunctionWithQrCode,
   uploadFormID,
   callFunctionWithSubscribe,
+  callFunctionWithName,
   callFunctionWithRawResponse
 }
 const version = 'githubv1'
