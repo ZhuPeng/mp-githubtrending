@@ -1,3 +1,6 @@
-<form report-submit='true' bindsubmit="onButtonClick">
-  <button type="{{status.status=='Subscribe' ? 'default' : 'primary'}}" form-type="submit">Click to {{status.nextAction}}</button>
+<form report-submit='true' bindsubmit="onButtonClick" bindreset="onPlusOne">
+  <view wx:if="{{status.status}}" class="flex-wrp padding-right padding-bottom">
+    <button type="primary" data-text="like" form-type="submit">Like +1</button>
+    <button type="{{status.status=='Subscribe' ? 'default' : 'primary'}}" form-type="submit">Click to {{status.nextAction}}</button>
+  </view>
 </form>
