@@ -4,6 +4,7 @@ module.exports = {
   callFunctionWithBlog,
   callFunctionWithQrCode,
   uploadFormID,
+  callFunctionWithSubscribe,
   callFunctionWithRawResponse
 }
 const version = 'githubv1'
@@ -64,6 +65,10 @@ function callFunctionWithBlog(data, completeFunc) {
 
 function callFunctionWithQrCode(data, completeFunc) {
   callFunctionWithName('qrcode', data, completeFunc)
+}
+
+function callFunctionWithSubscribe(data, completeFunc) {
+  callFunctionWithName('subscribe', data, completeFunc)
 }
 
 function uploadFormID(id, source) {
