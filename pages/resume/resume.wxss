@@ -1,1 +1,1 @@
-/* pages/resume/resume.wxss */
+@import '../../app.wxss';

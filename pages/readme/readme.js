@@ -18,21 +18,19 @@ Page({
   },
 
   onButtonClick: function (e) {
-    console.log(e)
-    cloudclient.uploadFormID(e.detail.formId, 'NewIssue')
     wx.navigateTo({
       url: '/pages/newissue/newissue?url=' + this.data.meta.url,
     })
   },
 
-  onWikiClick: function () {
+  onWikiClick: function (e) {
     var { owner, repo } = this.data.query
     wx.navigateTo({
       url: '/pages/gitfile/gitfile?owner=' + owner + '&repo=' + repo + '&file=wiki',
     })
   },
 
-  onCodeClick: function () {
+  onCodeClick: function (e) {
     var {owner, repo} = this.data.query
     var apiurl = 'https://api.github.com/repos/' + owner + '/' + repo + '/contents'
     wx.navigateTo({
@@ -143,7 +141,7 @@ Page({
   onShareAppMessage: function () {
   },
 
-  onCreateQrCode() {
+  onCreateQrCode(e) {
     qrcode.HandleQrCode()
   },
 })

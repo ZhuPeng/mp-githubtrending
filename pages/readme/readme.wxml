@@ -19,9 +19,11 @@
         <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
 
         <view class="flex-wrp margin-left-right">
-          <wux-button class="padding-right" wx:if="{{readme}}" bind:click="onCodeClick" block type="dark">View Code</wux-button>
-          <wux-button class="padding-right" wx:if="{{readme && meta.has_wiki}}" bind:click="onWikiClick" block type="balanced">Wiki</wux-button>
-          <wux-button class="padding-right" wx:if="{{readme}}" bind:click="onCreateQrCode" block type="dark">Share</wux-button>
+          <formbutton type="primary" wx:if="{{readme}}" bind:click="onCodeClick" text="View Code"/>
+          <view class='padding-right'/>
+          <formbutton wx:if="{{readme && meta.has_wiki}}" bind:click="onWikiClick" text="Wiki"/>
+          <view class='padding-right'/>
+          <formbutton type="primary" wx:if="{{readme}}" bind:click="onCreateQrCode" text="Share"/>
         </view>
       </van-tab>
 
@@ -59,9 +61,7 @@
 
       <van-tab title="Issues" info="{{meta.issue_count}}">
         <view class="margin-left-right">
-        <form report-submit='true' bindsubmit="onButtonClick">
-          <button class="padding" type="primary" form-type="submit">New Issue</button>
-        </form>
+          <formbutton bind:click="onButtonClick" type="primary" text="New Issue"/>
         </view>
       <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
       <view class=".margin-left-right" >

@@ -52,6 +52,7 @@
     "fabbutton": "pages/component/fabbutton/fabbutton",
     "md": "pages/component/md/md",
     "subscribe": "pages/component/subscribe/subscribe",
+    "formbutton": "pages/component/formbutton/formbutton",
     "repolist": "pages/component/repolist/repolist",
     "avatar": "pages/component/avatar/avatar",
     "blogcard": "pages/component/blogcard/blogcard",

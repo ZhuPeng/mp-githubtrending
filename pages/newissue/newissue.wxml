@@ -21,5 +21,5 @@
 </van-cell-group>
 
 <view class="margin-left-right">
-  <wux-button bind:click="onButtonClick" block type="balanced">Confirm</wux-button>
+  <formbutton type="primary" bind:click="onButtonClick" text="Confirm"/>
 </view>
