@@ -1,6 +1,7 @@
 const cloudclient = require('../../utils/cloudclient.js')
 const util = require('../../utils/util.js')
 const qrcode = require('../../utils/qrcode.js')
+const github = require('../../utils/github.js')
 Page({
   data: {
     owner: '',
@@ -92,12 +93,15 @@ Page({
     this.getUser(options.name, function callback(data) {
       self.getView(options.name, data);
     })
-    this.github_user_repos(options.name, this.githubLangsDist, 1, [])
-    this.github_user_issues(options.name, this.handleIssues, 1, [])
+    
+    var owner = options.name
+    github.Get('/users/' + owner + '/repos?per_page=100', this.githubLangsDist)
+    github.Get('/search/issues?q=' + encodeURIComponent('type:pr is:merged author:' + owner + '') + '&per_page=100', this.handleIssues)
   },
 
-  handleIssues: function(username, data) {
+  handleIssues: function(data) {
     console.log('handleIssues: ', data)
+    var username = this.data.owner
     var contrib = '## Contributions\n'
     var self = this
 
@@ -135,23 +139,6 @@ Page({
       })
       self.setData({contrib})
     }
-  },
-
-  github_user_issues: function (username, callback, page_number, prev_data) {
-    var page = (page_number ? page_number : 1),
-      url = '/search/issues?q=' + encodeURIComponent('type:pr is:merged author:' + username + '') + '&per_page=100',
-      data = (prev_data ? prev_data : []);
-    url += '&page=' + page_number;
-    var self = this
-    console.log('url: ', url)
-    cloudclient.callFunction({ type: 'get', path: url }, function (c) {
-      data = data.concat(c.items)
-      if (c.length == 100) {
-        self.github_user_issues(username, callback, page + 1, data);
-      } else {
-        callback(username, data)
-      }
-    })
   },
 
   githubLangsDist: function (data) {
@@ -216,25 +203,6 @@ Page({
     languages = sortLanguages(languages, this.data.maxLanguages);
     this.setData({languages})
     this.genLangDistMd(languages, languageTotal);
-  },
-
-  github_user_repos: function (username, callback, page_number, prev_data) {
-    var page = (page_number ? page_number : 1),
-      url = '/users/' + username + '/repos?per_page=100',
-      data = (prev_data ? prev_data : []);
-
-    if (page_number > 1) {
-      url += '&page=' + page_number;
-    }
-    var self = this
-    cloudclient.callFunction({ type: 'get', path: url }, function (c) {
-      data = data.concat(c)
-      if (c.length == 100) {
-        self.github_user_repos(username, callback, page + 1, data);
-      } else {
-        callback(data)
-      }
-    })
   },
 
   getView: function (username, data) {

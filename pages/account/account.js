@@ -1,4 +1,5 @@
 const cloudclient = require('../../utils/cloudclient.js')
+const github = require('../../utils/github.js')
 const app = getApp()
 
 Page({
@@ -7,6 +8,7 @@ Page({
     list: [],
     repos: [],
     events: [],
+    issues: [],
     showHistory: false,
   },
   
@@ -77,6 +79,7 @@ Page({
   },
 
   onLoad: function (options) {
+    var self = this;
     this.setData({ owner: options.owner || wx.getStorageSync("github-name") || ''})
     this.loadMeta() 
     this.loadRepos()
@@ -84,6 +87,9 @@ Page({
       this.setData({showHistory: true})
     }  
     this.loadNotifications()
+    github.Get('/search/issues?q=' + encodeURIComponent('commenter:' + self.data.owner + '') + '&per_page=100', function(d) {
+      self.setData({issues: d})
+    })
   },
 
   onShow: function() {

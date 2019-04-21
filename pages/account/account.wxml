@@ -23,7 +23,24 @@
       <repolist list="{{repos}}" timeKey="updated_at"/>
     </van-tab>
     <van-tab title='Events'>
-      <repolist list="{{events}}" timeKey="created_at"/>
+      <block wx:for-items="{{issues}}" wx:key="{{item.id}}">
+      <view>
+          <navigator url="{{'/pages/issue/issue?issue=' + item.url}}" >
+          <view class="weui-media-box__title">{{item.title}}</view>
+
+          <view class="weui-media-box__desc">
+          <view class='margin-padding'>
+            <wux-tag>{{item.user.login}}</wux-tag>
+            <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.updated_at}}" lang="en" /></wux-tag>
+            <wux-tag wx:if="{{item.pull_request}}">Pull request</wux-tag>
+          </view>
+          <view>{{item.body}}</view>
+          </view>
+          </navigator>
+          
+          <view class="padding"><wux-divider show-text="{{ false }}"></wux-divider></view>
+          </view>
+      </block>
     </van-tab>
     <van-tab wx:if="{{showHistory}}" title="History">
       <repolist list="{{list}}" timeKey="requesttime"/>
