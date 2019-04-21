@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 18,
 			"list": [
 				{
 					"id": -1,
@@ -165,6 +165,13 @@
 					"name": "BlogList",
 					"pathName": "pages/bloglist/bloglist",
 					"query": "jobname=blogcoreos",
+					"scene": null
+				},
+				{
+					"id": 18,
+					"name": "Search",
+					"pathName": "pages/search/search",
+					"query": "type=issues&query=is%3Apr%20author%3AZhuPeng%20repo%3Akubernetes-retired%2Fcontrib",
 					"scene": null
 				}
 			]

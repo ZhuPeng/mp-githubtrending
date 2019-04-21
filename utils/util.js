@@ -35,6 +35,8 @@ function GitHubNavi(path, naviFunc, withSubscribe) {
   } else if (filepath.startsWith('issues/')) {
     var issue = 'https://api.github.com/repos/' + owner + '/' + repo + '/' + filepath
     naviFunc({url: '/pages/issue/issue?issue='+issue})
+  } else if (filepath.startsWith('pulls?q=')) {
+    naviFunc({ url: '/pages/search/search?type=issues&query=' + filepath.slice('pulls?q='.length) + encodeURIComponent(' repo:' + owner+'/'+repo)})
   } else {
     naviFunc({
       url: '/pages/gitfile/gitfile?file=' + filepath + '&owner=' + owner + '&repo=' + repo + (withSubscribe ? '&withsubscribe=true': ''),
