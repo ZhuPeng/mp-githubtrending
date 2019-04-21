@@ -82,6 +82,13 @@ async function getLastestGitHubBlog() {
       'url': 'https://github.com/ruanyf/weekly/blob/master/docs/issue-52.md',
       '_crawl_time': '2019-04-21',
       'article-image_url': 'https://camo.githubusercontent.com/aab243a902a257907b613ad07c4ec3bb8d2f974f/68747470733a2f2f7777772e77616e67626173652e636f6d2f626c6f67696d672f61737365742f3230313930342f6267323031393034313930312e6a7067',
+    }, {
+      'id': 6,
+      '__tablename__': 'github',
+      'title': '李笑来《自学是门手艺》',
+      'url': 'https://github.com/selfteaching/the-craft-of-selfteaching',
+      '_crawl_time': '2019-04-22',
+      'article-image_url': baseUrl + '/mp-githubtrending/blog/selfteaching-code.jpeg',
     }]
 }
 
