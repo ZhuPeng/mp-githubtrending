@@ -42,9 +42,14 @@ Page({
     var self = this;
     cloudclient.callFunction({ type: 'get', path: '/repos/' + self.data.query.owner + '/' + self.data.query.repo}, function (c) {
       console.log('meta: ', c)
-      var meta = { 'fork': c.forks_count, 'star': c.stargazers_count, 'lang': c.language, url: c.html_url, 'desc': c.description, 'issue_count': c.open_issues_count, 'created_at': c.created_at, 'has_wiki': c.has_wiki}
+      var meta = { 'fork': c.forks_count, 'star': c.stargazers_count, 'lang': c.language, url: c.html_url, 'desc': c.description, 'issue_count': c.open_issues_count, 'created_at': c.created_at, 'has_wiki': c.has_wiki, default_branch: c.default_branch}
         self.setData({ meta })
 
+        if (c.default_branch != 'master') {
+          self.getGitHubData("readme", function preprocess(content) {
+            return util.base64Decode(content)
+          })
+        }
         // preload
         self.getGitHubData("commits")
         self.getGitHubData("issues")
@@ -125,6 +130,7 @@ Page({
     cloudclient.callFunction({
         owner: this.data.query.owner,
         repo: this.data.query.repo,
+        ref: this.data.meta.default_branch || 'master',
         type: type
       }, function (d) {
         if (callback) {
