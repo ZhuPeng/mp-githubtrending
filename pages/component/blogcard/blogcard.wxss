@@ -1,10 +1,14 @@
 .slide-image {
   width: 100%;
-  height: 110px;
+  height: 150px;
 }
 
 .title {
   font-size: 14px;
   text-align: center;
   line-height: 1.1em;
+  position: absolute; 
+  top: 120px; 
+  width: 100%;  
+  font-weight: bold;
 }
