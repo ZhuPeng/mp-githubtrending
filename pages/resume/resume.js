@@ -131,7 +131,7 @@ Page({
       sorted.map(function (repo, index) {
         repoUrl = repo.repo.replace(/https:\/\/api\.github\.com\/repos/, 'https://github.com');
         repoName = repo.repo.replace(/https:\/\/api\.github\.com\/repos\//, '');
-        pullsUrl = repoUrl + '/pulls?q=' + encodeURIComponent('is:pr author:' + username);
+        pullsUrl = repoUrl + '/pulls?q=' + encodeURIComponent('is:pr is:merged author:' + username);
         var link = util.mdLink(repoName, repoUrl)
         contrib += '* ' + link + '\n\n'
         contrib +=  username + ' has contributed for ' + link + ' with ' + util.mdLink(repo.popularity + ' pull(s)', pullsUrl)
