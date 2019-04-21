@@ -10,11 +10,6 @@
   margin-bottom: 10rpx;
 }
 
-.padding {
-  margin-top: 12rpx;
-  margin-bottom: 12rpx;
-}
-
 .padding-top {
   margin-top: 80rpx;
 }

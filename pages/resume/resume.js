@@ -95,8 +95,8 @@ Page({
     })
     
     var owner = options.name
-    github.Get('/users/' + owner + '/repos?per_page=100', this.githubLangsDist)
-    github.Get('/search/issues?q=' + encodeURIComponent('type:pr is:merged author:' + owner + '') + '&per_page=100', this.handleIssues)
+    github.Get('/users/' + owner + '/repos?', this.githubLangsDist)
+    github.Get('/search/issues?q=' + encodeURIComponent('type:pr is:merged author:' + owner + ''), this.handleIssues)
   },
 
   handleIssues: function(data) {

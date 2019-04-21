@@ -54,6 +54,7 @@
     "subscribe": "pages/component/subscribe/subscribe",
     "formbutton": "pages/component/formbutton/formbutton",
     "repolist": "pages/component/repolist/repolist",
+    "issuelist": "pages/component/issuelist/issuelist",
     "avatar": "pages/component/avatar/avatar",
     "blogcard": "pages/component/blogcard/blogcard",
     "githead": "pages/component/githead/githead"
