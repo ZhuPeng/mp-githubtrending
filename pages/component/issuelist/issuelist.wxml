@@ -10,7 +10,7 @@
           <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.updated_at}}" lang="en" /></wux-tag>
           <wux-tag wx:if="{{item.pull_request}}">Pull request</wux-tag>
         </view>
-        <view>{{item.body}}</view>
+        <view class="padding-top">{{item.body}}</view>
         </view>
       </navigator>
           
