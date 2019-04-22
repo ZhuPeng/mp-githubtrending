@@ -50,7 +50,9 @@
   </view>
 
 <view class="page__bd">
-  <wux-spin nested spinning="{{ spinning }}" tip="Loading ..."/>
+  <view class="middle">
+    <wux-spin nested spinning="{{ spinning }}" tip="Loading"/>
+  </view>
   <repolist list="{{list}}" />
   <fabbutton/>
 </view>

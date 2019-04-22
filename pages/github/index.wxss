@@ -1,3 +1,9 @@
+.middle {
+  left: 50%;
+  top: 50%;
+  position: fixed;
+}
+
 .search .van-search {
   padding: 7px 18rpx;
 }

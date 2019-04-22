@@ -25,6 +25,11 @@ Page({
     spinning: true
   },
 
+  setDataWithSpin: function(d) {
+    d['spinning'] = false
+    this.setData(d)
+  },
+
   getLastestBlog: function () {
     var self = this
 
@@ -35,7 +40,7 @@ Page({
 
   onSheetClose() {
     console.log("onSheetClose")
-    this.setData({list: [], sheetShow: false})
+    this.setData({list: [], sheetShow: false, spinning: true})
     this.loadData()
   },
 
@@ -75,7 +80,7 @@ Page({
 
   loadData: function(more) {
     if (!more) {
-      this.setData({list: []})
+      this.setData({list: [], spinning: true})
     }
     if (this.data.searchValue) {
       this.search(this.data.searchValue)
@@ -84,7 +89,6 @@ Page({
         this.appendList(res.data)
       })
     }
-    this.setData({spinning: false})
   },
 
   onPullDownRefresh: function () {
@@ -125,7 +129,7 @@ Page({
         var changeval = list[e.tapIndex]
         console.log("change:", type, changeval);
         if (changeval != target) {
-          var data = {list: []}
+          var data = { list: [], spinning: true}
           data[type] = changeval
           self.setData(data)
           wx.setStorageSync(key, changeval) 
@@ -137,6 +141,7 @@ Page({
 
   onReachBottom: function(e) {
     console.log("onReachBotton:", e)
+    this.setData({ spinning: true })
     this.loadData(true)
   },
 
@@ -145,7 +150,7 @@ Page({
       var curList = this.data.list
       curList.push(...newList)
       console.log("total count:", curList.length)
-      this.setData({ list: curList })
+      this.setDataWithSpin({ list: curList })
   },
 
   searchGithub(value) {
@@ -178,23 +183,6 @@ Page({
       val = val.trim()
     }
     this.searchGithub(val)
-    this.getCollection().where(_.or([
-      {
-        repo: db.RegExp({
-          regexp: val,
-          options: 'i',
-        })
-      },
-      {
-        desc: db.RegExp({
-          regexp: val,
-          options: 'i',
-        })
-      }
-    ])).orderBy(this.getOrder(), 'desc').skip(this.data.list.length).get().then(res => {
-      this.appendList(res.data)
-    })
-    this.setData({ spinning: false })
   },
 
   onShareAppMessage: function () {
