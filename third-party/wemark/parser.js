@@ -56,6 +56,7 @@ function parse(md, options){
             while(match = imgRegExp.exec(html)) {
               if (match[1]) {
                 ret.push({type: 'image', src: urlModify(options.baseurl, match[1])});
+                html = html.replace(match[0], '')
               }
             }
             parseHtml(html, ret)
