@@ -55,18 +55,11 @@ async function getLastestGitHubBlog() {
     '_crawl_time': '2019-04-10', 
     'article-image_url': baseUrl + '/mp-githubtrending/WechatGithub.jpeg',
     }, {
-      'id': 2,
-      '__tablename__': 'github',
-      'title': '小程序 GitHub Trending Hub 的由来',
-      'url': 'https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/why.md',
-      '_crawl_time': '2019-04-17',
-      'article-image_url': baseUrl + '/qrcode.jpg',
-    }, {
       'id': 3,
       '__tablename__': 'github',
       'title': 'HelloGitHub 分享第 36 期',
       'url': 'https://github.com/521xueweihan/HelloGitHub/blob/master/content/36/HelloGitHub36.md',
-      '_crawl_time': '2019-04-18',
+      '_crawl_time': '2019-04-19',
       'article-image_url': baseUrl + '/mp-githubtrending/blog/hello-github.jpg',
     }, {
       'id': 4,
@@ -89,6 +82,13 @@ async function getLastestGitHubBlog() {
       'url': 'https://github.com/selfteaching/the-craft-of-selfteaching',
       '_crawl_time': '2019-04-22',
       'article-image_url': baseUrl + '/mp-githubtrending/blog/selfteaching-code.jpeg',
+    }, {
+      'id': 7,
+      '__tablename__': 'github',
+      'title': 'Etcd Raft使用入门及原理解析',
+      'url': 'https://github.com/aCoder2013/blog/issues/30',
+      '_crawl_time': '2019-04-23',
+      'article-image_url': BlogMap['blogcoreos']['article-image_url'][0],
     }]
 }
 
@@ -103,7 +103,7 @@ async function getLastest() {
     }
   }
   all.push(...await getLastestGitHubBlog())
-  all.sort(function (a, b) { return new Date(a['_crawl_time']) < new Date(b['_crawl_time']) }); 
+  all.sort(function (a, b) { return new Date(a['_crawl_time']) < new Date(b['_crawl_time']) });
   return {'data': all.slice(0, 6)}
 }
 
