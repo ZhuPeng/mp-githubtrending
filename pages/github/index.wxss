@@ -4,6 +4,10 @@
   position: fixed;
 }
 
+.swiper {
+  height: 200px;
+}
+
 .search .van-search {
   padding: 7px 18rpx;
 }

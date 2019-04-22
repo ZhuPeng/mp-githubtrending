@@ -1,6 +1,6 @@
 <view class="page">
   <view class="page__hd">
-    <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}">
+    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{blogList.data}}" wx:key="{item.id}">
       <swiper-item>
         <blogcard blogid="{{item.id}}" url="{{item.url}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}"/>
