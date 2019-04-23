@@ -5,23 +5,36 @@ const db = cloud.database()
 
 exports.main = async (event, context) => {
   const {OPENID} = cloud.getWXContext()
+  const {type, openid} = event;
   console.log('trigger:', event, context)
   if (!OPENID) {
     await pubcontent()
+    return
   }
+  var publist = []
   var content = await pubSimpleContent()
-  var res = await db.collection('subscribe').get()
-  var publist = res.data
-
+  if (type == 'all') {
+    var res = await db.collection('subscribe').get()
+    publist = res.data
+  } else if (openid) {
+    publist = [{ openid }]
+  } else {
+    publist = [{ openid: OPENID }]
+  }
+  
+  var res = []
   for (var i = 0; i < publist.length; i++) {
     var f = await getFormId(publist[i].openapi)
     if (!f) {
-      console.log('没有找到可用的 formid:', publist[i])
+      var err = '没有找到可用的 formid:' + publist[i]
+      console.log(err)
+      res.push(err)
       continue
     }
-    await pub(publist[i].openid, f.formId, content, f._id)
+    var r = await pub(publist[i].openid, f.formId, content, f._id)
+    res.push(r)
   } 
-  return {status: '操作完成'}
+  return {status: '操作完成', detail: res}
 }
 
 async function getFormId(openid) {
@@ -49,7 +62,7 @@ async function pub(openid, formId, content, id) {
           value: content
         }
       },
-      templateId: 'FVPAbr_D4W3Mk9um2BE8ouHuabSi-CiDSVtNXTcC1PA',
+      templateId: 'lRgcyAmzj1LTg_bYJuiCOeBgT8jx6HOqzC3EtAXh-_8',
       formId: formId,
     })
     console.log(result)

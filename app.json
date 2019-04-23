@@ -12,7 +12,8 @@
     "pages/newissue/newissue",
     "pages/gitdir/gitdir",
     "pages/blog/blog",
-    "pages/bloglist/bloglist"
+    "pages/bloglist/bloglist",
+    "pages/admin/admin"
   ],
   "window": {
     "backgroundTextStyle": "light",

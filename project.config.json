@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 18,
+			"current": 19,
 			"list": [
 				{
 					"id": -1,
@@ -172,6 +172,13 @@
 					"name": "Search",
 					"pathName": "pages/search/search",
 					"query": "type=issues&query=is%3Apr%20author%3AZhuPeng%20repo%3Akubernetes-retired%2Fcontrib",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "Admin",
+					"pathName": "pages/admin/admin",
+					"query": "",
 					"scene": null
 				}
 			]

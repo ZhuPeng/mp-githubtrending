@@ -1,0 +1,4 @@
+<formbutton bind:click="onDebugButtonClick" type="primary" text="Publish DEBUG"/>
+<formbutton bind:click="onButtonClick" type="warn" text="Publish ALL"/>
+
+<md md="```json\n{{result}}\n```"/>
