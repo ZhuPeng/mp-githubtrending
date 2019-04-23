@@ -4,11 +4,11 @@
 }
 
 .title {
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   line-height: 1.1em;
   position: absolute; 
-  top: 166px; 
+  top: 165px; 
   width: 100%;  
   font-weight: bold;
 }
