@@ -89,6 +89,13 @@ async function getLastestGitHubBlog() {
       'url': 'https://github.com/aCoder2013/blog/issues/30',
       '_crawl_time': '2019-04-23',
       'article-image_url': BlogMap['blogcoreos']['article-image_url'][0],
+    }, {
+      'id': 8,
+      '__tablename__': 'github',
+      'title': '微软员工和 GitHub 员工宣布支持 996.ICU 运动',
+      'url': 'https://github.com/MSWorkers/support.996.ICU',
+      '_crawl_time': '2019-04-25',
+      'article-image_url': 'https://repository-images.githubusercontent.com/182034748/6436e100-61af-11e9-9dc6-4cccaad40092',
     }]
 }
 
