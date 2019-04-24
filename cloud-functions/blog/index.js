@@ -96,6 +96,13 @@ async function getLastestGitHubBlog() {
       'url': 'https://github.com/MSWorkers/support.996.ICU',
       '_crawl_time': '2019-04-25',
       'article-image_url': 'https://repository-images.githubusercontent.com/182034748/6436e100-61af-11e9-9dc6-4cccaad40092',
+    }, {
+      'id': 8,
+      '__tablename__': 'github',
+      'title': 'Logoly - A Pornhub Flavour Logo Generator',
+      'url': 'https://github.com/bestony/logoly',
+      '_crawl_time': '2019-04-26',
+      'article-image_url': baseUrl + '/mp-githubtrending/blog/logo.png',
     }]
 }
 
