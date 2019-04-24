@@ -28,8 +28,7 @@ Page({
       })
     }
     var [owner, repo, filepath] = util.parseGitHub(this.data.repourl)
-    var suffix = '\n\n\n> From WeChat Mini Programe: [GitHub Trending Hub](https://github.com/ZhuPeng/mp-githubtrending)'
-    cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues', title: this.data.title, body: this.data.content + suffix, owner, repo}, function (c) {
+    cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues', title: this.data.title, body: this.data.content, owner, repo}, function (c) {
       console.log(c)
       wx.showToast({
         icon: 'none',

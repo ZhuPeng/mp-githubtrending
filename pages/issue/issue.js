@@ -23,8 +23,7 @@ Page({
       })
     }
     var {owner, repo} = this.data
-    var suffix = '\n\n\n> From WeChat Mini Programe: [GitHub Trending Hub](https://github.com/ZhuPeng/mp-githubtrending)'
-    cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues/' + this.data.issue.number + '/comments', body: this.data.content + suffix, owner, repo }, function (c) {
+    cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues/' + this.data.issue.number + '/comments', body: this.data.content, owner, repo }, function (c) {
       console.log(c)
       wx.showToast({
         icon: 'none',
