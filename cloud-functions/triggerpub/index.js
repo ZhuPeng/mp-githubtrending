@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
   }
   var publist = []
   var content = await pubSimpleContent()
-  if (type == 'all') {
+  if (type == 'all' && OPENID == 'ooqTr4hMz05xwBHOU8VgokLyyoU0') {
     var res = await db.collection('subscribe').get()
     publist = res.data
   } else if (openid) {
