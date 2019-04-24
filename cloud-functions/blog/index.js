@@ -1,6 +1,7 @@
 const cloud = require('wx-server-sdk')
 var rp = require('request-promise');
 cloud.init()
+const db = cloud.database()
 const baseUrl = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la'
 
 const BlogMap = {
@@ -47,63 +48,8 @@ async function getItems(jobname, id, num) {
 }
 
 async function getLastestGitHubBlog() {
-  return [{
-    'id': 1,
-    '__tablename__': 'github',
-    'title': '微信公众号文章链接 GitHub 仓库指南',
-    'url': 'https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/api.md',
-    '_crawl_time': '2019-04-10', 
-    'article-image_url': baseUrl + '/mp-githubtrending/WechatGithub.jpeg',
-    }, {
-      'id': 3,
-      '__tablename__': 'github',
-      'title': 'HelloGitHub 分享第 36 期',
-      'url': 'https://github.com/521xueweihan/HelloGitHub/blob/master/content/36/HelloGitHub36.md',
-      '_crawl_time': '2019-04-19',
-      'article-image_url': baseUrl + '/mp-githubtrending/blog/hello-github.jpg',
-    }, {
-      'id': 4,
-      '__tablename__': 'github',
-      'title': 'GitHub 开源项目发布雷达',
-      'url': 'https://github.com/ZhuPeng/zhupeng.github.io/blob/master/_posts/github_release_radar_201903.md',
-      '_crawl_time': '2019-04-19',
-      'article-image_url': baseUrl + '/GitHub%E7%B2%BE%E9%80%89/radar/radar-march2019.png',
-    }, {
-      'id': 5,
-      '__tablename__': 'github',
-      'title': '阮一峰技术分享周刊第 52 期',
-      'url': 'https://github.com/ruanyf/weekly/blob/master/docs/issue-52.md',
-      '_crawl_time': '2019-04-21',
-      'article-image_url': 'https://camo.githubusercontent.com/aab243a902a257907b613ad07c4ec3bb8d2f974f/68747470733a2f2f7777772e77616e67626173652e636f6d2f626c6f67696d672f61737365742f3230313930342f6267323031393034313930312e6a7067',
-    }, {
-      'id': 6,
-      '__tablename__': 'github',
-      'title': '李笑来《自学是门手艺》',
-      'url': 'https://github.com/selfteaching/the-craft-of-selfteaching',
-      '_crawl_time': '2019-04-22',
-      'article-image_url': baseUrl + '/mp-githubtrending/blog/selfteaching-code.jpeg',
-    }, {
-      'id': 7,
-      '__tablename__': 'github',
-      'title': 'Etcd Raft使用入门及原理解析',
-      'url': 'https://github.com/aCoder2013/blog/issues/30',
-      '_crawl_time': '2019-04-23',
-      'article-image_url': BlogMap['blogcoreos']['article-image_url'][0],
-    }, {
-      'id': 8,
-      '__tablename__': 'github',
-      'title': '微软员工和 GitHub 员工宣布支持 996.ICU 运动',
-      'url': 'https://github.com/MSWorkers/support.996.ICU',
-      '_crawl_time': '2019-04-25',
-      'article-image_url': 'https://repository-images.githubusercontent.com/182034748/6436e100-61af-11e9-9dc6-4cccaad40092',
-    }, {
-      'id': 8,
-      '__tablename__': 'github',
-      'title': 'Logoly - A Pornhub Flavour Logo Generator',
-      'url': 'https://github.com/bestony/logoly',
-      '_crawl_time': '2019-04-26',
-      'article-image_url': baseUrl + '/mp-githubtrending/blog/logo.png',
-    }]
+  var list = await db.collection('blog').where({ status: 'online' }).orderBy('_crawl_time', 'desc').limit(6).get()
+  return list.data
 }
 
 async function getLastest() {
