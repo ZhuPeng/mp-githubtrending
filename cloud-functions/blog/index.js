@@ -110,7 +110,7 @@ async function getLastest() {
     }
   }
   all.push(...await getLastestGitHubBlog())
-  all.sort(function (a, b) { return new Date(a['_crawl_time']) < new Date(b['_crawl_time']) });
+  all.sort(function (a, b) { return new Date(b['_crawl_time']) - new Date(a['_crawl_time']) });
   return {'data': all.slice(0, 6)}
 }
 
