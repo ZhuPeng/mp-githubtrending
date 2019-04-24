@@ -24,7 +24,7 @@ Page({
 
   onIssueClick: function (e) {
     wx.navigateTo({
-      url: '/pages/search/search?type=issues&query=From%20WeChat%20Mini%20Programe%EF%BC%9A[GitHub%20Trending%20Hub]%20in:comments%20sort:updated'
+      url: '/pages/search/search?type=issues&query=' + encodeURIComponent('From WeChat Mini Programe:[GitHub Trending Hub] in:comments sort:updated')
     })
   }
 })
