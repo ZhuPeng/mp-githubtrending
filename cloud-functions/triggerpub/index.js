@@ -24,7 +24,7 @@ exports.main = async (event, context) => {
   
   var res = []
   for (var i = 0; i < publist.length; i++) {
-    var f = await getFormId(publist[i].openapi)
+    var f = await getFormId(publist[i].openid)
     if (!f) {
       var err = '没有找到可用的 formid:' + publist[i]
       console.log(err)

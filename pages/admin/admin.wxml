@@ -2,3 +2,5 @@
 <formbutton bind:click="onButtonClick" type="warn" text="Publish ALL"/>
 
 <md md="```json\n{{result}}\n```"/>
+
+<formbutton bind:click="onIssueClick" text="Comments From MiniPrograme"/>

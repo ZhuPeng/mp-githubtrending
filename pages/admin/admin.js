@@ -20,5 +20,11 @@ Page({
   onDebugButtonClick: function(e) {
     console.log('onDebugButtonClick')
     cloudclient.callFunctionWithName('triggerpub', {}, this.setResult)
+  }, 
+
+  onIssueClick: function (e) {
+    wx.navigateTo({
+      url: '/pages/search/search?type=issues&query=From%20WeChat%20Mini%20Programe%EF%BC%9A[GitHub%20Trending%20Hub]%20in:comments%20sort:updated'
+    })
   }
 })
