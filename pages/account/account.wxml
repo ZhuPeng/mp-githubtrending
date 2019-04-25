@@ -19,7 +19,7 @@
 
 <view class="page__hd">
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
-  <van-tabs animated bind:click="onClick">
+  <van-tabs swipeable bind:click="onClick">
     <van-tab title='Repos'>
       <repolist list="{{repos}}" timeKey="updated_at"/>
     </van-tab>

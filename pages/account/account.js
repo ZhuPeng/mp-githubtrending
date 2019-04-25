@@ -11,6 +11,7 @@ Page({
     issues: [],
     showHistory: false,
     spinning: true,
+    tabKey: 'Repos',
   },
   
   bindViewTap: function () {
@@ -45,21 +46,33 @@ Page({
 
   loadRepos() {
     var self = this;
+    var currentSize = this.data.repos.length
+    if (currentSize > 0 && currentSize == self.data.meta.public_repos) {
+      return
+    }
     cloudclient.callFunction({
       type: 'repos',
       owner: self.data.owner,
+      currentSize,
     }, function (d) {
-      util.SetDataWithoutSpin(self, { repos: d })
+      var tmp = self.data.repos
+      tmp.push(...d)
+      util.SetDataWithoutSpin(self, { repos: tmp })
     })
   },
 
   onClick(event) {
     var self = this;
     console.log(event)
-    if (event.detail.title == 'Repos') {
+    this.setData({tabKey: event.detail.title})
+    this.loadData(event.detail.title)
+  },
+
+  loadData(key) {
+    if (key == 'Repos') {
       util.SetDataWithSpin(this, {})
       this.loadRepos()
-    } else if (event.detail.title == 'History') {
+    } else if (key == 'History') {
       util.SetDataWithSpin(this, {})
       this.loadHistory()
     }
@@ -88,6 +101,11 @@ Page({
       this.setData({owner: sname, repos: []})
       this.onLoad({owner: sname})
     }
+  },
+
+  onReachBottom: function () {
+    console.log("onReachBottom")
+    this.loadData(this.data.tabKey)
   },
 
   onShareAppMessage: function () {
