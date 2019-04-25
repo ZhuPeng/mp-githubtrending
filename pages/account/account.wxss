@@ -1,3 +1,5 @@
+@import '../../app.wxss';
+
 .userinfo {
   display: flex;
   flex-direction: row;
