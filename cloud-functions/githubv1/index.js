@@ -20,9 +20,6 @@ async function getToken() {
   return res.data[index].value;
 }
 
-const per_page = 30;
-const page = 1;
-
 function dateFtt(fmt, date) { //author: meizz   
   var o = {
     "M+": date.getMonth() + 1,                 //月份   
@@ -114,7 +111,7 @@ exports.main = async (event, context) => {
 
 const grayCache = {'readme': true, 'get': true, 'file': true}
 async function executeWithCache(owner, repo, type, path, openid, ref, data) { 
-  var key = owner + repo + type + path + ref
+  var key = owner + repo + type + path + ref + data.currentSize
   var res = CACHE.get(key);
   if (res == undefined) {
     res = await execute(owner, repo, type, path, openid, ref, data)
@@ -130,6 +127,11 @@ async function executeWithCache(owner, repo, type, path, openid, ref, data) {
 async function execute(owner, repo, type, path, openid, ref, data) { 
   if (!ref) { ref = 'master'; }
   var res;
+  var per_page = 30;
+  var page = 1;
+  if (data.currentSize) {
+    page = 1 + data.currentSize / per_page 
+  }
   if (!type || type == "readme") {
     res = await octokit.repos.getReadme({ owner, repo, ref })
     return {
@@ -140,7 +142,7 @@ async function execute(owner, repo, type, path, openid, ref, data) {
     res = await octokit.repos.listReleases({ owner, repo, per_page, page })
     return { content: res['data']}
   } else if (type == "commits") {
-    res = await octokit.repos.listCommits({ owner, repo, per_page })
+    res = await octokit.repos.listCommits({ owner, repo, per_page, page })
     return {content: res['data']}
   } else if (type == "issues") {
     res = await octokit.issues.listForRepo({ owner, repo, sort: "updated", per_page, page })   

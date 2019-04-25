@@ -15,6 +15,7 @@ Page({
     meta: {desc: 'loadding...'},
     query: {},
     spinning: true,
+    tabKey: '',
   },
 
   onButtonClick: function (e) {
@@ -73,18 +74,17 @@ Page({
 
   onClick(event) {
     console.log(event)
-    if (event.detail.title == 'Releases' && this.data.releases.length == 0) {
-      this.setData({ spinning: true })
-      this.getGitHubData("releases")
-    } else if (event.detail.title == 'Commits' && this.data.commits.length == 0) {
-      this.setData({ spinning: true })
-      this.getGitHubData("commits")
-    } else if (event.detail.title == 'Issues' && this.data.issues.length==0) {
-      this.setData({ spinning: true })
-      this.getGitHubData("issues")
-    } else if(event.detail.title == 'Stats' && this.data.statsMd == '') {
+    this.setData({tabKey: event.detail.title})
+    this.loadData(event.detail.title.toLowerCase())
+  },
+
+  loadData(key, more) {
+    if (key == 'stats' && this.data.statsMd == '') {
       this.setData({ spinning: true })
       this.genStatsMd(true)
+    } else if (this.data[key] && (more || this.data[key].length == 0)) {
+      this.setData({ spinning: true })
+      this.getGitHubData(key)
     }
   },
 
@@ -131,17 +131,27 @@ Page({
         owner: this.data.query.owner,
         repo: this.data.query.repo,
         ref: this.data.meta.default_branch || 'master',
-        type: type
+        type: type,
+        currentSize: this.data[type].length,
       }, function (d) {
         if (callback) {
           d = callback(d)
         }
+        var tmp = self.data[type]
+        if (Array.isArray(d) && Array.isArray(tmp)) {
+          tmp.push(...d)
+        } else { tmp = d}
         self.setData({
           // base64 encode
-          [type]: d || 'No Data Found.',
+          [type]: tmp,
           spinning: false,
         })
     })
+  },
+
+  onReachBottom: function () {
+    console.log("onReachBottom")
+    this.loadData(this.data.tabKey.toLowerCase(), true)
   },
   
   onShareAppMessage: function () {

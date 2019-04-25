@@ -14,7 +14,7 @@
 
   <view class="page__bd">
     <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
-    <van-tabs animated bind:click="onClick">
+    <van-tabs swipeable bind:click="onClick">
       <van-tab title="Readme">
         <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
 
