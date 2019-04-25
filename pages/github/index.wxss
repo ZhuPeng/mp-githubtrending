@@ -1,8 +1,4 @@
-.middle {
-  left: 50%;
-  top: 50%;
-  position: fixed;
-}
+@import '../../app.wxss';
 
 .swiper {
   height: 200px;

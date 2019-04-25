@@ -1,4 +1,5 @@
 const dbutil = require('../../utils/db.js')
+const util = require('../../utils/util.js')
 const cloudclient = require('../../utils/cloudclient.js')
 const app = getApp()
 const db = dbutil.getDB()
@@ -25,11 +26,6 @@ Page({
     spinning: true
   },
 
-  setDataWithSpin: function(d) {
-    d['spinning'] = false
-    this.setData(d)
-  },
-
   getLastestBlog: function () {
     var self = this
 
@@ -40,7 +36,7 @@ Page({
 
   onSheetClose() {
     console.log("onSheetClose")
-    this.setData({list: [], sheetShow: false, spinning: true})
+    util.SetDataWithSpin(this, {list: [], sheetShow: false})
     this.loadData()
   },
 
@@ -80,7 +76,7 @@ Page({
 
   loadData: function(more) {
     if (!more) {
-      this.setData({list: [], spinning: true})
+      util.SetDataWithSpin(this, {list: []})
     }
     if (this.data.searchValue) {
       this.search(this.data.searchValue)
@@ -93,7 +89,7 @@ Page({
 
   onPullDownRefresh: function () {
     console.log("onPulldowRefresh")
-    this.setData({list: [], spinning: true})
+    util.SetDataWithSpin(this, {list: []})
     setTimeout(() => {
       this.loadData(true)
       wx.stopPullDownRefresh()
@@ -129,9 +125,9 @@ Page({
         var changeval = list[e.tapIndex]
         console.log("change:", type, changeval);
         if (changeval != target) {
-          var data = { list: [], spinning: true}
+          var data = { list: []}
           data[type] = changeval
-          self.setData(data)
+          util.SetDataWithSpin(self, data)
           wx.setStorageSync(key, changeval) 
           self.loadData()
         }
@@ -141,7 +137,7 @@ Page({
 
   onReachBottom: function(e) {
     console.log("onReachBotton:", e)
-    this.setData({ spinning: true })
+    util.SetDataWithSpin(this, {})
     this.loadData(true)
   },
 
@@ -150,7 +146,7 @@ Page({
       var curList = this.data.list
       curList.push(...newList)
       console.log("total count:", curList.length)
-      this.setDataWithSpin({ list: curList })
+      util.SetDataWithoutSpin(this, { list: curList })
   },
 
   searchGithub(value) {
@@ -164,11 +160,7 @@ Page({
   },
 
   onSearch: function(e) {
-      this.setData({
-        searchValue: e.detail,
-        spinning: true,
-        list: []
-      })
+      util.SetDataWithSpin(this, {searchValue: e.detail, list: []})
       console.log("searchValue:", this.data.searchValue)
       this.search(e.detail, false)
   },

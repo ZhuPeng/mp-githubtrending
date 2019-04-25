@@ -1,5 +1,12 @@
 @import 'style/weui.wxss';
 
+.spin {
+  top: 50%;
+  position: fixed;
+  text-align: center;
+  width: 100%; 
+}
+
 .margin-left-right {
   margin-left: 30rpx;
   margin-right: 30rpx;

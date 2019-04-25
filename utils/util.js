@@ -16,6 +16,18 @@ module.exports = {
   GetPercent,
   timeAgo,
   toast,
+  SetDataWithoutSpin,
+  SetDataWithSpin,
+}
+
+function SetDataWithSpin(cls, d) {
+  d['spinning'] = true
+  cls.setData(d)
+}
+
+function SetDataWithoutSpin(cls, d) {
+  d['spinning'] = false
+  cls.setData(d)
 }
 
 function GitHubNavi(path, naviFunc, withSubscribe) {
