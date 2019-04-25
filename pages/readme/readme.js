@@ -83,6 +83,7 @@ Page({
       this.setData({ spinning: true })
       this.genStatsMd(true)
     } else if (this.data[key] && (more || this.data[key].length == 0)) {
+      if (key == 'issues' && this.data[key].length && this.data[key].length == this.data.meta.issue_count) { return }
       this.setData({ spinning: true })
       this.getGitHubData(key)
     }
