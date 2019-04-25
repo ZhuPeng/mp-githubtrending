@@ -1,5 +1,6 @@
 <githead url="{{issue.html_url}}"/>
 <md md="## {{issue.title}} #{{issue.number}}" />
+<view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
 
 <avatar action="commented" url="{{issue.user.avatar_url}}" login="{{issue.user.login}}" created_at="{{issue.created_at}}" tag="{{issue.author_association}}" />
 <md md="{{issue.body}}"/>

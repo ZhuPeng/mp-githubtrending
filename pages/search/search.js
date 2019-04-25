@@ -1,9 +1,11 @@
 const github = require('../../utils/github.js')
+const util = require('../../utils/util.js')
 Page({
   data: {
     type: '',
     query: '',
     result: [],
+    spinning: true,
   },
 
   onLoad: function (options) {
@@ -12,7 +14,7 @@ Page({
     var self = this
     github.Get('/search/' + options.type + '?q=' + options.query, function(r){
       console.log(r)
-      self.setData({result: r})
+      util.SetDataWithoutSpin(self, {result: r})
     })
   },
 

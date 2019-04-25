@@ -5,7 +5,7 @@
 </view>
 
 <view class="page__bd">
-  <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
+    <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
 
   <md md="{{info}}"></md>
   <md wx:if="{{langDist}}" md="{{langDist}}" />

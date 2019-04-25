@@ -8,6 +8,7 @@ Page({
     content: '',
     owner: '',
     repo: '',
+    spinning: true,
   },
 
   onContentChange: function (e) {
@@ -41,7 +42,7 @@ Page({
     console.log("issue: ", options.issue)
     cloudclient.callFunction({ type: 'get', path: options.issue }, function (c) {
       var [owner, repo, filepath] = util.parseGitHub(c.html_url)
-      self.setData({issue: c, owner, repo})
+      util.SetDataWithoutSpin(self, {issue: c, owner, repo})
       if (c.pull_request) { self.loadDiff() }
       self.loadComments(c.comments_url)
     })

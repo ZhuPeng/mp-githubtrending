@@ -2,7 +2,8 @@ const cloudclient = require('../../utils/cloudclient.js')
 const util = require('../../utils/util.js')
 Page({
   data: {
-    commit: {}
+    commit: {},
+    spinning: true,
   },
 
   onLoad: function (options) {
@@ -12,7 +13,7 @@ Page({
       c.files.map(function(f) {
         f.extension = util.isCodeFile(f.filename)
       })
-      self.setData({ commit: c })
+      util.SetDataWithoutSpin(self, { commit: c })
     })
   },
 

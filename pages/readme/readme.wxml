@@ -13,9 +13,9 @@
   </view>
 
   <view class="page__bd">
+    <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
     <van-tabs animated bind:click="onClick">
       <van-tab title="Readme">
-        <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
         <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
 
         <view class="flex-wrp margin-left-right">
@@ -28,7 +28,6 @@
       </van-tab>
 
       <van-tab wx:if="{{false}}" title="Releases">
-        <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
         <view class=".margin-left-right" >
         <block wx:for-items="{{releases}}" wx:key="{{item.id}}">
           <view>
@@ -42,7 +41,6 @@
       </van-tab>
 
       <van-tab title="Commits">
-        <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
         <view class="margin-left-right" >
         <block wx:for-items="{{commits}}" wx:key="{{item.sha}}">
           <view class="commit">
@@ -63,13 +61,11 @@
         <view class="margin-left-right">
           <formbutton bind:click="onButtonClick" type="primary" text="New Issue"/>
         </view>
-        <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
       
         <issuelist list="{{issues}}" />
       </van-tab> 
 
        <van-tab title="Stats" info="1">
-        <view class="padding-top" wx:if="{{spinning}}"><wux-spin nested spinning="{{ spinning }}" tip="Loading ..."></wux-spin></view>
         <md md="{{statsMd}}"/>
       </van-tab>
     </van-tabs>
