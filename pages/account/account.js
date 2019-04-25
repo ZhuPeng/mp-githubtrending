@@ -1,5 +1,6 @@
 const cloudclient = require('../../utils/cloudclient.js')
 const github = require('../../utils/github.js')
+const util = require('../../utils/util.js')
 const app = getApp()
 
 Page({
@@ -9,6 +10,7 @@ Page({
     repos: [],
     issues: [],
     showHistory: false,
+    spinning: true,
   },
   
   bindViewTap: function () {
@@ -20,7 +22,7 @@ Page({
   loadHistory: function() {
     var self = this
     cloudclient.callFunction({type: 'history'}, function(d) {
-      self.setData({list: d})
+      util.SetDataWithoutSpin(self, {list: d})
     })
   },
 
@@ -37,28 +39,28 @@ Page({
     if (this.data.owner == "") { return }
     cloudclient.callFunction({ type: 'get', path: '/users/' + this.data.owner + '/events' }, function (d) {
       console.log('events: ', d)
-      self.setData({ events: d })
+      util.SetDataWithoutSpin(self, { events: d })
     })
   },
 
   loadRepos() {
     var self = this;
-    if (this.data.repos.length == 0) {
-      cloudclient.callFunction({
-        type: 'repos',
-        owner: self.data.owner,
-      }, function (d) {
-        self.setData({ repos: d })
-      })
-    }
+    cloudclient.callFunction({
+      type: 'repos',
+      owner: self.data.owner,
+    }, function (d) {
+      util.SetDataWithoutSpin(self, { repos: d })
+    })
   },
 
   onClick(event) {
     var self = this;
     console.log(event)
     if (event.detail.title == 'Repos') {
+      util.SetDataWithSpin(this, {})
       this.loadRepos()
     } else if (event.detail.title == 'History') {
+      util.SetDataWithSpin(this, {})
       this.loadHistory()
     }
   },
