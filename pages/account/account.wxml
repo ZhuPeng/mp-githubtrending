@@ -18,7 +18,7 @@
   </view>
 
 <view class="page__hd">
-  <van-tabs swipeable bind:click="onClick">
+  <van-tabs swipeable bind:change="onClick">
     <van-tab title='Repos'>
       <repolist list="{{repos}}" timeKey="updated_at"/>
       <wux-divider wx:if="{{meta.public_repos && repos.length == meta.public_repos}}" text="No More Repos" />
