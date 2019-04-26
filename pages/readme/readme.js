@@ -79,6 +79,7 @@ Page({
   },
 
   loadData(key, more) {
+    if (key == 'readme') {return}
     if (key == 'stats' && this.data.statsMd == '') {
       this.setData({ spinning: true })
       this.genStatsMd(true)
