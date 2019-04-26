@@ -63,6 +63,7 @@
         </view>
       
         <issuelist list="{{issues}}" />
+        <wux-divider wx:if="{{meta.issue_count && issues.length == meta.issue_count}}" text="No More Issues" />
       </van-tab> 
 
        <van-tab title="Stats" info="1">

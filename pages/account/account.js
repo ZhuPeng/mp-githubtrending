@@ -22,6 +22,7 @@ Page({
 
   loadHistory: function() {
     var self = this
+    util.SetDataWithSpin(this, {})
     cloudclient.callFunction({type: 'history'}, function(d) {
       util.SetDataWithoutSpin(self, {list: d})
     })
@@ -50,6 +51,7 @@ Page({
     if (currentSize > 0 && currentSize == self.data.meta.public_repos) {
       return
     }
+    util.SetDataWithSpin(this, {})
     cloudclient.callFunction({
       type: 'repos',
       owner: self.data.owner,
@@ -70,10 +72,8 @@ Page({
 
   loadData(key) {
     if (key == 'Repos') {
-      util.SetDataWithSpin(this, {})
       this.loadRepos()
     } else if (key == 'History') {
-      util.SetDataWithSpin(this, {})
       this.loadHistory()
     }
   },
