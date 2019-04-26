@@ -2,6 +2,7 @@ const cloud = require('wx-server-sdk')
 var rp = require('request-promise');
 cloud.init()
 const db = cloud.database()
+const _ = db.command
 const baseUrl = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la'
 
 const BlogMap = {
@@ -48,7 +49,8 @@ async function getItems(jobname, id, num) {
 }
 
 async function getLastestGitHubBlog() {
-  var list = await db.collection('blog').where({ status: 'online' }).orderBy('_crawl_time', 'desc').limit(6).get()
+  var now = new Date()
+  var list = await db.collection('blog').where({ status: 'online', '_crawl_time': _.lt(now)}).orderBy('_crawl_time', 'desc').limit(6).get()
   return list.data
 }
 
