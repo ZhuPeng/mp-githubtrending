@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 19,
+			"current": 17,
 			"list": [
 				{
 					"id": -1,
@@ -164,7 +164,7 @@
 					"id": 17,
 					"name": "BlogList",
 					"pathName": "pages/bloglist/bloglist",
-					"query": "jobname=blogcoreos",
+					"query": "jobname=github",
 					"scene": null
 				},
 				{

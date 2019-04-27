@@ -48,9 +48,9 @@ async function getItems(jobname, id, num) {
   return data || {}
 }
 
-async function getLastestGitHubBlog() {
+async function getLastestGitHubBlog(size) {
   var now = new Date()
-  var list = await db.collection('blog').where({ status: 'online', '_crawl_time': _.lt(now)}).orderBy('_crawl_time', 'desc').limit(6).get()
+  var list = await db.collection('blog').where({ status: 'online', '_crawl_time': _.lt(now)}).orderBy('_crawl_time', 'desc').limit(size).get()
   return list.data
 }
 
@@ -64,16 +64,18 @@ async function getLastest() {
       console.log('getItems error:', err)
     }
   }
-  all.push(...await getLastestGitHubBlog())
+  all.push(...await getLastestGitHubBlog(6))
   all.sort(function (a, b) { return new Date(b['_crawl_time']) - new Date(a['_crawl_time']) });
   return {'data': all.slice(0, 6)}
 }
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var { type, jobname, id } = event;
+  var { type, jobname, id, currentSize } = event;
   if (type == 'lastest') {
     return await getLastest()
+  } else if (jobname == 'github') {
+    return {'data': await getLastestGitHubBlog((currentSize || 0) + 5)}
   }
 
   return await getItems(jobname, id)
