@@ -6,6 +6,9 @@
         <blogcard blogid="{{item.id || item._id}}" url="{{item.url}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}"/>
       </swiper-item>
     </block>
+    <swiper-item>
+      <blogcard blogid="" url="/pages/bloglist/bloglist?jobname=catalog" title="Read More 查看更多" jobname="" image_url=""/>
+    </swiper-item>
   </swiper>
     
     <van-search class="search" placeholder="Search" bind:search="onSearch" />
