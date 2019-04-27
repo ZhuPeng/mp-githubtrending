@@ -109,6 +109,7 @@ Page({
         return
       }
       var total = 0;
+      if(!c) {return}
       c.map(function (s) {
         total += s.total
       })

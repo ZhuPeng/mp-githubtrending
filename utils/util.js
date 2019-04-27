@@ -27,7 +27,7 @@ function Alert(text, duration, callback) {
     title: text,
     icon: 'error',
     duration: duration,
-    success: function () {callback()}
+    success: function () { if(callback) {callback()} }
   })
 }
 
