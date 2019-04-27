@@ -10,9 +10,11 @@ Page({
     console.log("commit url: ", options.url)
     var self = this
     cloudclient.callFunction({ type: 'get', path: options.url }, function (c) {
-      c.files.map(function(f) {
-        f.extension = util.isCodeFile(f.filename)
-      })
+      if (c && c.files) {
+        c.files.map(function (f) {
+          f.extension = util.isCodeFile(f.filename)
+        })
+      }
       util.SetDataWithoutSpin(self, { commit: c })
     })
   },
