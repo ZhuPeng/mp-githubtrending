@@ -14,6 +14,7 @@ Page({
     var file = options.file
     wx.setNavigationBarTitle({ title: file })
     var ref = 'master'
+    if (!file) { util.Alert('file parameter was empty')}
     if (file.startsWith('./')) {file = file.slice(2)}
     if (file.startsWith('blob/') || file.startsWith('tree/')) {
       var arr = file.split('/')

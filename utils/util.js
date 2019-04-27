@@ -16,8 +16,19 @@ module.exports = {
   GetPercent,
   timeAgo,
   toast,
+  Alert,
   SetDataWithoutSpin,
   SetDataWithSpin,
+}
+
+function Alert(text, duration, callback) {
+  if (!duration) {duration = 2000}
+  wx.showToast({
+    title: text,
+    icon: 'error',
+    duration: duration,
+    success: function () {callback()}
+  })
 }
 
 function SetDataWithSpin(cls, d) {

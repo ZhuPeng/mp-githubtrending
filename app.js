@@ -4,11 +4,7 @@ App({
   },
 
   onError(error) {
-    wx.showToast({
-      icon: 'none',
-      title: error,
-      duration: 2000
-    })
+    util.Alert(error)
   },
 
   onShow: function (options) {

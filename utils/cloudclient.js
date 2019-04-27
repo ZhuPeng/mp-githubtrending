@@ -1,4 +1,5 @@
 const rate = require('./ratelimit.js')
+const util = require('./util.js')
 module.exports = {
   callFunction,
   callFunctionWithBlog,
@@ -18,17 +19,10 @@ function callFunction(data, completeFunc) {
   if (token) {
     data['token'] = token
   } else if(data.type == 'post') {
-      wx.showToast({
-        title: '未设置 Token',
-        icon: 'error',
-        duration: 6000,
-        success: function(){
-          wx.navigateTo({
-            url: '/pages/settings/settings',
-          })
-        }
-      })
-      return
+    util.Alert('未设置 Token', 6000, function() {
+      wx.navigateTo({url: '/pages/settings/settings'})
+    })
+    return
   }
   wx.cloud.callFunction({
     name: version,

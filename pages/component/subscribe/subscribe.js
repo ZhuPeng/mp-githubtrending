@@ -1,4 +1,5 @@
 const cloudclient = require('../../../utils/cloudclient.js')
+const util = require('../../../utils/util.js')
 Component({
   properties: {
 
@@ -23,11 +24,7 @@ Component({
       var text = e.detail.target.dataset.text || ''
       if (text.indexOf('like') >= 0) {
         cloudclient.uploadFormID(e.detail.formId, 'Like')
-        wx.showToast({
-          title: 'Like +1',
-          duration: 1000,
-          success: function () {}
-        })
+        util.Alert('Like +1', 1000)
         return
       }
       cloudclient.uploadFormID(e.detail.formId, 'Subscribe')

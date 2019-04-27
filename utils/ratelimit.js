@@ -1,3 +1,4 @@
+const util = require('./util.js')
 module.exports = {
   RateLimit,
 }
@@ -13,13 +14,7 @@ function RateLimit() {
   var cnt = wx.getStorageSync(rkey)
   if (!cnt) {cnt = 0}
   if (cnt > MaxHourRateLimit) {
-    wx.showToast({
-      title: '访问过于频繁',
-      icon: 'error',
-      duration: 6000,
-      success: function () {
-      }
-    })
+    util.Alert('访问过于频繁', 6000)
     return true
   }
   wx.setStorageSync(rkey, 1+cnt)

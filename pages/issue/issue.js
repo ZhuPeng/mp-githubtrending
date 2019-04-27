@@ -17,20 +17,12 @@ Page({
 
   onButtonClick: function () {
     if (this.data.content == '') {
-      wx.showToast({
-        icon: 'none',
-        title: 'Content was empty!',
-        duration: 4000
-      })
+      util.Alert('Content was empty!', 4000)
     }
     var {owner, repo} = this.data
     cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues/' + this.data.issue.number + '/comments', body: this.data.content, owner, repo }, function (c) {
       console.log(c)
-      wx.showToast({
-        icon: 'none',
-        title: 'Create Success',
-        duration: 4000
-      })
+      util.Alert('Create Success', 4000)
       wx.navigateTo({
         url: '/pages/issue/issue?issue=' + c.issue_url,
       })

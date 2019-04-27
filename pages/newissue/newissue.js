@@ -21,20 +21,12 @@ Page({
 
   onButtonClick: function () {
     if (this.data.title == '' || this.data.content == '') {
-      wx.showToast({
-        icon: 'none',
-        title: 'Title or Content was empty!',
-        duration: 4000
-      })
+      util.Alert('Title or Content was empty!', 4000)
     }
     var [owner, repo, filepath] = util.parseGitHub(this.data.repourl)
     cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues', title: this.data.title, body: this.data.content, owner, repo}, function (c) {
       console.log(c)
-      wx.showToast({
-        icon: 'none',
-        title: 'Create Success',
-        duration: 4000
-      })
+      util.Alert('Create Success', 4000)
       wx.navigateTo({
         url: '/pages/issue/issue?issue=' + c.url,
       })
