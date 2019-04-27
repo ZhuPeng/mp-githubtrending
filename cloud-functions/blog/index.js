@@ -7,9 +7,11 @@ const baseUrl = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la'
 
 const BlogMap = {
   'blogcoreos': {
+      'title': 'Blog CoreOS',
       'article-image_url': [baseUrl + '/trackupdates/coreos.png']
   },
   'githubblog': {
+    'title': 'Blog GitHub',
     'article-image_url': [
       'https://github.blog/wp-content/uploads/2019/01/Community@2x.png',
       'https://github.blog/wp-content/uploads/2019/01/Company@2x-2.png',
@@ -17,7 +19,13 @@ const BlogMap = {
       'https://github.blog/wp-content/uploads/2019/01/Enterprise@2x-2.png',
       'https://github.blog/wp-content/uploads/2019/01/Product@2x.png',
     ]
-  }
+  },
+  'github': {
+    'title': 'GitHub',
+  },
+  'hackernews': {
+    'title': 'Hacker News',
+  },
 }
 
 async function getItems(jobname, id, num) {
@@ -76,6 +84,15 @@ exports.main = async (event, context) => {
     return await getLastest()
   } else if (jobname == 'github') {
     return {'data': await getLastestGitHubBlog((currentSize || 0) + 5)}
+  } else if (jobname == 'catalog') {
+    var catalog = [];
+    for (var b in BlogMap) {
+      var tmp = BlogMap[b]
+      tmp['__tablename__'] = 'catalog'
+      tmp['url'] = '/pages/bloglist/bloglist?jobname=' + b
+      catalog.push(tmp);
+    }
+    return {'data': catalog}
   }
 
   return await getItems(jobname, id)

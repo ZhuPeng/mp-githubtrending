@@ -29,8 +29,10 @@ Component({
 
   methods: {
     onClick(e) {
-      if (this.data.jobname == 'github') {
+      if (this.data.url && util.isGitHubPage(this.data.url)) {
         util.GitHubNavi(this.data.url, undefined, true)
+      } else if (this.data.url && this.data.url.startsWith('/pages/')) {
+        wx.navigateTo({ url: this.data.url })
       } else {
         wx.navigateTo({
           url: '/pages/blog/blog?id=' + this.data.blogid + '&jobname=' + this.data.jobname,

@@ -164,7 +164,7 @@
 					"id": 17,
 					"name": "BlogList",
 					"pathName": "pages/bloglist/bloglist",
-					"query": "jobname=github",
+					"query": "jobname=catalog",
 					"scene": null
 				},
 				{
