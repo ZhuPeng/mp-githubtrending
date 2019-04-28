@@ -9,7 +9,7 @@ Page({
 
   setResult(r) {
     console.log(r)
-    this.setData({ result: JSON.stringify(r).replace(/{"/g, '{\n  "').replace(/}/g, '\n}').replace(/",/, '",\n')})
+    this.setData({ result: JSON.stringify(r).replace(/{"/g, '{\n  "').replace(/}/g, '\n}').replace(/",/, '",\n').replace(/","/, '",\n"')})
   },
 
   onButtonClick: function(e) {
