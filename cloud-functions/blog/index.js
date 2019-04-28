@@ -9,20 +9,21 @@ const DeltaSize = 5
 const BlogMap = {
   'github': {
     'title': 'GitHub 推荐',
-    'article-image_url': [baseUrl + '/trackupdates/coreos.png']
+    'article-image_url': [baseUrl + '/mp-githubtrending/blog/github-rec.jpg']
   },
   'hackernews': {
     'title': 'Hacker News',
     'extra_params': '&fromsite=github.com',
-    'article-image_url': [baseUrl + '/trackupdates/coreos.png']
+    'article-image_url': [baseUrl + '/mp-githubtrending/blog/hackernews.jpg']
   },
   'blogcoreos': {
-      'title': 'Blog CoreOS',
-      'article-image_url': [baseUrl + '/trackupdates/coreos.png']
+    'title': 'CoreOS Blog',
+    'article-image_url': [baseUrl + '/mp-githubtrending/blog/coreos-blog.jpg']
   },
   'githubblog': {
-    'title': 'Blog GitHub',
+    'title': 'GitHub Blog',
     'article-image_url': [
+      baseUrl + '/mp-githubtrending/blog/github-blog.jpg',
       'https://github.blog/wp-content/uploads/2019/01/Community@2x.png',
       'https://github.blog/wp-content/uploads/2019/01/Company@2x-2.png',
       'https://github.blog/wp-content/uploads/2019/01/Engineering@2x.png',
@@ -71,6 +72,7 @@ async function getLastestGitHubBlog(size) {
 async function getLastest() {
   var all = []
   for (var k in BlogMap) {
+    if (k == 'hackernews') {continue}
     try {
       var d = await getItems(k, undefined, 2)
       all.push(...d.data)
@@ -94,9 +96,11 @@ exports.main = async (event, context) => {
   } else if (jobname == 'catalog') {
     var catalog = [];
     for (var b in BlogMap) {
-      var tmp = BlogMap[b]
+      var val = BlogMap[b]
+      var tmp = {}
       tmp['__tablename__'] = 'catalog'
       tmp['url'] = '/pages/bloglist/bloglist?jobname=' + b
+      tmp['article-image_url'] = val['article-image_url'][0]
       catalog.push(tmp);
     }
     return {'data': catalog}
