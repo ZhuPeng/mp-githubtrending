@@ -6,6 +6,15 @@ const _ = db.command
 const baseUrl = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la'
 
 const BlogMap = {
+  'github': {
+    'title': 'GitHub 推荐',
+    'article-image_url': [baseUrl + '/trackupdates/coreos.png']
+  },
+  'hackernews': {
+    'title': 'Hacker News',
+    'extra_params': '&fromsite=github.com',
+    'article-image_url': [baseUrl + '/trackupdates/coreos.png']
+  },
   'blogcoreos': {
       'title': 'Blog CoreOS',
       'article-image_url': [baseUrl + '/trackupdates/coreos.png']
@@ -19,19 +28,16 @@ const BlogMap = {
       'https://github.blog/wp-content/uploads/2019/01/Enterprise@2x-2.png',
       'https://github.blog/wp-content/uploads/2019/01/Product@2x.png',
     ]
-  },
-  'github': {
-    'title': 'GitHub',
-  },
-  'hackernews': {
-    'title': 'Hacker News',
-  },
+  }
 }
 
 async function getItems(jobname, id, num) {
   var url = 'http://39.106.218.104:5000/api/items?jobname=' + jobname
   if (id) {
     url += '&id=' + id
+  }
+  if (jobname in BlogMap && BlogMap[jobname].extra_params) {
+    url += BlogMap[jobname].extra_params
   }
   var defaultnum = num || 5;
   url += '&num=' + defaultnum
