@@ -11,4 +11,5 @@
   top: 160px; 
   width: 100%;  
   font-weight: bold;
+  text-shadow: 0px 0px 20px #C0C0C0;
 }
