@@ -4,6 +4,7 @@ cloud.init()
 const db = cloud.database()
 const _ = db.command
 const baseUrl = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la'
+const DeltaSize = 5
 
 const BlogMap = {
   'github': {
@@ -39,8 +40,7 @@ async function getItems(jobname, id, num) {
   if (jobname in BlogMap && BlogMap[jobname].extra_params) {
     url += BlogMap[jobname].extra_params
   }
-  var defaultnum = num || 5;
-  url += '&num=' + defaultnum
+  url += '&num=' + (num || DeltaSize)
   console.log('request url:', url)
   var raw = await rp(url).then(function (response) {
       console.log('response:', response)
@@ -86,10 +86,11 @@ async function getLastest() {
 // 云函数入口函数
 exports.main = async (event, context) => {
   var { type, jobname, id, currentSize } = event;
+  var num = (currentSize || 0) + DeltaSize
   if (type == 'lastest') {
     return await getLastest()
   } else if (jobname == 'github') {
-    return {'data': await getLastestGitHubBlog((currentSize || 0) + 5)}
+    return {'data': await getLastestGitHubBlog(num)}
   } else if (jobname == 'catalog') {
     var catalog = [];
     for (var b in BlogMap) {
@@ -101,5 +102,5 @@ exports.main = async (event, context) => {
     return {'data': catalog}
   }
 
-  return await getItems(jobname, id)
+  return await getItems(jobname, id, num)
 }
