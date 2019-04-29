@@ -8,44 +8,9 @@
     </block>
   </swiper>
     
-    <van-search class="search" placeholder="Search" bind:search="onSearch" />
-
-    <view class="language-box">
-      <van-action-sheet show="{{sheetShow}}" bind:close="onSheetClose" title="Favorite Languages">
-        <van-cell title="All Languages" clickable data-name="All Languages" >
-          <van-checkbox value="{{selectLangList==0?true:false}}" catch:tap="selectAll" class="checkboxes-All" name="All Languages" />
-        </van-cell>
-        <van-checkbox-group value="{{ selectLangList }}" bind:change="onChange">
-        <van-cell-group >
-          <van-cell
-            wx:for="{{ langList }}"
-            wx:key="index"
-            title="{{ item }}"
-            clickable
-            data-name="{{ item }}"
-            bind:click="toggle"
-           >
-           <van-checkbox catch:tap="noop" class="checkboxes-{{ item }}" name="{{ item }}" />
-          </van-cell>
-        </van-cell-group>
-        </van-checkbox-group>
-      </van-action-sheet>
-      <view class="language flex-wrp" bindtap="actionSheetTapLang">
-        <view>
-          <wux-button bordered clsss="favorite flex-wrp" size="small" type="light">
-            <wux-icon class="heart" size="13" type="md-heart" />                                 Languages
-            <wux-icon size="13" type="ios-arrow-down"></wux-icon>
-          </wux-button>
-        </view>
-        <view class="language-tag flex-wrp">
-          <block wx:for-items="{{selectLangList}}" wx:key="{{item}}">
-            <view><wux-tag class="lang-tag" color="{{tagColor[index]}}" wx:if="{{index < 3}}">{{item}}</wux-tag></view>
-          </block>
-          <wux-tag class="lang-tag" color="{{tagColor[0]}}" wx:if="{{selectLangList.length==0}}">All  Languages</wux-tag>
-          <wux-tag class="lang-tag" color="geekblue" wx:if="{{selectLangList.length>=3}}">more..</wux-tag>
-        </view>
-      </view>
-      <!-- <view class="weui-media-box__info__meta" bindtap="actionSheetTapOrder">排序：{{order}}</view> -->
+    <view class="flex-wrp margin-left-right">
+      <wux-filterbar wx:if="{{items.length>0}}" items="{{ items }}" bind:change="onFilterChange" bind:open="onOpen" bind:close="onClose" />
+      <van-search class="search" placeholder="Search" bind:search="onSearch" />
     </view>
   </view>
 

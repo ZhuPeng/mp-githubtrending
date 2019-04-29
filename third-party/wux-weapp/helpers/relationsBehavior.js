@@ -1,9 +1,10 @@
 import isEmpty from './isEmpty'
+import debounce from './debounce'
 
 /**
- * 对象上绑定新的方法
+ * bind func to obj
  */
-function bindFnToObject(obj, method, observer) {
+function bindFunc(obj, method, observer) {
     const oldFn = obj[method]
     obj[method] = function(target) {
         if (observer) {
@@ -17,22 +18,36 @@ function bindFnToObject(obj, method, observer) {
     }
 }
 
+// default methods
+const methods = ['linked', 'linkChanged', 'unlinked']
+
+// extra props
+const extProps = ['observer']
+
 module.exports = Behavior({
+    lifetimes: {
+        created() {
+            this._debounce = null
+        },
+    },
     definitionFilter(defFields) {
         const { relations } = defFields
+
         if (!isEmpty(relations)) {
             for (const key in relations) {
-                const { observer } = relations[key]
-                const methods = ['linked', 'linkChanged', 'unlinked']
+                const relation = relations[key]
 
                 // bind func
-                methods.forEach((method) => {
-                    bindFnToObject(relations[key], method, observer)
-                })
+                methods.forEach((method) => bindFunc(relation, method, relation.observer))
 
-                // delete observer
-                delete relations[key].observer
+                // delete extProps
+                extProps.forEach((prop) => delete relation[prop])
             }
+        }
+
+        defFields.methods = defFields.methods || {}
+        defFields.methods.debounce = function(func, wait = 0, immediate = false) {
+            return (this._debounce = this._debounce || debounce(func.bind(this), wait, immediate)).call(this)
         }
     },
 })

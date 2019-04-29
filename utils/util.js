@@ -19,6 +19,17 @@ module.exports = {
   Alert,
   SetDataWithoutSpin,
   SetDataWithSpin,
+  ArrayContains,
+}
+
+function ArrayContains(arr, val) {
+  var i = arr.length;
+  while (i--) {
+    if (arr[i] === val) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function Alert(text, duration, callback) {

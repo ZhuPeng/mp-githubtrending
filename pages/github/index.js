@@ -7,6 +7,8 @@ const _ = db.command
 
 Page({
   data: {
+    pageStyle: '',
+    items: [],
     interval: 5000,
     duration: 1000,
     searchValue: "",
@@ -24,6 +26,26 @@ Page({
     orderList: ['时间', 'Star', 'Fork'],
     orderMap: {'时间': '_crawl_time', 'Star': 'star', 'Fork': 'fork'},
     spinning: true
+  },
+
+  onFilterChange(e) {
+    const { checkedItems, items } = e.detail
+    console.log('onFilterChange:', checkedItems, items)
+    this.updateLangFilter(items[0].children[0].selected.split(','))
+    util.SetDataWithSpin(this, { list: [] })
+    this.loadData()
+  },
+
+  onOpen(e) {
+    this.setData({
+      pageStyle: 'height: 100%; overflow: hidden',
+    })
+  },
+
+  onClose(e) {
+    this.setData({
+      pageStyle: '',
+    })
   },
 
   getLastestBlog: function () {
@@ -66,6 +88,7 @@ Page({
     var col = db.collection('github')
     var filter = []
     this.data.selectLangList.map(function(lang) {
+      if (lang.trim() == "") {return}
       filter.push({ 'lang': lang.trim()})
     })
     if (filter.length > 0) {
@@ -94,6 +117,27 @@ Page({
       this.loadData(true)
       wx.stopPullDownRefresh()
     }, 3000)
+  },
+
+  onShow: function() {
+    var labels = []
+    var self = this
+    this.data.langList.map(function (l) {
+      var checked = util.ArrayContains(self.data.selectLangList, l)
+      labels.push({ label: l, value: l, 'checked': checked })
+    })
+    var items = [{
+      type: 'filter',
+      label: 'Languages',
+      value: 'filter',
+      children: [{
+        type: 'checkbox',
+        label: 'Favorite Languages',
+        value: 'query',
+        children: labels,
+      }],
+    }]
+    this.setData({items: items})
   },
 
   onLoad: function () {
