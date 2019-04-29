@@ -82,7 +82,13 @@ async function getLastest() {
   }
   all.push(...await getLastestGitHubBlog(6))
   all.sort(function (a, b) { return new Date(b['_crawl_time']) - new Date(a['_crawl_time']) });
-  return {'data': all.slice(0, 6)}
+  var result = all.slice(0, 6)
+  result.push({
+    url: "/pages/bloglist/bloglist?jobname=catalog",
+    title: "Read More 查看更多",      
+    'article-image_url': baseUrl + "/mp-githubtrending/blog/start_up.svg"
+  })
+  return {'data': result}
 }
 
 // 云函数入口函数
