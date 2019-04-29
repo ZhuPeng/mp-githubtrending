@@ -10,7 +10,7 @@
     
     <view class="flex-wrp margin-left-right">
       <wux-filterbar wx:if="{{items.length>0}}" items="{{ items }}" bind:change="onFilterChange" bind:open="onOpen" bind:close="onClose" />
-      <van-search class="search" placeholder="Search" bind:search="onSearch" />
+      <van-search class="search padding-left" placeholder="Search" bind:search="onSearch" />
     </view>
   </view>
 

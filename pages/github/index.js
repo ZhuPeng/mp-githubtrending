@@ -204,8 +204,6 @@ Page({
   },
 
   onSearch: function(e) {
-      util.SetDataWithSpin(this, {searchValue: e.detail, list: []})
-      console.log("searchValue:", this.data.searchValue)
       this.search(e.detail, false)
   },
 
@@ -215,10 +213,9 @@ Page({
 
   search: function(val) {
     console.log("search:", val)
-    if (val) {
-      val = val.trim()
-    }
-    this.searchGithub(val)
+    if (!val || val == null) {util.Alert("Nothing Found"); return}
+    util.SetDataWithSpin(this, { searchValue: val.trim(), list: [] })
+    this.searchGithub(val.trim())
   },
 
   onShareAppMessage: function () {
