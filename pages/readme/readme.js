@@ -15,7 +15,7 @@ Page({
     meta: {desc: 'loadding...'},
     query: {},
     spinning: true,
-    tabKey: '',
+    tabKey: 'Readme',
   },
 
   onButtonClick: function (e) {
@@ -74,8 +74,8 @@ Page({
 
   onClick(event) {
     console.log(event)
-    this.setData({tabKey: event.detail.title})
-    this.loadData(event.detail.title.toLowerCase())
+    this.setData({tabKey: event.detail.key})
+    this.loadData(event.detail.key.toLowerCase())
   },
 
   loadData(key, more) {

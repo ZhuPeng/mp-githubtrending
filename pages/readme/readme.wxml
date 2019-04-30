@@ -14,8 +14,15 @@
 
   <view class="page__bd">
     <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
-    <van-tabs swipeable bind:change="onClick">
-      <van-tab title="Readme">
+
+  <wux-tabs controlled theme="positive" current="{{ tabKey }}" bindchange="onClick">
+    <wux-tab key="Readme" title="Readme"/>
+    <wux-tab key="Commits" title="Commits"/>
+    <wux-tab key="Issues"><wux-badge count="{{meta.issue_count}}">Issues</wux-badge></wux-tab>
+    <wux-tab key="Stats"><wux-badge count="1">Stats</wux-badge></wux-tab>
+  </wux-tabs>
+
+      <view wx:if="{{tabKey == 'Readme'}}">
         <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
 
         <view class="flex-wrp margin-left-right">
@@ -25,22 +32,9 @@
           <view class='padding-right'/>
           <formbutton type="primary" wx:if="{{readme}}" bind:click="onCreateQrCode" text="Share"/>
         </view>
-      </van-tab>
+      </view>
 
-      <van-tab wx:if="{{false}}" title="Releases">
-        <view class=".margin-left-right" >
-        <block wx:for-items="{{releases}}" wx:key="{{item.id}}">
-          <view>
-            <wux-icon class=".padding-right" size="16" type="ios-rocket" />
-            <wux-tag>published_at</wux-tag>
-            <wux-tag color="green"><wux-timeago class="timeago-padding" to="{{item.published_at}}" lang="en" /></wux-tag>
-          </view>
-          <md md="{{item.body}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
-        </block>
-        </view>
-      </van-tab>
-
-      <van-tab title="Commits">
+      <view wx:if="{{tabKey == 'Commits'}}">
         <view class="margin-left-right" >
         <block wx:for-items="{{commits}}" wx:key="{{item.sha}}">
           <view class="commit">
@@ -55,21 +49,20 @@
           </view>
         </block>
         </view>
-      </van-tab>
+      </view>
 
-      <van-tab title="Issues" info="{{meta.issue_count}}">
+      <view wx:if="{{tabKey == 'Issues'}}">
         <view class="margin-left-right">
           <formbutton bind:click="onButtonClick" type="primary" text="New Issue"/>
         </view>
       
         <issuelist list="{{issues}}" />
         <wux-divider wx:if="{{meta.issue_count && issues.length == meta.issue_count}}" text="No More Issues" />
-      </van-tab> 
+      </view> 
 
-       <van-tab title="Stats" info="1">
+      <view wx:if="{{tabKey == 'Stats'}}">
         <md md="{{statsMd}}"/>
-      </van-tab>
-    </van-tabs>
+      </view>
   <fabbutton/>
   </view>
 </view>

@@ -66,8 +66,8 @@ Page({
   onClick(event) {
     var self = this;
     console.log(event)
-    this.setData({tabKey: event.detail.title})
-    this.loadData(event.detail.title)
+    this.setData({tabKey: event.detail.key})
+    this.loadData(event.detail.key)
   },
 
   loadData(key) {

@@ -18,18 +18,19 @@
   </view>
 
 <view class="page__hd">
-  <van-tabs swipeable bind:change="onClick">
-    <van-tab title='Repos'>
+  <wux-tabs controlled theme="positive" current="{{ tabKey }}" bindchange="onClick">
+    <wux-tab key="Repos" title="Repos"/>
+    <wux-tab key="Events" title="Events"/>
+    <wux-tab wx:if="{{showHistory}}" key="History" title="History"/>
+  </wux-tabs>
+
+  <view wx:if="{{tabKey == 'Repos'}}" class="content">
       <repolist list="{{repos}}" timeKey="updated_at"/>
       <wux-divider wx:if="{{meta.public_repos && repos.length == meta.public_repos}}" text="No More Repos" />
-    </van-tab>
-    <van-tab title='Events'>
-      <issuelist list="{{issues}}"/>
-    </van-tab>
-    <van-tab wx:if="{{showHistory}}" title="History">
-      <repolist list="{{list}}" timeKey="requesttime"/>
-    </van-tab>
-  </van-tabs>
+  </view>
+  <issuelist wx:if="{{tabKey == 'Events'}}" list="{{issues}}"/>
+  <repolist wx:if="{{showHistory && tabKey == 'History'}}" list="{{list}}" timeKey="requesttime"/>
+
   <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
   <fabbutton/>
 </view>
