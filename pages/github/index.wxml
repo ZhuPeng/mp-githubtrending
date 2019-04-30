@@ -8,9 +8,9 @@
     </block>
   </swiper>
     
-    <view class="flex-wrp margin-left-right">
+    <view class="flex-wrp padding-top search-bar">
       <wux-filterbar wx:if="{{items.length>0}}" items="{{ items }}" bind:change="onFilterChange" bind:open="onOpen" bind:close="onClose" />
-      <van-search class="search padding-left" placeholder="Search" bind:search="onSearch" />
+      <wux-search-bar clear placeholder="Search" cancelText="" value="{{ searchValue }}" bind:confirm="onConfirm" bind:clear="onClear"/>
     </view>
   </view>
 

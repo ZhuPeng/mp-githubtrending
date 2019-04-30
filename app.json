@@ -23,7 +23,6 @@
     "enablePullDownRefresh": true
   },
   "usingComponents": {
-    "van-search": "third-party/vant-weapp/search/index",
     "van-icon": "third-party/vant-weapp/icon/index",
     "van-toast": "third-party/vant-weapp/toast/index",
     "van-action-sheet": "third-party/vant-weapp/action-sheet/index",
@@ -50,6 +49,7 @@
     "wux-spin": "third-party/wux-weapp/spin/index",
     "wux-button": "third-party/wux-weapp/button/index",
     "wux-filterbar": "third-party/wux-weapp/filterbar/index",
+    "wux-search-bar": "third-party/wux-weapp/search-bar/index",
     "wemark": "third-party/wemark/wemark",
     "fabbutton": "pages/component/fabbutton/fabbutton",
     "md": "pages/component/md/md",

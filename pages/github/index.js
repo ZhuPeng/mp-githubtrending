@@ -203,8 +203,15 @@ Page({
     })
   },
 
-  onSearch: function(e) {
-      this.search(e.detail, false)
+  onConfirm: function(e) {
+    this.search(e.detail.value, false)
+  },
+
+  onClear(e) {
+    console.log('onClear', e)
+    this.setData({
+      searchValue: '',
+    })
   },
 
   getOrder() {

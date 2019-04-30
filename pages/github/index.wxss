@@ -4,8 +4,21 @@
   height: 200px;
 }
 
-.search .van-search {
-  padding: 7px 18rpx;
+.search-bar {
+  height: 44px;
+  overflow: hidden;
+  width: 100%;
+  background-color: #fafafa;
+}
+
+.wux-filterbar {
+  height: 100%;
+  margin-left: 20rpx;
+}
+
+.wux-search-bar {
+  width: auto;
+  margin-left: 20rpx;
 }
 
 .padding-left {
