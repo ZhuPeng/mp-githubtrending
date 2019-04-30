@@ -8,12 +8,9 @@
     </block>
   </swiper>
     
-    <view class="flex-wrp padding-top search-bar">
-      <wux-filterbar wx:if="{{items.length>0}}" items="{{ items }}" bind:change="onFilterChange" bind:open="onOpen" bind:close="onClose" />
-      <view class="search">
-      <wux-search-bar clear placeholder="Search" cancelText="" value="{{ searchValue }}" bind:confirm="onConfirm" bind:clear="onClear"/>
-      </view>
-    </view>
+    <wux-filterbar wx:if="{{items.length>0}}" items="{{ items }}" bind:change="onFilterChange" bind:open="onOpen" bind:close="onClose" />
+
+    <wux-search-bar style="{{searchShow ? '' : 'display:none;'}}" controlled clear show-cancel placeholder="Search" cancelText="Cancel" value="{{ searchValue }}" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel"/>
   </view>
 
 <view class="page__bd">

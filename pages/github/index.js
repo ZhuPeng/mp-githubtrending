@@ -9,6 +9,7 @@ Page({
   data: {
     pageStyle: '',
     items: [],
+    searchShow: false,
     interval: 5000,
     duration: 1000,
     searchValue: "",
@@ -31,10 +32,23 @@ Page({
   onFilterChange(e) {
     const { checkedItems, items } = e.detail
     console.log('onFilterChange:', checkedItems, items)
-    this.updateLangFilter(items[0].children[0].selected.split(','))
-    util.SetDataWithSpin(this, { list: [] })
-    this.loadData()
+    checkedItems.forEach((n) => {
+      if (!n.checked) {return}
+      if (n.value == 'Search') {
+        this.changeSearchStyle()
+      } else if (n.value === 'Languages') {
+        this.updateLangFilter(n.children[0].selected.split(','))
+        util.SetDataWithSpin(this, { list: [] })
+        this.loadData()
+      }
+    })
+    items.forEach((i) => { i.checked = false })
+    this.setData({ items })
   },
+
+  changeSearchStyle() {
+    this.setData({ searchShow: !this.data.searchShow })  
+  },  
 
   onOpen(e) {
     this.setData({
@@ -43,9 +57,7 @@ Page({
   },
 
   onClose(e) {
-    this.setData({
-      pageStyle: '',
-    })
+    this.setData({pageStyle: ''})
   },
 
   getLastestBlog: function () {
@@ -129,13 +141,17 @@ Page({
     var items = [{
       type: 'filter',
       label: 'Languages',
-      value: 'filter',
+      value: 'Languages',
       children: [{
         type: 'checkbox',
         label: 'Favorite Languages',
         value: 'query',
         children: labels,
       }],
+    }, {
+        type: 'text',
+        label: 'Search',
+        value: 'Search',
     }]
     this.setData({items: items})
   },
@@ -209,9 +225,12 @@ Page({
 
   onClear(e) {
     console.log('onClear', e)
-    this.setData({
-      searchValue: '',
-    })
+    this.setData({searchValue: ''})
+  },
+
+  onCancel(e) {
+    console.log('OnCancel:', e)
+    this.changeSearchStyle()
   },
 
   getOrder() {
