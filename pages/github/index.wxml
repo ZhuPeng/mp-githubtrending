@@ -10,7 +10,9 @@
     
     <view class="flex-wrp padding-top search-bar">
       <wux-filterbar wx:if="{{items.length>0}}" items="{{ items }}" bind:change="onFilterChange" bind:open="onOpen" bind:close="onClose" />
+      <view class="search">
       <wux-search-bar clear placeholder="Search" cancelText="" value="{{ searchValue }}" bind:confirm="onConfirm" bind:clear="onClear"/>
+      </view>
     </view>
   </view>
 
