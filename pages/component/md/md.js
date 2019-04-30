@@ -13,14 +13,27 @@ Component({
     repo: {
       type: String,
       value: '' 
-    }
+    },
+    file: {
+      type: String,
+      value: '',
+      observer() {
+        this.handleCurrentDir();
+      }
+    },
   },
 
   data: {
-
+    currentDir: "",
   },
 
   methods: {
+    handleCurrentDir() {
+      var arr = this.data.file.split('/')
+      if (arr.length <= 1) {return}
+      this.setData({currentDir: arr.slice(0, arr.length-1).join('/')})
+    },
+    
     onMDClick(e) {
       console.log(e)
       var clickurl = e.detail.currentTarget.dataset.text

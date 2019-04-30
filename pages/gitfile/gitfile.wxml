@@ -5,7 +5,7 @@
 </view>
 <view class="page__bd">
   <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
-  <md md="{{content}}" owner="{{owner}}" repo="{{repo}}"></md>
+  <md md="{{content}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
   <subscribe wx:if="{{content && withSubscribe}}" />
   <fabbutton/>
 </view>

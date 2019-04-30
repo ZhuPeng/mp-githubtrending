@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -57,10 +57,10 @@
 					"query": "_id=&repo=ZhuPeng/mp-githubtrending"
 				},
 				{
-					"id": 3,
+					"id": 2,
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
-					"query": "owner=selfteaching&repo=the-craft-of-selfteaching&file=Part.1.E.1.entrance.ipynb",
+					"query": "owner=Alikhll&repo=golang-developer-roadmap&file=i18n/ReadMe-zh-CN.md",
 					"scene": null
 				},
 				{

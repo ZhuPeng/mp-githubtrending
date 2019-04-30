@@ -5,10 +5,11 @@ var parser = new Remarkable({
 var prism = require('./prism');
 var idDict = {}
 
-function urlModify(baseurl, url) {
+function urlModify(baseurl, url, currentDir) {
   if (url == "" || url == undefined || url.startsWith('http')) {
     return url
   }
+  if (url.startsWith('./')) {url = url.replace('./', currentDir + '/')}
   return baseurl + url;
 }
 
@@ -55,7 +56,7 @@ function parse(md, options){
             // console.log('html: ', html)
             while(match = imgRegExp.exec(html)) {
               if (match[1]) {
-                ret.push({type: 'image', src: urlModify(options.baseurl, match[1])});
+                ret.push({type: 'image', src: urlModify(options.baseurl, match[1], options.currentDir)});
                 html = html.replace(match[0], '')
               }
             }
@@ -125,7 +126,7 @@ function parse(md, options){
 				}else if(token.type === 'image'){
 					ret.push({
 						type: token.type,
-            src: urlModify(options.baseurl, token.src)
+            src: urlModify(options.baseurl, token.src, options.currentDir)
 					});
 				}
 			});
