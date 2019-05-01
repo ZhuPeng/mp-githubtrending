@@ -24,12 +24,12 @@
     <wux-tab wx:if="{{showHistory}}" key="History" title="History"/>
   </wux-tabs>
 
-  <view wx:if="{{tabKey == 'Repos'}}" class="content">
+  <view style="{{tabKey=='Repos'?'':'display:none'}}">
       <repolist list="{{repos}}" timeKey="updated_at"/>
       <wux-divider wx:if="{{meta.public_repos && repos.length == meta.public_repos}}" text="No More Repos" />
   </view>
-  <issuelist wx:if="{{tabKey == 'Events'}}" list="{{issues}}"/>
-  <repolist wx:if="{{showHistory && tabKey == 'History'}}" list="{{list}}" timeKey="requesttime"/>
+  <issuelist style="{{tabKey=='Events'?'':'display:none'}}" list="{{issues}}"/>
+  <repolist style="{{tabKey=='History'?'':'display:none'}}" wx:if="{{showHistory}}" list="{{list}}" timeKey="requesttime"/>
 
   <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
   <fabbutton/>

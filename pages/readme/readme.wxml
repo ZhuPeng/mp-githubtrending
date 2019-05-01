@@ -22,7 +22,7 @@
     <wux-tab key="Stats"><wux-badge count="1">Stats</wux-badge></wux-tab>
   </wux-tabs>
 
-      <view wx:if="{{tabKey == 'Readme'}}">
+      <view style="{{tabKey=='Readme'?'':'display:none'}}">
         <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
 
         <view class="flex-wrp margin-left-right">
@@ -34,7 +34,7 @@
         </view>
       </view>
 
-      <view wx:if="{{tabKey == 'Commits'}}">
+      <view style="{{tabKey=='Commits'?'':'display:none'}}">
         <view class="margin-left-right" >
         <block wx:for-items="{{commits}}" wx:key="{{item.sha}}">
           <view class="commit">
@@ -51,7 +51,7 @@
         </view>
       </view>
 
-      <view wx:if="{{tabKey == 'Issues'}}">
+      <view style="{{tabKey=='Issues'?'':'display:none'}}">
         <view class="margin-left-right">
           <formbutton bind:click="onButtonClick" type="primary" text="New Issue"/>
         </view>
@@ -60,7 +60,7 @@
         <wux-divider wx:if="{{meta.issue_count && issues.length == meta.issue_count}}" text="No More Issues" />
       </view> 
 
-      <view wx:if="{{tabKey == 'Stats'}}">
+      <view style="{{tabKey=='Stats'?'':'display:none'}}">
         <md md="{{statsMd}}"/>
       </view>
   <fabbutton/>
