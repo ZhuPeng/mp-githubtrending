@@ -3,3 +3,4 @@
   <blogcard blogid="{{item.id}}" url="{{item.url}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}"/>
   <view class="card-gap"></view>
 </block>
+<view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>

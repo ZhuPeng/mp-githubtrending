@@ -1,15 +1,17 @@
 const cloudclient = require('../../utils/cloudclient.js')
+const util = require('../../utils/util.js')
 Page({
   data: {
     blogs: {data: []},
     jobname: '',
+    spinning: true,
   },
 
   onLoad: function (options) {
     var self = this
-    this.setData({jobname: options.jobname})
+    util.SetDataWithSpin(this, {jobname: options.jobname})
     cloudclient.callFunctionWithBlog({ jobname: options.jobname, currentSize: this.data.blogs.data.length }, function (c) {
-      self.setData({ blogs: c })
+      util.SetDataWithoutSpin(self, { blogs: c })
     })
   },
 
