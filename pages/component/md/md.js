@@ -3,7 +3,10 @@ Component({
   properties: {
     md: {
       type: String,
-      value: ''
+      value: '',
+      observer() {
+        this.handleMd();
+      }
     },
     owner: {
       type: String,
@@ -27,6 +30,21 @@ Component({
   },
 
   methods: {
+    handleMd() {
+      var tmp = this.data.md
+      var linkRegExp = /([ \n]+(https?:\/\/[^\s^'^"^#]+)[ \n]+)/g;
+
+      var match;
+      while (match = linkRegExp.exec(tmp)) {
+        if (match[1] && match[2]) {
+          var t = match[1]
+          var url = match[2]
+          var r = t.replace(url, util.mdLink(url, url))
+          tmp = tmp.replace(match[1], r)
+        }
+      }
+      this.setData({md: tmp})
+    },
     handleCurrentDir() {
       var arr = this.data.file.split('/')
       if (arr.length <= 1) {return}
