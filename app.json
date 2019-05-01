@@ -54,6 +54,7 @@
     "wux-cell-group": "third-party/wux-weapp/cell-group/index",
     "wux-cell": "third-party/wux-weapp/cell/index",
     "wux-textarea": "third-party/wux-weapp/textarea/index",
+    "wux-toast": "third-party/wux-weapp/toast/index",
     "wemark": "third-party/wemark/wemark",
     "fabbutton": "pages/component/fabbutton/fabbutton",
     "md": "pages/component/md/md",

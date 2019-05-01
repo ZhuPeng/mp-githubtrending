@@ -1,5 +1,5 @@
 var base64 = require('base64.js').Base64;
-import Toast from '../third-party/vant-weapp/toast/toast';
+import { $wuxToast } from '../third-party/wux-weapp/index'
 const timeago = require('../third-party/wux-weapp/timeago/core/index.js')
 import locales from '../third-party/wux-weapp/timeago/locales/index'
 
@@ -15,11 +15,21 @@ module.exports = {
   GitHubNavi,
   GetPercent,
   timeAgo,
-  toast,
   Alert,
   SetDataWithoutSpin,
   SetDataWithSpin,
   ArrayContains,
+  ShowToastText,
+}
+
+function ShowToastText(text) {
+  $wuxToast().show({
+    type: 'text',
+    duration: 1500,
+    color: '#fff',
+    text: text,
+    success: () => console.log
+  })
 }
 
 function ArrayContains(arr, val) {
@@ -118,14 +128,10 @@ function copyOnlyText(text) {
   wx.setClipboardData({
     data: text,
     success() {
-      toast('复制成功 ' + text)
+      wx.hideToast()
+      ShowToastText('复制成功 ' + text)
     }
   })
-}
-
-function toast(text) {
-  wx.hideToast()
-  Toast(text)
 }
 
 const CodeFileExtentsions = {

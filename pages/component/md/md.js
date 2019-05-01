@@ -1,5 +1,4 @@
 const util = require('../../../utils/util.js')
-import Toast from '../../../third-party/vant-weapp/toast/toast';
 Component({
   properties: {
     md: {

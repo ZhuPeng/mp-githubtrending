@@ -1,4 +1,5 @@
 <githead url="{{commit.html_url}}"/>
+<wux-toast id="wux-toast" />
 <md md="## {{ commit.commit.message}}" />
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
 

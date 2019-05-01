@@ -1,6 +1,6 @@
 <view class="page">
 <view class="page__hd">
-  <van-toast id="van-toast" />
+  <wux-toast id="wux-toast" />
   <githead owner="{{owner}}" repo="{{repo}}" />
 </view>
 <view class="page__bd">

@@ -2,7 +2,6 @@ const util = require('../../utils/util.js')
 const dbutil = require('../../utils/db.js')
 const cloudclient = require('../../utils/cloudclient.js')
 const qrcode = require('../../utils/qrcode.js')
-import Toast from '../../third-party/vant-weapp/toast/toast';
 
 Page({
   data: {

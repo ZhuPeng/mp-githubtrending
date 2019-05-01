@@ -1,5 +1,5 @@
 <view class="page">
-  <van-toast id="van-toast" />
+  <wux-toast id="wux-toast" />
   <view class="page__hd padding-bottom">
   <githead owner="{{query.owner}}" repo="{{query.repo}}" />
   <view class="margin-left-right" bindtap="copy" data-text="{{meta.url}}">
