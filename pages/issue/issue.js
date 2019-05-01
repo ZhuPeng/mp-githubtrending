@@ -19,26 +19,31 @@ Page({
     var { owner, repo } = this.data
     var self = this
     var state = this.data.issue.state
+    util.SetDataWithSpin(self, {})
     cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues/' + this.data.issue.number, 'state': state == 'open'?'closed':'open' }, function (c) {
+      util.SetDataWithoutSpin(self, {})
       if (!c) {
-        util.Alert('Failed', 4000)
+        util.Alert('Failed', 3000)
         return
       }
       console.log(c)
       var tmp = self.data.issue
       tmp.state = c.state
       self.setData({issue: tmp})
-      util.Alert('Success', 4000)
+      util.Alert('Success', 3000)
     })
   },
 
   onButtonClick: function () {
     if (this.data.content == '') {
-      util.Alert('Content was empty!', 4000)
+      util.Alert('Content was empty!', 3000)
     }
     var {owner, repo} = this.data
+    var self = this;
+    util.SetDataWithSpin(self, {})
     cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues/' + this.data.issue.number + '/comments', body: this.data.content, owner, repo }, function (c) {
       console.log(c)
+      util.SetDataWithoutSpin(self, {})
       util.Alert('Success Create', 4000)
       wx.navigateTo({
         url: '/pages/issue/issue?issue=' + c.issue_url,
