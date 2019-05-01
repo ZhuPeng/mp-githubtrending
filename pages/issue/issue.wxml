@@ -20,7 +20,8 @@
   </wux-cell>
 </wux-cell-group>
 
-<view class="margin-left-right">
+<view class="margin-left-right flex-wrp">
+  <formbutton class="padding-right" type="warn" wx:if="{{issue.title}}" bind:click="onButtonCloseClick" text="{{issue.state == 'open' ? 'Close' : 'Reopen'}}"/>
   <formbutton type="primary" wx:if="{{issue.title}}" bind:click="onButtonClick" text="Confirm"/>
 </view>
 
