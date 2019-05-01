@@ -2,7 +2,6 @@ const cloudclient = require('../../utils/cloudclient.js')
 const util = require('../../utils/util.js')
 Page({
   data: {
-    localowner: wx.getStorageSync("github-name") || '',
     issue: {},
     comments: [],
     prDiff: '',
@@ -21,6 +20,10 @@ Page({
     var self = this
     var state = this.data.issue.state
     cloudclient.callFunction({ type: 'post', path: '/repos/' + owner + '/' + repo + '/issues/' + this.data.issue.number, 'state': state == 'open'?'closed':'open' }, function (c) {
+      if (!c) {
+        util.Alert('Failed', 4000)
+        return
+      }
       console.log(c)
       var tmp = self.data.issue
       tmp.state = c.state
