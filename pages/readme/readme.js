@@ -72,7 +72,6 @@ Page({
   },
 
   onClick(event) {
-    console.log(event)
     this.setData({tabKey: event.detail.key})
     this.loadData(event.detail.key.toLowerCase())
   },

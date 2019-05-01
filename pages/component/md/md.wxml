@@ -1,3 +1,3 @@
 <view class="margin-left-right" >
-<wemark bind:click="onMDClick" md="{{md}}" link highlight type="wemark" baseurl="{{'https://raw.githubusercontent.com/' + owner + '/' + repo + '/master/'}}" currentDir="{{currentDir}}"></wemark>
+<wemark bind:click="onMDClick" md="{{realMd}}" link highlight type="wemark" baseurl="{{'https://raw.githubusercontent.com/' + owner + '/' + repo + '/master/'}}" currentDir="{{currentDir}}"></wemark>
 </view>

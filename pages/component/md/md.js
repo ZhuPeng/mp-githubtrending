@@ -27,6 +27,7 @@ Component({
 
   data: {
     currentDir: "",
+    realMd: '',
   },
 
   methods: {
@@ -43,7 +44,7 @@ Component({
           tmp = tmp.replace(match[1], r)
         }
       }
-      this.setData({md: tmp})
+      this.setData({realMd: tmp})
     },
     handleCurrentDir() {
       var arr = this.data.file.split('/')
