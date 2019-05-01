@@ -1,9 +1,1 @@
 @import '../../app.wxss';
-
-.padding-top {
-  margin-top: 80rpx;
-}
-
-.margin-dianzan {
-  margin: 20rpx;
-}

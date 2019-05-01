@@ -7,50 +7,14 @@
 .search-bar {
   overflow: hidden;
   width: 100%;
-  background-color: #fafafa;
 }
 
 .wux-filterbar {
   height: 100%;
+  background-color: #FFFFFF;
 }
 
 .wux-search-bar {
   width: 100%;
   height: 100%;
-}
-
-.search {
-  width: 100%;
-}
-
-.padding-left {
-  margin-left: 20rpx;
-}
-
-.language-box{
-  background: #f2f2f2;
-}
-
-.language {
-  vertical-align: middle;
-  font-size: 16px;
-  margin-left: 18rpx;
-  margin-right: 30rpx;
-}
-
-.language-tag {
-  margin-left: 10rpx;
-  vertical-align: middle;
-}
-
-.heart {
-  color: red;
-}
-
-.lang-tag .wux-tag {
-  height: 24px;
-}
-
-.favorite .wux-button--small {
-  line-height: 24px;
 }

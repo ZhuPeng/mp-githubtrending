@@ -6,14 +6,6 @@
   width: 100%;
 }
 
-.margin-padding {
-  margin-bottom: 10rpx;
-}
-
-.padding-top {
-  margin-top: 80rpx;
-}
-
 .commit {
   margin-top: 15rpx;
 }

@@ -1,3 +1,1 @@
-.padding {
-  margin: 20rpx;
-}
+@import '../../app.wxss';
