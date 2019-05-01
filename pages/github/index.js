@@ -35,6 +35,8 @@ Page({
       if (!n.checked) {return}
       if (n.value == 'Search') {
         this.changeSearchStyle()
+      } else if (n.value == 'news') {
+        wx.navigateTo({url: '/pages/bloglist/bloglist?jobname=catalog'})
       } else if (n.value === 'Languages' && n.children[0].selected != undefined) {
         this.updateLangFilter(n.children[0].selected.split(','))
         util.SetDataWithSpin(this, { list: [] })
@@ -153,9 +155,13 @@ Page({
         children: labels,
       }],
     }, {
-        type: 'text',
-        label: 'Search',
-        value: 'Search',
+      type: 'text',
+      label: 'Search',
+      value: 'Search',
+    }, {
+      type: 'text',
+      label: 'Blog & News',
+      value: 'news',
     }]
     this.setData({items: items})
   },
