@@ -5,11 +5,11 @@ Page({
   },
 
   onChange(event) {
-    wx.setStorageSync("github-name", event.detail)
+    wx.setStorageSync("github-name", event.detail.value)
   },
 
   onTokenChange(event) {
-    wx.setStorageSync("github-token", event.detail)
+    wx.setStorageSync("github-token", event.detail.value)
   },
 
   onShow: function () {

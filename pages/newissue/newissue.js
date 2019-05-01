@@ -12,11 +12,11 @@ Page({
   },
 
   onTitleChange: function(e) {
-    this.setData({title: e.detail})
+    this.setData({title: e.detail.value})
   },
 
   onContentChange: function (e) {
-    this.setData({ content: e.detail })
+    this.setData({ content: e.detail.value })
   },
 
   onButtonClick: function () {

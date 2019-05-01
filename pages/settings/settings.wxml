@@ -1,22 +1,15 @@
 <view class="page">
   <view class="page__hd padding">GitHub Settings</view>
 <view class="padding">
-<van-cell-group>
-  <van-field
-    value="{{ username }}"
-    clearable
-    label="Name"
-    placeholder="Hello World"
-    bind:change="onChange"
-  />
 
-  <van-field
-    value="{{ token }}"
-    clearable
-    label="Token"
-    placeholder="xxxyyyzzz"
-    bind:change="onTokenChange"
-  />
-</van-cell-group>
+<wux-cell-group>
+  <wux-cell hover-class="none">
+    <wux-textarea label="Name" placeholder="Hello World" value="{{ username }}" controlled bind:change="onChange" />
+  </wux-cell>
+
+  <wux-cell hover-class="none">
+    <wux-textarea label="Token" placeholder="Token From GitHub" value="{{ token }}" controlled bind:change="onTokenChange" />
+  </wux-cell>
+</wux-cell-group>
 </view>
 </view>

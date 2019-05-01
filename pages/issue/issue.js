@@ -12,7 +12,7 @@ Page({
   },
 
   onContentChange: function (e) {
-    this.setData({ content: e.detail })
+    this.setData({ content: e.detail.value })
   },
 
   onButtonClick: function () {

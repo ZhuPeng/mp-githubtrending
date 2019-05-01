@@ -13,15 +13,11 @@
   <wux-divider show-text="{{ false }}"></wux-divider>
 </block>
 
-<van-cell-group>
-  <van-field
-    value="{{ content }}"
-    clearable
-    label="Content"
-    placeholder="Hello World"
-    bind:change="onContentChange"
-  />
-</van-cell-group>
+<wux-cell-group>
+  <wux-cell hover-class="none">
+    <wux-textarea placeholder="Input Content..." value="{{ content }}" rows="3" cursorSpacing="80" controlled bind:change="onContentChange" />
+  </wux-cell>
+</wux-cell-group>
 
 <view class="margin-left-right">
   <formbutton type="primary" wx:if="{{issue.title}}" bind:click="onButtonClick" text="Confirm"/>
