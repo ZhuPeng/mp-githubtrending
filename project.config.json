@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
@@ -51,10 +51,11 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "GitHub Trending Hub Readme",
+					"id": 1,
+					"name": "Readme",
 					"pathName": "pages/readme/readme",
-					"query": "_id=&repo=ZhuPeng/mp-githubtrending"
+					"query": "_id=&repo=kezhenxu94/mini-github",
+					"scene": null
 				},
 				{
 					"id": 2,
