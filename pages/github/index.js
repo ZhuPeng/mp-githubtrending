@@ -13,7 +13,6 @@ Page({
     interval: 5000,
     duration: 1000,
     searchValue: "",
-    sheetShow: false,
     order: wx.getStorageSync('github-order') || '时间',
     previousMargin: 0,
     nextMargin: 0,
@@ -56,6 +55,24 @@ Page({
     })
   },
 
+  onConfirm: function (e) {
+    this.search(e.detail.value, false)
+  },
+
+  onClear(e) {
+    console.log('onClear', e)
+    this.setData({ searchValue: '' })
+  },
+
+  onCancel(e) {
+    console.log('OnCancel:', e)
+    this.changeSearchStyle()
+  },
+
+  getOrder() {
+    return this.data.orderMap[this.data.order]
+  },
+
   onClose(e) {
     this.setData({pageStyle: ''})
   },
@@ -68,12 +85,6 @@ Page({
     })
   },
 
-  onSheetClose() {
-    console.log("onSheetClose")
-    util.SetDataWithSpin(this, {list: [], sheetShow: false})
-    this.loadData()
-  },
-
   onChange(event) {
     console.log("onChange:", event.detail)
     this.updateLangFilter(event.detail)
@@ -82,13 +93,6 @@ Page({
   updateLangFilter: function(list) {
     this.setData({ selectLangList: list})
     wx.setStorageSync("github-lang-filter", list)
-  },
-
-  toggle(event) {
-    const { name } = event.currentTarget.dataset;
-    console.log("toggle:", name)
-    const checkbox = this.selectComponent(`.checkboxes-${name}`);
-    checkbox.toggle();
   },
 
   noop() {},
@@ -161,40 +165,6 @@ Page({
     this.loadData(false)
   },
 
-  actionSheetTapOrder() {
-    this.actionSheepTap("order")
-  },
-
-  actionSheetTapLang() {
-    this.setData({sheetShow: true})
-  },
-
-  actionSheepTap(type) {
-    var self = this;
-    var key = "github-" + type;
-    var list = self.data.orderList;
-    var target = self.data.order;
-    if (type == 'lang'){
-      list = self.data.langList
-      target = self.data.lang
-    }
-
-    wx.showActionSheet({
-      itemList: list,
-      success(e) {
-        var changeval = list[e.tapIndex]
-        console.log("change:", type, changeval);
-        if (changeval != target) {
-          var data = { list: []}
-          data[type] = changeval
-          util.SetDataWithSpin(self, data)
-          wx.setStorageSync(key, changeval) 
-          self.loadData()
-        }
-      }
-    })
-  },
-
   onReachBottom: function(e) {
     console.log("onReachBotton:", e)
     util.SetDataWithSpin(this, {})
@@ -217,24 +187,6 @@ Page({
         self.appendList(c.items)
       }
     })
-  },
-
-  onConfirm: function(e) {
-    this.search(e.detail.value, false)
-  },
-
-  onClear(e) {
-    console.log('onClear', e)
-    this.setData({searchValue: ''})
-  },
-
-  onCancel(e) {
-    console.log('OnCancel:', e)
-    this.changeSearchStyle()
-  },
-
-  getOrder() {
-    return this.data.orderMap[this.data.order]
   },
 
   search: function(val) {

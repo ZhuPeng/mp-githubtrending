@@ -4,7 +4,6 @@ const timeago = require('../third-party/wux-weapp/timeago/core/index.js')
 import locales from '../third-party/wux-weapp/timeago/locales/index'
 
 module.exports = {
-  formatTime: formatTime,
   base64Decode: base64_decode,
   parseGitHub: parseGitHub,
   isCodeFile,
@@ -100,22 +99,6 @@ function GetPercent(num, total) {
     return "-";
   }
   return total <= 0 ? "0%" : (Math.round(num / total * 10000) / 100.00) + "%";
-}
-
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
-
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
 }
 
 function copyText (e) {
