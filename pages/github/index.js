@@ -20,7 +20,7 @@ Page({
     list: [],
     tagColor: ['magenta', 'volcano', 'green'],
     langList: ['Go', 'Python', 'Java', 'C', 'JavaScript', 'R','Shell', 'PHP', 'CSS',
-    'Ruby', 'Lua', 'Vue', 'Objective-C', 'C++', 'Kotlin', 'Rust', 'TypeScript', 'C#',
+    'Ruby', 'Lua', 'Vue', 'Scala', 'Objective-C', 'C++', 'Kotlin', 'Rust', 'TypeScript', 'C#',
     'Swift', 'HTML', 'Jupyter Notebook', 'Dart', 'Makefile', 'TeX', 'DIGITAL Command Language',
     'Common Lisp', 'Cuda', 'Assembly', 'CoffeeScript', 'Julia', 'Verilog', 'Emacs Lisp'],
     selectLangList: wx.getStorageSync('github-lang-filter') || [],
@@ -36,7 +36,7 @@ Page({
       if (!n.checked) {return}
       if (n.value == 'Search') {
         this.changeSearchStyle()
-      } else if (n.value === 'Languages') {
+      } else if (n.value === 'Languages' && n.children[0].selected != undefined) {
         this.updateLangFilter(n.children[0].selected.split(','))
         util.SetDataWithSpin(this, { list: [] })
         this.loadData()
