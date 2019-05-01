@@ -1,5 +1,4 @@
 @import '../../../app.wxss';
-@import '../../../style/weui.wxss';
 
 .padding-top {
   margin-top: 80rpx;
