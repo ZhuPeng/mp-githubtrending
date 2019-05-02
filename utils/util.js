@@ -71,6 +71,9 @@ function GitHubNavi(path, naviFunc, withSubscribe) {
   var [owner, repo, filepath] = parseGitHub(path)
   console.log("parseGitHub url:", owner, repo, filepath)
   if (owner == "") { return }
+  else if (owner == 'settings') {
+    naviFunc({ url: '/pages/settings/settings' })
+  }
   if (filepath == "" && repo == "") {
     naviFunc({ url: '/pages/account/account?owner=' + owner })
   } else if (filepath == "") {
