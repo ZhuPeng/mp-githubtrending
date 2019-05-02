@@ -58,7 +58,8 @@ Page({
   },
 
   onConfirm: function (e) {
-    this.search(e.detail.value, false)
+    this.setData({searchValue: e.detail.value})
+    this.loadData(false)
   },
 
   onClear(e) {
@@ -95,11 +96,6 @@ Page({
   updateLangFilter: function(list) {
     this.setData({ selectLangList: list})
     wx.setStorageSync("github-lang-filter", list)
-  },
-
-  noop() {},
-  selectAll() {
-    this.updateLangFilter([])
   },
 
   getCollection() {
@@ -186,6 +182,7 @@ Page({
   },
 
   searchGithub(value) {
+    util.SetDataWithSpin(this, { searchValue: value })
     var url = '/search/repositories?per_page=10&page=' + (this.data.list.length/10+1) + '&q=' + value
     var self = this
     cloudclient.callFunction({ type: 'get', path: url }, function (c) {
@@ -198,7 +195,6 @@ Page({
   search: function(val) {
     console.log("search:", val)
     if (!val || val == null) {util.Alert("Nothing Found"); return}
-    util.SetDataWithSpin(this, { searchValue: val.trim(), list: [] })
     this.searchGithub(val.trim())
   },
 
