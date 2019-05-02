@@ -57,7 +57,7 @@
         </view>
       
         <issuelist list="{{issues}}" />
-        <wux-divider wx:if="{{meta.issue_count && issues.length == meta.issue_count}}" text="No More Issues" />
+        <wux-divider wx:if="{{meta.issue_count!=undefined && issues.length == meta.issue_count}}" text="No More Issues" />
       </view> 
 
       <view style="{{tabKey=='Stats'?'':'display:none'}}">
