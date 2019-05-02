@@ -13,3 +13,5 @@
 <view class="margin-left-right">
   <formbutton type="primary" bind:click="onButtonClick" text="Confirm"/>
 </view>
+
+<fabbutton/>

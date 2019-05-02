@@ -10,4 +10,5 @@
     <wux-textarea label="Token" placeholder="Token From GitHub" value="{{ token }}" controlled bind:change="onTokenChange" />
   </wux-cell>
 </wux-cell-group>
+<fabbutton/>
 </view>

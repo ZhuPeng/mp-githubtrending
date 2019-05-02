@@ -1,2 +1,3 @@
 <issuelist wx:if="{{type=='issues'}}" list="{{result}}"/>
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
+<fabbutton/>

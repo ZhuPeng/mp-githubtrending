@@ -1,3 +1,4 @@
 <wux-toast id="wux-toast" />
 <md md="{{blogmd}}" />
 <subscribe />
+<fabbutton/>

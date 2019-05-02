@@ -12,4 +12,5 @@
     <navigator url="{{'/pages/gitfile/gitfile?owner=' + owner + '&repo=' + repo + '&file=' + item.url}}" style="color: blue">{{item.name}}</navigator>
   </view>
 </block>
+<fabbutton/>
 </view>

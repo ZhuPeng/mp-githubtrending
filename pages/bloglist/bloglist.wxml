@@ -4,3 +4,4 @@
   <view class="card-gap"></view>
 </block>
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
+<fabbutton/>
