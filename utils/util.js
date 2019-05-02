@@ -123,19 +123,21 @@ const CodeFileExtentsions = {
   "java": "java",
   "py": "python",
   "go": "go",
-  "sh": "shell",
+  "sh": "markup",
   "js": "javascript",
   "php": "php",
   'c': 'c',
   'json': 'json',
-  'cpp': 'C++',
-  'html': 'html',
-  'yml': 'yaml',
-  'yaml': 'yaml',
+  'cpp': 'go',
+  'html': 'markup',
+  'yml': 'markup',
+  'yaml': 'markup',
   'R': 'R',
+  'css': 'css',
+  'wxss': 'css',
   'swift': 'swift',
-  'wxml': 'html',
-  'ipynb': 'ipynb'
+  'wxml': 'markup',
+  'ipynb': 'python'
 }
 
 function isCodeFile(file) {
