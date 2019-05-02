@@ -18,12 +18,12 @@
 			<text class="wemark_inline_code_{{renderInline.type}}" wx:if="{{renderInline.type&&renderBlock.highlight}}">{{renderInline.content}}</text>
 			<text class="wemark_inline_code_text" wx:if="{{!renderInline.type}}">{{renderInline}}</text>
 			<navigator bindtap="onTap" data-text="{{renderInline.data.href}}" class="wemark_inline_link" url="{{renderInline.data.href}}" wx:if="{{renderInline.type === 'link'}}">{{renderInline.content}}</navigator>
-			<image bindtap="onImgTap" bindload="imageLoad" mode="{{image[renderBlock.src] ? '':'widthFix'}}" data-text="{{renderInline.src}}" class="wemark_inline_image" src="{{renderInline.src}}" wx:if="{{renderInline.type === 'image'}}" style="width:{{ image[renderInline.src].width }}rpx; height:{{ image[renderInline.src].height }}rpx;"></image>
+			<image bindtap="onImgTap" bindload="imageLoad" mode="widthFix" data-text="{{renderInline.src}}" class="wemark_inline_image" src="{{renderInline.src}}" wx:if="{{renderInline.type === 'image'}}" style="width:{{ images[renderInline.src].width }}rpx; height:{{ images[renderInline.src].height }}rpx;"></image>
 		</block>
 		<block wx:if="{{!renderBlock.isArray}}">
 			<view wx:if="{{renderBlock.type === 'code'}}">{{renderBlock.content}}</view>
 			<video wx:if="{{renderBlock.type == 'video'}}" class="wemark_block_video" src="{{renderBlock.src}}" poster="{{renderBlock.poster}}" controls></video>
-            <image bindtap="onImgTap" bindload="imageLoad" data-text="{{renderBlock.src}}" mode="{{image[renderBlock.src] ? '':'widthFix'}}" class="wemark_inline_image" src="{{renderBlock.src}}" wx:if="{{renderBlock.type === 'image'}}" style="width:{{ image[renderBlock.src].width }}rpx; height:{{ image[renderBlock.src].height }}rpx;"></image>
+            <image bindtap="onImgTap" bindload="imageLoad" data-text="{{renderBlock.src}}" mode="widthFix" class="wemark_inline_image" src="{{renderBlock.src}}" wx:if="{{renderBlock.type === 'image'}}" style="width:{{ images[renderBlock.src].width }}rpx; height:{{ images[renderBlock.src].height }}rpx;"></image>
             <text class="wemark_inline_{{renderInline.type}}" wx:if="{{renderBlock.type === 'text'}}">{{renderBlock.content}}</text>
 		</block>
 	</view>
