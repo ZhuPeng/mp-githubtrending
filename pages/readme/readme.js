@@ -101,13 +101,15 @@ Page({
     cloudclient.callFunction({
       type: 'get', path: '/repos/' + repo + '/stats/contributors'
     }, function (c) {
-      if ((!c || c.length == 0) && retry) { 
-        self.setData({ spinning: false, stats: c, statsMd })
-        self.genStatsMd(false)
+      if (!c || c.length == 0) {
+        if (retry) {
+          self.setData({ spinning: false, stats: c, statsMd })
+          self.genStatsMd(false)
+          return
+        }
         return
       }
       var total = 0;
-      if(!c) {return}
       c.map(function (s) {
         total += s.total
       })
