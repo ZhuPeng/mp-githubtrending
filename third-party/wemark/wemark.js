@@ -33,9 +33,18 @@ Component({
     },
     data: {
         parsedData: {},
-		richTextNodes: []
+        image: {},
+		    richTextNodes: []
     },
     methods: {
+      imageLoad(e) {
+        var width = e.detail.width,   
+          height = e.detail.height
+        if (width > 200 || height > 200) {return}
+        var image = this.data.image
+        image[e.target.dataset.text] = {width, height}
+        this.setData({image: image})
+      },
         onImgTap(e) {
           wx.previewImage({
             current: e.target.dataset.text, 
