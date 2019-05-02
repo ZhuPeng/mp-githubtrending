@@ -42,7 +42,7 @@ Component({
           height = e.detail.height
         if (width > 200 || height > 200) {return}
         var images = this.data.images
-        images[e.target.dataset.text] = {width, height}
+        images[e.target.dataset.text] = {width: width*2, height: height*2}
         this.setData({images: images})
       },
         onImgTap(e) {
