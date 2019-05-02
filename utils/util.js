@@ -154,7 +154,7 @@ function mdLink(text, link) {
 }
 
 function isGitHubPage(url) {
-  return url.startsWith("https://github.com") || url.startsWith("http://github.com")
+  return url.startsWith("https://github.com/") || url.startsWith("http://github.com/")
 }
 
 function parseGitHub(url) {
