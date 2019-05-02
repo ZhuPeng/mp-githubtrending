@@ -48,7 +48,11 @@ Page({
   },
 
   changeSearchStyle() {
+    if (this.data.searchShow == true) {
+      this.clearSearch()
+    }
     this.setData({ searchShow: !this.data.searchShow })  
+    
   },  
 
   onOpen(e) {
@@ -62,6 +66,11 @@ Page({
     this.loadData(false)
   },
 
+  clearSearch() {
+    this.setData({ searchValue: '' })
+    this.loadData(false)
+  },  
+
   onClear(e) {
     console.log('onClear', e)
     this.setData({ searchValue: '' })
@@ -70,6 +79,7 @@ Page({
   onCancel(e) {
     console.log('OnCancel:', e)
     this.changeSearchStyle()
+    this.clearSearch()
   },
 
   getOrder() {
