@@ -1,4 +1,8 @@
-关于为什么要开发这个小程序以及核心的思想可以查看文档：[微信小程序 GitHub Trending Hub 的由来](https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/why.md)。本文档主要介绍小程序的相关使用和设置，主要有如下三个方面介绍：
+多个用户向我们反馈之前的 Logo 与 GitHub 不太匹配，所以我们换了一个新的 Logo。
+
+![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/qrcode.jpg)
+
+本文档主要介绍小程序的相关使用和设置，关于为什么要开发这个小程序以及核心的思想可以查看文档：[微信小程序 GitHub Trending Hub 的由来](https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/why.md)。本文主要从如下三个方面介绍：
 
 * GitHub 基础功能
 * 博客和新闻订阅和推送
@@ -80,4 +84,5 @@ Name 是登陆 GitHub 后的账户名，Token 可以访问 [https://github.com/s
 
 
 
-## 如果你期望一些新的功能，或者有任何问题，欢迎给我们提交 [Issue](https://github.com/ZhuPeng/mp-githubtrending/issues/new) 或者 PullRequest。
+**如果你期望一些新的功能，或者有任何问题，欢迎给我们提交 [Issue](https://github.com/ZhuPeng/mp-githubtrending/issues/new) 或者 PullRequest。**
+
