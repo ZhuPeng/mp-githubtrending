@@ -101,7 +101,7 @@ Page({
     cloudclient.callFunction({
       type: 'get', path: '/repos/' + repo + '/stats/contributors'
     }, function (c) {
-      if (!c || !c.isArray || c.length == 0) {
+      if (!c || !Array.isArray(c) || c.length == 0) {
         if (retry) {
           self.setData({ spinning: false, stats: c, statsMd })
           self.genStatsMd(false)

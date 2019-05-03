@@ -111,7 +111,11 @@ Page({
   getCollection() {
     var col = db.collection('github')
     var filter = []
-    this.data.selectLangList.map(function(lang) {
+    var selected = this.data.selectLangList
+    if (!selected || !Array.isArray(selected)) {
+      selected = []
+    }
+    selected.map(function(lang) {
       if (lang.trim() == "") {return}
       filter.push({ 'lang': lang.trim()})
     })
