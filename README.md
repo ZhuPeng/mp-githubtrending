@@ -9,9 +9,9 @@
 ## 文档
 
 * [微信小程序 GitHub Trending Hub 的由来](doc/why.md)
+* [使用文档](doc/help.md)
 * [公众号文章链接 GitHub 仓库指南](doc/api.md)
 * [适合手机查看的优秀仓库合集](doc/excellent_repo_for_mobile_reading.md)
-* [使用文档](doc/help.md)
 
 
 
@@ -36,4 +36,4 @@
 * [resume/resume.github.com](https://github.com/resume/resume.github.com): 自动生成 GitHub 简历
 
 
-有任何问题，欢迎提交 Issue 或者 PullRequest。
+有任何问题，欢迎提交 [Issue](https://github.com/ZhuPeng/mp-githubtrending/issues/new) 或者 PullRequest。
