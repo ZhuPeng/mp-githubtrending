@@ -73,6 +73,7 @@ function GitHubNavi(path, naviFunc, withSubscribe) {
   if (owner == "") { return }
   else if (owner == 'settings') {
     naviFunc({ url: '/pages/settings/settings' })
+    return
   }
   if (filepath == "" && repo == "") {
     naviFunc({ url: '/pages/account/account?owner=' + owner })
