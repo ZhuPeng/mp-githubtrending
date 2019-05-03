@@ -1,4 +1,4 @@
-关于为什么要开发这个小程序以及核心的思想可以查看文档：[微信小程序 GitHub Trending Hub 的由来](https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/why.md)。本文档主要介绍小程序的相关使用和设置文档，主要有如下三个方面介绍：
+关于为什么要开发这个小程序以及核心的思想可以查看文档：[微信小程序 GitHub Trending Hub 的由来](https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/why.md)。本文档主要介绍小程序的相关使用和设置，主要有如下三个方面介绍：
 
 * GitHub 基础功能
 * 博客和新闻订阅和推送
@@ -8,11 +8,11 @@
 
 ## GitHub 基础功能
 
-首页中的 GitHub 项目会根据其出现在 Trending 的时间点更新，所以只要你持续关注小程序，就能及时和不遗漏的查看到你关心语言的 Trending 项目，同时支持选择过滤多个编程语言。基础的 GitHub 功能如搜索、查看项目详情、Commits、Issues、Pull Requests 等就不介绍了。主要介绍如下几个功能：
+首页中的 GitHub 项目会根据其出现在 Trending 的时间点更新，所以只要你持续关注小程序，就能及时和不遗漏的查看到你关心语言的 Trending 项目，同时支持选择过滤多个编程语言。基础的 GitHub 功能如搜索、查看项目详情、Commits、Issues、Pull Requests 等都已经支持就不介绍了。主要介绍如下几个功能：
 
 * 设置个人主页及 Token
 
-  点击右下角的加号，再点击设置的图标
+点击右下角的加号，再点击设置的图标
 
 ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/doc/click-settings.png)
 
@@ -42,7 +42,7 @@ Name 是登陆 GitHub 后的账户名，Token 可以访问 [https://github.com/s
 
 * 个人简历
 
-当我第一次看到项目 [https://github.com/resume/resume.github.com](https://github.com/resume/resume.github.com) 的时候，我是有点惊喜的，它能够基于我在 GitHub 的事件生成一份简历，我能在简历清晰的看到自己什么时候开始使用 GitHub、自己的成长和参与贡献的开源项目，所以当我开发小程序的时候是第一时间确定要开发支持的。如果你在 GitHub 有不错的贡献，直接给 HR 扔一份这样的简历是不是有点酷炫。在个人账户页有 Resume 链接提示，点击即可查看，同时也可以查看其它人的简历。
+当我第一次看到项目 [https://github.com/resume/resume.github.com](https://github.com/resume/resume.github.com) 的时候，我是有点惊喜的，它能够基于我在 GitHub 的事件生成一份简历，我能在简历清晰的看到自己什么时候开始使用 GitHub、自己的成长和参与贡献的开源项目，所以当我开发小程序的时候小程序的简历是第一时间确定要开发支持的。如果你在 GitHub 有不错的贡献，直接给 HR 扔一份这样的简历是不是有点酷炫。在个人账户页有 Resume 链接提示，点击即可查看，同时也可以查看其它人的简历。
 
 ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/doc/personal-account-resume.png)
 
@@ -52,13 +52,13 @@ Name 是登陆 GitHub 后的账户名，Token 可以访问 [https://github.com/s
 
 
 
-## 博客和新闻推送和订阅
+## 博客和新闻推送及订阅
 
-目前收录了 Hacker News、GitHub Blog、CoreOS Blog，通过小程序可以及时的查看到更新，同时我们维护了一个优秀的 GitHub 推荐系列，每天推荐一个优秀的仓库在首页的轮播图展示。
+目前收录了 [Hacker News](https://news.ycombinator.com/newest)、[GitHub Blog](https://github.blog/)、[CoreOS Blog](https://coreos.com/blog)，通过小程序可以及时的查看更新，同时我们维护了一个优秀的 GitHub 推荐系列，每天推荐一个优秀的仓库在首页的轮播图展示。
 
 ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/doc/blognews.jpeg)
 
-每篇推荐文章的页面最底部有点赞和订阅的功能，订阅之后会在更新的时候通过微信的服务通知推送(目前的推送频率是早上 8~9 点左右，每周大概两次)。按照目前微信的推送策略，只有点击了小程序里面的 Button 才会获取到一次被推送的机会，所以如果你不希望错过推送的话，可以在每次看完之后点一下 Like +1，当然如果你不想被推送的话，不使用小程序即可，大家可以放心不会受到骚扰。
+每篇推荐文章的页面最底部有点赞和订阅的功能，订阅之后会在更新的时候通过微信的服务通知推送(目前的推送频率是早上 8~9 点左右，每周大概两次)。按照目前微信的推送策略，只有点击了小程序里面的 Button 才会获取一次被推送的机会，所以如果你不希望错过推送的话，可以在每次看完之后点一下 Like +1，当然如果你不想被推送的话，不点击即可，大家可以放心不会受到骚扰。
 
 ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/doc/subscribe.png)
 
