@@ -45,7 +45,7 @@ function Alert(text, duration, callback) {
   if (!duration) {duration = 2000}
   wx.showToast({
     title: text,
-    icon: 'error',
+    icon: 'none',
     duration: duration,
     success: function () { if(callback) {callback()} }
   })
