@@ -12,7 +12,11 @@ function HandleQrCode() {
     if (param) {
       param += '&'
     }
-    param += k + '=' + page.options[k]
+    var val = page.options[k]
+    if (val.startsWith('https://api.github.com/') && val.indexOf('/contents/')>0) {
+      val = val.slice(val.indexOf('/contents/') + '/contents/'.length, val.length)
+    }
+    param += k + '=' + val
   }
   cloudclient.callFunctionWithQrCode({ page: page.route, scene: param }, function (d) {
     console.log('qrcode: ', d)
