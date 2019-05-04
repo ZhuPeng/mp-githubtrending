@@ -15,6 +15,9 @@ App({
       util.GitHubNavi(path, wx.redirectTo)
       return
     }
+    if (path != 'pages/github/index') {
+      return
+    }
     var lastest = wx.getStorageSync(lastestPageKey)
     if (lastest && lastest.path!=undefined && lastest.param!=undefined && path != lastest.path) {
       console.log('invoke page recover:', lastest.path, lastest.param)
