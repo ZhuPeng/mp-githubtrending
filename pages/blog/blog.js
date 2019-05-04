@@ -33,7 +33,5 @@ Page({
     this.setData({blogmd})
   },
 
-  onShareAppMessage: function () {
-
-  }
+  onShareAppMessage: function() {}
 })

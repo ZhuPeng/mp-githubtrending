@@ -1,15 +1,4 @@
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo {
-  display: flex;
-  flex-direction: row;
-  align-items: left;
-}
+@import '../../../app.wxss';
 
 .action-info {
   margin: 20rpx;

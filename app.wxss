@@ -30,3 +30,16 @@
   margin-top: 12rpx;
   margin-bottom: 12rpx;
 }
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}

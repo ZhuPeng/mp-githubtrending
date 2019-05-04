@@ -1,7 +1,6 @@
 const cloudclient = require('../../utils/cloudclient.js')
 const github = require('../../utils/github.js')
 const util = require('../../utils/util.js')
-const app = getApp()
 
 Page({
   data: {

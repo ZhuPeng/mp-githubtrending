@@ -1,7 +1,5 @@
 <view class="box">
 <view class="kind-list">
-  <view wx:if="{{ist.length==0 ? true:false}}"><wux-spin nested spinning="{{ list.length==0 ? true:false }}" tip="Loading ..."/></view>
-
 <block wx:for-items="{{parsedList}}" wx:key="{{item._id}}">
   <view class="kind-list-item">
     <navigator url="/pages/readme/readme?_id={{item._id}}&repo={{item.repo || item.full_name}}" hover-class="navigator-hover">

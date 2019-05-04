@@ -20,7 +20,5 @@ Page({
     this.onLoad({jobname: this.data.jobname})
   },
 
-  onShareAppMessage: function () {
-
-  }
+  onShareAppMessage: function() {}
 })
