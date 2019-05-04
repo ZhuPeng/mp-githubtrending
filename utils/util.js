@@ -19,6 +19,25 @@ module.exports = {
   SetDataWithSpin,
   ArrayContains,
   ShowToastText,
+  GetLastestPage,
+}
+
+function GetLastestPage() {
+  var pages = getCurrentPages()
+  var page = pages[pages.length - 1]
+  var param = ''
+  for (var k in page.options) {
+    if (param) {
+      param += '&'
+    }
+    var val = page.options[k]
+    if (val.startsWith('https://api.github.com/') && val.indexOf('/contents/') > 0) {
+      val = val.slice(val.indexOf('/contents/') + '/contents/'.length, val.length)
+    }
+    param += k + '=' + val
+  }
+  console.log('lastest visit path:', page.route, ' param:', param)
+  return [page.route, param]
 }
 
 function ShowToastText(text) {
