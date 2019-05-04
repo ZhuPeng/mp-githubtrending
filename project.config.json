@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -130,7 +130,7 @@
 					"id": 12,
 					"name": "Issue",
 					"pathName": "pages/issue/issue",
-					"query": "issue=https://api.github.com/repos/ZhuPeng/mp-githubtrending/issues/8",
+					"query": "issue=https://api.github.com/repos/iogf/lax/issues/1",
 					"scene": null
 				},
 				{

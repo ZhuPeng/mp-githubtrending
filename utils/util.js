@@ -81,8 +81,8 @@ function GitHubNavi(path, naviFunc, withSubscribe) {
     naviFunc({ url: '/pages/readme/readme?repo=' + owner + " / " + repo })
   } else if (filepath == 'issues/new') {
     naviFunc({ url: '/pages/newissue/newissue?url=' + path })
-  }else if (filepath.startsWith('issues/')) {
-    var issue = 'https://api.github.com/repos/' + owner + '/' + repo + '/' + filepath
+  } else if (filepath.startsWith('issues/') || filepath.startsWith('pull/')) {
+    var issue = 'https://api.github.com/repos/' + owner + '/' + repo + '/' + filepath.replace('pull/', 'issues/')
     naviFunc({url: '/pages/issue/issue?issue='+issue})
   } else if (filepath.startsWith('pulls?q=')) {
     naviFunc({ url: '/pages/search/search?type=issues&query=' + filepath.slice('pulls?q='.length) + encodeURIComponent(' repo:' + owner+'/'+repo)})

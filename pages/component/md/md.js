@@ -33,13 +33,13 @@ Component({
   methods: {
     handleMd() {
       var tmp = this.data.md
-      var linkRegExp = /([ \n]+(https?:\/\/[^\s^'^"^#]+)[ \n]+)/g;
-
+      var linkRegExp = /((^|[ \n]+)(https?:\/\/[^\s^'^"^#]+)([ \n]+|$))/g;
+      var matchCnt = 3
       var match;
       while (match = linkRegExp.exec(tmp)) {
-        if (match[1] && match[2]) {
+        if (match[1] && match[matchCnt]) {
           var t = match[1]
-          var url = match[2]
+          var url = match[matchCnt]
           var r = t.replace(url, util.mdLink(url, url))
           tmp = tmp.replace(match[1], r)
         }

@@ -6,7 +6,7 @@ const MaxHourRateLimit = 200
 
 function getDate() {
   var d = new Date()
-  return d.getFullYear() + '' + (d.getMonth()+1) + '' + d.getDate() + '' + d.getHours()
+  return d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate() + '-' + d.getHours()
 }
 
 function RateLimit() {
