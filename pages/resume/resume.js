@@ -71,6 +71,7 @@ Page({
       info += ' and ' + util.mdLink(v.followers + ' ' + v.followersLabel, 'https://github.com/' + v.username + '?tab=followers');
     }
     info += '.'
+    info += '\n\n![](https://ghchart.rshah.org/' + this.data.owner + ')'
     this.setData({info, spinning: false})
   },
 

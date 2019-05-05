@@ -34,6 +34,7 @@
 * [dankogai/js-base64](https://github.com/dankogai/js-base64/): base64 编解码库
 * [weui/weui-wxss](https://github.com/weui/weui-wxss): 微信官方的 UI 库
 * [resume/resume.github.com](https://github.com/resume/resume.github.com): 自动生成 GitHub 简历
+* [2016rshah/githubchart-api](https://github.com/2016rshah/githubchart-api): Embed github contributions chart as image
 
 
 有任何问题，欢迎提交 [Issue](https://github.com/ZhuPeng/mp-githubtrending/issues/new) 或者 PullRequest。
