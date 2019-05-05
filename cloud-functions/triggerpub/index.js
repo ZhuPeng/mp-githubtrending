@@ -123,7 +123,7 @@ async function deleteFormId(id) {
 async function pubSimpleContent() {
   var desp = '博客更新'
   await cloud.callFunction({
-    name: 'blog',
+    name: 'blogv1',
     data: { type: 'lastest' },
   }).then(res => {
     res.result.data.map(function (d) {
@@ -140,7 +140,7 @@ async function pubcontent() {
   var desp = '#### 博客更新'
 
   await cloud.callFunction({
-    name: 'blog',
+    name: 'blogv1',
     data: { type: 'lastest'},
   }).then(res => {
     res.result.data.map(function(d) {
