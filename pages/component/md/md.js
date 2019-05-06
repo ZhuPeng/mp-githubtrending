@@ -33,7 +33,7 @@ Component({
   methods: {
     handleMd() {
       var tmp = this.data.md
-      var linkRegExp = /((^|[ \n]+)(https?:\/\/[^\s^'^"^#]+)([ \n]+|$))/g;
+      var linkRegExp = /((^|[ \n:\uff1a\uff0c]+)(https?:\/\/[^\s^'^"^#]+)([ \t\r\n]+|$))/g;
       var matchCnt = 3
       var match;
       while (match = linkRegExp.exec(tmp)) {

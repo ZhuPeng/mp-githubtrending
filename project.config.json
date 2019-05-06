@@ -130,7 +130,7 @@
 					"id": 12,
 					"name": "Issue",
 					"pathName": "pages/issue/issue",
-					"query": "issue=https://api.github.com/repos/iogf/lax/issues/1",
+					"query": "issue=https://api.github.com/repos/selfteaching/the-craft-of-selfteaching/issues/398",
 					"scene": null
 				},
 				{
