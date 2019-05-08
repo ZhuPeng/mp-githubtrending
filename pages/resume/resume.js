@@ -110,7 +110,7 @@ Page({
       repos = {};
 
     data.map(function (issue, i) {
-      if (!('repository_url' in issue)) {return}
+      if (!issue || !issue.repository_url) {return}
       if (repos[issue.repository_url] === undefined) {
         repos[issue.repository_url] = { popularity: 1 }
       } else {
