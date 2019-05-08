@@ -2,7 +2,7 @@
 
 ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/qrcode.jpg)
 
-本文档主要介绍小程序的相关使用和设置，关于为什么要开发这个小程序以及核心的思想可以查看文档：[微信小程序 GitHub Trending Hub 的由来](https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/why.md)。本文主要从如下三个方面介绍：
+本文档主要介绍小程序的相关使用和设置，关于为什么要开发这个小程序以及核心的思想可以查看：[微信小程序 GitHub Trending Hub 的由来](https://github.com/ZhuPeng/mp-githubtrending/blob/master/doc/why.md)。本文主要从如下三个方面介绍：
 
 * GitHub 基础功能
 * 博客和新闻订阅和推送
