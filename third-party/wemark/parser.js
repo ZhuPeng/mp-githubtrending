@@ -6,6 +6,11 @@ var prism = require('./prism');
 var idDict = {}
 
 function urlModify(baseurl, url, currentDir) {
+  var re = '/blob/master/'
+  if (url.startsWith('https://github.com/') && url.indexOf(re)>0) {
+    // 暂时以 /blob/master/ 作为替换标识
+    return baseurl + url.slice(url.indexOf(re) + re.length, url.length)
+  }
   if (url == "" || url == undefined || url.startsWith('http')) {
     return url
   }

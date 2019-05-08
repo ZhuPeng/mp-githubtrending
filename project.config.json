@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -122,7 +122,7 @@
 				{
 					"id": 11,
 					"name": "OriginGitHubLink",
-					"pathName": "https://github.com/ZhuPeng/mp-githubtrending",
+					"pathName": "https://github.com/MLEveryday/100-Days-Of-ML-Code",
 					"query": "",
 					"scene": 1058
 				},
