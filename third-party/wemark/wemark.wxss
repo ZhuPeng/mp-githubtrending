@@ -130,6 +130,8 @@
 .wemark_inline_image{
 	width:100%;
 	height:auto;
+  margin-left: 3rpx;
+  margin-right: 3rpx;
 }
 .wemark_inline_code{
 	background:#f0f0f0;
