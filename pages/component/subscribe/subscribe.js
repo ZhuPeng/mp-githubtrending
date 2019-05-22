@@ -18,6 +18,11 @@ Component({
 
   methods: {
     onButtonClick(e) {
+      this.buttonClick(e)
+      util.ShowAd()
+    },
+
+    buttonClick(e) {
       var self = this;
       console.log(e)
       
