@@ -8,6 +8,7 @@ Page({
     list: [],
     repos: [],
     issues: [],
+    stars: [],
     showHistory: false,
     spinning: true,
     tabKey: 'Repos',
@@ -32,6 +33,18 @@ Page({
     if (this.data.owner == "") {return}
     cloudclient.callFunction({ type: 'get', path: '/users/' + this.data.owner}, function(d){
       self.setData({meta: d})
+    })
+  },
+
+  loadStars() {
+    var self = this
+    if (this.data.owner == "") { return }
+    util.SetDataWithSpin(self, {})
+    cloudclient.callFunction({ type: 'get', path: '/users/' + this.data.owner + '/starred', 'currentSize': this.data.stars.length }, function (d) {
+      console.log('stars: ', d)
+      var tmp = self.data.stars
+      tmp.push(...d)
+      util.SetDataWithoutSpin(self, { stars: tmp })
     })
   },
 
@@ -74,6 +87,8 @@ Page({
       this.loadRepos()
     } else if (key == 'History') {
       this.loadHistory()
+    } else if (key == 'Stars') {
+      this.loadStars()
     }
   },
 

@@ -21,6 +21,7 @@
   <wux-tabs controlled theme="positive" current="{{ tabKey }}" bindchange="onClick">
     <wux-tab key="Repos" title="Repos"/>
     <wux-tab key="Events" title="Events"/>
+    <wux-tab key="Stars" title="Stars"/>
     <wux-tab wx:if="{{showHistory}}" key="History" title="History"/>
   </wux-tabs>
 
@@ -30,6 +31,10 @@
   </view>
   <issuelist style="{{tabKey=='Events'?'':'display:none'}}" list="{{issues}}"/>
   <repolist style="{{tabKey=='History'?'':'display:none'}}" wx:if="{{showHistory}}" list="{{list}}" timeKey="requesttime"/>
+  <view style="{{tabKey=='Stars'?'':'display:none'}}">
+      <repolist list="{{stars}}" timeKey="updated_at"/>
+      <wux-divider wx:if="{{meta.public_repos && stars.length == meta.public_repos}}" text="No More Repos" />
+  </view>
 
   <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
   <fabbutton/>

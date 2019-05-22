@@ -23,7 +23,7 @@ Component({
   },
 
   data: {
-
+    iconsize: 18,
   },
 
   methods: {

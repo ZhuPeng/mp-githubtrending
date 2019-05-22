@@ -1,1 +1,11 @@
 @import '../../../app.wxss';
+
+.text {
+  font-size: 18px;
+}
+
+.action-icon {
+  right: 10px;
+  float: right;
+  position: fixed;
+}

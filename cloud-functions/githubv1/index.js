@@ -167,6 +167,7 @@ async function execute(owner, repo, type, path, openid, ref, data) {
       else if (sufix.length == 1) {sufix += 'Home'}
       path = npath + sufix + '.md'
     }
+    path = path + '&page=' + page + '&per_page=' + per_page
     var d = await octokit.request('GET ' + path)
     if (d['status'] == 202) {
       d = await octokit.request('GET ' + path)
