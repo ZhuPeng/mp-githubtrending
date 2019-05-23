@@ -12,28 +12,10 @@ module.exports = {
 const version = 'githubv1'
 
 function callFunction(data, completeFunc) {
-  if (rate.RateLimit()) {
-    return
-  }
-  var token = wx.getStorageSync('github-token')
-  if (token) {
-    data['token'] = token
-  } else if(data.type == 'post') {
-    util.Alert('未设置 Token', 6000, function() {
-      wx.navigateTo({url: '/pages/settings/settings'})
-    })
-    return
-  }
-  wx.cloud.callFunction({
-    name: version,
-    data: data,
-    complete: res => {
-      var content = ''
-      if (res.result) {
-        content = res.result.content || ''
-      }
-      completeFunc(content)
-    },
+  callFunctionWithName(version, data, function(r) {
+    var c = ''
+    if (r && r.content) { c = r.content}
+    completeFunc(c)
   })
 }
 
@@ -43,6 +25,17 @@ function callFunctionWithRawResponse(data, completeFunc) {
 
 function callFunctionWithName(apiname, data, completeFunc) {
   if (rate.RateLimit()) {
+    return
+  }
+  var token = wx.getStorageSync('github-token')
+  if (token) {
+    data['token'] = token
+  } else if (data.ignoreWithoutAuth) {
+    return
+  } else if (data.type == 'post') {
+    util.Alert('未设置 Token', 6000, function () {
+      wx.navigateTo({ url: '/pages/settings/settings' })
+    })
     return
   }
   wx.cloud.callFunction({

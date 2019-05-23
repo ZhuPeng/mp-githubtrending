@@ -94,16 +94,17 @@ Page({
 
   onLoad: function (options) {
     var self = this;
-    this.setData({ owner: options.owner || wx.getStorageSync("github-name") || ''})
+    var owner = options.owner || wx.getStorageSync("github-name") || ''
+    this.setData({ owner})
+    if (options.history) {
+      this.setData({ showHistory: true })
+    }  
+    if (!owner) {util.SetDataWithoutSpin(this, {}); return}
     this.loadMeta() 
     this.loadRepos()
-    if (options.history) {
-      this.setData({showHistory: true})
-    }  
-
-    github.Get('/search/issues?q=' + encodeURIComponent('commenter:' + self.data.owner), function(d) {
+    github.Get('/search/issues?q=' + encodeURIComponent('commenter:' + owner), function(d) {
       self.setData({issues: d})
-      github.Get('/search/issues?q=' + encodeURIComponent('author:' + self.data.owner + ' -commenter:' + self.data.owner), function(d) {
+      github.Get('/search/issues?q=' + encodeURIComponent('author:' + owner + ' -commenter:' + owner), function(d) {
         self.setData({ issues: d })
       }, 1, d)
     })
