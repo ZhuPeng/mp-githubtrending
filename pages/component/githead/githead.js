@@ -45,6 +45,23 @@ Component({
         }
       })
     },
+    star: function(e) {
+      var type = 'PUT'
+      var action = 'Star'
+      if (this.data.isStar) {
+        type = 'DELETE'
+        action = 'UnStar'
+      }
+      var self = this
+      cloudclient.callFunctionWithRawResponse({ type, path: '/user/starred/' + this.data.owner + '/' + this.data.repo, forceAuth: true}, function (d) {
+        var status = 'ERROR '
+        if (d != undefined) {
+          self.setData({ isStar: !self.data.isStar })
+          status = 'Success '
+        }
+        util.Alert(status + action)
+      })
+    },  
     copy: function (e) {
       util.copyText(e)
     },

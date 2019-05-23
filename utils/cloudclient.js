@@ -32,7 +32,7 @@ function callFunctionWithName(apiname, data, completeFunc) {
     data['token'] = token
   } else if (data.ignoreWithoutAuth) {
     return
-  } else if (data.type == 'post') {
+  } else if (data.type == 'post' || data.forceAuth) {
     util.Alert('未设置 Token', 6000, function () {
       wx.navigateTo({ url: '/pages/settings/settings' })
     })

@@ -175,11 +175,11 @@ async function execute(owner, repo, type, path, openid, ref, data) {
       d = await octokit.request('GET ' + path)
     }
     return {content: d['data']}
-  } else if (type == 'post') {
+  } else if (type) {
     if (data.body && data.body.indexOf('From WeChat Mini Programe') < 0) {
       data.body += '\n\n\n> From WeChat Mini Programe: [GitHub Trending Hub](https://github.com/ZhuPeng/mp-githubtrending?openid=' + openid + ')'
     }
-    var d = await octokit.request('POST ' + path, {data: data})
+    var d = await octokit.request(type.toUpperCase() + ' ' + path, {data: data})
     return { content: d['data'] }
   }
   
