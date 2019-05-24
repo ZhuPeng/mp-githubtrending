@@ -9,3 +9,14 @@
   float: right;
   position: absolute;
 }
+
+.owner {
+  overflow: hidden;
+  max-width: 30%;
+}
+
+.repo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 50%;
+}
