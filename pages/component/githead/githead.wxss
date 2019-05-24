@@ -7,5 +7,5 @@
 .action-icon {
   right: 10px;
   float: right;
-  position: fixed;
+  position: absolute;
 }
