@@ -212,9 +212,14 @@ function parseGitHub(url) {
     return [arr[3], "", ""]
   }
   else if (arr.length == 5) {
-    return [arr[3], arr[4], ""]
+    var repo = arr[4]
+    if (repo.indexOf('#')) {
+      repo = arr[4].split('#')[0]
+    }
+    return [arr[3], repo, ""]
   } else if (arr.length > 5) {
-    return [arr[3], arr[4], url.slice(("https://github.com/"+arr[3]+"/"+arr[4]+"/").length)]
+    var file = url.slice(("https://github.com/" + arr[3] + "/" + arr[4] + "/").length)
+    return [arr[3], arr[4], file]
   }
   return ["", "", ""]
 }
