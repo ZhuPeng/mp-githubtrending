@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 16,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
@@ -54,7 +54,7 @@
 					"id": 1,
 					"name": "Readme",
 					"pathName": "pages/readme/readme",
-					"query": "repo=ZhuPeng / mp-githubtrending",
+					"query": "_id=c0a3987b5ce94cba056f369e3b94d1ab&repo=imbrn / v8n",
 					"scene": null
 				},
 				{

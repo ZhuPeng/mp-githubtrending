@@ -18,10 +18,15 @@ function urlModify(baseurl, url, currentDir) {
   return baseurl + url;
 }
 
+function isHtml(h) {
+  var h = h.trim()
+  return h.startsWith('<') && h.endsWith('>')
+}
+
 var reg = new RegExp("<br/>", "g"); 
 
 function parse(md, options){
-    md = md.replace(reg, '\n')
+  md = md.replace(reg, '\n')
 	if(!options) options = {};
 	var tokens = parser.parse(md, {});
 
@@ -35,37 +40,46 @@ function parse(md, options){
 	var orderNum = [0, 0];
 	var tmp;
   var parseHtml = function(html, ret) {
-    var list = [/<h2.*?>(.*?)<\/h2>/g, /<h1.*?>(.*?)<\/h1>/g, /<p.*?>(.*?)<\/p>/g, /<a.*?>(.*?)<\/a>/g]
+    var list = [/<h2.*?>(.*?)<\/h2>/g, /<h1.*?>(.*?)<\/h1>/g, /<a.*?>(.*?)<\/a>/g, /<p.*?>(.*?)<\/p>/g, /<p.*?>(.*)/g]
     var match;
     list.map(function(p) {
-      while (match = p.exec(html)) {
+      var tmpHtml = html
+      while (match = p.exec(tmpHtml)) {
         if (match[1]) {
+          if (isHtml(match[1])) {
+            parseHtml(match[1], ret)
+            continue
+          }
           ret.push({ type: 'text', content: match[1] })
+          html = html.replace(match[0], '')
         }
       }
     })
+    if (html) {
+      ret.push({ type: 'text', content: html })
+    }
   }
 	// 获取inline内容
 	var getInlineContent = function(inlineToken){
 		var ret = [];
 		var env;
 		var tokenData = {};
-    if (inlineToken.type === 'htmlblock' || (inlineToken.type === 'inline' && inlineToken.content.startsWith('<') && inlineToken.content.endsWith('>'))){
+    if (inlineToken.type === 'htmlblock' || (inlineToken.type === 'inline' && isHtml(inlineToken.content))){
 			// 匹配video
 			// 兼容video[src]和video > source[src]
 			var videoRegExp = /<video.*?src\s*=\s*['"]*([^\s^'^"]+).*?(poster\s*=\s*['"]*([^\s^'^"]+).*?)?(?:\/\s*>|<\/video>)/g;
-            var imgRegExp = /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*|<\/img)?>/g;
+      var imgRegExp = /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*|<\/img)?>/g;
             
-	          	var match;
-	          	var html = inlineToken.content.replace(/\n/g, '');
-            // console.log('html: ', html)
-            while(match = imgRegExp.exec(html)) {
-              if (match[1]) {
-                ret.push({type: 'image', src: urlModify(options.baseurl, match[1], options.currentDir)});
-                html = html.replace(match[0], '')
-              }
-            }
-            parseHtml(html, ret)
+	    var match;
+	    var html = inlineToken.content.replace(/\n/g, '');
+      var newHtml = html;
+      while(match = imgRegExp.exec(newHtml)) {
+        if (match[1]) {
+          ret.push({type: 'image', src: urlModify(options.baseurl, match[1], options.currentDir)});
+          html = html.replace(match[0], '')
+        }
+      }
+      parseHtml(html, ret)
 
 			while(match = videoRegExp.exec(html)){
 				if(match[1]){
