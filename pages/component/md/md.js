@@ -33,6 +33,7 @@ Component({
   methods: {
     handleMd() {
       var tmp = this.data.md
+      tmp = tmp.replace('’', "'")
       var linkRegExp = /((^|[ \n:\uff1a\uff0c]+)(https?:\/\/[^\s^'^"^#]+)([ \t\r\n]+|$))/g;
       var matchCnt = 3
       var match;
