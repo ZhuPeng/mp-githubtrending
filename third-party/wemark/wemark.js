@@ -40,15 +40,17 @@ Component({
       imageLoad(e) {
         var width = e.detail.width,   
           height = e.detail.height
-        if (width > 200 || height > 200) {return}
         var images = this.data.images
-        images[e.target.dataset.text] = {width: width*2, height: height*2}
+        images[e.target.dataset.text] = {}
+        if (width < 200 && height < 200) {
+          images[e.target.dataset.text] = { width: width * 2, height: height * 2 }
+        }
         this.setData({images: images})
       },
         onImgTap(e) {
           wx.previewImage({
             current: e.target.dataset.text, 
-            urls: [e.target.dataset.text]
+            urls: Object.keys(this.data.images),
           })
         },
         onTap(e) {
