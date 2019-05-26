@@ -31,9 +31,16 @@ Component({
   },
 
   methods: {
+    addFaceLink(d) {
+      var col = ['new', 'bug', 'moneybag', 'mag', 'smile', 'hammer', 'tea', 'soccer', 'basketball', 'apple', 'cookie', 'strawberry', 'hamburger', 'fries', 'cherries', 'link', 'white_check_mark', 'cn', 'octocat', 'whale']
+      col.map(f => {
+        d[':'+f+':'] = '![](https://www.webfx.com/tools/emoji-cheat-sheet/graphics/emojis/' + f + '.png)'
+      })
+    },   
     handleMd() {
       var tmp = this.data.md
       var d = { '’': "'", "<br>": '\n', '<br/>': '\n'}
+      this.addFaceLink(d)
       for (var k in d) {
         var reg = new RegExp(k, "g")
         tmp = tmp.replace(reg, d[k])

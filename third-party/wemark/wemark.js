@@ -41,9 +41,12 @@ Component({
         var width = e.detail.width,   
           height = e.detail.height
         var images = this.data.images
-        images[e.target.dataset.text] = {}
-        if (width < 200 && height < 200) {
-          images[e.target.dataset.text] = { width: width * 2, height: height * 2 }
+        var url = e.target.dataset.text
+        images[url] = {}
+        if (url.startsWith('https://www.webfx.com/')) {
+          images[url] = { width: width/1.8, height: height/1.8 }
+        } else if (width < 200 && height < 200) {
+          images[url] = { width: width * 2, height: height * 2 }
         }
         this.setData({images: images})
       },
