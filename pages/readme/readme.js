@@ -63,6 +63,7 @@ Page({
     var arr = repo.split("/")
     if (arr.length < 2) {return}
     var dbrepo = arr[0].trim() + " / " + arr[1].trim()
+    wx.setNavigationBarTitle({ title: arr[1].trim() })
     this.setData({query: {owner: arr[0].trim(), repo: arr[1].trim()}})
     var self = this
     self.getGitHubData("readme", function preprocess(content) {

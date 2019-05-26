@@ -39,7 +39,6 @@ Component({
     handleRepo: function() {
       var self = this
       if (!this.data.repo) { return }
-      wx.setNavigationBarTitle({ title: this.data.repo })
       cloudclient.callFunctionWithRawResponse({ type: 'get', path: '/user/starred/' + this.data.owner + '/' + this.data.repo, ignoreWithoutAuth: true }, function (d) {
         if (d != undefined) {
           self.setData({isStar: true})

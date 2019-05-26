@@ -56,8 +56,10 @@ Page({
     console.log("issue: ", options.issue)
     cloudclient.callFunction({ type: 'get', path: options.issue }, function (c) {
       var [owner, repo, filepath] = util.parseGitHub(c.html_url)
+      var head = 'Issue #'
       util.SetDataWithoutSpin(self, {issue: c, owner, repo})
-      if (c.pull_request) { self.loadDiff() }
+      if (c.pull_request) { self.loadDiff(); head = 'Pull Requests #' }
+      wx.setNavigationBarTitle({ title: head + c.number })
       self.loadComments(c.comments_url)
     })
   },
