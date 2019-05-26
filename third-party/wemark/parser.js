@@ -20,6 +20,7 @@ function urlModify(baseurl, url, currentDir) {
 
 function isHtml(h) {
   var h = h.trim()
+  h = h.replace(/^\s+|\s+$/g, '');  
   return h.startsWith('<') && h.endsWith('>')
 }
 
@@ -42,6 +43,7 @@ function parse(md, options){
     list.map(function(p) {
       var tmpHtml = html
       while (match = p.reg.exec(tmpHtml)) {
+        // console.log('match: ', match)
         if (match[1]) {
           if (isHtml(match[1])) {
             var left = parseHtml(match[1], ret)
