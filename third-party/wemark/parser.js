@@ -23,10 +23,7 @@ function isHtml(h) {
   return h.startsWith('<') && h.endsWith('>')
 }
 
-var reg = new RegExp("<br/>", "g"); 
-
 function parse(md, options){
-  md = md.replace(reg, '\n')
 	if(!options) options = {};
 	var tokens = parser.parse(md, {});
 
@@ -40,17 +37,21 @@ function parse(md, options){
 	var orderNum = [0, 0];
 	var tmp;
   var parseHtml = function(html, ret) {
-    var list = [/<h2.*?>(.*?)<\/h2>/g, /<h1.*?>(.*?)<\/h1>/g, /<a.*?>(.*?)<\/a>/g, /<p.*?>(.*?)<\/p>/g, /<p.*?>(.*)/g]
+    var list = [{ type: 'text', reg: /<a.*?>(.*?)<\/a>/g }, {type: 'image', reg: /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*|<\/img)?>/g}, {type: 'text', reg: /<h2.*?>(.*?)<\/h2>/g}, {type: 'text', reg: /<h1.*?>(.*?)<\/h1>/g}, {type: 'text', reg: /<p.*?>(.*?)<\/p>/g}, {type: 'text', reg: /<p.*?>(.*)/g}]
     var match;
     list.map(function(p) {
       var tmpHtml = html
-      while (match = p.exec(tmpHtml)) {
+      while (match = p.reg.exec(tmpHtml)) {
         if (match[1]) {
           if (isHtml(match[1])) {
-            parseHtml(match[1], ret)
-            continue
+            var left = parseHtml(match[1], ret)
+            match[1] = match[1].replace(match[1], left)
           }
-          ret.push({ type: 'text', content: match[1] })
+          var data = { type: p.type, content: match[1]}
+          if (p.type == 'image') {
+            data['src'] = urlModify(options.baseurl, match[1], options.currentDir)
+          }
+          ret.push(data)
           html = html.replace(match[0], '')
         }
       }
@@ -58,6 +59,7 @@ function parse(md, options){
     if (html) {
       ret.push({ type: 'text', content: html })
     }
+    return html
   }
 	// 获取inline内容
 	var getInlineContent = function(inlineToken){
@@ -68,17 +70,9 @@ function parse(md, options){
 			// 匹配video
 			// 兼容video[src]和video > source[src]
 			var videoRegExp = /<video.*?src\s*=\s*['"]*([^\s^'^"]+).*?(poster\s*=\s*['"]*([^\s^'^"]+).*?)?(?:\/\s*>|<\/video>)/g;
-      var imgRegExp = /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*|<\/img)?>/g;
             
 	    var match;
 	    var html = inlineToken.content.replace(/\n/g, '');
-      var newHtml = html;
-      while(match = imgRegExp.exec(newHtml)) {
-        if (match[1]) {
-          ret.push({type: 'image', src: urlModify(options.baseurl, match[1], options.currentDir)});
-          html = html.replace(match[0], '')
-        }
-      }
       parseHtml(html, ret)
 
 			while(match = videoRegExp.exec(html)){

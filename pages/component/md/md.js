@@ -33,11 +33,16 @@ Component({
   methods: {
     handleMd() {
       var tmp = this.data.md
-      tmp = tmp.replace('’', "'")
+      var d = { '’': "'", "<br>": '\n', '<br/>': '\n'}
+      for (var k in d) {
+        var reg = new RegExp(k, "g")
+        tmp = tmp.replace(reg, d[k])
+      }
       var linkRegExp = /((^|[ \n:\uff1a\uff0c]+)(https?:\/\/[^\s^'^"^#]+)([ \t\r\n]+|$))/g;
       var matchCnt = 3
       var match;
-      while (match = linkRegExp.exec(tmp)) {
+      var newHtml = tmp
+      while (match = linkRegExp.exec(newHtml)) {
         if (match[1] && match[matchCnt]) {
           var t = match[1]
           var url = match[matchCnt]
