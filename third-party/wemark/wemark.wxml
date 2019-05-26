@@ -10,7 +10,7 @@
         <block wx:for="{{renderInline.content}}" wx:key="inIndex" wx:for-index="inIndex" wx:for-item="inner">
           <text wx:if="{{inner.type!=='link' && inner.type!=='image'}}">{{inner.content}}</text>
           <navigator bindtap="onTap" data-text="{{inner.data.href}}" class="wemark_inline_link" url="{{inner.data.href}}" wx:if="{{inner.type === 'link'}}">{{inner.content}}</navigator>
-          <image bindtap="onImgTap" data-text="{{inner.src}}" mode="widthFix" class="wemark_inline_image" src="{{inner.src}}" wx:if="{{inner.type === 'image'}}"></image>
+          <image bindtap="onImgTap" bindload="imageLoad" data-text="{{inner.src}}" mode="widthFix" class="wemark_inline_image" src="{{inner.src}}" wx:if="{{inner.type === 'image'}}"></image>
         </block>
       </view>
 

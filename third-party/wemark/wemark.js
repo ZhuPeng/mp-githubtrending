@@ -50,7 +50,7 @@ Component({
         onImgTap(e) {
           wx.previewImage({
             current: e.target.dataset.text, 
-            urls: Object.keys(this.data.images),
+            urls: Object.keys(this.data.images),  // TODO: image order
           })
         },
         onTap(e) {
