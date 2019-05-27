@@ -51,8 +51,10 @@ Component({
         this.setData({images: images})
       },
         onImgTap(e) {
+          var url = e.target.dataset.text
+          if (url.startsWith('https://www.webfx.com/')) {return}
           wx.previewImage({
-            current: e.target.dataset.text, 
+            current: url, 
             urls: Object.keys(this.data.images),  // TODO: image order
           })
         },
