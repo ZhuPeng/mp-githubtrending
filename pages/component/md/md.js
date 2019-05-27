@@ -42,13 +42,22 @@ Component({
         tmp = tmp.replace(reg, d[k])
       }
 
-      var faceRegExp = /:([a-z_]{1,30}?):/g;
-      var tmpreg = tmp
-      while (match = faceRegExp.exec(tmpreg)) {
-        if (match[1]) {
+      var faceRegExp = [/:([a-z_]{1,30}?):/g, /[+*-] (\[[x ]\])/g];
+      faceRegExp.map(f => {
+        var tmpreg = tmp
+        while (match = f.exec(tmpreg)) {
+          if (match[1].startsWith('[')) {
+            match[0] = match[1]
+            if (match[1].indexOf('x') > 0) {
+              match[1] = 'white_check_mark'
+            } else {
+              match[1] = 'white_medium_square'
+            }
+          }
           tmp = tmp.replace(match[0], this.faceLink(match[1]))
         }
-      }
+      })
+      
       var linkRegExp = /((^|[ \n:\uff1a\uff0c]+)(https?:\/\/[^\s^'^"^#]+)([ \t\r\n]+|$))/g;
       var matchCnt = 3
       var match;
