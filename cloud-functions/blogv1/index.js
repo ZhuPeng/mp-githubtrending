@@ -23,6 +23,12 @@ const BlogMap = {
       baseUrl + '/mp-githubtrending/blog/githubblog-desk.jpg',
       'https://github.blog/wp-content/uploads/2019/05/satellite-blog-2.png?w=800',
       baseUrl + '/mp-githubtrending/blog/githubblog-glod.jpg',
+      baseUrl + '/mp-githubtrending/blog/github-bug.jpg',
+      'https://github.blog/wp-content/uploads/2019/05/mona-heart-featured.png?w=800',
+      'https://github.blog/wp-content/uploads/2019/03/1200x630-education.png?w=800',
+      'https://github.blog/wp-content/uploads/2019/03/company-twitter.png?w=800',
+      'https://github.blog/wp-content/uploads/2018/07/42895346-9f853c16-8a87-11e8-99eb-e83767ef3007.png?w=800',
+      'https://github.blog/wp-content/uploads/2019/03/BlogHeaders_Aligned_POLICY_1008x602_x2.png?w=800',
     ]
   },
   'blogcoreos': {
