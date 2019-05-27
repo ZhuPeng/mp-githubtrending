@@ -16,21 +16,19 @@ const BlogMap = {
     'extra_params': '&fromsite=github.com',
     'article-image_url': [baseUrl + '/mp-githubtrending/blog/hackernews.jpg']
   },
-  'blogcoreos': {
-    'title': 'CoreOS Blog',
-    'article-image_url': [baseUrl + '/mp-githubtrending/blog/coreos-blog.jpg']
-  },
   'githubblog': {
     'title': 'GitHub Blog',
     'article-image_url': [
       baseUrl + '/mp-githubtrending/blog/github-blog.jpg',
-      'https://github.blog/wp-content/uploads/2019/01/Community@2x.png',
-      'https://github.blog/wp-content/uploads/2019/01/Company@2x-2.png',
-      'https://github.blog/wp-content/uploads/2019/01/Engineering@2x.png',
-      'https://github.blog/wp-content/uploads/2019/01/Enterprise@2x-2.png',
-      'https://github.blog/wp-content/uploads/2019/01/Product@2x.png',
+      baseUrl + '/mp-githubtrending/blog/githubblog-desk.jpg',
+      'https://github.blog/wp-content/uploads/2019/05/satellite-blog-2.png?w=800',
+      baseUrl + '/mp-githubtrending/blog/githubblog-glod.jpg',
     ]
-  }
+  },
+  'blogcoreos': {
+    'title': 'CoreOS Blog',
+    'article-image_url': [baseUrl + '/mp-githubtrending/blog/coreos-blog.jpg']
+  },
 }
 
 async function getItems(jobname, id, num) {
