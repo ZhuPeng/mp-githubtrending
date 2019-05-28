@@ -3,10 +3,10 @@
 <block wx:if="{{type === 'wemark'}}" wx:for="{{parsedData}}" wx:key="blockIndex" wx:for-index="blockIndex" wx:for-item="renderBlock">
 	<view class="wemark_block_{{renderBlock.type}}">
 		<block wx:if="{{renderBlock.isArray}}" wx:for="{{renderBlock.content}}" wx:key="inlineIndex" wx:for-index="inlineIndex" wx:for-item="renderInline">
-			<text id="{{renderInline.id}}" class="wemark_inline_{{renderInline.type}}" wx:if="{{renderInline.type === 'text' || renderInline.type === 'code' || renderInline.type === 'strong' || renderInline.type === 'strong_em' || renderInline.type === 'deleted' || renderInline.type === 'em' || renderInline.type === 'table_th'}}">{{renderInline.content}}</text>
+			<text id="{{renderInline.id}}" class="wemark_inline_{{renderInline.type}}" wx:if="{{renderInline.type === 'text' || renderInline.type === 'code' || renderInline.type === 'strong' || renderInline.type === 'strong_em' || renderInline.type === 'deleted' || renderInline.type === 'em'}}">{{renderInline.content}}</text>
 
       <!-- table 表格内 -->
-      <view id="{{renderInline.id}}" class="wemark_inline_{{renderInline.type}}" wx:if="{{renderInline.type === 'table_td'}}">
+      <view id="{{renderInline.id}}" class="wemark_inline_{{renderInline.type}}" wx:if="{{renderInline.type === 'table_td' ||  renderInline.type === 'table_th'}}">
         <block wx:for="{{renderInline.content}}" wx:key="inIndex" wx:for-index="inIndex" wx:for-item="inner">
           <text wx:if="{{inner.type!=='link' && inner.type!=='image'}}">{{inner.content}}</text>
           <navigator bindtap="onTap" data-text="{{inner.data.href}}" class="wemark_inline_link" url="{{inner.data.href}}" wx:if="{{inner.type === 'link'}}">{{inner.content}}</navigator>

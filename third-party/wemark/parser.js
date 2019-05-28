@@ -268,13 +268,13 @@ function parse(md, options){
 		}else if(blockToken.type === 'tr_open'){
 			tmp = {
 				type: 'table_tr',
-				content:[]
+        content: []
 			};
 			return tmp;
 		}else if(blockToken.type === 'th_open'){
 			tmp.content.push({
 				type: 'table_th',
-				content: getInlineContent(tokens[index+1]).map(function(inline){return inline.content;}).join('')
+				content: getInlineContent(tokens[index+1])
 			});
 		}else if(blockToken.type === 'td_open'){
 			tmp.content.push({
