@@ -1,7 +1,11 @@
-<view class="header">{{blogs.yaml.view}}</view>
+<view class="gray">
+<view class="margin-left-right">
+<view class="header">{{blogs.yaml.view || 'Blog & News'}}</view>
 <block wx:for="{{blogs.data}}" wx:key="{item.id}">
-  <blogcard blogid="{{item.id}}" url="{{item.url}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}"/>
+  <blogcard blogid="{{item.id}}" url="{{item.url}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}" imgstyle="border-radius: 5px;"/>
   <view class="card-gap"></view>
 </block>
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
 <fabbutton/>
+</view>
+</view>
