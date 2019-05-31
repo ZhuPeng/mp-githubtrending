@@ -53,8 +53,9 @@ Page({
 
   onLoad: function (options) {
     var self = this
-    console.log("issue: ", options.issue)
-    cloudclient.callFunction({ type: 'get', path: options.issue }, function (c) {
+    var issue = decodeURIComponent(options.issue)
+    console.log("issue: ", issue)
+    cloudclient.callFunction({ type: 'get', path: issue }, function (c) {
       var [owner, repo, filepath] = util.parseGitHub(c.html_url)
       var head = 'Issue #'
       util.SetDataWithoutSpin(self, {issue: c, owner, repo})

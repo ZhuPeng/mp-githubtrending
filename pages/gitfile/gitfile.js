@@ -11,7 +11,7 @@ Page({
   },
 
   onLoad: function (options) {
-    var file = options.file
+    var file = decodeURIComponent(options.file)
     wx.setNavigationBarTitle({ title: file })
     var ref = 'master'
     if (!file) { util.Alert('file parameter was empty')}

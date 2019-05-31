@@ -8,7 +8,7 @@ Page({
   },
 
   onLoad: function (options) {
-    this.setData({repourl: options.url})
+    this.setData({repourl: decodeURIComponent(options.url)})
   },
 
   onTitleChange: function(e) {
