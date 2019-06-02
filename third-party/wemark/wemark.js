@@ -62,9 +62,8 @@ Component({
           wx.previewImage({
             current: url, 
             urls: this.data.imagesList, 
-            fail: function(e) {
-              console.log('previewImage fail:', e)
-            }
+            complete: function(e) {console.log('complete:', e)},
+            fail: function(e) {console.log('previewImage fail:', e)},
           })
         },
         onTap(e) {
