@@ -48,7 +48,7 @@ Component({
           images[url] = { width: width/1.8, height: height/1.8 }
         } else if (width < 200 && height < 200) {
           images[url] = { width: width * 2, height: height * 2 }
-        }
+        } else {return}
         this.setData({images: images})
       },
         onImgTap(e) {
