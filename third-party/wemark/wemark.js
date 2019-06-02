@@ -42,6 +42,7 @@ Component({
           height = e.detail.height
         var images = this.data.images
         var url = e.target.dataset.text
+        if (url in images) {return}
         images[url] = {}
         if (url.startsWith('https://www.webfx.com/')) {
           images[url] = { width: width/1.8, height: height/1.8 }
