@@ -1,6 +1,8 @@
 ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/WechatGithub.jpeg)
 
-微信公众号对外链的访问有严格的控制，文章中除特殊的链接都不能点击，但是对小程序的跳转是没有限制的。故提供如下能力，在公众号文章中可以插入 GitHub 仓库的小程序链接，方便访问仓库的详情提升阅读体验。
+## [推荐使用 Chrome 插件一键排版小程序链接](https://github.com/ZhuPeng/mp-transform-public)
+
+微信公众号对外链的访问有严格的控制，文章中除特殊的链接都不能点击，但是对小程序的跳转是没有限制的。故提供如下能力，在公众号文章中可以插入 GitHub 仓库的小程序链接，方便访问仓库的详情提升阅读体验。 
 
 公众号写作过程中在编辑器中点击小程序，搜索 `GitHub Trending Hub` 即可添加。
 
