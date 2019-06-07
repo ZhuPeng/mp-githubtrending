@@ -36,6 +36,13 @@
 * [resume/resume.github.com](https://github.com/resume/resume.github.com): 自动生成 GitHub 简历
 * [2016rshah/githubchart-api](https://github.com/2016rshah/githubchart-api): Embed github contributions chart as image
 
+## 赞赏是一种力量
+
+| 微信 | 支付宝 |
+| :---: | :----: |
+| ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/common/Wechat-zanshang.jpeg) | ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/common/alipay-qrcode.jpeg) |
+
+
 有任何问题，欢迎提交 [Issue](https://github.com/ZhuPeng/mp-githubtrending/issues/new) 或者 PullRequest。同时有任何的技术问题欢迎大家添加作者微信交流。
 
 ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/mp-githubtrending/wechat_xiaopeng.jpeg)
