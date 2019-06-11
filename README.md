@@ -1,3 +1,5 @@
+[![HitCount](http://hits.dwyl.io/ZhuPeng/mp-githubtrending.svg)](http://hits.dwyl.io/ZhuPeng/mp-githubtrending)
+
 # 微信小程序 GitHub Trending Hub
 
 小程序 `GitHub Trending Hub` 是一个以 Feed 流形式查看 GitHub Trending 仓库集合的工具，通过它可以及时查看最近更新的热门仓库。通过微信 WeChat 扫码体验。
