@@ -6,6 +6,10 @@
 
 ![qrcode](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/qrcode.jpg)
 
+扫码关注如下微信公众号，定期获取 GitHub Trending 更新推送
+
+![wechat](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/common/ultrabot-qrcode.png)
+
 
 
 ## 文档
