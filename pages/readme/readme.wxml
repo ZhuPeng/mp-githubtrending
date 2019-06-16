@@ -25,6 +25,7 @@
       <view style="{{tabKey=='Readme'?'':'display:none'}}">
         <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
 
+        <official-account></official-account>
         <view class="flex-wrp margin-left-right">
           <formbutton type="primary" wx:if="{{readme}}" bind:click="onCodeClick" text="View Code"/>
           <view class='padding-right'/>
