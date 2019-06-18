@@ -180,8 +180,10 @@ const CodeFileExtentsions = {
   'yaml': 'markup',
   'R': 'R',
   'css': 'css',
+  'scss': 'css',
   'wxss': 'css',
   'swift': 'swift',
+  'xml': 'markup',
   'wxml': 'markup',
   'ipynb': 'python'
 }
