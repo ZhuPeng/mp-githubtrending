@@ -21,6 +21,10 @@ Component({
       type: String,
       value: ''
     },
+    imgstyle: {
+      type: String,
+      value: ''
+    },
   },
 
   data: {

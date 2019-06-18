@@ -7,9 +7,10 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log("commit url: ", options.url)
+    var url = decodeURIComponent(options.url)
+    console.log("commit url: ", url)
     var self = this
-    cloudclient.callFunction({ type: 'get', path: options.url }, function (c) {
+    cloudclient.callFunction({ type: 'get', path: url }, function (c) {
       if (c && c.files) {
         c.files.map(function (f) {
           f.extension = util.isCodeFile(f.filename)

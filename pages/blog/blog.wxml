@@ -1,4 +1,7 @@
 <wux-toast id="wux-toast" />
 <md md="{{blogmd}}" />
+<view class="margin-left-right padding-bottom">
+  <ad wx:if="{{blogmd}}" unit-id="adunit-dd5f651e7fcca63c"></ad>
+</view>
 <subscribe />
 <fabbutton/>

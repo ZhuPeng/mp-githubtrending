@@ -17,6 +17,7 @@
   border-radius: 4rpx;
   overflow: hidden;
   margin: 18rpx;
+  border-radius: 5px;
 }
 
 .kind-list-item-box {

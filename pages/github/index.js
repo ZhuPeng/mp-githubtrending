@@ -196,10 +196,10 @@ Page({
 
   searchGithub(value) {
     util.SetDataWithSpin(this, { searchValue: value })
-    var url = '/search/repositories?per_page=10&page=' + (this.data.list.length/10+1) + '&q=' + value
+    var url = '/search/repositories?q=' + value
     var self = this
-    cloudclient.callFunction({ type: 'get', path: url }, function (c) {
-      if (self.data.list.length < c.total_count) {
+    cloudclient.callFunction({ type: 'get', path: url, currentSize: this.data.list.length }, function (c) {
+      if (c.total_count) {
         self.appendList(c.items)
       }
     })

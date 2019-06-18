@@ -1,4 +1,4 @@
 <view style= "position:relative;" bindtap="onClick">
   <view class="title">{{title}}</view>
-  <image src="{{image_url}}" class="slide-image" />
+  <image src="{{image_url}}" class="slide-image" style="{{imgstyle}}" />
 </view>

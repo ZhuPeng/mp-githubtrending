@@ -11,7 +11,8 @@ Page({
   },
 
   onLoad: function (options) {
-    var file = options.file
+    var file = decodeURIComponent(options.file)
+    console.log('file:', file)
     wx.setNavigationBarTitle({ title: file })
     var ref = 'master'
     if (!file) { util.Alert('file parameter was empty')}
@@ -26,7 +27,7 @@ Page({
     this.setData({file: file, spinning: true, owner: options.owner, repo: options.repo, withSubscribe: options.withsubscribe || false})
     var self = this;
 
-    var apiurl = 'https://api.github.com/repos/' + options.owner + '/' + options.repo + '/contents/' + file
+    var apiurl = 'https://api.github.com/repos/' + options.owner + '/' + options.repo + '/contents/' + encodeURIComponent(file)
     if (file.startsWith('http')) {
       apiurl = file
     }

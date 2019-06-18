@@ -34,6 +34,7 @@ Component({
     data: {
         parsedData: {},
         images: {},
+        imagesList: [],
 		    richTextNodes: []
     },
     methods: {
@@ -42,20 +43,27 @@ Component({
           height = e.detail.height
         var images = this.data.images
         var url = e.target.dataset.text
-        images[url] = {}
-        if (url.startsWith('https://www.webfx.com/')) {
+        if (url in images) { return }
+        if (this.isFaceImg(url)) {
           images[url] = { width: width/1.8, height: height/1.8 }
         } else if (width < 200 && height < 200) {
           images[url] = { width: width * 2, height: height * 2 }
-        }
+        } else {return}
         this.setData({images: images})
+      },
+      isFaceImg(url) {
+        if (url.startsWith('https://www.webfx.com/')) { return true }
+        return false
       },
         onImgTap(e) {
           var url = e.target.dataset.text
-          if (url.startsWith('https://www.webfx.com/')) {return}
+          if (this.isFaceImg(url)) {return}
+          console.log('previewImage:', url)
           wx.previewImage({
             current: url, 
-            urls: Object.keys(this.data.images),  // TODO: image order
+            urls: this.data.imagesList, 
+            complete: function(e) {console.log('complete:', e)},
+            fail: function(e) {console.log('previewImage fail:', e)},
           })
         },
         onTap(e) {
@@ -80,16 +88,21 @@ Component({
       
         parseMd(){
 			if (this.data.md) {
-				var parsedData = parser.parse(this.data.md, {
+				var [parsedData, imagesList] = parser.parse(this.data.md, {
 					link: this.data.link,
           baseurl: this.data.baseurl,
           currentDir: this.data.currentDir,
 					highlight: this.data.highlight
 				});
-				// console.log('parsedData:', parsedData);
+        var tmpList = []
+        imagesList.map(i => {
+          if (!this.isFaceImg(i)) {tmpList.push(i)}
+        })
+				// console.log('parsedData:', parsedData, imagesList);
 				if(this.data.type === 'wemark'){
 					this.setData({
-						parsedData
+						parsedData,
+            imagesList: tmpList,
 					});
 				}else{
 					// var inTable = false;

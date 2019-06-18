@@ -1,8 +1,14 @@
+[![HitCount](http://hits.dwyl.io/ZhuPeng/mp-githubtrending.svg)](http://hits.dwyl.io/ZhuPeng/mp-githubtrending)
+
 # 微信小程序 GitHub Trending Hub
 
 小程序 `GitHub Trending Hub` 是一个以 Feed 流形式查看 GitHub Trending 仓库集合的工具，通过它可以及时查看最近更新的热门仓库。通过微信 WeChat 扫码体验。
 
 ![qrcode](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/qrcode.jpg)
+
+扫码关注如下微信公众号，定期获取 GitHub Trending 更新推送
+
+![wechat](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/common/ultrabot-qrcode.png)
 
 
 
@@ -35,6 +41,13 @@
 * [weui/weui-wxss](https://github.com/weui/weui-wxss): 微信官方的 UI 库
 * [resume/resume.github.com](https://github.com/resume/resume.github.com): 自动生成 GitHub 简历
 * [2016rshah/githubchart-api](https://github.com/2016rshah/githubchart-api): Embed github contributions chart as image
+
+## 赞赏是一种力量
+
+| 微信 | 支付宝 |
+| :---: | :----: |
+| ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/common/Wechat-zanshang.jpeg) | ![](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/common/alipay-qrcode.jpeg) |
+
 
 有任何问题，欢迎提交 [Issue](https://github.com/ZhuPeng/mp-githubtrending/issues/new) 或者 PullRequest。同时有任何的技术问题欢迎大家添加作者微信交流。
 
