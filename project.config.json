@@ -50,7 +50,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 20,
 			"list": [
 				{
 					"id": -1,
@@ -188,6 +188,13 @@
 					"name": "Admin",
 					"pathName": "pages/admin/admin",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "MultiMP",
+					"pathName": "pages/gitfile/gitfile",
+					"query": "owner=ZhuPeng&repo=mp-transform-public&file=https://api.github.com/repos/ZhuPeng/mp-transform-public/contents/example.md",
 					"scene": null
 				}
 			]

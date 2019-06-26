@@ -56,5 +56,15 @@
     "githead": "pages/component/githead/githead"
   },
   "plugins": {},
+  "_comment_navi_mp": "csdn jianshu zhihu bilibili tencentvidio baidupan readhub",
+  "navigateToMiniProgramAppIdList": [
+    "wx2115aba2ed1f96b9", 
+    "wx646159264d261dab", 
+    "wxeb39b10e39bf6b54", 
+    "wx7564fd5313d24844", 
+    "wxa75efa648b60994b",
+    "wxdcd3d073e47d1742",
+    "wxd83c7f07a0b00f1b"
+  ],
   "sitemapLocation": "sitemap.json"
 }

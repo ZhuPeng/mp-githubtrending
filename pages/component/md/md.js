@@ -1,4 +1,5 @@
 const util = require('../../../utils/util.js')
+const multimp = require('../../../utils/multimp.js')
 Component({
   properties: {
     md: {
@@ -90,7 +91,9 @@ Component({
       var owner = this.data.owner
       var repo = this.data.repo
       if (clickurl.startsWith('http') && !util.isGitHubPage(clickurl)) {
-        util.copyOnlyText(clickurl)
+        if (!multimp.Navi(clickurl)) {
+          util.copyOnlyText(clickurl)
+        }
         return
       }
 
