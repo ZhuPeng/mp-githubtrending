@@ -167,10 +167,13 @@ function copyOnlyText(text) {
 
 const CodeFileExtentsions = {
   "java": "java",
+  "kt": "java",
+  "scala": "java",
   "py": "python",
   "go": "go",
   "sh": "markup",
   "js": "javascript",
+  "jsx": "javascript",
   "php": "php",
   'c': 'c',
   'json': 'json',
