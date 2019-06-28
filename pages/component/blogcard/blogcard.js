@@ -1,4 +1,5 @@
 const util = require('../../../utils/util.js')
+const multimp = require('../../../utils/multimp.js')
 Component({
   properties: {
     blogid: {
@@ -37,6 +38,8 @@ Component({
         util.GitHubNavi(this.data.url, undefined, true)
       } else if (this.data.url && this.data.url.startsWith('/pages/')) {
         wx.navigateTo({ url: this.data.url })
+      } else if (this.data.url && this.data.url.startsWith('http')) {
+        multimp.Navi(this.data.url)
       } else {
         wx.navigateTo({
           url: '/pages/blog/blog?id=' + this.data.blogid + '&jobname=' + this.data.jobname,
