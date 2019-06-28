@@ -121,8 +121,14 @@ var directTransform = [{
     urlPrefix: 'https://www.smzdm.com',
     indexPage: 'pages/index/index',
     // https://www.smzdm.com/p/14483467/
-    // https://post.smzdm.com/p/ax08nrm2/ 不支持
     genMPUrl: GenFormatOneMPUrl('p', 'pages/haojia_details/haojia_details?id='),
+}, {
+    nickname: '什么值得买',
+    appid: 'wxeb5d1f826d7998df',
+    urlPrefix: 'https://post.smzdm.com',
+    indexPage: 'pages/index/index',
+    // https://post.smzdm.com/p/ax08nrm2/
+    genMPUrl: GenFormatOneMPUrl('p', 'pages/haowen_details/haowen_details?type=11&id='),
 }, {
     nickname: '百度网盘',
     appid: 'wxdcd3d073e47d1742',
@@ -145,13 +151,13 @@ var directTransform = [{
     // https://juejin.im/post/5d147765f265da1bb003d0dc
     genMPUrl: GenFormatOneMPUrl('post', 'pages/post/post?type=post&id='),
 }, {
-    nickname: 'V2EX精美版',
-    appid: 'wx0677aeba5eee65fe',
+    nickname: 'V2EX For You',
+    appid: 'wx11ec5528954b2d1a',
     urlPrefix: 'https://www.v2ex.com',
-    indexPage: 'pages/home/index',
+    indexPage: 'pages/index/index',
     // https://www.v2ex.com/t/578260#reply22
     genMPUrl: function (meta, url) {
-        var p = GenFormatOneMPUrl('t', 'pages/home/detail?id=')(meta, url)
+        var p = GenFormatOneMPUrl('t', 'pages/topic/index?topicId=')(meta, url)
         if (p.indexOf('#') != -1 ){
             p = p.slice(0, p.indexOf('#'))
         }

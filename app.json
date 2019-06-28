@@ -56,7 +56,7 @@
     "githead": "pages/component/githead/githead"
   },
   "plugins": {},
-  "_comment_navi_mp": "csdn jianshu zhihu bilibili tencentvidio baidupan readhub 36kr juejin",
+  "_comment_navi_mp": "csdn jianshu zhihu bilibili tencentvidio baidupan smzdm 36kr juejin v2ex",
   "navigateToMiniProgramAppIdList": [
     "wx2115aba2ed1f96b9", 
     "wx646159264d261dab", 
@@ -64,9 +64,10 @@
     "wx7564fd5313d24844", 
     "wxa75efa648b60994b",
     "wxdcd3d073e47d1742",
-    "wxd83c7f07a0b00f1b",
+    "wxeb5d1f826d7998df",
     "wx23551bed0b72cd7f",
-    "wx0f72a9f832b78889"
+    "wx0f72a9f832b78889",
+    "wx11ec5528954b2d1a"
   ],
   "sitemapLocation": "sitemap.json"
 }
