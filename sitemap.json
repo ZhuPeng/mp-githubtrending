@@ -12,6 +12,9 @@
      "params": ["withsubscribe"],
      "matching": "inclusive"
   }, {
+    "action": "allow",
+    "page": "pages/readme/readme"
+  }, {
      "action": "disallow",
      "page": "*"
   }]
