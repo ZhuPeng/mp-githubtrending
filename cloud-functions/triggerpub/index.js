@@ -8,18 +8,20 @@ exports.main = async (event, context) => {
   const {OPENID} = cloud.getWXContext()
   const {type, openid} = event;
   console.log('trigger:', event, context)
-  if (!OPENID) {
-    await pubcontent()
-    return
+  // 方糖推送
+  await pubcontent()
+
+  if (type == 'all' && OPENID != 'ooqTr4hMz05xwBHOU8VgokLyyoU0') {
+    console.log("非法的全局推送 openid: ", OPENID)
+    return 
   }
   var publist = []
   var content = await pubSimpleContent()
   var trending = await trendingContent() 
-  if (type == 'all' && OPENID == 'ooqTr4hMz05xwBHOU8VgokLyyoU0') {
+  if (!OPENID || type == 'all') {
     var res = await db.collection('subscribe').get()
     publist = res.data
-  } else if (openid) {
-    publist = [{ openid }]
+    console.log("总订阅用户：", publist.length)
   } else {
     publist = [{ openid: OPENID }]
   }
@@ -36,6 +38,7 @@ exports.main = async (event, context) => {
     var r = await pub(publist[i].openid, f.formId, content, trending, f._id)
     res.push(r)
   } 
+  console.log('push result: ', res)
   return {status: '操作完成', detail: res}
 }
 

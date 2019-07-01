@@ -8,7 +8,7 @@
     {
       "name": "triggerpub",
       "type": "timer",
-      "config": "0 0 8 * * * *"
+      "config": "0 0 9 * * 0,2,5 *"
     }
   ]
 }
