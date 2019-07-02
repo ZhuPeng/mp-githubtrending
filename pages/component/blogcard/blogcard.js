@@ -40,22 +40,30 @@ Component({
     },
     content: {
       type: String,
-      value: ''
+      value: '',
+      observer() {
+        this.handleUrl();
+      }
     },
   },
 
   data: {
-
+    parsedUrl: '',
   },
 
   methods: {
+    handleUrl() {
+      if (this.data.url) {return}
+      this.setData({parsedUrl: util.FindGitHubUrl(this.data.content)})
+    },
     onClick(e) {
-      if (this.data.url && util.isGitHubPage(this.data.url)) {
-        util.GitHubNavi(this.data.url, undefined, true)
-      } else if (this.data.url && this.data.url.startsWith('/pages/')) {
-        wx.navigateTo({ url: this.data.url })
-      } else if (this.data.url && this.data.url.startsWith('http')) {
-        multimp.Navi(this.data.url)
+      var url = this.data.url || this.data.parsedUrl;
+      if (url && util.isGitHubPage(url)) {
+        util.GitHubNavi(url, undefined, true)
+      } else if (url && url.startsWith('/pages/')) {
+        wx.navigateTo({ url: url })
+      } else if (url && url.startsWith('http')) {
+        multimp.Navi(url)
       } else {
         wx.navigateTo({
           url: '/pages/blog/blog?id=' + this.data.blogid + '&jobname=' + this.data.jobname,

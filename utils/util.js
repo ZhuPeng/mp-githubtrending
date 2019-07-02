@@ -21,6 +21,28 @@ module.exports = {
   ShowToastText,
   GetLastestPage,
   ShowAd,
+  FindGitHubUrl,
+}
+
+function FindGitHubUrl(c) {
+  var urls = FindUrls(c)
+  if (urls.length == 0) {return ''}
+  urls.map(function(u){
+    if (isGitHubPage(u)) {
+      return u
+    }
+  })
+  return urls[0]
+}
+
+function FindUrls(c) {
+  var linkRegExp = /https?:\/\/[^\s^'^"]+/g;
+  var urls = []
+  var match
+  while (match = linkRegExp.exec(c)) {
+    urls.push(match[0])
+  }
+  return urls
 }
 
 function ShowAd() {
