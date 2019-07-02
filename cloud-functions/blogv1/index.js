@@ -13,7 +13,7 @@ const BlogMap = {
   },
   'juejin': {
     'title': '掘金推荐',
-    'article-image_url': [baseUrl + '/mp-githubtrending/blog/github-rec.jpg']
+    'article-image_url': [baseUrl + '/common/juejin.png']
   },
   'hackernews': {
     'title': 'Hacker News',
