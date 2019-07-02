@@ -45,13 +45,24 @@ Component({
         this.handleUrl();
       }
     },
+    updateAt: {
+      type: String,
+      value: '',
+      observer() {
+        this.timeAgo();
+      }
+    }
   },
 
   data: {
     parsedUrl: '',
+    timeago: '',
   },
 
   methods: {
+    timeAgo() {
+      this.setData({timeago: util.timeAgo(this.data.updateAt)})
+    },
     handleUrl() {
       if (this.data.url) {return}
       this.setData({parsedUrl: util.FindGitHubUrl(this.data.content)})

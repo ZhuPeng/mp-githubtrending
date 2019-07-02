@@ -86,6 +86,8 @@ async function getLastestJueJin(size) {
       username: d.user.username,
       userAvatar: d.user.avatarLarge,
       url: d.url,
+      '_crawl_time': d.updatedAt,
+      'title': d.user.company,
     })
   })
   return res
