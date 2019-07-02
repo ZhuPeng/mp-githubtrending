@@ -5,7 +5,7 @@
 
 <view wx:if="{{type == 'card'}}" bindtap="onClick">
   <wux-card full="true" title="{{username}}" extra="" thumb="{{userAvatar}}" thumb-style="border-radius: 10%;">
-    <view slot="body">{{content}}</view>
+    <view slot="body"><md md="{{content}}"/></view>
     <view slot="footer">链接：{{url || parsedUrl}}</view>
   </wux-card>
 </view>

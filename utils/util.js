@@ -36,7 +36,7 @@ function FindGitHubUrl(c) {
 }
 
 function FindUrls(c) {
-  var linkRegExp = /https?:\/\/[^\s^'^"]+/g;
+  var linkRegExp = /https?:\/\/[/0-9a-zA-Z.&=#_?-]+/g;
   var urls = []
   var match
   while (match = linkRegExp.exec(c)) {

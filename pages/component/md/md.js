@@ -59,7 +59,7 @@ Component({
         }
       })
       
-      var linkRegExp = /((^|[ \n:\uff1a\uff0c]+)(https?:\/\/[^\s^'^"]+)([ \t\r\n]+|$))/g;
+      var linkRegExp = /((^|[ \n:\uff1a\uff0c]+)(https?:\/\/[/0-9a-zA-Z.&=#_?-]+)([ \t\r\n]+|$))/g;
       var matchCnt = 3
       var match;
       var newHtml = tmp

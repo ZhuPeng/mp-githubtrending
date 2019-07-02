@@ -1,4 +1,5 @@
 <view class="gray">
+<wux-toast id="wux-toast" />
 <view class="margin-left-right">
 <view class="header">{{blogs.yaml.view || 'Blog & News'}}</view>
 <block wx:for="{{blogs.data}}" wx:key="idx" wx:for-index="idx">
