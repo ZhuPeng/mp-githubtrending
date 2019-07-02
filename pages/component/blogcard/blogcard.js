@@ -26,6 +26,22 @@ Component({
       type: String,
       value: ''
     },
+    type: {
+      type: String,
+      value: ''
+    },
+    username: {
+      type: String,
+      value: ''
+    },
+    userAvatar: {
+      type: String,
+      value: ''
+    },
+    content: {
+      type: String,
+      value: ''
+    },
   },
 
   data: {

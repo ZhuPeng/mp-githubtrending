@@ -11,6 +11,10 @@ const BlogMap = {
     'title': 'GitHub 推荐',
     'article-image_url': [baseUrl + '/mp-githubtrending/blog/github-rec.jpg']
   },
+  'juejin': {
+    'title': '掘金推荐',
+    'article-image_url': [baseUrl + '/mp-githubtrending/blog/github-rec.jpg']
+  },
   'hackernews': {
     'title': 'Hacker News',
     'extra_params': '&fromsite=github.com',
@@ -46,15 +50,7 @@ async function getItems(jobname, id, num) {
     url += BlogMap[jobname].extra_params
   }
   url += '&num=' + (num || DeltaSize)
-  console.log('request url:', url)
-  var raw = await rp(url).then(function (response) {
-      console.log('response:', response)
-      return response;
-    }).catch(function (err) {
-      console.log('request error:', err)
-    });
-  var data = JSON.parse(raw)
-  console.log('data:', data)
+  var data = await get(url)
   var base_url = data.yaml.parser_config.base_url + '/'
   if (data.data && jobname in BlogMap) {
     data.data.map(function (d) {
@@ -65,6 +61,34 @@ async function getItems(jobname, id, num) {
     })
   }
   return data || {}
+}
+
+async function get(url) {
+  console.log('request url:', url)
+  var raw = await rp(url).then(function (response) {
+      console.log('response:', response)
+      return response;
+    }).catch(function (err) {
+      console.log('request error:', err)
+    });
+  var data = JSON.parse(raw)
+  return data
+}
+
+async function getLastestJueJin(size) {
+  var url = 'https://short-msg-ms.juejin.im/v1/pinList/topic?uid=&device_id=&token=&src=web&topicId=5c09ea2b092dcb42c740fe73&page=0&&sortType=rank&pageSize=' + size
+  var data = (await get(url)).d.list
+  var res = []
+  data.map(function (d) {
+    res.push({
+      type: 'card',
+      content: d.content,
+      username: d.user.username,
+      userAvatar: d.user.avatarLarge,
+      url: d.url,
+    })
+  })
+  return res
 }
 
 async function getLastestGitHubBlog(size) {
@@ -103,6 +127,8 @@ exports.main = async (event, context) => {
     return await getLastest()
   } else if (jobname == 'github') {
     return {'data': await getLastestGitHubBlog(num)}
+  } else if (jobname == 'juejin') {
+    return {'data': await getLastestJueJin(num)}
   } else if (jobname == 'catalog') {
     var catalog = [];
     for (var b in BlogMap) {

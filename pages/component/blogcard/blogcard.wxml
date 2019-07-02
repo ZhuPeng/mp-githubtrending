@@ -1,4 +1,11 @@
-<view style= "position:relative;" bindtap="onClick">
+<view wx:if="{{type != 'card'}}" style= "position:relative;" bindtap="onClick">
   <view class="title">{{title}}</view>
   <image src="{{image_url}}" class="slide-image" style="{{imgstyle}}" />
+</view>
+
+<view wx:if="{{type == 'card'}}" bindtap="onClick">
+  <wux-card full="true" title="{{username}}" extra="" thumb="{{userAvatar}}" thumb-style="border-radius: 10%;">
+    <view slot="body">{{content}}</view>
+    <view slot="footer">链接：{{url}}</view>
+  </wux-card>
 </view>
