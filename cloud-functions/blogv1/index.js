@@ -12,7 +12,11 @@ const BlogMap = {
     'article-image_url': [baseUrl + '/mp-githubtrending/blog/github-rec.jpg']
   },
   'juejin': {
-    'title': '掘金推荐',
+    'title': '掘金开源推荐',
+    'article-image_url': [baseUrl + '/common/juejin.png']
+  },
+  'v2ex': {
+    'title': 'V2EX 开源推荐',
     'article-image_url': [baseUrl + '/common/juejin.png']
   },
   'hackernews': {
@@ -93,6 +97,25 @@ async function getLastestJueJin(size) {
   return res
 }
 
+async function getLastestV2ex(size) {
+  var url = 'https://v2ex.com/api/topics/show.json?node_name=github'
+  var data = (await get(url))
+  var res = []
+  data.map(function (d) {
+    var c = d.title + '\n\n' + d.content
+    res.push({
+      type: 'card',
+      content: c,
+      username: d.member.username,
+      userAvatar: 'https:' + d.member.avatar_large,
+      url: d.url,
+      '_crawl_time': d.last_modified,
+      'title': d.title,
+    })
+  })
+  return res
+}
+
 async function getLastestGitHubBlog(size) {
   var now = new Date()
   var list = await db.collection('blog').where({ status: 'online', '_crawl_time': _.lt(now)}).orderBy('_crawl_time', 'desc').limit(size).get()
@@ -131,6 +154,8 @@ exports.main = async (event, context) => {
     return {'data': await getLastestGitHubBlog(num)}
   } else if (jobname == 'juejin') {
     return {'data': await getLastestJueJin(num)}
+  } else if (jobname == 'v2ex') {
+    return { 'data': await getLastestV2ex(num) }
   } else if (jobname == 'catalog') {
     var catalog = [];
     for (var b in BlogMap) {
