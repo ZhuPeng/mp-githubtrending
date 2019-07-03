@@ -64,11 +64,16 @@ Component({
       this.setData({timeago: util.timeAgo(this.data.updateAt)})
     },
     handleUrl() {
-      if (this.data.url) {return}
-      this.setData({parsedUrl: util.FindGitHubUrl(this.data.content)})
+      var p = this.data.url;
+      if (!util.isGitHubPage(p)) {
+        var parsed = util.FindGitHubUrl(this.data.content)
+        console.log(parsed)
+        if (util.isGitHubPage(parsed) || p == "") {p = parsed}
+      }
+      this.setData({parsedUrl: p})
     },
     onClick(e) {
-      var url = this.data.url || this.data.parsedUrl;
+      var url = this.data.parsedUrl || this.data.url;
       if (url && util.isGitHubPage(url)) {
         util.GitHubNavi(url, undefined, true)
         return

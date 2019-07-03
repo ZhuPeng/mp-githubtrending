@@ -27,11 +27,11 @@ module.exports = {
 function FindGitHubUrl(c) {
   var urls = FindUrls(c)
   if (urls.length == 0) {return ''}
-  urls.map(function(u){
-    if (isGitHubPage(u)) {
-      return u
+  for (var j = 0; j < urls.length; j++) {
+    if (isGitHubPage(urls[j])) {
+      return urls[j]
     }
-  })
+  }
   return urls[0]
 }
 
