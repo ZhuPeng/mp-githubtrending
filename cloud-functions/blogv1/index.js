@@ -4,7 +4,7 @@ cloud.init()
 const db = cloud.database()
 const _ = db.command
 const baseUrl = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la'
-const DeltaSize = 5
+const DeltaSize = 10
 
 const BlogMap = {
   'github': {
@@ -17,7 +17,7 @@ const BlogMap = {
   },
   'v2ex': {
     'title': 'V2EX 开源推荐',
-    'article-image_url': [baseUrl + '/common/juejin.png']
+    'article-image_url': ['https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/V2ex.png/440px-V2ex.png']
   },
   'hackernews': {
     'title': 'Hacker News',
@@ -102,14 +102,14 @@ async function getLastestV2ex(size) {
   var data = (await get(url))
   var res = []
   data.map(function (d) {
-    var c = d.title + '\n\n' + d.content
+    var c = '**' + d.title + '**\n\n' + d.content
     res.push({
       type: 'card',
       content: c,
       username: d.member.username,
       userAvatar: 'https:' + d.member.avatar_large,
       url: d.url,
-      '_crawl_time': d.last_modified,
+      '_crawl_time': d.last_modified*1000,
       'title': d.title,
     })
   })
