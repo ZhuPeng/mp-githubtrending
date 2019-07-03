@@ -71,15 +71,19 @@ Component({
       var url = this.data.url || this.data.parsedUrl;
       if (url && util.isGitHubPage(url)) {
         util.GitHubNavi(url, undefined, true)
-      } else if (url && url.startsWith('/pages/')) {
+        return
+      } 
+      if (url && url.startsWith('/pages/')) {
         wx.navigateTo({ url: url })
-      } else if (url && url.startsWith('http')) {
-        multimp.Navi(url)
-      } else {
-        wx.navigateTo({
-          url: '/pages/blog/blog?id=' + this.data.blogid + '&jobname=' + this.data.jobname,
-        })
-      }
+        return
+      } 
+      if (url && url.startsWith('http')) {
+        if (multimp.Navi(url)) {return}
+      } 
+      
+      wx.navigateTo({
+        url: '/pages/blog/blog?id=' + this.data.blogid + '&jobname=' + this.data.jobname,
+      })
     }
   }
 })
