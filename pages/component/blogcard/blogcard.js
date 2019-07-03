@@ -67,12 +67,12 @@ Component({
       var p = this.data.url;
       if (!util.isGitHubPage(p)) {
         var parsed = util.FindGitHubUrl(this.data.content)
-        console.log(parsed)
         if (util.isGitHubPage(parsed) || p == "") {p = parsed}
       }
       this.setData({parsedUrl: p})
     },
     onClick(e) {
+      console.log('card onClick: ', e)
       var url = this.data.parsedUrl || this.data.url;
       if (url && util.isGitHubPage(url)) {
         util.GitHubNavi(url, undefined, true)
