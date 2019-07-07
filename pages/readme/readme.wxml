@@ -27,11 +27,13 @@
 
         <official-account></official-account>
         <view class="flex-wrp margin-left-right">
-          <formbutton type="primary" wx:if="{{readme}}" bind:click="onCodeClick" text="View Code"/>
+          <formbutton type="primary" wx:if="{{readme}}" bind:click="onCodeClick" text="Code"/>
           <view class='padding-right'/>
           <formbutton wx:if="{{readme && meta.has_wiki}}" bind:click="onWikiClick" text="Wiki"/>
           <view class='padding-right'/>
           <formbutton type="primary" wx:if="{{readme}}" bind:click="onCreateQrCode" text="Share"/>
+          <view class='padding-right'/>
+          <formbutton wx:if="{{readme}}" bind:click="onTopicClick" text="Topic"/>
         </view>
       </view>
 

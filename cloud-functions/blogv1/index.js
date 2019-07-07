@@ -97,6 +97,17 @@ async function getLastestJueJin(size) {
   return res
 }
 
+async function getLastestTopic(owner, repo, num) {
+  var j = await getLastestJueJin(100)
+  var r = []
+  j.map(function(i) {
+    if (i.url == 'https://github.com/' + owner + '/' + repo) {
+      r.push(i)
+    }
+  })
+  return r
+}
+
 async function getLastestV2ex(size) {
   var url = 'https://v2ex.com/api/topics/show.json?node_name=github'
   var data = (await get(url))
@@ -146,7 +157,7 @@ async function getLastest() {
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var { type, jobname, id, currentSize } = event;
+  var { type, jobname, id, currentSize, options } = event;
   var num = (currentSize || 0) + DeltaSize
   if (type == 'lastest') {
     return await getLastest()
@@ -154,7 +165,9 @@ exports.main = async (event, context) => {
     return {'data': await getLastestGitHubBlog(num)}
   } else if (jobname == 'juejin') {
     return {'data': await getLastestJueJin(num)}
-  } else if (jobname == 'v2ex') {
+  } else if (jobname == 'topic') {
+    return { 'data': await getLastestTopic(options.owner, options.repo, num) }
+  }else if (jobname == 'v2ex') {
     return { 'data': await getLastestV2ex(num) }
   } else if (jobname == 'catalog') {
     var catalog = [];

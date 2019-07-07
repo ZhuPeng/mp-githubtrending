@@ -11,7 +11,7 @@ Page({
     var self = this
     wx.setNavigationBarTitle({ title: 'Blog & News' })
     util.SetDataWithSpin(this, {jobname: options.jobname})
-    cloudclient.callFunctionWithBlog({ jobname: options.jobname, currentSize: this.data.blogs.data.length }, function (c) {
+    cloudclient.callFunctionWithBlog({ jobname: options.jobname, currentSize: this.data.blogs.data.length, 'options': options }, function (c) {
       util.SetDataWithoutSpin(self, { blogs: c })
     })
   },

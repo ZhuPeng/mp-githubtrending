@@ -161,6 +161,12 @@ Page({
   onShareAppMessage: function () {
   },
 
+  onTopicClick: function() {
+    wx.navigateTo({
+      url: '/pages/bloglist/bloglist?jobname=topic&owner=' + this.data.query.owner + '&repo=' + this.data.query.repo,
+    })
+  },
+
   onCreateQrCode(e) {
     qrcode.HandleQrCode()
   },
