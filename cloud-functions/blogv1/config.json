@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "openapi": []
+  },
+  "triggers": [
+    {
+      "name": "syncJuejin",
+      "type": "timer",
+      "config": "0 0 8 * * * *"
+    }
+  ]
+}

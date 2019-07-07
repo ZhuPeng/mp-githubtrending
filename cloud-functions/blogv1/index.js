@@ -1,4 +1,5 @@
 const cloud = require('wx-server-sdk')
+const utils = require('common.js')
 var rp = require('request-promise');
 cloud.init()
 const db = cloud.database()
@@ -80,32 +81,64 @@ async function get(url) {
 }
 
 async function getLastestJueJin(size) {
-  var url = 'https://short-msg-ms.juejin.im/v1/pinList/topic?uid=&device_id=&token=&src=web&topicId=5c09ea2b092dcb42c740fe73&page=0&&sortType=rank&pageSize=' + size
+  var page = 0
+  if (size >= 100) {
+    page = Math.floor((size-1) / 100)
+    size = 100
+  }
+  var url = 'https://short-msg-ms.juejin.im/v1/pinList/topic?uid=&device_id=&token=&src=web&topicId=5c09ea2b092dcb42c740fe73&page=' + page +'&sortType=rank&pageSize=' + size
   var data = (await get(url)).d.list
   var res = []
   data.map(function (d) {
     res.push({
       type: 'card',
+      id: d.objectId,
       content: d.content,
       username: d.user.username,
       userAvatar: d.user.avatarLarge,
-      url: d.url,
+      url: d.url || utils.FindGitHubUrl(d.content),
       '_crawl_time': d.updatedAt,
       'title': d.user.company,
+      'source': 'juejin',
+      commentCount: d.commentCount,
+      likedCount: d.likedCount,
     })
   })
   return res
 }
 
 async function getLastestTopic(owner, repo, num) {
-  var j = await getLastestJueJin(100)
-  var r = []
-  j.map(function(i) {
-    if (i.url == 'https://github.com/' + owner + '/' + repo) {
-      r.push(i)
-    }
-  })
-  return r
+  var url = 'https://github.com/' + owner + '/' + repo
+  console.log('search url:', url)
+  var res = await db.collection('topic').where({ url: url }).orderBy('_crawl_time', 'desc').limit(num).get()
+  return res.data
+}
+
+async function findTopic(source, id) {
+  return await db.collection('topic').where({ source: source, id: id }).get()
+}
+
+async function syncJuejin() {
+  await _syncJuejin(100)
+  // await _syncJuejin(200)
+  // await _syncJuejin(300)
+  // await _syncJuejin(400)
+  // await _syncJuejin(500)
+  // await _syncJuejin(600)
+  // await _syncJuejin(700)
+}
+
+async function _syncJuejin(num) {
+  var j = await getLastestJueJin(num)
+  for (var i=0; i<j.length; i++) {
+    console.log(j[i])
+    var e = await findTopic('juejin', j[i].id)
+    if (e.data.length > 0) { console.log('findTopic:', e); continue }
+    var res = await db.collection('topic').add({
+      data: j[i],
+    })
+    console.log('add topic:', res)
+  }
 }
 
 async function getLastestV2ex(size) {
@@ -159,6 +192,11 @@ async function getLastest() {
 exports.main = async (event, context) => {
   var { type, jobname, id, currentSize, options } = event;
   var num = (currentSize || 0) + DeltaSize
+  if (event.Type != undefined && event.Type == 'Timer') {
+    console.log('execute timer')
+    await syncJuejin()
+    return
+  }
   if (type == 'lastest') {
     return await getLastest()
   } else if (jobname == 'github') {
