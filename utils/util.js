@@ -96,13 +96,13 @@ function SetDataWithoutSpin(cls, d) {
 }
 
 function GitHubNavi(path, naviFunc, withSubscribe) {
-  if (!isGitHubPage(path)) {
+  if (!common.isGitHubPage(path)) {
     return
   }
   if (naviFunc == undefined) {
     naviFunc = wx.navigateTo
   }
-  var [owner, repo, filepath] = parseGitHub(path)
+  var [owner, repo, filepath] = common.parseGitHub(path)
   console.log("parseGitHub url:", owner, repo, filepath)
   if (owner == "") { naviFunc({url: 'pages/github/index'}); return }
   else if (owner == 'settings') {
