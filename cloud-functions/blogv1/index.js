@@ -93,6 +93,7 @@ async function getLastestJueJin(size) {
     res.push({
       type: 'card',
       id: d.objectId,
+      uid: d.uid,
       content: d.content,
       username: d.user.username,
       userAvatar: d.user.avatarLarge,
