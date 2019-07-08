@@ -7,6 +7,16 @@
   <view class="card-gap"></view>
 </block>
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
-<fabbutton/>
+
+<wux-cell-group wx:if="{{options.owner}}">
+  <wux-cell hover-class="none">
+    <wux-textarea placeholder="请输入与项目有关的任何话题" value="{{ content }}" rows="3" cursorSpacing="80" controlled bind:change="onContentChange" />
+  </wux-cell>
+</wux-cell-group>
+
+<view wx:if="{{options.owner}}">
+  <button wx:if="{{!auth}}" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">Confirm</button>
+  <formbutton wx:if="{{auth}}" type="primary" bind:click="onButtonClick" text="Confirm"/>
+</view>
 </view>
 </view>

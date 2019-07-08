@@ -192,6 +192,7 @@ async function getLastest() {
 // 云函数入口函数
 exports.main = async (event, context) => {
   var { type, jobname, id, currentSize, options } = event;
+  const wxContext = cloud.getWXContext()
   var num = (currentSize || 0) + DeltaSize
   if (event.Type != undefined && event.Type == 'Timer') {
     console.log('execute timer')
@@ -200,6 +201,9 @@ exports.main = async (event, context) => {
   }
   if (type == 'lastest') {
     return await getLastest()
+  } else if (type == 'addTopic') {
+    event.data['uid'] = wxContext.OPENID
+    return await db.collection('topic').add({data: event.data})
   } else if (jobname == 'github') {
     return {'data': await getLastestGitHubBlog(num)}
   } else if (jobname == 'juejin') {
