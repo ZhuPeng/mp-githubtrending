@@ -39,6 +39,7 @@ Page({
     var self = this;
     if (this.data.content == '') {
       util.Alert('Content was empty!', 4000)
+      return
     }
     console.log('input: ', this.data.content, this.data.options)
     var data = {
