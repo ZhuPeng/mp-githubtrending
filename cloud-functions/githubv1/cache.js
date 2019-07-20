@@ -6,7 +6,7 @@ const dbname = 'gcache'
 function SetHook(octokit, db) {
   octokit.hook.after('request', async (response, options) => {
     console.log('response: ', getKey(options), response.status)
-    await setCache(db, getKey(options), response)
+    setCache(db, getKey(options), response)
   })
 
   octokit.hook.error('request', async (error, options) => {
