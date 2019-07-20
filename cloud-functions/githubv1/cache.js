@@ -20,27 +20,30 @@ function SetHook(octokit, db) {
     // add logic before, after, catch errors or replace the request altogether
     // console.log('wrap options: ', options)
     var m = await getMeta(db, getKey(options))
-    options.headers['If-None-Match'] = m.etag
-    options.headers['If-Modified-Since'] = m.lastmodified
+    if (m.lastmodified) {
+      options.headers['If-Modified-Since'] = m.lastmodified
+    } else if (m.etag) {
+      options.headers['If-None-Match'] = m.etag
+    }
     return request(options)
   })
 }
 
 async function setCache(db, key, response) {
   var etag = response.headers.etag
-  if (!etag) {return}
+  var lastmodified = response.headers['last-modified']
+  if (!etag && !lastmodified) {return}
   if (etag.startsWith('W/')) {
     etag = etag.slice(2, etag.length)
   }
   console.log('setCache:', key, etag)
-  var lastmodified = response.headers['last-modified']
   await db.collection(dbname).add({
     data: { key, etag, response, lastmodified, time: new Date()}
   }).then(res => { console.log(res) }).catch(console.error) 
 }
 
 async function getMeta(db, key) {
-  var res = await db.collection(dbname).where({key}).get()
+  var res = await db.collection(dbname).where({ key }).orderBy('time', 'desc').limit(1).get()
   if (res.data.length == 0) {
     return ''
   }
@@ -49,7 +52,7 @@ async function getMeta(db, key) {
 
 async function findInCache(db, key, etag) {
   console.log('findInCache: ', key, etag)
-  var res = await db.collection(dbname).where({ key, etag }).orderBy('time', 'desc').limit(1).get()
+  var res = await db.collection(dbname).where({key}).orderBy('time', 'desc').limit(1).get()
   if (res.data.length == 0) {
     return {}
   }
