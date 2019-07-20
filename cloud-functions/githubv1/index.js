@@ -1,7 +1,9 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 cloud.init()
-const octokit = require('@octokit/rest')()
+const Octokit = require('@octokit/rest')
+const gcache = require('cache.js')
+var octokit;
 const db = cloud.database()
 const _ = db.command
 const NodeCache = require( "node-cache" );
@@ -96,31 +98,16 @@ exports.main = async (event, context) => {
   if (token == undefined || token == "") {
     token = await getToken()
   }
-  octokit.authenticate({
-    type: 'oauth',
-    token: token,
+  octokit = new Octokit({
+    auth: 'token ' + token
   })
+  gcache.SetHook(octokit, db)
 
   var { owner, repo, type, path, ref } = event;
   // console.log("context: ", cloud.getWXContext())
   const { OPENID, APPID } = cloud.getWXContext()
-  res = await executeWithCache(owner, repo, type, path, OPENID, ref, event)
+  res = await execute(owner, repo, type, path, OPENID, ref, event)
   await trace(OPENID, owner, repo, type, path, res['_from_cache'])
-  return res;
-}
-
-const grayCache = {'readme': true, 'get': true, 'file': true}
-async function executeWithCache(owner, repo, type, path, openid, ref, data) { 
-  var key = owner + repo + type + path + ref + data.currentSize
-  var res = CACHE.get(key);
-  if (res == undefined) {
-    res = await execute(owner, repo, type, path, openid, ref, data)
-    if (type in grayCache) {
-        CACHE.set(key, res)
-    }
-  } else {
-    res['_from_cache'] = '1'
-  }
   return res;
 }
 
