@@ -12,9 +12,9 @@ const BlogMap = {
     'title': 'GitHub 推荐',
     'article-image_url': [baseUrl + '/mp-githubtrending/blog/github-rec.jpg']
   },
-  'juejin': {
-    'title': '掘金开源推荐',
-    'article-image_url': [baseUrl + '/common/juejin.png']
+  'topic': {
+    'title': 'GitHub 话题',
+    'article-image_url': [baseUrl + '/common/github_topic.jpg']
   },
   'v2ex': {
     'title': 'V2EX 开源推荐',
@@ -109,9 +109,13 @@ async function getLastestJueJin(size) {
 }
 
 async function getLastestTopic(owner, repo, num) {
-  var url = 'https://github.com/' + owner + '/' + repo
-  console.log('search url:', url)
-  var res = await db.collection('topic').where({ url: url }).orderBy('_crawl_time', 'desc').limit(num).get()
+  var d = {}
+  if (owner && repo) {
+    var url = 'https://github.com/' + owner + '/' + repo
+    d['url'] = url
+    console.log('search url:', url)
+  }
+  var res = await db.collection('topic').where(d).orderBy('_crawl_time', 'desc').limit(num).get()
   return res.data
 }
 
