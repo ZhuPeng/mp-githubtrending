@@ -7,7 +7,7 @@ var octokit;
 const db = cloud.database()
 const _ = db.command
 const NodeCache = require( "node-cache" );
-const CACHE = new NodeCache({ stdTTL: 1800, checkperiod: 200 });
+const CACHE = new NodeCache({ stdTTL: 3600, checkperiod: 200 });
 
 async function getToken() {
   var key = 'github-token'
@@ -106,10 +106,26 @@ exports.main = async (event, context) => {
   var { owner, repo, type, path, ref } = event;
   // console.log("context: ", cloud.getWXContext())
   const { OPENID, APPID } = cloud.getWXContext()
-  res = await execute(owner, repo, type, path, OPENID, ref, event)
+  res = await executeWithCache(owner, repo, type, path, OPENID, ref, event)
   trace(OPENID, owner, repo, type, path, res['_from_cache'])
   return res;
 }
+
+const grayCache = { 'readme': true, 'get': true, 'file': true }
+async function executeWithCache(owner, repo, type, path, openid, ref, data) {
+  var key = owner + repo + type + path + ref + data.currentSize
+  var res = CACHE.get(key);
+  if (res == undefined) {
+    res = await execute(owner, repo, type, path, openid, ref, data)
+    if (type in grayCache) {
+      CACHE.set(key, res)
+    }
+  } else {
+    res['_from_cache'] = '1'
+  }
+  return res;
+}
+
 
 async function execute(owner, repo, type, path, openid, ref, data) { 
   if (!ref) { ref = 'master'; }
