@@ -16,7 +16,7 @@ async function getToken() {
     return cache
   }
 
-  var res = await db.collection("admin").where({website: "github", type: "token"}).get()
+  var res = await db.collection("admin").where({website: "github", type: "token", status: 'online'}).get()
   var index = Math.floor(Math.random() * res.data.length);
   CACHE.set(key, res.data[index].value)
   return res.data[index].value;
