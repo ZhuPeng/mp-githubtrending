@@ -1,6 +1,7 @@
 module.exports = {
   SetHook,
 }
+const dbname = 'gcache'
 
 function SetHook(octokit, db) {
   octokit.hook.after('request', async (response, options) => {
@@ -18,33 +19,37 @@ function SetHook(octokit, db) {
   octokit.hook.wrap('request', async (request, options) => {
     // add logic before, after, catch errors or replace the request altogether
     // console.log('wrap options: ', options)
-    var etag = await getEtag(db, getKey(options))
-    options.headers['If-None-Match'] = etag
+    var m = await getMeta(db, getKey(options))
+    options.headers['If-None-Match'] = m.etag
+    options.headers['If-Modified-Since'] = m.lastmodified
     return request(options)
   })
 }
 
 async function setCache(db, key, response) {
   var etag = response.headers.etag
-  console.log('setCache:', key, etag)
   if (!etag) {return}
-  await db.collection('cache').add({
-    data: {key, etag, response, time: new Date()}
+  if (etag.startsWith('W/')) {
+    etag = etag.slice(2, etag.length)
+  }
+  console.log('setCache:', key, etag)
+  var lastmodified = response.headers['last-modified']
+  await db.collection(dbname).add({
+    data: { key, etag, response, lastmodified, time: new Date()}
   }).then(res => { console.log(res) }).catch(console.error) 
 }
 
-async function getEtag(db, key) {
-  var res = await db.collection("cache").where({key}).get()
+async function getMeta(db, key) {
+  var res = await db.collection(dbname).where({key}).get()
   if (res.data.length == 0) {
     return ''
   }
-  return res.data[0].etag
+  return res.data[0]
 }
 
 async function findInCache(db, key, etag) {
-  etag = 'W/' + etag
   console.log('findInCache: ', key, etag)
-  var res = await db.collection("cache").where({ key, etag }).orderBy('time', 'desc').limit(1).get()
+  var res = await db.collection(dbname).where({ key, etag }).orderBy('time', 'desc').limit(1).get()
   if (res.data.length == 0) {
     return {}
   }
