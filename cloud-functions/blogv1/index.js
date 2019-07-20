@@ -16,10 +16,6 @@ const BlogMap = {
     'title': 'GitHub 话题',
     'article-image_url': [baseUrl + '/common/github_topic.jpg']
   },
-  'v2ex': {
-    'title': 'V2EX 开源推荐',
-    'article-image_url': ['https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/V2ex.png/440px-V2ex.png']
-  },
   'hackernews': {
     'title': 'Hacker News',
     'extra_params': '&fromsite=github.com',
@@ -71,7 +67,7 @@ async function getItems(jobname, id, num) {
 async function get(url) {
   console.log('request url:', url)
   var raw = await rp(url).then(function (response) {
-      console.log('response:', response)
+      // console.log('response:', response)
       return response;
     }).catch(function (err) {
       console.log('request error:', err)
@@ -123,26 +119,22 @@ async function findTopic(source, id) {
   return await db.collection('topic').where({ source: source, id: id }).get()
 }
 
-async function syncJuejin() {
-  await _syncJuejin(100)
-  // await _syncJuejin(200)
-  // await _syncJuejin(300)
-  // await _syncJuejin(400)
-  // await _syncJuejin(500)
-  // await _syncJuejin(600)
-  // await _syncJuejin(700)
+async function sync() {
+  var j = await getLastestJueJin(100)
+  await syncTopic(j, 'juejin')
+  var j = await getLastestV2ex(10)
+  await syncTopic(j, 'v2ex')
 }
 
-async function _syncJuejin(num) {
-  var j = await getLastestJueJin(num)
+async function syncTopic(j, type) {
   for (var i=0; i<j.length; i++) {
-    console.log(j[i])
-    var e = await findTopic('juejin', j[i].id)
-    if (e.data.length > 0) { console.log('findTopic:', e); continue }
+    // console.log(j[i])
+    var e = await findTopic(type, j[i].id)
+    if (e.data.length > 0) { continue }
     var res = await db.collection('topic').add({
       data: j[i],
     })
-    console.log('add topic:', res)
+    console.log('add topic:', type, res)
   }
 }
 
@@ -154,12 +146,17 @@ async function getLastestV2ex(size) {
     var c = '**' + d.title + '**\n\n' + d.content
     res.push({
       type: 'card',
+      id: d.id,
+      uid: d.member.id,
       content: c,
       username: d.member.username,
       userAvatar: 'https:' + d.member.avatar_large,
       url: d.url,
       '_crawl_time': d.last_modified*1000,
       'title': d.title,
+      'source': 'v2ex',
+      commentCount: d.replies,
+      likedCount: '',
     })
   })
   return res
@@ -200,7 +197,7 @@ exports.main = async (event, context) => {
   var num = (currentSize || 0) + DeltaSize
   if (event.Type != undefined && event.Type == 'Timer') {
     console.log('execute timer')
-    await syncJuejin()
+    await sync()
     return
   }
   if (type == 'lastest') {
