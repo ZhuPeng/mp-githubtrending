@@ -120,7 +120,7 @@ async function findTopic(source, id) {
 }
 
 async function sync() {
-  var j = await getLastestJueJin(100)
+  var j = await getLastestJueJin(10)
   await syncTopic(j, 'juejin')
   var j = await getLastestV2ex(10, 'github')
   await syncTopic(j, 'v2ex')
@@ -156,7 +156,7 @@ async function getLastestV2ex(size, node) {
       userAvatar: 'https:' + d.member.avatar_large,
       url: d.url,
       // '_crawl_time': d.last_modified*1000,
-      '_crawl_time': new Date(),
+      '_crawl_time': new Date().toISOString(),
       'title': d.title,
       'source': 'v2ex',
       commentCount: d.replies,
