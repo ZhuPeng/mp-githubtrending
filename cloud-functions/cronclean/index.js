@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
   }).remove()
 
   db.collection('gcache').where({
-    requesttime: _.lt(d.toISOString()),
+    time: _.lt(d.toISOString()),
   }).remove()
   return {'status': 'done'}
 }
