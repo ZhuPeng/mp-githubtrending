@@ -39,7 +39,7 @@ async function setCache(db, key, response) {
   console.log('setCache:', key, etag)
   delete response.headers;
   await db.collection(dbname).add({
-    data: { key, etag, response, lastmodified, time: new Date()}
+    data: { key, etag, response, lastmodified, time: new Date().toISOString()}
   }).then(res => { console.log(res) }).catch(console.error) 
 }
 

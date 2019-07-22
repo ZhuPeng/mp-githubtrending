@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "openapi": []
+  },
+  "triggers": [
+    {
+      "name": "cronclean",
+      "type": "timer",
+      "config": "0 18 0 * * * *"
+    }
+  ]
+}
