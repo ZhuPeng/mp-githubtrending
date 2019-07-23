@@ -92,7 +92,7 @@ exports.main = async (event, context) => {
   return res;
 }
 
-const grayCache = { 'readme': true, 'get': true, 'file': true }
+const grayCache = { 'readme': true, 'get': true, 'file': true, 'pr': true, 'repos': true, 'releases': true, 'commits': true, 'issues': true }
 async function executeWithCache(owner, repo, type, path, openid, ref, data) {
   var key = owner + repo + type + path + ref + data.currentSize
   var res = CACHE.get(key);
