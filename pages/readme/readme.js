@@ -119,6 +119,7 @@ Page({
       statsMd += '## Authors\n\n'
       statsMd += 'Commit Count | Author | Percentage \n-- | -- | -- \n'
       c.reverse().map(function (s) {
+        if (!s || !s.author || !s.author.login) {return}
         statsMd += s.total + ' | ' + util.mdLink(s.author.login, s.author.html_url) + ' | ' + util.GetPercent(s.total, total) + '\n'
       })
       self.setData({ spinning: false, stats: c, statsMd })
