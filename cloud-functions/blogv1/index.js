@@ -16,19 +16,19 @@ const BlogMap = {
     'title': 'GitHub 话题',
     'article-image_url': [baseUrl + '/common/github_topic.jpg']
   },
-  'hackernews': {
-    'title': 'Hacker News',
-    'extra_params': '&fromsite=github.com',
-    'article-image_url': [baseUrl + '/mp-githubtrending/blog/hackernews.jpg']
-  },
+  // 'hackernews': {
+  //   'title': 'Hacker News',
+  //   'extra_params': '&fromsite=github.com',
+  //   'article-image_url': [baseUrl + '/mp-githubtrending/blog/hackernews.jpg']
+  // },
   'githubblog': {
     'title': 'GitHub Blog',
     'article-image_url': [
+      baseUrl + '/mp-githubtrending/blog/github-bug.jpg',
       baseUrl + '/mp-githubtrending/blog/github-blog.jpg',
       baseUrl + '/mp-githubtrending/blog/githubblog-desk.jpg',
       'https://github.blog/wp-content/uploads/2019/05/satellite-blog-2.png?w=800',
       baseUrl + '/mp-githubtrending/blog/githubblog-glod.jpg',
-      baseUrl + '/mp-githubtrending/blog/github-bug.jpg',
       'https://github.blog/wp-content/uploads/2019/05/mona-heart-featured.png?w=800',
       'https://github.blog/wp-content/uploads/2019/03/1200x630-education.png?w=800',
       'https://github.blog/wp-content/uploads/2019/03/company-twitter.png?w=800',
@@ -36,10 +36,10 @@ const BlogMap = {
       'https://github.blog/wp-content/uploads/2019/03/BlogHeaders_Aligned_POLICY_1008x602_x2.png?w=800',
     ]
   },
-  'blogcoreos': {
-    'title': 'CoreOS Blog',
-    'article-image_url': [baseUrl + '/mp-githubtrending/blog/coreos-blog.jpg']
-  },
+  // 'blogcoreos': {
+  //   'title': 'CoreOS Blog',
+  //   'article-image_url': [baseUrl + '/mp-githubtrending/blog/coreos-blog.jpg']
+  // },
 }
 
 async function getItems(jobname, id, num) {
