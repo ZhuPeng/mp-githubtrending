@@ -16,5 +16,9 @@ exports.main = async (event, context) => {
   db.collection('gcache').where({
     time: _.lt(d.toISOString()),
   }).remove()
+
+  db.collection('formid').where({
+    time: _.lt(d.toISOString()),
+  }).remove()
   return {'status': 'done'}
 }
