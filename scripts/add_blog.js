@@ -23,6 +23,10 @@ db.collection('blog').orderBy('_crawl_time', 'desc').limit(1).get().then(res => 
     var d = new Date(Date.parse(last._crawl_time))
     console.log(d.toISOString())
     d.setDate(d.getDate() + 1);
+    if (d < new Date()) {
+        d = new Date()
+        console.log('Update date to now:', d.toISOString())
+    }
     data["_crawl_time"] = d
 
     console.log('add blog:', data)
