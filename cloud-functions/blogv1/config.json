@@ -6,7 +6,7 @@
     {
       "name": "syncJuejin",
       "type": "timer",
-      "config": "0 18 */1 * * * *"
+      "config": "0 18 */4 * * * *"
     }
   ]
 }
