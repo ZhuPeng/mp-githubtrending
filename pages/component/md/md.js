@@ -76,7 +76,9 @@ Component({
     handleCurrentDir() {
       var arr = this.data.file.split('/')
       if (arr.length <= 1) {return}
-      this.setData({currentDir: arr.slice(0, arr.length-1).join('/')})
+      var cd = arr.slice(0, arr.length - 1).join('/')
+      console.log('current dir:', cd, this.data.file)
+      this.setData({currentDir: cd})
     },
     
     onMDClick(e) {
@@ -87,7 +89,6 @@ Component({
         text = e.detail._relatedInfo.anchorTargetText
       } 
       console.log("onMDClick url:", clickurl, text)
-      var filepath = clickurl
       var owner = this.data.owner
       var repo = this.data.repo
       if (clickurl.startsWith('http') && !util.isGitHubPage(clickurl)) {
@@ -97,10 +98,14 @@ Component({
         return
       }
 
+      if (clickurl.startsWith('./')) {
+        clickurl = this.data.currentDir + clickurl.slice(1, clickurl.length)
+        console.log('update file path to:', clickurl)
+      }
       if (!util.isGitHubPage(clickurl)) {
         clickurl = 'https://github.com/' + owner + '/' + repo + '/' + clickurl
       }
-
+     
       util.GitHubNavi(clickurl)
     },
   }
