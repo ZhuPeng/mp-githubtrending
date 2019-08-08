@@ -128,24 +128,54 @@ async function findTopic(source, id) {
   return await db.collection('topic').where({ source: source, id: id }).get()
 }
 
-async function sync() {
-  var j = await getLastestJueJin(10)
-  await syncTopic(j, 'juejin')
-  var j = await getLastestV2ex(10, 'github')
-  await syncTopic(j, 'v2ex')
-  var j = await getLastestV2ex(10, 'opensource')
-  await syncTopic(j, 'v2ex')
+async function getIssues(owner, repo) {
+  var r = await cloud.callFunction({
+    name: 'githubv1',
+    data: {owner, repo, ref: 'master', type: 'issues', currentSize: 0},
+  })
+  var res = []
+  r.result.content.map(function (d) {
+    var c = '**' + d.title + '**\n\n' + d.body
+    res.push({
+      type: 'card',
+      id: d.id,
+      uid: d.user.id,
+      content: c,
+      username: d.user.login,
+      userAvatar: d.user.avatar_url,
+      url: d.html_url,
+      '_crawl_time': d.created_at,
+      'title': d.title,
+      'source': 'issue',
+      commentCount: '',
+      likedCount: '',
+    })
+  })
+  return res
 }
 
-async function syncTopic(j, type) {
+async function sync() {
+  var j = await getLastestJueJin(10)
+  await syncTopic(j)
+  var j = await getLastestV2ex(10, 'github')
+  await syncTopic(j)
+  var j = await getLastestV2ex(10, 'opensource')
+  await syncTopic(j)
+  var j = await getIssues('ruanyf', 'weekly')
+  await syncTopic(j)
+  var j = await getIssues('521xueweihan', 'HelloGitHub')
+  await syncTopic(j)
+}
+
+async function syncTopic(j) {
   for (var i=0; i<j.length; i++) {
     // console.log(j[i])
-    var e = await findTopic(type, j[i].id)
+    var e = await findTopic(j[i].source, j[i].id)
     if (e.data.length > 0) { continue }
     var res = await db.collection('topic').add({
       data: j[i],
     })
-    console.log('add topic:', type, res)
+    console.log('add topic:', j[i].source, res)
   }
 }
 
