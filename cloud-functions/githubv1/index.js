@@ -7,7 +7,7 @@ var octokit;
 const db = cloud.database()
 const _ = db.command
 const NodeCache = require( "node-cache" );
-const CACHE = new NodeCache({ stdTTL: 3600, checkperiod: 200 });
+const CACHE = new NodeCache({ stdTTL: 7200, checkperiod: 600 });
 
 async function getToken() {
   var key = 'github-token'

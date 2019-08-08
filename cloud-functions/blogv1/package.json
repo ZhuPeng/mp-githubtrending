@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "wx-server-sdk": "latest",
+    "node-cache": "^4.2.0",
     "request-promise": "latest"
   }
 }

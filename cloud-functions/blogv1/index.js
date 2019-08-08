@@ -7,6 +7,9 @@ const _ = db.command
 const baseUrl = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la'
 const DeltaSize = 10
 
+const NodeCache = require( "node-cache" );
+const CACHE = new NodeCache({ stdTTL: 7200, checkperiod: 600 });
+
 const BlogMap = {
   'github': {
     'title': 'GitHub 推荐',
@@ -43,6 +46,12 @@ const BlogMap = {
 }
 
 async function getItems(jobname, id, num) {
+  var key = jobname + id + num
+  var cache = CACHE.get(key);
+  if (cache != undefined) {
+    return cache
+  }
+
   var url = 'http://39.106.218.104:5000/api/items?jobname=' + jobname
   if (id) {
     url += '&id=' + id
