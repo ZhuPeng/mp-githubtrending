@@ -155,16 +155,12 @@ async function getIssues(owner, repo) {
 }
 
 async function sync() {
-  var j = await getLastestJueJin(10)
-  await syncTopic(j)
-  var j = await getLastestV2ex(10, 'github')
-  await syncTopic(j)
-  var j = await getLastestV2ex(10, 'opensource')
-  await syncTopic(j)
-  var j = await getIssues('ruanyf', 'weekly')
-  await syncTopic(j)
-  var j = await getIssues('521xueweihan', 'HelloGitHub')
-  await syncTopic(j)
+  syncTopic(await getLastestJueJin(10))
+  syncTopic(await getLastestV2ex(10, 'create'))
+  syncTopic(await getLastestV2ex(10, 'github'))
+  syncTopic(await getLastestV2ex(10, 'opensource'))
+  syncTopic(await getIssues('ruanyf', 'weekly'))
+  await syncTopic(await getIssues('521xueweihan', 'HelloGitHub'))
 }
 
 async function syncTopic(j) {
