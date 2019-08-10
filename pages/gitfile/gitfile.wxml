@@ -7,7 +7,7 @@
   <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
   <md md="{{content}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
   <view class="margin-left-right padding-bottom">
-    <ad wx:if="{{content && withSubscribe}}" unit-id="adunit-dd5f651e7fcca63c"></ad>
+    <ad wx:if="{{content}}" unit-id="adunit-dd5f651e7fcca63c"></ad>
   </view>
   <subscribe wx:if="{{content && withSubscribe}}" />
   <fabbutton/>
