@@ -86,7 +86,7 @@ function isCodeFile(file) {
   return false;
 }
 
-const ImageFileExtentsions = ['png', 'jpeg', 'gif'];
+const ImageFileExtentsions = ['png', 'jpg', 'gif', 'jpeg'];
 
 function isImageFile(file) {
   for (var i in ImageFileExtentsions) {
