@@ -12,11 +12,13 @@ module.exports = {
 function FindGitHubUrl(c) {
   var urls = FindUrls(c)
   if (urls.length == 0) {return ''}
+  var gurl = ''
   for (var j = 0; j < urls.length; j++) {
     if (isGitHubPage(urls[j])) {
-      return urls[j]
+      if (gurl == '' || gurl.length > urls[j].length) {gurl = urls[j]}
     }
   }
+  if (gurl) {return gurl}
   return urls[0]
 }
 
