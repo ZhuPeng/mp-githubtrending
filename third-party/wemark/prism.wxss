@@ -42,6 +42,7 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
 	 color: #690;
  }
 
+ .wemark_inline_code_function-variable,
  .wemark_inline_code_operator,
  .wemark_inline_code_entity,
  .wemark_inline_code_url,
