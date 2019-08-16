@@ -195,6 +195,9 @@ function parse(md, options){
 			content = blockToken.content;
 			var highlight = false;
             if (!blockToken.params){blockToken.params = 'python'}
+            if (blockToken.params == 'c' || blockToken.params == 'c++' || blockToken.params == 'c#') {
+                blockToken.params = 'clike'
+            }
 			if(options.highlight && blockToken.params && prism.languages[blockToken.params]){
 				content = prism.tokenize(content, prism.languages[blockToken.params]);
 				highlight = true;
