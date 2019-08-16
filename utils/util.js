@@ -8,6 +8,7 @@ module.exports = {
   base64Decode: base64_decode,
   parseGitHub: common.parseGitHub,
   isCodeFile: common.isCodeFile,
+  isImageFile: common.isImageFile,
   mdLink: common.mdLink,
   copyOnlyText,
   copyText,

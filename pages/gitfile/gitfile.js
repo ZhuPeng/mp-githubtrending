@@ -17,7 +17,7 @@ Page({
     var ref = 'master'
     if (!file) { util.Alert('file parameter was empty')}
     if (file.startsWith('./')) {file = file.slice(2)}
-    if (file.startsWith('blob/') || file.startsWith('tree/')) {
+    if (file.startsWith('blob/') || file.startsWith('tree/') || file.startsWith('raw/')) {
       var arr = file.split('/')
       if (arr.length > 2) {
         ref = arr[1]
@@ -25,6 +25,12 @@ Page({
       }
     }
     this.setData({file: file, spinning: true, owner: options.owner, repo: options.repo, withSubscribe: options.withsubscribe || false})
+
+    if (util.isImageFile(file)) {
+      console.log('image:')
+      this.setData({ content: '![](' + file + ')', spinning: false })
+      return 
+    }
     var self = this;
 
     var apiurl = 'https://api.github.com/repos/' + options.owner + '/' + options.repo + '/contents/' + encodeURIComponent(file)

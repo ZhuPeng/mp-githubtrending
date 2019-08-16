@@ -6,6 +6,7 @@ module.exports = {
   GetPercent,
   ArrayContains,
   FindGitHubUrl,
+  isImageFile,
 }
 
 function FindGitHubUrl(c) {
@@ -78,6 +79,18 @@ function isCodeFile(file) {
   for (var key in CodeFileExtentsions) {
     if (file.endsWith('.' + key)) {
       return CodeFileExtentsions[key];
+    }
+  }
+  return false;
+}
+
+const ImageFileExtentsions = ['png', 'jpeg', 'gif'];
+
+function isImageFile(file) {
+  for (var i in ImageFileExtentsions) {
+    var key = ImageFileExtentsions[i]
+    if (file.toLowerCase().endsWith('.' + key)) {
+      return true;
     }
   }
   return false;
