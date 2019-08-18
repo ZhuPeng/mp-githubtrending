@@ -68,6 +68,10 @@ Page({
                 type: 'addTopic', data: data
               }, function (c) {
                 console.log(c)
+                if('errorMsg' in c) {
+                  util.Alert(c['errorMsg'], 3000)
+                  return
+                }
                 util.Alert('Create Success!', 3000)
                 wx.navigateTo({
                   url: '/pages/bloglist/bloglist?jobname=topic&owner='+self.data.options.owner + '&repo=' +self.data.options.repo,

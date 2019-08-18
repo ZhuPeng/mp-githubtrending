@@ -128,6 +128,12 @@ async function findTopic(source, id) {
   return await db.collection('topic').where({ source: source, id: id }).get()
 }
 
+async function existsTopic(data) {
+  var res = await db.collection('topic').where(data).get()
+  if (res.data.length > 0) { return true }
+  return false
+}
+
 async function getIssues(owner, repo) {
   var r = await cloud.callFunction({
     name: 'githubv1',
@@ -243,6 +249,9 @@ exports.main = async (event, context) => {
     return await getLastest()
   } else if (type == 'addTopic') {
     event.data['uid'] = wxContext.OPENID
+    if (await existsTopic({source: 'wechat', content: event.data['content'], uid: event.data['uid']})) {
+      return {'status': 'error', 'errorMsg': '请不要重复提交'}
+    }
     return await db.collection('topic').add({data: event.data})
   } else if (jobname == 'github') {
     return {'data': await getLastestGitHubBlog(num)}
