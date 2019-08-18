@@ -6,7 +6,7 @@
     {
       "name": "cronclean",
       "type": "timer",
-      "config": "0 18 0 * * * *"
+      "config": "0 5 0,12 * * * *"
     }
   ]
 }

@@ -8,7 +8,7 @@ const _ = db.command
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   var d = new Date()
-  d.setDate(d.getDate() - 14);
+  d.setDate(d.getDate() - 10);
   db.collection('history').where({
     requesttime: _.lt(d.toISOString()),
   }).remove()
@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
   }).remove()
 
   db.collection('formid').where({
-    time: _.lt(d.toISOString()),
+    time: _.lt(d),
   }).remove()
   return {'status': 'done'}
 }
