@@ -124,10 +124,6 @@ async function getLastestTopic(owner, repo, num) {
   return res.data
 }
 
-async function findTopic(source, id) {
-  return await db.collection('topic').where({ source: source, id: id }).get()
-}
-
 async function existsTopic(data) {
   var res = await db.collection('topic').where(data).get()
   if (res.data.length > 0) { return true }
@@ -171,9 +167,7 @@ async function sync() {
 
 async function syncTopic(j) {
   for (var i=0; i<j.length; i++) {
-    // console.log(j[i])
-    var e = await findTopic(j[i].source, j[i].id)
-    if (e.data.length > 0) { continue }
+    if (existsTopic({ source: j[i].source, id: j[i].id })) {continue}
     var res = await db.collection('topic').add({
       data: j[i],
     })
