@@ -8,7 +8,7 @@ const baseUrl = 'https://7465-test-3c9b5e-1258459492.tcb.qcloud.la'
 const DeltaSize = 10
 
 const NodeCache = require( "node-cache" );
-const CACHE = new NodeCache({ stdTTL: 7200, checkperiod: 600 });
+const CACHE = new NodeCache({ stdTTL: 21600, checkperiod: 1800 });
 
 const BlogMap = {
   'github': {
