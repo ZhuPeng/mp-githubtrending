@@ -37,7 +37,7 @@ Component({
     },   
     handleMd() {
       var tmp = this.data.md
-      var d = { '’': "'", "<br>": '\n', '<br/>': '\n', '<em>': ' **', '</em>': '** ', '<strong>': ' **', '</strong>': '** ', '<li>': '* ', '</li>': '\n', '<ul>': '\n', '</ul>': '\n', '<code>': '`', '</code>': '`'}
+      var d = { '’': "'", "<br>": '\n\n', '<br/>': '\n\n', '<em>': '', '</em>': '', '<strong>': '', '</strong>': '', '<li>': '* ', '</li>': '\n', '<ul>': '\n', '</ul>': '\n', '<code>': '`', '</code>': '`', '&nbsp;': ' ', "&quot;": '"', "&ldquo;": '"', "&rdquo;": '"', '&gt;': '>', '&lt;': '<'}
       for (var k in d) {
         var reg = new RegExp(k, "g")
         tmp = tmp.replace(reg, d[k])
