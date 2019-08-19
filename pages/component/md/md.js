@@ -92,9 +92,9 @@ Component({
       var owner = this.data.owner
       var repo = this.data.repo
       if (clickurl.startsWith('http') && !util.isGitHubPage(clickurl)) {
-        if (!multimp.Navi(clickurl)) {
+        if (multimp.Navi(clickurl) == false) { 
           util.copyOnlyText(clickurl)
-        }
+        } 
         return
       }
 
