@@ -4,22 +4,30 @@ module.exports = {
 
 // 在微信小程序中使用
 function Navi(url) {
+  var match = -1
   for (var i = 0; i < directTransform.length; i++) {
     var trans = directTransform[i]
     var urlPrefix = trans.urlPrefix
-    if (!url.startsWith(urlPrefix)) {continue}
-    var nickname = trans.nickname
-    var to = trans.genMPUrl(trans, url)
-    console.log('Navi url: ', url, ' to ', nickname, to)
-    wx.navigateToMiniProgram({
-      appId: trans.appid,
-      path: to,
-      success(res) {
-        return true
-      }
-    })
+    if (url.startsWith(urlPrefix)) { 
+      match = i; break;
+    }
   }
-  return false
+  if (match == -1) {return false}
+  var trans = directTransform[match]
+  var urlPrefix = trans.urlPrefix
+  var nickname = trans.nickname
+  var to = trans.genMPUrl(trans, url)
+  console.log('Navi url: ', url, ' to ', nickname, to)
+  wx.navigateToMiniProgram({
+    appId: trans.appid,
+    path: to,
+    success(res) {
+      console.log('Navi success:', res)
+    },
+    fail(res) {
+      console.log('Navi fail:', res)
+    }
+  })
 }
 
 var directTransform = [{

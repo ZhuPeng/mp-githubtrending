@@ -83,12 +83,14 @@ Component({
         return
       } 
       if (url && url.startsWith('http')) {
-        if (multimp.Navi(url)) {return}
-      } 
-      
+        if (multimp.Navi(url) != false) {return} 
+      }
+      self.defaultNavi()
+    },
+    defaultNavi() {
       wx.navigateTo({
         url: '/pages/blog/blog?id=' + this.data.blogid + '&jobname=' + this.data.jobname,
       })
-    }
+    },
   }
 })
