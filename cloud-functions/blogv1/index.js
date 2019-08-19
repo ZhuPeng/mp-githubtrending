@@ -167,7 +167,7 @@ async function sync() {
 
 async function syncTopic(j) {
   for (var i=0; i<j.length; i++) {
-    if (existsTopic({ source: j[i].source, id: j[i].id })) {continue}
+    if (await existsTopic({ source: j[i].source, id: j[i].id })) {continue}
     var res = await db.collection('topic').add({
       data: j[i],
     })
