@@ -85,7 +85,7 @@ Component({
       if (url && url.startsWith('http')) {
         if (multimp.Navi(url) != false) {return} 
       }
-      self.defaultNavi()
+      this.defaultNavi()
     },
     defaultNavi() {
       wx.navigateTo({
