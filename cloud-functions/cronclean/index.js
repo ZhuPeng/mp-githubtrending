@@ -13,11 +13,11 @@ exports.main = async (event, context) => {
     requesttime: _.lt(d.toISOString()),
   }).remove()
 
-  db.collection('gcache').where({
+  await db.collection('gcache').where({
     time: _.lt(d.toISOString()),
   }).remove()
 
-  db.collection('formid').where({
+  await db.collection('formid').where({
     time: _.lt(d),
   }).remove()
   return {'status': 'done'}
