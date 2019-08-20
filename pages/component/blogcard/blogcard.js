@@ -85,7 +85,8 @@ Component({
       if (url && url.startsWith('http')) {
         if (multimp.Navi(url) != false) {return} 
       }
-      this.defaultNavi()
+      if (this.data.type != 'card') {this.defaultNavi()}
+      else {util.copyOnlyText(url)}
     },
     defaultNavi() {
       wx.navigateTo({
