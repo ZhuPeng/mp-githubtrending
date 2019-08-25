@@ -20,5 +20,11 @@ exports.main = async (event, context) => {
   await db.collection('formid').where({
     time: _.lt(d),
   }).remove()
+
+  var d = new Date()
+  d.setDate(d.getDate() - 1);
+  await db.collection('dbcache').where({
+    time: _.lt(d),
+  }).remove()
   return {'status': 'done'}
 }
