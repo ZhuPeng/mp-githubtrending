@@ -3,6 +3,7 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 const Octokit = require('@octokit/rest')
 const gcache = require('cache.js')
+const dbcache = require('dbcache.js')
 var octokit;
 const db = cloud.database()
 const _ = db.command
@@ -95,11 +96,11 @@ exports.main = async (event, context) => {
 const grayCache = { 'readme': true, 'get': true, 'file': true, 'pr': true, 'repos': true, 'releases': true, 'commits': true, 'issues': true }
 async function executeWithCache(owner, repo, type, path, openid, ref, data) {
   var key = owner + repo + type + path + ref + data.currentSize
-  var res = CACHE.get(key);
+  var res = await dbcache.Get(db, key);
   if (res == undefined) {
     res = await execute(owner, repo, type, path, openid, ref, data)
     if (type in grayCache) {
-      CACHE.set(key, res)
+      await dbcache.Set(db, key, res)
     }
   } else {
     res['_from_cache'] = '1'
