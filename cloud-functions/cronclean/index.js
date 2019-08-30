@@ -22,7 +22,7 @@ exports.main = async (event, context) => {
   }).remove()
 
   var d = new Date()
-  d.setDate(d.getDate() - 3);
+  d.setDate(d.getDate() - 7);
   await db.collection('dbcache').where({
     time: _.lt(d),
   }).remove()
