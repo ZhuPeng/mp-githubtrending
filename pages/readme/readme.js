@@ -67,7 +67,7 @@ Page({
     this.setData({query: {owner: arr[0].trim(), repo: arr[1].trim()}})
     var self = this
     self.getGitHubData("readme", function preprocess(content) {
-      return util.base64Decode(content)
+      return util.base64Decode(content) || 'No Data Found'
     })
     self.getMeta()
   },

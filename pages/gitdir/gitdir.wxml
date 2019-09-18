@@ -13,5 +13,8 @@
     <navigator url="{{'/pages/gitfile/gitfile?owner=' + owner + '&repo=' + repo + '&file=' + item.path}}" style="color: blue">{{item.name}}</navigator>
   </view>
 </block>
+<view class="padding-bottom padding-top">
+  <ad wx:if="{{list.length}}" unit-id="adunit-dd5f651e7fcca63c"></ad>
+</view>
 <fabbutton/>
 </view>
