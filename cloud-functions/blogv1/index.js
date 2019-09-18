@@ -39,6 +39,10 @@ const BlogMap = {
       'https://github.blog/wp-content/uploads/2019/03/BlogHeaders_Aligned_POLICY_1008x602_x2.png?w=800',
     ]
   },
+  'cncfblog': {
+      'title': 'CNCF Blog',
+      'article-image_url': [baseUrl + '/common/cncf.png']
+  },
   // 'blogcoreos': {
   //   'title': 'CoreOS Blog',
   //   'article-image_url': [baseUrl + '/mp-githubtrending/blog/coreos-blog.jpg']
