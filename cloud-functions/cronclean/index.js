@@ -18,9 +18,9 @@ exports.main = async (event, context) => {
   }).remove()
 
   var d7 = new Date()
-  d7.setDate(d7.getDate() - 7);
+  d7.setDate(d7.getDate() - 14);
   await db.collection('dbcache').where({
-    time: _.lt(d7),
+    time: _.lt(d7.toISOString()),
   }).remove()
 
   await db.collection('formid').where({
