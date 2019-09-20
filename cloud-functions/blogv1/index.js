@@ -43,6 +43,10 @@ const BlogMap = {
       'title': 'CNCF Blog',
       'article-image_url': [baseUrl + '/common/cncf.png']
   },
+  'blogkubernetes': {
+    'title': 'Kubernetes Blog',
+    'article-image_url': [baseUrl + '/common/k8s.jpeg']
+  },
   // 'blogcoreos': {
   //   'title': 'CoreOS Blog',
   //   'article-image_url': [baseUrl + '/mp-githubtrending/blog/coreos-blog.jpg']

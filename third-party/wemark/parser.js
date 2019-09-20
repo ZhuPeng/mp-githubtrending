@@ -45,7 +45,7 @@ function parse(md, options){
 	var orderNum = [0, 0];
 	var tmp;
   var parseHtml = function(html, ret) {
-    var list = [{ type: 'text', reg: /<a.*?>(.*?)<\/a>/g }, {type: 'image', reg: /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*|<\/img)?>/g}, {type: 'text', reg: /<h2.*?>(.*?)<\/h2>/g}, {type: 'text', reg: /<h1.*?>(.*?)<\/h1>/g}, {type: 'text', reg: /<p.*?>(.*?)<\/p>/g}, {type: 'text', reg: /<p.*?>(.*)/g}]
+    var list = [{ type: 'text', reg: /<a.*?>(.*?)<\/a>/g }, { type: 'image', reg: /<img.*?src\s*=\s*['"]*([^\s^'^"]+).*?(?:\/\s*|<\/img)?>/g }, { type: 'text', reg: /<h2.*?>(.*?)<\/h2>/g }, { type: 'text', reg: /<span.*?>(.*?)<\/span>/g }, {type: 'text', reg: /<h1.*?>(.*?)<\/h1>/g}, {type: 'text', reg: /<p.*?>(.*?)<\/p>/g}, {type: 'text', reg: /<p.*?>(.*)/g}]
     var match;
     list.map(function(p) {
       var tmpHtml = html

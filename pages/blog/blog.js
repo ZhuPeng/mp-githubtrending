@@ -28,7 +28,7 @@ Page({
     if (!meta['article-body']) {
       meta['article-body'] = 'No Contents'
     }
-    blogmd += meta['article-body'] + '\n'
+    blogmd += meta['article-body'] + '\n\n'
     blogmd += '> Link: [' + meta.url + ']('+ meta.url + ')\n\n'
     this.setData({blogmd})
   },
