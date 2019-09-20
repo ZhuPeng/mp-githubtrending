@@ -24,6 +24,17 @@ const BlogMap = {
   //   'extra_params': '&fromsite=github.com',
   //   'article-image_url': [baseUrl + '/mp-githubtrending/blog/hackernews.jpg']
   // },
+  'cncfblog': {
+    'title': 'CNCF Blog',
+    'article-image_url': [baseUrl + '/common/cncf.png']
+  },
+  'blogkubernetes': {
+    'title': 'Kubernetes Blog',
+    'article-image_url': [
+      baseUrl + '/common/k8s-excited.jpeg',
+      baseUrl + '/common/k8s.jpeg'
+    ]
+  },
   'githubblog': {
     'title': 'GitHub Blog',
     'article-image_url': [
@@ -38,14 +49,6 @@ const BlogMap = {
       'https://github.blog/wp-content/uploads/2018/07/42895346-9f853c16-8a87-11e8-99eb-e83767ef3007.png?w=800',
       'https://github.blog/wp-content/uploads/2019/03/BlogHeaders_Aligned_POLICY_1008x602_x2.png?w=800',
     ]
-  },
-  'cncfblog': {
-      'title': 'CNCF Blog',
-      'article-image_url': [baseUrl + '/common/cncf.png']
-  },
-  'blogkubernetes': {
-    'title': 'Kubernetes Blog',
-    'article-image_url': [baseUrl + '/common/k8s.jpeg']
   },
   // 'blogcoreos': {
   //   'title': 'CoreOS Blog',
