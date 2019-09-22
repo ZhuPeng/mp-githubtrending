@@ -144,7 +144,7 @@ async function existsTopic(data) {
 async function getIssues(owner, repo) {
   var r = await cloud.callFunction({
     name: 'githubv1',
-    data: {owner, repo, ref: 'master', type: 'issues', currentSize: 0},
+    data: {owner, repo, ref: new Date(), type: 'issues', currentSize: 0},
   })
   var res = []
   r.result.content.map(function (d) {

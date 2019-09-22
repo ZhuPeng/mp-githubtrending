@@ -6,8 +6,8 @@ module.exports = {
 }
 
 wx.cloud.init({
-  // env: 'test-3c9b5e',
-  env: 'prod-3c9b5e',
+  env: 'test-3c9b5e',
+  // env: 'prod-3c9b5e',
 })
 const db = wx.cloud.database()
 
