@@ -57,6 +57,7 @@ Component({
   data: {
     parsedUrl: '',
     timeago: '',
+    parsedContent: '',
   },
 
   methods: {
@@ -69,7 +70,12 @@ Component({
         var parsed = util.FindGitHubUrl(this.data.content)
         if (util.isGitHubPage(parsed) || p == "") {p = parsed}
       }
-      this.setData({parsedUrl: p})
+      var parsedContent = this.data.content
+      var maxLen = 500
+      if (parsedContent.length > maxLen) {
+          parsedContent = parsedContent.slice(0, maxLen) + '\n\n**点击查看更多**\n\n'
+      }
+      this.setData({parsedUrl: p, parsedContent})
     },
     onClick(e) {
       console.log('card onClick: ', e)
