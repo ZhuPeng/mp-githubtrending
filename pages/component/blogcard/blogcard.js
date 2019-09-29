@@ -1,5 +1,6 @@
 const util = require('../../../utils/util.js')
 const multimp = require('../../../utils/multimp.js')
+const cloudclient = require('../../../utils/cloudclient.js')
 Component({
   properties: {
     blogid: {
@@ -75,7 +76,13 @@ Component({
       if (parsedContent.length > maxLen) {
           parsedContent = parsedContent.slice(0, maxLen) + '\n\n**点击查看更多**\n\n'
       }
-      this.setData({parsedUrl: p, parsedContent})
+      var self = this;
+      cloudclient.isMsgNotSec({content: parsedContent}, function(r) {
+          if (r == true) {
+              parsedContent = "**内容不符合微信安全规范，暂不显示**"
+          }
+          self.setData({parsedUrl: p, parsedContent})
+      })
     },
     onClick(e) {
       console.log('card onClick: ', e)

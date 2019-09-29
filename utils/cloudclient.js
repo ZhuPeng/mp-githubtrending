@@ -7,6 +7,7 @@ module.exports = {
   uploadFormID,
   callFunctionWithSubscribe,
   callFunctionWithName,
+  isMsgNotSec,
   callFunctionWithRawResponse
 }
 const version = 'githubv1'
@@ -62,4 +63,12 @@ function callFunctionWithSubscribe(data, completeFunc) {
 function uploadFormID(id, source) {
   if (id.indexOf('mock') >= 0) {return}
   callFunctionWithName('collectformid', {formId: id, source}, function(r) {console.log(r)})
+}
+
+function isMsgNotSec(data, callback) {
+    callFunctionWithName('seccheck', data, function(r) {
+        console.log('seccheck: ', r)
+        if(r.errCode == '87014') {callback(true)}
+        else {callback(false)}
+    })
 }
