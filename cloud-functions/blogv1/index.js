@@ -173,7 +173,33 @@ async function sync() {
   syncTopic(await getLastestV2ex(10, 'github'))
   syncTopic(await getLastestV2ex(10, 'opensource'))
   syncTopic(await getIssues('ruanyf', 'weekly'))
+  syncTopic(await getBlog2Topic('githubblog', 'GitHub Blog'))
+  syncTopic(await getBlog2Topic('cncfblog', 'CNCF Blog'))
+  syncTopic(await getBlog2Topic('blogkubernetes', 'Kubernetes Blog'))
   await syncTopic(await getIssues('521xueweihan', 'HelloGitHub'))
+}
+
+async function getBlog2Topic(jobname, username) {
+    var r = await getItems(jobname, undefined, 1)
+    var res = []
+    r.data.map(function (d) {
+        var c = '**' + d.title + '**\n\n' + d['article-body']
+        res.push({
+          type: 'card',
+          id: d.url,
+          uid: d['article-author'],
+          content: c,
+          username: d['article-author'] || username,
+          userAvatar: d['article-author_image'],
+          url: d.url,
+          '_crawl_time': new Date().toISOString(),
+          'title': d.title,
+          'source': jobname,
+          commentCount: '',
+          likedCount: '',
+        })
+    })
+    return res
 }
 
 async function syncTopic(j) {
