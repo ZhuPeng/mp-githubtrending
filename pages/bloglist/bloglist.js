@@ -18,8 +18,9 @@ Page({
       }
     })
     wx.setNavigationBarTitle({ title: 'Blog & News' })
-    util.SetDataWithSpin(this, {jobname: options.jobname, options})
-    cloudclient.callFunctionWithBlog({ jobname: options.jobname, currentSize: this.data.blogs.data.length, 'options': options }, function (c) {
+    var jobname = options.jobname || 'topic'
+    util.SetDataWithSpin(this, {jobname: jobname, options})
+    cloudclient.callFunctionWithBlog({ jobname: jobname, currentSize: this.data.blogs.data.length, 'options': options }, function (c) {
       util.SetDataWithoutSpin(self, { blogs: c })
     })
   },
@@ -82,6 +83,15 @@ Page({
         }
       }
     })
+  },
+
+  onPullDownRefresh: function () {
+      console.log("onPulldowRefresh")
+      util.SetDataWithSpin(this, {blogs: {data: []}})
+      setTimeout(() => {
+          this.onLoad(this.data.options)
+          wx.stopPullDownRefresh()
+      }, 5000)
   },
 
   onReachBottom: function () {
