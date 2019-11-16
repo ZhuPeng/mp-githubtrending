@@ -72,7 +72,7 @@ Component({
         if (util.isGitHubPage(parsed) || p == "") {p = parsed}
       }
       var parsedContent = this.data.content
-      var maxLen = 500
+      var maxLen = 600
       if (parsedContent.length > maxLen) {
           parsedContent = parsedContent.slice(0, maxLen) + '\n\n**点击查看更多**\n\n'
       }

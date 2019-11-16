@@ -15,10 +15,10 @@ const BlogMap = {
     'title': 'GitHub 推荐',
     'article-image_url': [baseUrl + '/mp-githubtrending/blog/github-rec.jpg']
   },
-  'topic': {
-    'title': 'GitHub 话题',
-    'article-image_url': [baseUrl + '/common/github_topic.jpg']
-  },
+  // 'topic': {
+  //   'title': 'GitHub 话题',
+  //   'article-image_url': [baseUrl + '/common/github_topic.jpg']
+  // },
   // 'hackernews': {
   //   'title': 'Hacker News',
   //   'extra_params': '&fromsite=github.com',
