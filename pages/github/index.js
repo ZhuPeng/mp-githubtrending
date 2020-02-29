@@ -131,9 +131,10 @@ Page({
     if (this.data.searchValue) {
       this.search(this.data.searchValue)
     } else {
-      this.getCollection().orderBy(this.getOrder(), 'desc').skip(this.data.list.length).get().then(res => {
-        this.appendList(res.data)
-      })
+      this.search("stars:>500 pushed:>" + util.GetYesterday())
+      // this.getCollection().orderBy(this.getOrder(), 'desc').skip(this.data.list.length).get().then(res => {
+      //   this.appendList(res.data)
+      // })
     }
   },
 
@@ -143,7 +144,7 @@ Page({
     setTimeout(() => {
       this.loadData(true)
       wx.stopPullDownRefresh()
-    }, 3000)
+    }, 5000)
   },
 
   onShow: function() {
@@ -196,7 +197,11 @@ Page({
 
   searchGithub(value) {
     util.SetDataWithSpin(this, { searchValue: value })
-    var url = '/search/repositories?q=' + value
+    this.searchGithubWithoutSetData(value)
+  },
+
+  searchGithubWithoutSetData(value) {
+    var url = '/search/repositories?q=' + encodeURIComponent(value)
     var self = this
     cloudclient.callFunction({ type: 'get', path: url, currentSize: this.data.list.length }, function (c) {
       if (c.total_count) {

@@ -23,6 +23,7 @@ module.exports = {
   ShowToastText,
   GetLastestPage,
   ShowAd,
+  GetYesterday,
   FindGitHubUrl: common.FindGitHubUrl,
 }
 
@@ -126,6 +127,18 @@ function GitHubNavi(path, naviFunc, withSubscribe) {
       url: '/pages/gitfile/gitfile?file=' + filepath + '&owner=' + owner + '&repo=' + repo + (withSubscribe ? '&withsubscribe=true': ''),
     })
   }
+}
+
+function strInt(i) {
+  if (i>0 && i<10) {
+    return '0' + i
+  }
+  return i
+}
+
+function GetYesterday() {
+  var d = new Date()
+  return d.getFullYear() + '-' + strInt(d.getMonth()+1) + '-' + strInt(d.getDate()-1)
 }
 
 function timeAgo(d) {
