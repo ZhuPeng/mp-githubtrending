@@ -18,7 +18,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "GitHub Trending Hub",
+    "navigationBarTitleText": "GitHub Trending",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },

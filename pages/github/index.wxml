@@ -1,12 +1,12 @@
 <view class="page">
   <view class="page__hd">
-    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}">
+    <!-- swiper class="swiper" indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{blogList.data}}" wx:key="{item.id}">
       <swiper-item>
         <blogcard blogid="{{item.id || item._id}}" url="{{item.url}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}"/>
       </swiper-item>
     </block>
-    </swiper>
+    </swiper> -->
     <wux-filterbar wx:if="{{items.length>0}}" items="{{ items }}" bind:change="onFilterChange" bind:open="onOpen" bind:close="onClose" />
 
     <wux-search-bar style="{{searchShow ? '' : 'display:none;'}}" controlled clear show-cancel placeholder="Search" cancelText="Cancel" value="{{ searchValue }}" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel"/>

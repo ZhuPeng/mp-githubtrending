@@ -93,7 +93,7 @@ Page({
     var self = this
 
     cloudclient.callFunctionWithBlog({type: 'lastest'}, function (c) {
-      self.setData({ blogList: c })
+      self.setData({ blogList: c || [] })
     })
   },
 
@@ -167,10 +167,10 @@ Page({
       type: 'text',
       label: 'Search',
       value: 'Search',
-    }, {
-      type: 'text',
-      label: 'Blog & News',
-      value: 'news',
+    // }, {
+    //   type: 'text',
+    //   label: 'Blog & News',
+    //   value: 'news',
     }]
     this.setData({items: items})
   },

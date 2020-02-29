@@ -22,7 +22,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.3",
-	"appid": "wx6204a7df95c7fb21",
+	"appid": "wx482958efb057c5a7",
 	"projectname": "wechatapp",
 	"cloudfunctionRoot": "cloud-functions/",
 	"debugOptions": {
