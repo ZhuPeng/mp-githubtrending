@@ -33,7 +33,7 @@
           <view class='padding-right'/>
           <formbutton type="primary" wx:if="{{readme}}" bind:click="onCreateQrCode" text="Share"/>
           <view class='padding-right'/>
-          <formbutton wx:if="{{readme}}" bind:click="onTopicClick" text="Topic"/>
+          <!--  <formbutton wx:if="{{readme}}" bind:click="onTopicClick" text="Topic"/>  -->
         </view>
       </view>
 

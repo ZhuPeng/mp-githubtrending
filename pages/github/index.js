@@ -176,7 +176,7 @@ Page({
   },
 
   onLoad: function () {
-    this.getLastestBlog()
+    // this.getLastestBlog()
     this.loadData(false)
   },
 
