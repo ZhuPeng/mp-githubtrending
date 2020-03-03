@@ -1,8 +1,8 @@
 <view class="box">
 <view class="kind-list">
-<block wx:for-items="{{parsedList}}" wx:key="{{item._id}}">
+<block wx:for-items="{{parsedList}}" wx:key="{{item.id}}">
   <view class="kind-list-item">
-    <navigator url="/pages/readme/readme?_id={{item._id}}&repo={{item.repo || item.full_name}}" hover-class="navigator-hover">
+    <navigator url="/pages/readme/readme?_id={{item.id}}&repo={{item.repo || item.full_name}}" hover-class="navigator-hover">
     <view class="kind-list-item-box">
       <view class="weui-media-box__title">
         {{item.repo || item.full_name}}
