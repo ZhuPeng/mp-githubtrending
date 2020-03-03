@@ -24,8 +24,9 @@ function callFunctionWithRawResponse(data, completeFunc) {
   callFunctionWithName(version, data, completeFunc)
 }
 
-function callFunctionWithName(apiname, data, completeFunc) {
-  if (rate.RateLimit()) {
+function callFunctionWithName(apiname, data, completeFunc, retry) {
+  if (retry == undefined) {retry = 3}
+  if (retry <= 0 || rate.RateLimit()) {
     return
   }
   var token = wx.getStorageSync('github-token')
@@ -43,6 +44,10 @@ function callFunctionWithName(apiname, data, completeFunc) {
     name: apiname,
     data: data,
     complete: res => {
+      if ("errMsg" in res && res['errMsg'].indexOf('ECONNREFUSED') > 0) {
+        callFunctionWithName(apiname, data, completeFunc, retry-1)
+        return
+      }
       completeFunc(res.result)
     },
   })

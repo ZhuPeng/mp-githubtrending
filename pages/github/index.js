@@ -131,7 +131,7 @@ Page({
     if (this.data.searchValue) {
       this.search(this.data.searchValue)
     } else {
-      this.searchGithubWithoutSetData("stars:>500 pushed:>" + util.GetYesterday())
+      this.searchGithubWithoutSetData("stars:>5000 pushed:>" + util.GetYesterday())
       // this.getCollection().orderBy(this.getOrder(), 'desc').skip(this.data.list.length).get().then(res => {
       //   this.appendList(res.data)
       // })
