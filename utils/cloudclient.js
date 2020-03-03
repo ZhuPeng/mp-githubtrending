@@ -25,7 +25,7 @@ function callFunctionWithRawResponse(data, completeFunc) {
 }
 
 function callFunctionWithName(apiname, data, completeFunc, retry) {
-  if (retry == undefined) {retry = 3}
+  if (retry == undefined) {retry = 6}
   if (retry <= 0 || rate.RateLimit()) {
     return
   }
