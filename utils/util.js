@@ -130,7 +130,7 @@ function GitHubNavi(path, naviFunc, withSubscribe) {
 }
 
 function strInt(i) {
-  if (i>0 && i<10) {
+  if (i>=0 && i<10) {
     return '0' + i
   }
   return i
@@ -138,7 +138,19 @@ function strInt(i) {
 
 function GetYesterday() {
   var d = new Date()
-  return d.getFullYear() + '-' + strInt(d.getMonth()+1) + '-' + strInt(d.getDate()-1)
+  var y = d.getFullYear()
+  var m = d.getMonth() + 1
+  var dd = d.getDate() - 1
+  var h = d.getHours()
+  if (dd <= 0) {
+    dd = 28
+    m = m - 1
+  }
+  if (m <= 0) {
+    m = 12
+    y = y - 1
+  }
+  return y + '-' + strInt(m) + '-' + strInt(dd) + 'T' + strInt(h) + ':00:00'
 }
 
 function timeAgo(d) {

@@ -102,6 +102,9 @@ Component({
         clickurl = this.data.currentDir + clickurl.slice(1, clickurl.length)
         console.log('update file path to:', clickurl)
       }
+      if (clickurl.indexOf('[') > 0) {
+        return
+      }
       if (!util.isGitHubPage(clickurl)) {
         clickurl = 'https://github.com/' + owner + '/' + repo + '/' + clickurl
       }

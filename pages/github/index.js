@@ -131,7 +131,7 @@ Page({
     if (this.data.searchValue) {
       this.search(this.data.searchValue)
     } else {
-      this.searchGithubWithoutSetData("stars:>5000 pushed:>" + util.GetYesterday())
+      this.searchGithubWithoutSetData("stars:>10000 pushed:>" + util.GetYesterday())
       // this.getCollection().orderBy(this.getOrder(), 'desc').skip(this.data.list.length).get().then(res => {
       //   this.appendList(res.data)
       // })
@@ -201,6 +201,7 @@ Page({
   },
 
   searchGithubWithoutSetData(value) {
+    console.log("search:", value)
     var url = '/search/repositories?q=' + encodeURIComponent(value)
     var self = this
     cloudclient.callFunction({ type: 'get', path: url, currentSize: this.data.list.length }, function (c) {
@@ -211,7 +212,6 @@ Page({
   },
 
   search: function(val) {
-    console.log("search:", val)
     if (!val || val == null) {util.Alert("Nothing Found"); return}
     this.searchGithub(val.trim())
   },
