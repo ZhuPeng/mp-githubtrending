@@ -14,6 +14,7 @@
   <wux-divider show-text="{{ false }}"></wux-divider>
 </block>
 
+<!--
 <wux-cell-group>
   <wux-cell hover-class="none">
     <wux-textarea placeholder="Input Content..." value="{{ content }}" rows="3" cursorSpacing="80" controlled bind:change="onContentChange" />
@@ -24,5 +25,6 @@
   <formbutton class="padding-right" type="warn" wx:if="{{issue.title}}" bind:click="onButtonCloseClick" text="{{issue.state == 'open' ? 'Close' : 'Reopen'}}"/>
   <formbutton type="primary" wx:if="{{issue.title}}" bind:click="onButtonClick" text="Confirm"/>
 </view>
+-->
 
 <fabbutton/>

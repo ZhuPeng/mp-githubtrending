@@ -56,7 +56,7 @@
 
       <view style="{{tabKey=='Issues'?'':'display:none'}}">
         <view class="margin-left-right">
-          <formbutton bind:click="onButtonClick" type="primary" text="New Issue"/>
+          <!-- <formbutton bind:click="onButtonClick" type="primary" text="New Issue"/>  -->
         </view>
       
         <issuelist list="{{issues}}" />
