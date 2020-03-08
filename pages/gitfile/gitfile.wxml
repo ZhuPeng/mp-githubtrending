@@ -10,6 +10,6 @@
     <ad wx:if="{{content}}" unit-id="adunit-dd5f651e7fcca63c"></ad>
   </view>
   <subscribe wx:if="{{content && withSubscribe}}" />
-  <fabbutton/>
+  <!-- <fabbutton/> -->
 </view>
 </view>
