@@ -240,7 +240,7 @@ async function getLastestV2ex(size, node) {
 
 async function getLastestGitHubBlog(size) {
   var now = new Date()
-  var list = await db.collection('blog').where({ status: 'online', '_crawl_time': _.lt(now)}).orderBy('_crawl_time', 'desc').limit(size).get()
+  var list = await db.collection('blog').where({ status: 'pub', '_crawl_time': _.lt(now)}).orderBy('_crawl_time', 'desc').limit(size).get()
   return list.data
 }
 

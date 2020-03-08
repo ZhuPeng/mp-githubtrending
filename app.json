@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/bloglist/bloglist",
     "pages/github/index",
     "pages/account/account",
     "pages/readme/readme",
@@ -12,13 +13,12 @@
     "pages/newissue/newissue",
     "pages/gitdir/gitdir",
     "pages/blog/blog",
-    "pages/bloglist/bloglist",
     "pages/admin/admin"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "MiniGitHub",
+    "navigationBarTitleText": "开源 Books",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },

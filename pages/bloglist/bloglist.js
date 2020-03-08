@@ -17,8 +17,8 @@ Page({
         self.setData({ auth: res.authSetting['scope.userInfo']})
       }
     })
-    wx.setNavigationBarTitle({ title: 'Blog & News' })
-    var jobname = options.jobname || 'topic'
+    // wx.setNavigationBarTitle({ title: 'Blog & News' })
+    var jobname = options.jobname || 'github'
     util.SetDataWithSpin(this, {jobname: jobname, options})
     cloudclient.callFunctionWithBlog({ jobname: jobname, currentSize: this.data.blogs.data.length, 'options': options }, function (c) {
       util.SetDataWithoutSpin(self, { blogs: c })

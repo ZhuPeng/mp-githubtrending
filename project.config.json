@@ -22,8 +22,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.3",
-	"appid": "wx482958efb057c5a7",
-	"projectname": "wechatapp",
+	"appid": "wxe60c5750c87916e0",
+	"projectname": "openbooks",
 	"cloudfunctionRoot": "cloud-functions/",
 	"debugOptions": {
 		"hidedInDevtools": []
