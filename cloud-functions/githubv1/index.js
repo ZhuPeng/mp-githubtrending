@@ -89,7 +89,7 @@ exports.main = async (event, context) => {
   // console.log("context: ", cloud.getWXContext())
   const { OPENID, APPID } = cloud.getWXContext()
   res = await executeWithCache(owner, repo, type, path, OPENID, ref, event)
-  trace(OPENID, owner, repo, type, path, res['_from_cache'])
+  // trace(OPENID, owner, repo, type, path, res['_from_cache'])
   return res;
 }
 
