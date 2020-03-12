@@ -12,6 +12,21 @@ function urlModify(baseurl, url, currentDir) {
   return url
 }
 
+function hashCode(str) {
+  var h = 0;
+  var len = str.length;
+  var t = 2147483648;
+  for (var i = 0; i < len; i++) {
+    h = 31 * h + str.charCodeAt(i);
+    if (h > 2147483647) h %= t; //java int溢出则取模
+  }
+  /*var t = -2147483648 * 2;
+   while (h > 2147483647) {
+   h += t
+   }*/
+  return h
+}
+
 function _urlModify(baseurl, url, currentDir) {
   var re = '/blob/master/'
   if (url.startsWith('https://github.com/') && url.indexOf(re)>0) {
@@ -138,13 +153,15 @@ function parse(md, options){
 				}else if (token.type === 'link_open') {
 					if(options.link){
 						env = 'link';
-						tokenData = {
-							href: token.href
-						};
             if (token.href.startsWith('#')) {
               // console.log("link:", token, token.href, inlineToken.children[index + 1].content)
-              idDict[inlineToken.children[index+1].content] = token.href.substr(1)
+              var rewriteurl = 'innerlink-' + hashCode(token.href)
+              idDict[inlineToken.children[index+1].content] = rewriteurl
+              token.href = '#' + rewriteurl
             }
+            tokenData = {
+              href: token.href
+            };
 					}
 				}else if(token.type === 'image'){
 					ret.push({
