@@ -82,7 +82,6 @@ Component({
     },
     
     onMDClick(e) {
-      console.log(e)
       var clickurl = e.detail.currentTarget.dataset.text
       var text = 'No anchorTargetText found'
       if (e.detail._relatedInfo) {
