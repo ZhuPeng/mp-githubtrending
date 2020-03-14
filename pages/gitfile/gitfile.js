@@ -52,11 +52,15 @@ Page({
       if (file.endsWith('ipynb')) {
         content = self.convertIpynb(content)
       } else if (code) {
-        content = "```" + code + "\n" + content + "\n```";
+        content = self.convert2code(code, content)
       }
       
       self.setData({ content: content, spinning: false})
     })
+  },
+
+  convert2code: function(code, content) {
+    return "```" + code + "\n" + content + "\n```";
   },
 
   convertIpynb: function (content) {
@@ -70,7 +74,7 @@ Page({
         c += s
       })
       if (cell.cell_type == 'code') { 
-        c = "```" + 'python' + "\n" + c + "\n```";
+        c = this.convert2code('python', c)
       }
       md += c + '\n'
     })
