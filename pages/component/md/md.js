@@ -97,8 +97,8 @@ Component({
         return
       }
 
-      if (clickurl.startsWith('./')) {
-        clickurl = this.data.currentDir + clickurl.slice(1, clickurl.length)
+      if (this.data.currentDir != '' && (clickurl.startsWith('./') || clickurl.indexOf('/')<0)) {
+        clickurl = this.data.currentDir + '/' + clickurl.slice(clickurl.indexOf('/')+1, clickurl.length)
         console.log('update file path to:', clickurl)
       }
       if (clickurl.indexOf('[') > 0) {
