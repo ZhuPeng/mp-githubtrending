@@ -6,9 +6,11 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
+		"enhance": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"nodeModules": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
@@ -18,7 +20,9 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.3",
