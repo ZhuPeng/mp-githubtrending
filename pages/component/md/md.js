@@ -97,7 +97,7 @@ Component({
         return
       }
 
-      if (this.data.currentDir != '') {
+      if (this.data.currentDir != '' && !clickurl.startsWith(this.data.currentDir)) {
         if (clickurl.startsWith('./') || clickurl.startsWith('/')) {
           clickurl = clickurl.slice(clickurl.indexOf('/') + 1, clickurl.length)
         }
