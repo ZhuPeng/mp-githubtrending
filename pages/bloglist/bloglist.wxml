@@ -1,5 +1,15 @@
 <view class="gray">
 <wux-toast id="wux-toast" />
+<wux-tabs controlled current="{{ currentTab }}" bindchange="onTabChange">
+            <wux-tab key="hot">
+                <image src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/hot.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+                <text>最热</text>
+            </wux-tab>
+            <wux-tab key="newest">
+                <image src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/newest.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+                <text>最新</text>
+            </wux-tab>
+        </wux-tabs>
 <view>
 <block wx:for="{{blogs.data}}" wx:key="idx" wx:for-index="idx">
   <view class="card-gap"></view>

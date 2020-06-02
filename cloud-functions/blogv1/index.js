@@ -238,9 +238,13 @@ async function getLastestV2ex(size, node) {
   return res
 }
 
-async function getLastestGitHubBlog(size) {
+async function getLastestGitHubBlog(size, order) {
   var now = new Date()
-  var list = await db.collection('blog').where({ status: 'pub', '_crawl_time': _.lt(now)}).orderBy('_crawl_time', 'desc').limit(size).get()
+  var orderCol = '_crawl_time'
+  if (order == 'hot') {
+    orderCol = 'pvcnt'
+  }
+  var list = await db.collection('blog').where({ status: 'pub', '_crawl_time': _.lt(now)}).orderBy(orderCol, 'desc').limit(size).get()
   return list.data
 }
 
@@ -268,7 +272,7 @@ async function getLastest() {
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var { type, jobname, id, currentSize, options } = event;
+  var { type, jobname, id, currentSize, options, order } = event;
   const wxContext = cloud.getWXContext()
   var num = (currentSize || 0) + DeltaSize
   if (event.Type != undefined && event.Type == 'Timer') {
@@ -289,7 +293,7 @@ exports.main = async (event, context) => {
     }
     return await db.collection('topic').add({data: event.data})
   } else if (jobname == 'github') {
-    return {'data': await getLastestGitHubBlog(num)}
+    return {'data': await getLastestGitHubBlog(num, order)}
   } else if (jobname == 'juejin') {
     return {'data': await getLastestJueJin(num)}
   } else if (jobname == 'topic') {

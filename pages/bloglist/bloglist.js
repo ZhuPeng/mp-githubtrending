@@ -2,6 +2,7 @@ const cloudclient = require('../../utils/cloudclient.js')
 const util = require('../../utils/util.js')
 Page({
   data: {
+    currentTab: 'hot',
     blogs: {data: []},
     jobname: '',
     spinning: true,
@@ -20,9 +21,15 @@ Page({
     // wx.setNavigationBarTitle({ title: 'Blog & News' })
     var jobname = options.jobname || 'github'
     util.SetDataWithSpin(this, {jobname: jobname, options})
-    cloudclient.callFunctionWithBlog({ jobname: jobname, currentSize: this.data.blogs.data.length, 'options': options }, function (c) {
+    cloudclient.callFunctionWithBlog({ jobname: jobname, currentSize: this.data.blogs.data.length, 'options': options, order: this.data.currentTab }, function (c) {
       util.SetDataWithoutSpin(self, { blogs: c })
     })
+  },
+
+  onTabChange: function (e) {
+    console.log('onChange', e)
+    this.setData({currentTab: e.detail.key})
+    this.onLoad(this.data.options)
   },
 
   onContentChange: function (e) {
