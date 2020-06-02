@@ -278,6 +278,10 @@ exports.main = async (event, context) => {
   }
   if (type == 'lastest') {
     return await getLastest()
+  } else if (type == 'addpv') {
+    return await db.collection('blog').where({_id: id}).update({
+      data: {pvcnt: _.inc(1)},
+    })
   } else if (type == 'addTopic') {
     event.data['uid'] = wxContext.OPENID
     if (await existsTopic({source: 'wechat', content: event.data['content'], uid: event.data['uid']})) {

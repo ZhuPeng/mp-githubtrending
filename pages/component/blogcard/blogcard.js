@@ -7,6 +7,10 @@ Component({
       type: String,
       value: ''
     },
+    uniqid: {
+      type: String,
+      value: ''
+    },
     title: {
       type: String,
       value: ''
@@ -86,6 +90,9 @@ Component({
     },
     onClick(e) {
       console.log('card onClick: ', e)
+      cloudclient.callFunctionWithBlog({type: 'addpv', id: this.data.uniqid}, function (c){
+        console.log('addpv res:', c)
+      })
       var url = this.data.parsedUrl || this.data.url;
       if (url && util.isGitHubPage(url)) {
         util.GitHubNavi(url, undefined, true)

@@ -3,7 +3,7 @@
 <view>
 <block wx:for="{{blogs.data}}" wx:key="idx" wx:for-index="idx">
   <view class="card-gap"></view>
-  <blogcard blogid="{{item.id}}" url="{{item.url}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}" imgstyle="border-radius: 5px;" type="{{item.type}}" username="{{item.username}}" userAvatar="{{item.userAvatar}}" content="{{item.content}}" updateAt="{{item['_crawl_time']}}"/>
+  <blogcard blogid="{{item.id}}" uniqid="{{item._id}}" url="{{item.url}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}" imgstyle="border-radius: 5px;" type="{{item.type}}" username="{{item.username}}" userAvatar="{{item.userAvatar}}" content="{{item.content}}" updateAt="{{item['_crawl_time']}}"/>
   <view wx:if="{{(idx+1)%4 == 0}}" class="margin-top">
     <ad unit-id="adunit-0844ad65d0e069de"></ad>
   </view>
