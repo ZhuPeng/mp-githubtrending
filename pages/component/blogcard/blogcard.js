@@ -50,6 +50,10 @@ Component({
         this.handleUrl();
       }
     },
+    pvcnt: {
+      type: String,
+      value: '0'
+    },
     updateAt: {
       type: String,
       value: '',

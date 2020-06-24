@@ -19,3 +19,87 @@
   width: 100%;
   white-space: nowrap;
 }
+
+.nav {
+  position: relative;
+  width: 100%;
+  height: 125px;
+  display: flex;
+  background-color: rgb(253,253,253);
+}
+.cards {
+  position: relative;
+  width: 100%;
+  height: 130px;
+}
+.card {
+  height: 125px;
+  padding-top: 10rpx;
+  margin-left: 25rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.card-url {
+  width: 88px;
+  display: flex;
+}
+.card-url image {
+  position: relative;
+  width: 88px;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-text {
+  width: 260px;
+  height: 125x;
+  left: 95px;
+}
+.card-title {
+  font-weight: 700;
+  font-size: 28rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 20rpx;
+  -webkit-box-orient:vertical;
+}
+.card-desc {
+  height: 60px;
+  line-height: 20px;
+  color: #646566;
+  font-size: 24rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 15rpx;
+  margin-right: 20rpx;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+}
+.card-bottom {
+  margin-top: 10rpx;
+}
+.card-bottom view {
+  font-size: 26rpx;
+  color: rgb(149,149,149);
+  margin-right: 30rpx;
+  display: flex;
+}
+
+.card-bottom image {
+  width: 35rpx;
+  height: 35rpx;
+}
+.card-bottom text {
+  line-height: 35rpx;
+  margin-left: 10rpx;
+}
+.space {
+  width: 100%;
+  height: 10rpx;
+  background-color: white;
+}

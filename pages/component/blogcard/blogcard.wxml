@@ -1,6 +1,37 @@
-<view wx:if="{{type != 'card'}}" style= "position:relative;" bindtap="onClick">
+<!-- <view wx:if="{{type != 'card'}}" style= "position:relative;" bindtap="onClick">
   <view class="title">{{title}}</view>
   <image src="{{image_url}}" class="slide-image" style="{{imgstyle}}" />
+</view>  -->
+
+<view wx:if="{{type != 'card'}}">
+	<navigator class="nav" bindtap="onClick">
+		<!-- 左侧图片 -->
+		<view class="card card-url">
+			<image src="{{image_url}}" mode="widthFix"></image>
+		</view>
+		<!-- 右侧文本区域 -->
+		<view class="card card-text">
+			<view class="card-title">{{title}}</view>
+			<view class="card-desc">{{content || "推荐语准备中，敬请期待。"}}</view>
+			<!-- 下方浏览等数据 -->
+			<view class="card-bottom">
+				<view>
+					<image src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/compress_read.png"></image>
+					<text class="read_text">{{pvcnt}}</text>
+				</view>
+				<!-- <view>
+					<image src="/images/pinglun.png"></image>
+					<text>50</text>
+				</view>
+				<view>
+					<image src="/images/like.png"></image>
+					<text>670</text>
+				</view>  -->
+			</view>
+		</view>
+	</navigator>
+	<!-- 卡片与卡片的空白间隔 -->
+	<view class="space"></view>
 </view>
 
 <view wx:if="{{type == 'card'}}" bindtap="onClick">
