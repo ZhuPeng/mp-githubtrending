@@ -45,7 +45,7 @@ function callFunctionWithName(apiname, data, completeFunc, retry) {
     data: data,
     complete: res => {
       if ("errMsg" in res && res['errMsg'].indexOf('cloud.callFunction:ok') < 0) {
-        console.log('RETRY cloud call:', res)
+        console.log('RETRY cloud call:', apiname, res)
         callFunctionWithName(apiname, data, completeFunc, retry-1)
         return
       }

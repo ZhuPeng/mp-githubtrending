@@ -2,7 +2,7 @@ const util = require('./util.js')
 module.exports = {
   RateLimit,
 }
-const MaxHourRateLimit = 300
+const MaxHourRateLimit = 400
 
 function getDate() {
   var d = new Date()
