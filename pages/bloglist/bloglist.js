@@ -28,7 +28,7 @@ Page({
 
   onTabChange: function (e) {
     console.log('onChange', e)
-    this.setData({currentTab: e.detail.key})
+    this.setData({currentTab: e.detail.key, blogs: {data: []}})
     this.onLoad(this.data.options)
   },
 
