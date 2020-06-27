@@ -3,6 +3,7 @@ const util = require('../../utils/util.js')
 Page({
   data: {
     currentTab: 'hot',
+    tags: [],
     blogs: {data: []},
     jobname: '',
     spinning: true,
@@ -12,7 +13,12 @@ Page({
   },
 
   onLoad: function (options) {
-    var self = this
+    var self = this;
+    if(this.data.tags.length == 0){
+      cloudclient.callFunctionWithBlog({type: 'tags'}, function (c) {
+        self.setData({ tags: c })
+      })
+    }
     wx.getSetting({
       success(res) {
         self.setData({ auth: res.authSetting['scope.userInfo']})
