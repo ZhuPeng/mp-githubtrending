@@ -85,12 +85,14 @@ Component({
           parsedContent = parsedContent.slice(0, maxLen) + '\n\n**点击查看更多**\n\n'
       }
       var self = this;
-      cloudclient.isMsgNotSec({content: parsedContent}, function(r) {
-          if (r == true) {
-              parsedContent = "**内容不符合微信安全规范，暂不显示**"
-          }
-          self.setData({parsedUrl: p, parsedContent})
-      })
+      self.setData({parsedUrl: p, parsedContent})
+      
+      // cloudclient.isMsgNotSec({content: parsedContent}, function(r) {
+      //     if (r == true) {
+      //         parsedContent = "**内容不符合微信安全规范，暂不显示**"
+      //     }
+      //     self.setData({parsedUrl: p, parsedContent})
+      // })
     },
     onClick(e) {
       console.log('card onClick: ', e)
