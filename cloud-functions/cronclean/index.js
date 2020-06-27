@@ -8,7 +8,7 @@ const _ = db.command
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   var d = new Date()
-  d.setDate(d.getDate() - 7);
+  d.setDate(d.getDate() - 30);
   db.collection('history').where({
     requesttime: _.lt(d.toISOString()),
   }).remove()
