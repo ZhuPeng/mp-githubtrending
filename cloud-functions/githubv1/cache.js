@@ -10,15 +10,19 @@ function SetHook(octokit, db) {
   })
 
   octokit.hook.error('request', async (error, options) => {
+    console.log('request got error: ', error)
+    var r = await findInCache(db, getKey(options), error.headers.etag)
     if (error.status === 304) {
       console.log('304 error')
-      return await findInCache(db, getKey(options), error.headers.etag)
+      return r
+    }
+    if (Object.keys(r).length != 0) {
+      return r
     }
     throw error
   })
   octokit.hook.wrap('request', async (request, options) => {
     // add logic before, after, catch errors or replace the request altogether
-    // console.log('wrap options: ', options)
     var m = await getMeta(db, getKey(options))
     if (m.lastmodified) {
       options.headers['If-Modified-Since'] = m.lastmodified
