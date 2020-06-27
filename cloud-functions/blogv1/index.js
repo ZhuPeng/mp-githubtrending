@@ -240,11 +240,15 @@ async function getLastestV2ex(size, node) {
 
 async function getLastestGitHubBlog(size, order) {
   var now = new Date()
-  var orderCol = '_crawl_time'
-  if (order == 'hot') {
-    orderCol = 'pvcnt'
+  var orderCol = 'pvcnt'
+  if (order == 'newest') {
+    orderCol = '_crawl_time'
   }
-  var list = await db.collection('blog').where({ status: 'pub', '_crawl_time': _.lt(now)}).orderBy(orderCol, 'desc').limit(size).get()
+  var condition = {status: 'pub', '_crawl_time': _.lt(now)}
+  if (order.indexOf('tags') != -1) {
+    condition['tags'] = order.slice(order.indexOf('tags')+4)
+  }
+  var list = await db.collection('blog').where(condition).orderBy(orderCol, 'desc').limit(size).get()
   return list.data
 }
 
