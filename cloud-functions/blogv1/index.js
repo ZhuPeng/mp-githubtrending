@@ -291,7 +291,7 @@ exports.main = async (event, context) => {
       data: {pvcnt: _.inc(1)},
     })
   } else if (type == 'tags') {
-    return {'data': ['Go', 'Java', '架构设计']}
+    return {'data': ['Go', 'Java', '架构设计', '算法', '机器学习']}
   } else if (type == 'addTopic') {
     event.data['uid'] = wxContext.OPENID
     if (await existsTopic({source: 'wechat', content: event.data['content'], uid: event.data['uid']})) {
