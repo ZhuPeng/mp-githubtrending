@@ -17,14 +17,14 @@ exports.main = async (event, context) => {
     time: _.lt(d.toISOString()),
   }).remove()
 
-  var d7 = new Date()
-  d7.setDate(d7.getDate() - 1);
+  var d = new Date()
+  d.setDate(d.getDate() - 0.5);
   await db.collection('dbcache').where({
-    time: _.lt(d7.toISOString()),
+    time: _.lt(d.toISOString()),
   }).remove()
 
   await db.collection('formid').where({
-    time: _.lt(d7),
+    time: _.lt(d),
   }).remove()
   return {'status': 'done'}
 }
