@@ -91,7 +91,9 @@ Component({
       var owner = this.data.owner
       var repo = this.data.repo
       if (clickurl.startsWith('http') && !util.isGitHubPage(clickurl)) {
-        if (multimp.Navi(clickurl) == false) { 
+        if (util.isImageFile(clickurl)) {
+          wx.navigateTo({url: '/pages/gitfile/gitfile?file=' + clickurl})
+        } else if (multimp.Navi(clickurl) == false) { 
           util.copyOnlyText(clickurl)
         } 
         return

@@ -71,9 +71,9 @@
 				},
 				{
 					"id": 1,
-					"name": "Readme",
+					"name": "显示其他网站的图片",
 					"pathName": "pages/readme/readme",
-					"query": "_id=&repo=farmer-hutao/k8s-source-code-analysis",
+					"query": "repo=xiaoxiunique / tool-tips",
 					"scene": null
 				},
 				{

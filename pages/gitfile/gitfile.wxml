@@ -1,7 +1,7 @@
 <view class="page">
 <view class="page__hd">
   <wux-toast id="wux-toast" />
-  <githead owner="{{owner}}" repo="{{repo}}" />
+  <githead wx:if="{{repo}}" owner="{{owner}}" repo="{{repo}}" />
 </view>
 <view class="page__bd">
   <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
