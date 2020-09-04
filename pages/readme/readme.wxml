@@ -23,12 +23,12 @@
   </wux-tabs>
 
       <view style="{{tabKey=='Readme'?'':'display:none'}}">
+        <official-account></official-account>
         <md md="{{readme}}" owner="{{query.owner}}" repo="{{query.repo}}"></md>
         <view wx:if="{{readme}}" class="margin-top margin-left-right">
           <ad unit-id="adunit-ba7d4a61f82bcf58"></ad> 
         </view>
-
-        <official-account></official-account>
+        
         <view class="flex-wrp margin-left-right">
           <formbutton type="primary" wx:if="{{readme}}" bind:click="onCodeClick" text="Code"/>
           <view class='padding-right'/>

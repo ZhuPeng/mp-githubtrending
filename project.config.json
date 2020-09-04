@@ -97,11 +97,11 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 5,
 					"name": "defaultNotMaster",
 					"pathName": "pages/readme/readme",
 					"query": "repo=RGLab / flowWorkspace",
-					"scene": null
+					"scene": 1047
 				},
 				{
 					"id": -1,
@@ -214,6 +214,13 @@
 					"pathName": "pages/gitfile/gitfile",
 					"query": "file=ch6-cloud/ch6-01-dist-id.md&owner=chai2010&repo=advanced-go-programming-book",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/bloglist/bloglist",
+					"pathName": "pages/bloglist/bloglist",
+					"query": "repo=RGLab / flowWorkspace",
+					"scene": 1047
 				}
 			]
 		}
