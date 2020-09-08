@@ -80,7 +80,7 @@
 					"id": 2,
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
-					"query": "file=raw/master/images/response.png&owner=xrr2016&repo=hexo-theme-cold-stone&withsubscribe=true",
+					"query": "file=blob/master/README.md&owner=kon9chunkit&repo=GitHub-Chinese-Top-Charts&withsubscribe=true",
 					"scene": null
 				},
 				{

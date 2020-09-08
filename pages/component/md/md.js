@@ -29,6 +29,7 @@ Component({
   data: {
     currentDir: "",
     realMd: '',
+    realMd2: '',
   },
 
   methods: {
@@ -71,7 +72,13 @@ Component({
           tmp = tmp.replace(match[1], r)
         }
       }
-      this.setData({realMd: tmp})
+      var mdMaxLen = 180000
+      if (tmp.length > mdMaxLen) {
+          console.log("md length: ", tmp.length)
+          this.setData({realMd: tmp.slice(0,mdMaxLen), realMd2: tmp.slice(mdMaxLen,tmp.length)})
+      } else {
+          this.setData({realMd: tmp})
+      }
     },
     handleCurrentDir() {
       var arr = this.data.file.split('/')
