@@ -5,9 +5,9 @@ module.exports = {
 const dbname = 'dbcache'
 
 async function Get(db, key) {
-  console.log('findDBCache: ', key)
   var res = await db.collection(dbname).where({ key }).orderBy('time', 'desc').limit(1).get()
   if (res.data.length == 0) {
+    console.log('not findDBCache: ', key)
     return undefined
   }
   return res.data[0].value
