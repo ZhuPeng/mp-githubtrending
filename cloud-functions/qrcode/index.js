@@ -15,7 +15,7 @@ exports.main = async (event, context) => {
         width: width || 430
       })
     } else {
-      result = await cloud.openapi.wxacode.createQRCode({
+      result = await cloud.openapi.wxacode.get({
         path: page + '?' + scene,
         width: width || 430
       })
