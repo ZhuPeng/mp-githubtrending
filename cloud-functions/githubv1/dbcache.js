@@ -10,6 +10,7 @@ async function Get(db, key) {
     console.log('not findDBCache: ', key)
     return undefined
   }
+  console.log('findDBCache: ', key)
   return res.data[0].value
 }
 
