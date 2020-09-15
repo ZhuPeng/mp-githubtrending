@@ -40,3 +40,6 @@
   <fabbutton/>
 </view>
 </view>
+
+<wux-toast id="wux-toast" />
+<share share_link="{{'https://github.com/' + owner}}"/>
