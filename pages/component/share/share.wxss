@@ -1,0 +1,29 @@
+@import '../../../app.wxss';
+.block {
+  height:100rpx;
+  width:100%;
+}
+
+.share-btn {
+  background: none;
+  border: none;
+  padding-left: 0px;
+  padding-right: 0px;
+  line-height: 0;
+}
+.share-btn::after{
+  background: none;
+  border: none;
+}
+
+.nav-share {
+  height: 100rpx;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: fixed;
+  left: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+}

@@ -1,15 +1,15 @@
 <view class="page">
   <wux-toast id="wux-toast" />
   <view class="page__hd padding-bottom">
-  <githead owner="{{query.owner}}" repo="{{query.repo}}" />
-  <view class="margin-left-right" bindtap="copy" data-text="{{meta.url}}">
+    <githead owner="{{query.owner}}" repo="{{query.repo}}" />
+    <view class="margin-left-right" bindtap="copy" data-text="{{meta.url}}">
     <view class="weui-media-box__info">
       <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-create" />  {{meta.lang}}</view>
       <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-star" />  {{meta.star}}</view>
       <view class="weui-media-box__info__meta"><wux-icon size="13" type="md-git-network" /> {{meta.fork}}</view>
     </view>
     <view class="weui-media-box__desc">{{meta.desc}}</view>
-  </view>
+    </view>
   </view>
 
   <view class="page__bd">
@@ -32,10 +32,7 @@
         <view class="flex-wrp margin-left-right">
           <formbutton type="primary" wx:if="{{readme}}" bind:click="onCodeClick" text="Code"/>
           <view class='padding-right'/>
-          <formbutton wx:if="{{readme && meta.has_wiki}}" bind:click="onWikiClick" text="Wiki"/>
-          <view class='padding-right'/>
-          <formbutton type="primary" wx:if="{{readme}}" bind:click="onCreateQrCode" text="Share"/>
-          <view class='padding-right'/>
+          <!-- <formbutton wx:if="{{readme && meta.has_wiki}}" bind:click="onWikiClick" text="Wiki"/> -->
           <!--  <formbutton wx:if="{{readme}}" bind:click="onTopicClick" text="Topic"/>  -->
         </view>
       </view>
@@ -72,3 +69,5 @@
   <fabbutton/>
   </view>
 </view>
+
+<share share_link="{{'https://github.com/' + query.owner + '/' + query.repo}}"/>

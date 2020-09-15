@@ -28,3 +28,4 @@
 -->
 
 <fabbutton/>
+<share share_link="{{'https://github.com/' + owner + '/' + repo}}"/>

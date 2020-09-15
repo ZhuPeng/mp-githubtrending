@@ -170,5 +170,5 @@ Page({
 
   onCreateQrCode(e) {
     qrcode.HandleQrCode()
-  },
+  }
 })

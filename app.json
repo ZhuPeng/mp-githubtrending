@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/bloglist/bloglist",
-    "pages/github/index",
     "pages/account/account",
     "pages/readme/readme",
     "pages/gitfile/gitfile",
@@ -53,6 +52,7 @@
     "issuelist": "pages/component/issuelist/issuelist",
     "avatar": "pages/component/avatar/avatar",
     "blogcard": "pages/component/blogcard/blogcard",
+    "share": "pages/component/share/share",
     "githead": "pages/component/githead/githead"
   },
   "plugins": {},

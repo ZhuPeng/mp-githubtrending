@@ -18,3 +18,5 @@
 </view>
 <fabbutton/>
 </view>
+
+<share share_link="{{'https://github.com/' + owner + '/' + repo}}"/>

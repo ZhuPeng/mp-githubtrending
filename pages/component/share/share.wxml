@@ -1,0 +1,7 @@
+<view class="block"></view>
+<view class="nav-share">
+   <view class="margin-left-right"><text>分享：</text></view>
+   <view bindtap="chat" class="margin-left-right"><button class="share-btn" open-type="share"><wux-icon size="{{size}}" type="md-chatboxes" /></button></view>
+   <view bindtap="qrcode" class="margin-left-right"><wux-icon size="{{size}}" type="md-aperture" /></view>
+   <view wx:if="{{share_link}}" bindtap="copy" data-text="{{share_link}}"  class="margin-left-right"><wux-icon size="{{size}}" type="md-share" /></view>
+</view>

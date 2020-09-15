@@ -12,9 +12,8 @@
   <md wx:if="{{contrib}}" md="{{contrib}}"/>
   <md md="{{about}}"/>
 
-  <view class="margin-left-right">
-    <formbutton type="primary" wx:if="{{info}}" bind:click="onCreateQrCode" text="Share"/>
-  </view>
   <fabbutton/>
 </view>
 </view>
+
+<share share_link="{{'https://github.com/' + owner}}"/>
