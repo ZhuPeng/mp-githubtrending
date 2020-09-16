@@ -20,7 +20,9 @@ Component({
       qrcode.HandleQrCode()
     },
     chat: function(e) {
-
+    },
+    minip: function(e) {
+      util.GitHubNavi("https://github.com/ZhuPeng/mp-transform-public")
     },
   }
 })
