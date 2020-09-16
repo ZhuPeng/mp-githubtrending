@@ -80,7 +80,7 @@
 					"id": 2,
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
-					"query": "file=blob/master/README.md&owner=kon9chunkit&repo=GitHub-Chinese-Top-Charts&withsubscribe=true",
+					"query": "file=./collections/easy.md&owner=azl397985856&repo=leetcode",
 					"scene": null
 				},
 				{

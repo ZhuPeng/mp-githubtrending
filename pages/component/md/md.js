@@ -106,12 +106,17 @@ Component({
         return
       }
 
-      if (this.data.currentDir != '' && !util.isGitHubPage(clickurl)) {
+      var cdir = this.data.currentDir
+      if (cdir != '' && !util.isGitHubPage(clickurl)) {
         if (clickurl.startsWith('./') || clickurl.startsWith('/')) {
           clickurl = clickurl.slice(clickurl.indexOf('/') + 1, clickurl.length)
         }
-        if (!clickurl.startsWith(this.data.currentDir)) {
-          clickurl = this.data.currentDir + '/' + clickurl
+        if (clickurl.startsWith('../')) {
+          if (cdir.length > 0 && cdir.indexOf('/') == -1) {
+            clickurl = clickurl.slice(clickurl.indexOf('/') + 1, clickurl.length)
+          }
+        } else if (!clickurl.startsWith(cdir)) {
+          clickurl = cdir + '/' + clickurl
         }
         console.log('update file path to:', clickurl)
       }
