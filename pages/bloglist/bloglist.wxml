@@ -1,12 +1,12 @@
 <view class="gray">
 <wux-toast id="wux-toast" />
-<wux-tabs controlled current="{{ currentTab }}" bindchange="onTabChange">
+<wux-tabs controlled scroll="true" current="{{ currentTab }}" bindchange="onTabChange">
             <wux-tab key="hot">
-                <image src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/hot.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+                <image class="tab-icon" src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/hot.png" />
                 <text>热门</text>
             </wux-tab>
             <wux-tab key="newest">
-                <image src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/newest.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+                <image class="tab-icon" src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/newest.png" />
                 <text>最新</text>
             </wux-tab>
             <block wx:for="{{tags.data}}">

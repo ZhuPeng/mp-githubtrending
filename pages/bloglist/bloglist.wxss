@@ -13,3 +13,9 @@
 .margin-top {
   margin-top: 4px;
 }
+
+.tab-icon {
+  width: 11px; 
+  height: 11px; 
+  margin-right: 3px;
+}
