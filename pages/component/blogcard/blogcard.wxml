@@ -14,10 +14,14 @@
 			<view class="card-title">{{title}}</view>
 			<view class="card-desc">{{content || "推荐语准备中，敬请期待。"}}</view>
 			<!-- 下方浏览等数据 -->
-			<view class="card-bottom">
+			<view class="card-bottom flex-wrp">
 				<view>
 					<image src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/compress_read.png"></image>
 					<text class="read_text">{{pvcnt}}</text>
+				</view>
+				<view wx:if="{{license}}">
+					<image src="https://7465-test-3c9b5e-1-1301419220.tcb.qcloud.la/mac_github_images/compress_license.png"></image>
+					<text class="read_text">{{license}}</text>
 				</view>
 				<!-- <view>
 					<image src="/images/pinglun.png"></image>
