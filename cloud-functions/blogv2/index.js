@@ -141,6 +141,12 @@ async function existsTopic(data) {
   return false
 }
 
+async function getRepoMeta(owner, repo) {
+  var r = await cloud.callFunction({name: 'githubv1', data: {type: 'get', path: '/repos/' + owner + '/' + repo}})
+  console.log('meta: ', r.result.content)
+  return r.result.content
+}
+
 async function getIssues(owner, repo) {
   var r = await cloud.callFunction({
     name: 'githubv1',
@@ -238,6 +244,23 @@ async function getLastestV2ex(size, node) {
   return res
 }
 
+async function checkGitHubLicense(list) {
+  for (var i = 0; i < list.length; i++) {
+      var d = list[i]
+      if (d['license'] != undefined && d['license'].length > 0) {continue}
+      if (!utils.isGitHubPage(d['url'])) {continue}
+      var [owner, repo, file] = utils.parseGitHub(d['url'])
+      if (owner.length == 0 || repo.length == 0) {continue}
+      var m = await getRepoMeta(owner, repo)
+      if (m != undefined && m['license'] != undefined && m['license']['spdx_id'] != undefined) {
+          console.log('license: ', owner, repo, m['license'])
+          await db.collection('blog').where({_id: d['_id']}).update({
+              data: {license: m['license']['spdx_id']},
+          })
+      }
+  }
+}
+
 async function getLastestGitHubBlog(size, order) {
   var now = new Date()
   var orderCol = 'pvcnt'
@@ -249,6 +272,8 @@ async function getLastestGitHubBlog(size, order) {
     condition['tags'] = order.slice(order.indexOf('tags')+4)
   }
   var list = await db.collection('blog').where(condition).orderBy(orderCol, 'desc').limit(size).get()
+  // async
+  checkGitHubLicense(list.data)
   return list.data
 }
 
