@@ -252,11 +252,16 @@ async function checkGitHubLicense(list) {
       var [owner, repo, file] = utils.parseGitHub(d['url'])
       if (owner.length == 0 || repo.length == 0) {continue}
       var m = await getRepoMeta(owner, repo)
-      if (m != undefined && m['license'] != undefined && m['license']['spdx_id'] != undefined) {
-          console.log('license: ', owner, repo, m['license'])
-          await db.collection('blog').where({_id: d['_id']}).update({
-              data: {license: m['license']['spdx_id']},
-          })
+      if (m == undefined) {continue}
+      var l = ""
+      if (m['license'] == null) {
+        l = "No License"
+      } else if (m['license'] != undefined && m['license']['spdx_id'] != undefined) {
+        l = m['license']['spdx_id']
+      }
+      console.log('license: ', owner, repo, m['license'])
+      if (l != "") {
+        await db.collection('blog').where({_id: d['_id']}).update({data: {license: l}})
       }
   }
 }
