@@ -55,7 +55,7 @@ function callFunctionWithName(apiname, data, completeFunc, retry) {
 }
 
 function callFunctionWithBlog(data, completeFunc) {
-  callFunctionWithName('blogv2', data, completeFunc)
+  callFunctionWithName('blogv3', data, completeFunc)
 }
 
 function callFunctionWithQrCode(data, completeFunc) {

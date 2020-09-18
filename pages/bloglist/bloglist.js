@@ -28,7 +28,11 @@ Page({
     var jobname = options.jobname || 'github'
     util.SetDataWithSpin(this, {jobname: jobname, options})
     cloudclient.callFunctionWithBlog({ jobname: jobname, currentSize: this.data.blogs.data.length, 'options': options, order: this.data.currentTab }, function (c) {
-      util.SetDataWithoutSpin(self, { blogs: c })
+      var tmp = self.data.blogs['data']
+      c['data'].map(function(d) {
+        tmp.push(d)
+      })
+      util.SetDataWithoutSpin(self, { blogs: {'data': tmp}})
     })
   },
 
@@ -100,7 +104,6 @@ Page({
 
   onPullDownRefresh: function () {
       console.log("onPulldowRefresh")
-      util.SetDataWithSpin(this, {blogs: {data: []}})
       setTimeout(() => {
           this.onLoad(this.data.options)
           wx.stopPullDownRefresh()

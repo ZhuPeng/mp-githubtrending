@@ -276,7 +276,7 @@ async function getLastestGitHubBlog(size, order) {
   if (order.indexOf('tags') != -1) {
     condition['tags'] = order.slice(order.indexOf('tags')+4)
   }
-  var list = await db.collection('blog').where(condition).orderBy(orderCol, 'desc').limit(size).get()
+  var list = await db.collection('blog').where(condition).orderBy(orderCol, 'desc').limit(DeltaSize).skip(size-DeltaSize).get()
   // async
   checkGitHubLicense(list.data)
   return list.data
