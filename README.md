@@ -4,6 +4,8 @@
 
 小程序 `GitHub Trending Hub` 是一个以 Feed 流形式查看 GitHub Trending 仓库集合的工具，通过它可以及时查看最近更新的热门仓库。通过微信 WeChat 扫码体验。
 
+> 注意：原来的 `GitHub Trending Hub` 由于不可抗力被微信永久封禁了。基于当前代码改造了以下 `开源 Books` 小程序，可以方便的查看开源的书籍和文档，欢迎大家体验。
+
 ![qrcode](https://7465-test-3c9b5e-1258459492.tcb.qcloud.la/qrcode.jpg)
 
 扫码关注如下微信公众号，定期获取 GitHub Trending 更新推送
