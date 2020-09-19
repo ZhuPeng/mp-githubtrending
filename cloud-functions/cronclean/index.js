@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
   }).remove()
 
   var d = new Date()
-  d.setDate(d.getDate() - 10.5);
+  d.setDate(d.getDate() - 30);
   await db.collection('dbcache').where({
     time: _.lt(d.toISOString()),
   }).remove()
