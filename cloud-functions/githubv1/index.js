@@ -81,7 +81,8 @@ exports.main = async (event, context) => {
     token = await getToken()
   }
   octokit = new Octokit({
-    auth: 'token ' + token
+    auth: 'token ' + token,
+    request: {retries: 0}
   })
   gcache.SetHook(octokit, db)
 
