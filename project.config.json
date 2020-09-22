@@ -80,7 +80,7 @@
 					"id": 2,
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
-					"query": "file=./collections/easy.md&owner=azl397985856&repo=leetcode",
+					"query": "file=blob/master/README.md&owner=senghoo&repo=golang-design-pattern&withsubscribe=true",
 					"scene": null
 				},
 				{
