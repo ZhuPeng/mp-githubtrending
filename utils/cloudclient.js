@@ -46,6 +46,11 @@ function callFunctionWithName(apiname, data, completeFunc, retry) {
     complete: res => {
       if ("errMsg" in res && res['errMsg'].indexOf('cloud.callFunction:ok') < 0) {
         console.log('RETRY cloud call:', apiname, res)
+        if (res['errMsg'].indexOf('HttpError: Not Found') > 0) {
+          util.Alert('URL Not Found!')
+          completeFunc(res.result)
+          return
+        }
         callFunctionWithName(apiname, data, completeFunc, retry-1)
         return
       }
