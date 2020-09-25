@@ -14,4 +14,4 @@
 </view>
 </view>
 
-<share share_link="{{'https://github.com/' + owner + '/' + repo}}"/>
+<share share_link="{{url}}"/>

@@ -3,6 +3,7 @@ const util = require('../../utils/util.js')
 Page({
   data: {
     file: '',
+    url: '',
     repo: '',
     owner: '',
     content: '',
@@ -23,7 +24,7 @@ Page({
         file = file.slice((arr[0] + '/' + arr[1] + '/').length)
       }
     }
-    this.setData({file: file, spinning: true, owner: options.owner, repo: options.repo, withSubscribe: options.withsubscribe || false})
+    this.setData({url: 'https://github.com/' + options.owner + '/' + options.repo, file: file, spinning: true, owner: options.owner, repo: options.repo, withSubscribe: options.withsubscribe || false})
 
     if (util.isImageFile(file)) {
       console.log('image:')
@@ -55,7 +56,7 @@ Page({
         content = self.convert2code(code, content)
       }
       
-      self.setData({ content: content, spinning: false})
+      self.setData({ content: content, spinning: false, url: d.html_url || self.data.url})
     })
   },
 
