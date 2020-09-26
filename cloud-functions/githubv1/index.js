@@ -98,7 +98,7 @@ const grayCache = { 'readme': true, 'get': true, 'file': true, 'pr': true, 'repo
 async function executeWithCache(owner, repo, type, path, openid, ref, data) {
   var key = owner + repo + type + path + ref + data.currentSize
   var res = await dbcache.Get(db, key);
-  if (res == undefined) {
+  if (('disableCache' in data && data.disableCache == true) || res == undefined) {
     res = await execute(owner, repo, type, path, openid, ref, data)
     if (type in grayCache) {
       await dbcache.Set(db, key, res)

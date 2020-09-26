@@ -2,6 +2,7 @@ const cloudclient = require('../../utils/cloudclient.js')
 const util = require('../../utils/util.js')
 Page({
   data: {
+    options: {},
     file: '',
     url: '',
     repo: '',
@@ -24,7 +25,7 @@ Page({
         file = file.slice((arr[0] + '/' + arr[1] + '/').length)
       }
     }
-    this.setData({url: 'https://github.com/' + options.owner + '/' + options.repo, file: file, spinning: true, owner: options.owner, repo: options.repo, withSubscribe: options.withsubscribe || false})
+    this.setData({url: 'https://github.com/' + options.owner + '/' + options.repo, file: file, spinning: true, owner: options.owner, repo: options.repo, withSubscribe: options.withsubscribe || false, options})
 
     if (util.isImageFile(file)) {
       console.log('image:')
@@ -37,7 +38,7 @@ Page({
     if (file.startsWith('http')) {
       apiurl = file
     }
-    cloudclient.callFunction({ type: 'get', path: apiurl, repo: options.repo, owner: options.owner}, function(d) {
+    cloudclient.callFunction({ type: 'get', path: apiurl, repo: options.repo, owner: options.owner, disableCache: options.disableCache || false}, function(d) {
       if (Array.isArray(d)) {
         wx.redirectTo({
           url: '/pages/gitdir/gitdir?&owner=' + options.owner + '&repo=' + options.repo + '&apiurl='+apiurl,
@@ -80,6 +81,13 @@ Page({
       md += c + '\n'
     })
     return md;
+  },
+
+  onPullDownRefresh: function () {
+    console.log("onPulldowRefresh")
+    var options = this.data.options
+    options['disableCache'] = true
+    this.onLoad(options)
   },
 
   onShareAppMessage: function () {
