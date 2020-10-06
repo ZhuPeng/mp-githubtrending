@@ -316,6 +316,10 @@ exports.main = async (event, context) => {
   }
   if (type == 'lastest') {
     return await getLastest()
+  } else if (type == 'update') {
+    return await db.collection('blog').where({_id: id}).update({
+      data: event.data,
+    })
   } else if (type == 'addpv') {
     return await db.collection('blog').where({_id: id}).update({
       data: {pvcnt: _.inc(1)},
