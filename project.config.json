@@ -80,7 +80,7 @@
 					"id": 2,
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
-					"query": "file=blob/master/README.md&owner=senghoo&repo=golang-design-pattern&withsubscribe=true",
+					"query": "file=算法思维系列/回溯算法详解修订版.md&owner=labuladong&repo=fucking-algorithm",
 					"scene": null
 				},
 				{

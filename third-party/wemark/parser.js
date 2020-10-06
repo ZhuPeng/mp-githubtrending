@@ -220,52 +220,56 @@ function parse(md, options){
 		}else if(blockToken.type === 'fence' || blockToken.type === 'code'){
 			content = blockToken.content;
 			var highlight = false;
-            if (!blockToken.params){blockToken.params = 'python'}
-            if (blockToken.params == 'c' || blockToken.params == 'c++' || blockToken.params == 'c#') {
-                blockToken.params = 'clike'
-            }
+      if (!blockToken.params){blockToken.params = 'python'}
+      if (blockToken.params == 'c' || blockToken.params == 'c++' || blockToken.params == 'c#') {
+        blockToken.params = 'clike'
+      }
 			if(options.highlight && blockToken.params && prism.languages[blockToken.params]){
 				content = prism.tokenize(content, prism.languages[blockToken.params]);
 				highlight = true;
 			}
 
-            const flattenTokens = (tokensArr, result = [], parentType = '') => {
-                if (Array.isArray(tokensArr)) {
-                    tokensArr.forEach(el => {
-                        if (typeof el === 'object') {
-                            // el.type = parentType + ' wemark_inline_code_' + el.type;
-                            if(Array.isArray(el.content)){
-                                flattenTokens(el.content, result, el.type);
-                            }else{
-                                flattenTokens(el, result, el.type);
-                            }
-                        } else {
-                            const obj = {};
-                            obj.type = parentType || 'text';
-                            // obj.type = parentType + ' wemark_inline_code_';
-                            obj.content = el;
-                            result.push(obj);
-                        }
-                    })
-                    return result
-                } else {
-                    result.push(tokensArr)
-                    return result
-                }
+      const flattenTokens = (tokensArr, result = [], parentType = '') => {
+				// console.log('tokensArr: ', tokensArr)
+        if (Array.isArray(tokensArr)) {
+          tokensArr.forEach(el => {
+            if (typeof el === 'object') {
+              // el.type = parentType + ' wemark_inline_code_' + el.type;
+              if(Array.isArray(el.content)){
+                flattenTokens(el.content, result, el.type);
+              }else{
+                flattenTokens(el, result, el.type);
+              }
+            } else {
+              const obj = {};
+              obj.type = parentType || 'text';
+              // obj.type = parentType + ' wemark_inline_code_';
+							obj.content = el;
+							// console.log('obj: ', obj)
+              result.push(obj);
             }
+          })
+          return result
+        } else {
+          result.push(tokensArr)
+          return result
+        }
+      }
 
-            if(highlight){
-                var tokenList = content;
-                content = [];
-                tokenList.forEach((token) => {
-                    // let contentListForToken = [];
-                    if(Array.isArray(token.content)){
-                        content = content.concat(flattenTokens(token.content, [], ''));
-                    }else{
-                        content.push(token);
-                    }
-                });
-            }
+      if(highlight){
+        var tokenList = content;
+				content = [];
+				// console.log('tokenList:', tokenList)
+        tokenList.forEach((token) => {
+          // let contentListForToken = [];
+          if(Array.isArray(token.content)){
+            content = content.concat(flattenTokens(token.content, [], ''));
+          }else{
+            content.push(token);
+          }
+				});
+				// console.log('code content: ', content)
+      }
             // flatten nested tokens in html
             // if (blockToken.params === 'html') {
             // content = flattenTokens(content)
