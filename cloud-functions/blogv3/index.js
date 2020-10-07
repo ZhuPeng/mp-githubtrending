@@ -277,18 +277,12 @@ async function getLastestGitHubBlog(size, order, openid) {
     condition['tags'] = order.slice(order.indexOf('tags')+4)
     if (condition['tags'] == '历史记录') {
       var r = await db.collection('blog_history').where({openid}).orderBy('time', 'desc').limit(DeltaSize).skip(size-DeltaSize).get()
-      var bidlist = []
-      for (var i=0; i<r.data.length; i++) {
-        bidlist.push(r.data[i]['bid'])
-      }
-      console.log('bidlist:', bidlist)
-      var list = await db.collection('blog').where({'_id': _.in(bidlist)}).get()
       var data = []
-      for (var i=0; i<bidlist.length; i++) {
-        for (var j=0; j<list.data.length; j++) {
-          if (list.data[j]['_id'] == bidlist[i]) {
-            data.push(list.data[j])
-          }
+      for (var i=0; i<r.data.length; i++) {
+        // blog id 有 24 和 32 位，导致使用 _.in 查询会出现问题
+        var list = await db.collection('blog').where({'_id': r.data[i]['bid']}).get()
+        if (list.data.length > 0) {
+          data.push(list.data[0])
         }
       }
       return data
