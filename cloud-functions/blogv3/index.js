@@ -283,7 +283,15 @@ async function getLastestGitHubBlog(size, order, openid) {
       }
       console.log('bidlist:', bidlist)
       var list = await db.collection('blog').where({'_id': _.in(bidlist)}).get()
-      return list.data
+      var data = []
+      for (var i=0; i<bidlist.length; i++) {
+        for (var j=0; j<list.data.length; j++) {
+          if (list.data[j]['_id'] == bidlist[i]) {
+            data.push(list.data[j])
+          }
+        }
+      }
+      return data
     }
   }
   var list = await db.collection('blog').where(condition).orderBy(orderCol, 'desc').limit(DeltaSize).skip(size-DeltaSize).get()
