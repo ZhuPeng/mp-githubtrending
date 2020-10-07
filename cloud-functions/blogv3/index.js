@@ -266,7 +266,7 @@ async function checkGitHubLicense(list) {
   }
 }
 
-async function getLastestGitHubBlog(size, order) {
+async function getLastestGitHubBlog(size, order, openid) {
   var now = new Date()
   var orderCol = 'pvcnt'
   if (order == 'newest') {
@@ -275,6 +275,16 @@ async function getLastestGitHubBlog(size, order) {
   var condition = {status: 'pub', '_crawl_time': _.lt(now)}
   if (order.indexOf('tags') != -1) {
     condition['tags'] = order.slice(order.indexOf('tags')+4)
+    if (condition['tags'] == '历史记录') {
+      var r = await db.collection('blog_history').where({openid}).orderBy('time', 'desc').limit(DeltaSize).skip(size-DeltaSize).get()
+      var bidlist = []
+      for (var i=0; i<r.data.length; i++) {
+        bidlist.push(r.data[i]['bid'])
+      }
+      console.log('bidlist:', bidlist)
+      var list = await db.collection('blog').where({'_id': _.in(bidlist)}).get()
+      return list.data
+    }
   }
   var list = await db.collection('blog').where(condition).orderBy(orderCol, 'desc').limit(DeltaSize).skip(size-DeltaSize).get()
   // async
@@ -304,10 +314,20 @@ async function getLastest() {
   return {'data': result}
 }
 
+async function history(openid, bid) {
+  var res = await db.collection('blog_history').where({openid, bid}).get()
+  if (res.data.length > 0) {
+    db.collection('blog_history').where({openid, bid}).update({data: {'time': new Date().toISOString()}})
+    return
+  }
+  db.collection('blog_history').add({data: {openid, bid, time: new Date().toISOString()}})
+}
+
 // 云函数入口函数
 exports.main = async (event, context) => {
   var { type, jobname, id, currentSize, options, order } = event;
   const wxContext = cloud.getWXContext()
+  var openid = wxContext.OPENID
   var num = (currentSize || 0) + DeltaSize
   if (event.Type != undefined && event.Type == 'Timer') {
     console.log('execute timer')
@@ -321,19 +341,27 @@ exports.main = async (event, context) => {
       data: event.data,
     })
   } else if (type == 'addpv') {
+    history(openid, id)
     return await db.collection('blog').where({_id: id}).update({
       data: {pvcnt: _.inc(1)},
     })
   } else if (type == 'tags') {
-    return {'data': ['Go', 'Java', '架构设计', 'Python', '算法', '机器学习', 'JavaScript', '云原生', 'Linux', '英语']}
+    var t = ['Go', 'Java', '架构设计', 'Python', '算法', '机器学习', 'JavaScript', '云原生', 'Linux', '英语']
+    var all = []
+    var res = await db.collection('blog_history').where({openid}).limit(1).get()
+    if (res.data.length > 0) {
+      all.push('历史记录')
+    }
+    all = all.concat(t)
+    return {'data': all}
   } else if (type == 'addTopic') {
-    event.data['uid'] = wxContext.OPENID
+    event.data['uid'] = openid
     if (await existsTopic({source: 'wechat', content: event.data['content'], uid: event.data['uid']})) {
       return {'status': 'error', 'errorMsg': '请不要重复提交'}
     }
     return await db.collection('topic').add({data: event.data})
   } else if (jobname == 'github') {
-    return {'data': await getLastestGitHubBlog(num, order)}
+    return {'data': await getLastestGitHubBlog(num, order, openid)}
   } else if (jobname == 'juejin') {
     return {'data': await getLastestJueJin(num)}
   } else if (jobname == 'topic') {
