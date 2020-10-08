@@ -110,7 +110,7 @@ Component({
       })
       if(this.data.isperm.length > 0) {
         util.copyTextWithCallback(this.data.url, function () {
-          util.Alert('未获得作者授权在小程序中展示，已为您复制链接，可通过浏览器访问。', 5000)
+          util.Alert('未获得作者授权或者其他原因不能在小程序中展示，已为您复制链接，可通过浏览器访问。', 5000)
         })
         return
       }
