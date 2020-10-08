@@ -58,6 +58,10 @@ Component({
       type: String,
       value: ''
     },
+    isperm: {
+      type: String,
+      value: ''
+    },
     updateAt: {
       type: String,
       value: '',
@@ -100,9 +104,16 @@ Component({
     },
     onClick(e) {
       console.log('card onClick: ', e)
+      
       cloudclient.callFunctionWithBlog({type: 'addpv', id: this.data.uniqid}, function (c){
         console.log('addpv res:', c)
       })
+      if(this.data.isperm.length > 0) {
+        util.copyTextWithCallback(this.data.url, function () {
+          util.Alert('未获得作者授权在小程序中展示，已为您复制链接，可通过浏览器访问。', 5000)
+        })
+        return
+      }
       var url = this.data.parsedUrl || this.data.url;
       if (url && util.isGitHubPage(url)) {
         util.GitHubNavi(url, undefined, true)

@@ -267,6 +267,20 @@ async function checkGitHubLicense(list) {
 }
 
 async function getLastestGitHubBlog(size, order, openid) {
+  var data = await _getLastestGitHubBlog(size, order, openid)
+  var filter = []
+  for(var i=0; i<data.length; i++) {
+    var tmp = data[i]
+    // '' 为 true，其他任意字符为 false
+    if (tmp.license == 'DENIED') {
+      tmp['isperm'] = 'f'
+    }
+    filter.push(tmp)
+  }
+  return filter
+}
+
+async function _getLastestGitHubBlog(size, order, openid) {
   var now = new Date()
   var orderCol = 'pvcnt'
   if (order == 'newest') {

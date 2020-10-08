@@ -11,6 +11,7 @@ module.exports = {
   isImageFile: common.isImageFile,
   mdLink: common.mdLink,
   copyOnlyText,
+  copyTextWithCallback,
   copyText,
   isGitHubPage: common.isGitHubPage,
   GitHubNavi,
@@ -170,6 +171,16 @@ function copyOnlyText(text) {
     success() {
       wx.hideToast()
       ShowToastText('复制成功 ' + text)
+    }
+  })
+}
+
+function copyTextWithCallback(text, call) {
+  wx.setClipboardData({
+    data: text,
+    success() {
+      wx.hideToast()
+      call()
     }
   })
 }
