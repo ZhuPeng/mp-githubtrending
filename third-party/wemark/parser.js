@@ -137,10 +137,10 @@ function parse(md, options){
 					env = 'deleted';
 				}else if (token.type === 'softbreak') {
 					// todo:处理li的问题
-					/* ret.push({
+					ret.push({
 						type: 'text',
-						content: ' '
-					}); */
+						content: '\n'
+					}); 
 				}else if (token.type === 'hardbreak') {
 					ret.push({
 						type: 'text',
