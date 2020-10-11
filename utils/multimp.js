@@ -16,6 +16,9 @@ function Navi(url) {
   var trans = directTransform[match]
   var urlPrefix = trans.urlPrefix
   var nickname = trans.nickname
+  if (url[url.length-1] == '/') {
+      url = url.slice(0, url.length-1)
+  }
   var to = trans.genMPUrl(trans, url)
   console.log('Navi url: ', url, ' to ', nickname, to)
   wx.navigateToMiniProgram({

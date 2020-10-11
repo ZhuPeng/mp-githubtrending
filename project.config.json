@@ -80,7 +80,7 @@
 					"id": 2,
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
-					"query": "file=blob/master/zh/README.md&owner=braydie&repo=HowToBeAProgrammer&withsubscribe=true",
+					"query": "file=blob/master/README.md&owner=1c7&repo=Crash-Course-Computer-Science-Chinese&withsubscribe=true",
 					"scene": null
 				},
 				{
