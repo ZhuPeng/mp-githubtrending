@@ -24,7 +24,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -221,6 +221,13 @@
 					"pathName": "pages/bloglist/bloglist",
 					"query": "repo=RGLab / flowWorkspace",
 					"scene": 1047
+				},
+				{
+					"id": -1,
+					"name": "尾注链接渲染",
+					"pathName": "pages/gitfile/gitfile",
+					"query": "file=1-introduction-to-microservices.md&owner=DocsHome&repo=microservices",
+					"scene": null
 				}
 			]
 		}
