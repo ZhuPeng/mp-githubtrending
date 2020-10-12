@@ -80,7 +80,7 @@
 					"id": 2,
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
-					"query": "file=blob/master/README.md&owner=1c7&repo=Crash-Course-Computer-Science-Chinese&withsubscribe=true",
+					"query": "file=blob/master/201708/microservice-for-failure.md&owner=jasonGeng88&repo=blog&withsubscribe=true",
 					"scene": null
 				},
 				{

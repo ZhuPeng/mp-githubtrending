@@ -36,14 +36,17 @@ function _urlModify(baseurl, url, currentDir) {
   if (url == "" || url == undefined || url.startsWith('http')) {
     return url
   }
-	if (url.startsWith('./')) {url = url.replace('./', currentDir + '/')}
-	if (url.startsWith('../')) {
+	if (url.startsWith('./')) {url = currentDir + url.slice(1, url.length)}
+	else if (url.startsWith('../')) {
 		var arr = currentDir.split('/'); 
 		var parentDir = '';
 		if (arr.length > 1) {
 			parentDir = arr.slice(0, arr.length-1).join('/')
 		}
 		 url = url.replace('../', parentDir)
+	} else if (currentDir.length > 0 && !url.startsWith(currentDir)) {
+		console.log('image currentDir not empty:', currentDir, url)
+		url = currentDir + '/' + url
 	}
   return baseurl + url;
 }
