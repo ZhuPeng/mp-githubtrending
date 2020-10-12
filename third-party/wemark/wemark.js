@@ -38,6 +38,15 @@ Component({
 		    richTextNodes: []
     },
     methods: {
+      imageLoadError(e) {
+        console.log('imageLoadError:', e)
+        wx.showToast({
+          title: "部分图片网络原因加载失败",
+          icon: 'none',
+          duration: 2000,
+          success: function () {}
+        })
+      },
       imageLoad(e) {
         var width = e.detail.width,   
           height = e.detail.height
