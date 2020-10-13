@@ -59,6 +59,7 @@ Page({
       }
       
       self.setData({ content: content, spinning: false, url: d.html_url || self.data.url})
+      self.scrollHitoryTop()
     })
   },
 
@@ -82,6 +83,16 @@ Page({
       md += c + '\n'
     })
     return md;
+  },
+
+  getScrollKey: function() {return this.data.owner+this.data.repo+this.data.file; },
+  scrollHitoryTop: function() {
+    wx.getStorage({key: this.getScrollKey(), success: function (res) {
+      wx.pageScrollTo({scrollTop: res.data[0], duration: 300})
+    }})
+  },
+  onPageScroll: function(e){
+    wx.setStorage({key: this.getScrollKey(), data: [e.scrollTop]})
   },
 
   onPullDownRefresh: function () {
