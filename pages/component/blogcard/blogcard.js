@@ -62,6 +62,10 @@ Component({
       type: String,
       value: ''
     },
+    ad_image: {
+      type: String,
+      value: ''
+    },
     updateAt: {
       type: String,
       value: '',
@@ -111,6 +115,15 @@ Component({
       if(this.data.isperm.length > 0) {
         util.copyTextWithCallback(this.data.url, function () {
           util.Alert('未获得作者授权或者其他原因不能在小程序中展示，已为您复制链接，可通过浏览器访问。', 5000)
+        })
+        return
+      }
+      if(this.data.ad_image.length > 0) {
+        wx.previewImage({
+          current: this.data.ad_image, 
+          urls: [this.data.ad_image], 
+          complete: function(e) {console.log('complete:', e)},
+          fail: function(e) {console.log('previewImage fail:', e)},
         })
         return
       }
