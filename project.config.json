@@ -24,11 +24,11 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.3",
+	"libVersion": "2.12.2",
 	"appid": "wxe60c5750c87916e0",
 	"projectname": "openbooks",
 	"cloudfunctionRoot": "cloud-functions/",
@@ -80,7 +80,7 @@
 					"id": 2,
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
-					"query": "file=blob/master/README.md&owner=1c7&repo=Crash-Course-Computer-Science-Chinese&withsubscribe=true",
+					"query": "file=blob/master/201708/microservice-for-failure.md&owner=jasonGeng88&repo=blog&withsubscribe=true",
 					"scene": null
 				},
 				{
@@ -227,6 +227,20 @@
 					"name": "支持 rst 语法",
 					"pathName": "pages/gitfile/gitfile",
 					"query": "file=blob/master/chapter_deep-learning-basics/index.md&owner=d2l-ai&repo=d2l-zh",
+					"scene": null
+                },
+                {
+					"id": -1,
+					"name": "尾注链接渲染",
+					"pathName": "pages/gitfile/gitfile",
+					"query": "file=1-introduction-to-microservices.md&owner=DocsHome&repo=microservices",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "目录自动定位",
+					"pathName": "pages/gitfile/gitfile",
+					"query": "file=blob/master/README-zh_CN.md&owner=ryanhanwu&repo=How-To-Ask-Questions-The-Smart-Way&withsubscribe=true",
 					"scene": null
 				}
 			]

@@ -3,20 +3,20 @@
 <block wx:if="{{type === 'wemark'}}" wx:for="{{parsedData}}" wx:key="blockIndex" wx:for-index="blockIndex" wx:for-item="renderBlock">
 	<view class="wemark_block_{{renderBlock.type}}">
 		<block wx:if="{{renderBlock.isArray}}" wx:for="{{renderBlock.content}}" wx:key="inlineIndex" wx:for-index="inlineIndex" wx:for-item="renderInline">
-			<text id="{{renderInline.id}}" class="wemark_inline_{{renderInline.type}}" wx:if="{{(renderInline.type === 'text' && renderBlock.type != 'code') || renderInline.type === 'code' || renderInline.type === 'strong' || renderInline.type === 'strong_em' || renderInline.type === 'deleted' || renderInline.type === 'em'}}">{{renderInline.content}}</text>
+			<text id="{{renderInline.id}}" selectable="true" class="wemark_inline_{{renderInline.type}}" wx:if="{{(renderInline.type === 'text' && renderBlock.type != 'code') || renderInline.type === 'code' || renderInline.type === 'strong' || renderInline.type === 'strong_em' || renderInline.type === 'deleted' || renderInline.type === 'em'}}">{{renderInline.content}}</text>
 
       <!-- table 表格内 -->
       <view id="{{renderInline.id}}" class="wemark_inline_{{renderInline.type}}" wx:if="{{renderInline.type === 'table_td' ||  renderInline.type === 'table_th'}}">
         <block wx:for="{{renderInline.content}}" wx:key="inIndex" wx:for-index="inIndex" wx:for-item="inner">
-          <text wx:if="{{inner.type!=='link' && inner.type!=='image'}}">{{inner.content}}</text>
+          <text selectable="true" wx:if="{{inner.type!=='link' && inner.type!=='image'}}">{{inner.content}}</text>
           <navigator bindtap="onTap" data-text="{{inner.data.href}}" class="wemark_inline_link" url="{{inner.data.href}}" wx:if="{{inner.type === 'link'}}">{{inner.content}}</navigator>
           <image bindtap="onImgTap" lazy-load="true" bindload="imageLoad" binderror="imageLoadError" data-text="{{inner.src}}" mode="widthFix" class="wemark_inline_image" src="{{inner.src}}" wx:if="{{inner.type === 'image'}}"></image>
         </block>
       </view>
 
 			<!-- 代码高亮 -->
-			<text class="wemark_inline_code_{{renderInline.type}}" wx:if="{{renderInline.type&&renderBlock.highlight}}">{{renderInline.content}}</text>
-			<text class="wemark_inline_code_text" wx:if="{{!renderInline.type}}">{{renderInline}}</text>
+			<text selectable="true" class="wemark_inline_code_{{renderInline.type}}" wx:if="{{renderInline.type&&renderBlock.highlight}}">{{renderInline.content}}</text>
+			<text selectable="true" class="wemark_inline_code_text" wx:if="{{!renderInline.type}}">{{renderInline}}</text>
 		
 		  <navigator bindtap="onTap" data-text="{{renderInline.data.href}}" class="wemark_inline_link" url="{{renderInline.data.href}}" wx:if="{{renderInline.type === 'link'}}">{{renderInline.content}}</navigator>
 			<image bindtap="onImgTap" lazy-load="true" bindload="imageLoad" binderror="imageLoadError" mode="widthFix" data-text="{{renderInline.src}}" class="wemark_inline_image" src="{{renderInline.src}}" wx:if="{{renderInline.type === 'image'}}" style="width:{{ images[renderInline.src].width }}rpx; height:{{ images[renderInline.src].height }}rpx;"></image>
@@ -26,7 +26,7 @@
 			<view wx:if="{{renderBlock.type === 'code'}}">{{renderBlock.content}}</view>
 			<video wx:if="{{renderBlock.type == 'video'}}" class="wemark_block_video" src="{{renderBlock.src}}" poster="{{renderBlock.poster}}" controls></video>
       <image bindtap="onImgTap" lazy-load="true" bindload="imageLoad" binderror="imageLoadError" data-text="{{renderBlock.src}}" mode="widthFix" class="wemark_inline_image" src="{{renderBlock.src}}" wx:if="{{renderBlock.type === 'image'}}" style="width:{{ images[renderBlock.src].width }}rpx; height:{{ images[renderBlock.src].height }}rpx;"></image>
-      <text class="wemark_inline_{{renderInline.type}}" wx:if="{{renderBlock.type === 'text'}}">{{renderBlock.content}}</text>
+      <text class="wemark_inline_{{renderInline.type}}" selectable="true" wx:if="{{renderBlock.type === 'text'}}">{{renderBlock.content}}</text>
 		</block>
 	</view>
 </block>

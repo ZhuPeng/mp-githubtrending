@@ -44,6 +44,19 @@ Component({
         tmp = tmp.replace(reg, d[k])
       }
 
+      var tipsExp = /\[.+\]\[(.+?)\]/g;
+      while (match = tipsExp.exec(tmp)) {
+        console.log('tipsExp match:', match)
+        var tip = match[1]
+        var imageExp = new RegExp("\\[" + match[1].replace('-', '\\-') + "\\]:\\t(.+?)\\n", "g");
+        console.log('imageExp:', imageExp)
+        var m
+        if (m = imageExp.exec(tmp)) {
+          console.log('tips match:', m)
+          tmp = tmp.replace(']['+tip+']', ']('+m[1]+')')
+        }
+      }
+
       var faceRegExp = [/:([a-z_]{1,30}?):/g, /[+*-] (\[[x ]\])/g];
       faceRegExp.map(f => {
         var tmpreg = tmp
