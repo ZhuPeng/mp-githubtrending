@@ -12,6 +12,14 @@
 
 [2. 预备知识](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_prerequisite/index.md)
 
+[2.1. 获取和运行本书的代码](install.md)
+
+[2.2. 数据操作](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_prerequisite/ndarray.md)
+
+[2.3. 自动求梯度](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_prerequisite/autograd.md)
+
+[2.4. 查阅文档](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_prerequisite/lookup-api.md)
+
 [3. 深度学习基础](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_deep-learning-basics/index.md)
 
 [4. 深度学习计算](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_deep-learning-computation/index.md)
