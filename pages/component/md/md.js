@@ -72,6 +72,18 @@ Component({
           tmp = tmp.replace(match[1], r)
         }
       }
+
+      var rstRegExp = /```eval_rst\n+?.. toctree\:\:\n([\s\S]*?)```/g
+      while (match = rstRegExp.exec(tmp)) {
+        var n = match[1]
+        var rowExp = /\n\s+([^\[\]]+?)\n/g
+        var m;
+        while (m = rowExp.exec(n)) {
+          if (m[1].indexOf('[') > 0) {break}
+          n = n.replace(m[1], '['+m[1]+']('+m[1]+'.md)')
+        }
+        tmp = tmp.replace(match[0], n)
+      }
       var mdMaxLen = 180000
       if (tmp.length > mdMaxLen) {
           console.log("md length: ", tmp.length)

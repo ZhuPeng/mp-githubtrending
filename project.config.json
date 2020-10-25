@@ -221,6 +221,13 @@
 					"pathName": "pages/bloglist/bloglist",
 					"query": "repo=RGLab / flowWorkspace",
 					"scene": 1047
+				},
+				{
+					"id": -1,
+					"name": "支持 rst 语法",
+					"pathName": "pages/gitfile/gitfile",
+					"query": "file=blob/master/chapter_deep-learning-basics/index.md&owner=d2l-ai&repo=d2l-zh",
+					"scene": null
 				}
 			]
 		}
