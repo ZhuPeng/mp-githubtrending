@@ -12,7 +12,7 @@
 
 [2. 预备知识](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_prerequisite/index.md)
 
-[2.1. 获取和运行本书的代码](install.md)
+[2.1. 获取和运行本书的代码](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_prerequisite/install.md)
 
 [2.2. 数据操作](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_prerequisite/ndarray.md)
 
