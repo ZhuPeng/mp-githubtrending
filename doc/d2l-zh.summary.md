@@ -1,8 +1,10 @@
 以下文档只是为了建立一个目录索引，方便直接浏览，更多详情请查看原项目：[d2l-ai/d2l-zh](https://github.com/d2l-ai/d2l-zh)
 
+
+
 ###《动手学深度学习》
 
-[前言]](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_preface/preface.md)
+[前言](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_preface/preface.md)
 
 [如何使用本书](https://github.com/d2l-ai/d2l-zh/blob/master/chapter_how-to-use/how-to-use)
 
