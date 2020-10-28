@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/daily/daily",
     "pages/bloglist/bloglist",
     "pages/account/account",
     "pages/readme/readme",
@@ -58,10 +59,10 @@
   "plugins": {},
   "_comment_navi_mp": "csdn jianshu zhihu bilibili tencentvidio baidupan smzdm 36kr juejin v2ex",
   "navigateToMiniProgramAppIdList": [
-    "wx2115aba2ed1f96b9", 
-    "wx646159264d261dab", 
-    "wxeb39b10e39bf6b54", 
-    "wx7564fd5313d24844", 
+    "wx2115aba2ed1f96b9",
+    "wx646159264d261dab",
+    "wxeb39b10e39bf6b54",
+    "wx7564fd5313d24844",
     "wxa75efa648b60994b",
     "wxdcd3d073e47d1742",
     "wxeb5d1f826d7998df",
