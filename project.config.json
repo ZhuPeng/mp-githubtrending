@@ -30,7 +30,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.12.2",
 	"appid": "wx482958efb057c5a7",
-	"projectname": "dailytopic",
+	"projectname": "iDayDayUP",
 	"cloudfunctionRoot": "cloud-functions/",
 	"debugOptions": {
 		"hidedInDevtools": []

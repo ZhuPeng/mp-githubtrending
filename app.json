@@ -18,7 +18,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "开源 Books",
+    "navigationBarTitleText": "每日一题 Day Day UP",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },

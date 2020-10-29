@@ -1,2 +1,1 @@
-<!--pages/daily/daily.wxml-->
-<text>pages/daily/daily.wxml</text>
+<md md="{{qcontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
