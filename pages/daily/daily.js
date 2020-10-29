@@ -6,16 +6,26 @@ Page({
     question_url: '',
     answer_url: '',
     qcontent: '',
+    acontent: '',
   },
 
   onLoad: function (options) {
-    var qurl = 'https://github.com/yooubei/leetcode_answer/blob/master/problem/206.反转链表.md'
+    var baseurl = 'https://github.com/ZhuPeng/iDayDayUP/blob/main/algo/'
+    var qurl = baseurl + 'a01.md'
+    var aurl = baseurl + 'q01.md'
     this.setData({
       question_url: qurl,
-      answer_url: 'https://github.com/yooubei/leetcode_answer/blob/master/problem/557.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8D%20III.md',
+      answer_url: aurl,
     })
+    this.getContent('qcontent', qurl)
+  },
 
-    var [owner, repo, file] = util.parseGitHub(qurl)
+  onClick: function(e) {
+    this.getContent('acontent', this.data.answer_url)
+  },
+
+  getContent: function(key, url) {
+    var [owner, repo, file] = util.parseGitHub(url)
     file = gutil.GetRealFile(file)
     var self = this
     cloudclient.callFunction({ type: 'get', path: gutil.GetAPIURL(owner, repo, file), repo: repo, owner: owner, disableCache: false}, function(d) {
@@ -30,8 +40,9 @@ Page({
       } else if (code) {
         content = gutil.convert2code(code, content)
       }
-      
-      self.setData({qcontent: content})
+      var data = {}
+      data[key] = content
+      self.setData(data)
     })
   },
 
