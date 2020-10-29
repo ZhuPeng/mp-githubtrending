@@ -1,6 +1,51 @@
 const cloudclient = require('./cloudclient.js')
 module.exports = {
   Get,
+  GetRealFile,
+  GetAPIURL,
+  convert2code,
+  convertIpynb,
+}
+
+function convert2code(code, content) {
+  return "```" + code + "\n" + content + "\n```";
+}
+
+function convertIpynb(content) {
+  var json = JSON.parse(content)
+  if (!json.cells) {return content}
+  var md = '';
+  json.cells.map(function(cell) {
+    // console.log(cell)
+    var c = ""
+    cell.source.map(function(s) {
+      c += s
+    })
+    if (cell.cell_type == 'code') { 
+      c = convert2code('python', c)
+    }
+    md += c + '\n'
+  })
+  return md;
+}
+
+function GetAPIURL(owner, repo, file) {
+  return 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + encodeURIComponent(file)
+}
+
+function GetRealFile(file) {
+  var ref = 'master'
+  if (!file) { util.Alert('file parameter was empty')}
+  if (file.indexOf('#') > 0) {file = file.slice(0, file.indexOf('#'))}
+  if (file.startsWith('./')) {file = file.slice(2)}
+  if (file.startsWith('blob/') || file.startsWith('tree/') || file.startsWith('raw/')) {
+    var arr = file.split('/')
+    if (arr.length > 2) {
+      ref = arr[1]
+      file = file.slice((arr[0] + '/' + arr[1] + '/').length)
+    }
+  }
+  return file
 }
 
 function Get(url, callback, page_number, prev_data) {
