@@ -1,249 +1,250 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"enhance": false,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.12.2",
-	"appid": "wxe60c5750c87916e0",
-	"projectname": "openbooks",
-	"cloudfunctionRoot": "cloud-functions/",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 2,
-			"list": [
-				{
-					"id": -1,
-					"name": "Account",
-					"pathName": "pages/account/account",
-					"query": ""
-				},
-				{
-					"id": 1,
-					"name": "显示其他网站的图片",
-					"pathName": "pages/readme/readme",
-					"query": "repo=xiaoxiunique / tool-tips",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "Gitfile",
-					"pathName": "pages/gitfile/gitfile",
-					"query": "file=blob/master/201708/microservice-for-failure.md&owner=jasonGeng88&repo=blog&withsubscribe=true",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "Settings",
-					"pathName": "pages/settings/settings",
-					"query": ""
-				},
-				{
-					"id": 7,
-					"name": "Wiki",
-					"pathName": "pages/readme/readme",
-					"query": "repo=alibaba / Sentinel",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "defaultNotMaster",
-					"pathName": "pages/readme/readme",
-					"query": "repo=RGLab / flowWorkspace",
-					"scene": 1047
-				},
-				{
-					"id": -1,
-					"name": "ShowCode",
-					"pathName": "pages/readme/readme",
-					"query": "repo=QzwJuHao / AndroidMore",
-					"scene": null
-				},
-				{
-					"id": 8,
-					"name": "Resume",
-					"pathName": "pages/resume/resume",
-					"query": "name=ZhuPeng",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "Top Null",
-					"pathName": "pages/readme/readme",
-					"query": "repo=wzpan / wukong-robot",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "TableLinkMissing",
-					"pathName": "pages/readme/readme",
-					"query": "repo=faif / python-patterns",
-					"scene": null
-				},
-				{
-					"id": 11,
-					"name": "Code",
-					"pathName": "https://github.com/faif/python-patterns/patterns/creational/abstract_factory.py",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 11,
-					"name": "OriginGitHubLink",
-					"pathName": "https://github.com/MLEveryday/100-Days-Of-ML-Code#id",
-					"query": "",
-					"scene": 1058
-				},
-				{
-					"id": 12,
-					"name": "Issue",
-					"pathName": "pages/issue/issue",
-					"query": "issue=https://api.github.com/repos/selfteaching/the-craft-of-selfteaching/issues/398",
-					"scene": null
-				},
-				{
-					"id": 13,
-					"name": "NewIssue",
-					"pathName": "pages/newissue/newissue",
-					"query": "url=https://github.com/ZhuPeng/mp-githubtrending",
-					"scene": null
-				},
-				{
-					"id": 15,
-					"name": "Dir",
-					"pathName": "pages/gitdir/gitdir",
-					"query": "apiurl=https://api.github.com/repos/ZhuPeng/mp-githubtrending/contents&owner=ZhuPeng&repo=mp-githubtrending",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "Commit",
-					"pathName": "pages/commit/commit",
-					"query": "url=https://api.github.com/repos/faif/python-patterns/commits/6726564f29de8a55e1208e056b4da1611704d6b1",
-					"scene": null
-				},
-				{
-					"id": 16,
-					"name": "Blog",
-					"pathName": "pages/blog/blog",
-					"query": "id=33&jobname=githubblog",
-					"scene": null
-				},
-				{
-					"id": 17,
-					"name": "BlogList",
-					"pathName": "pages/bloglist/bloglist",
-					"query": "jobname=topic&owner=ZhuPeng&repo=findyourhero",
-					"scene": null
-				},
-				{
-					"id": 18,
-					"name": "Search",
-					"pathName": "pages/search/search",
-					"query": "type=issues&query=is%3Apr%20author%3AZhuPeng%20repo%3Akubernetes-retired%2Fcontrib",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "Admin",
-					"pathName": "pages/admin/admin",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "MultiMP",
-					"pathName": "pages/gitfile/gitfile",
-					"query": "owner=ZhuPeng&repo=mp-transform-public&file=https://api.github.com/repos/ZhuPeng/mp-transform-public/contents/example.md",
-					"scene": null
-				},
-				{
-					"id": 21,
-					"name": "图片不显示修复",
-					"pathName": "pages/gitfile/gitfile",
-					"query": "file=ch6-cloud/ch6-01-dist-id.md&owner=chai2010&repo=advanced-go-programming-book",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/bloglist/bloglist",
-					"pathName": "pages/bloglist/bloglist",
-					"query": "repo=RGLab / flowWorkspace",
-					"scene": 1047
-				},
-				{
-					"id": -1,
-					"name": "支持 rst 语法",
-					"pathName": "pages/gitfile/gitfile",
-					"query": "file=blob/master/chapter_deep-learning-basics/index.md&owner=d2l-ai&repo=d2l-zh",
-					"scene": null
-                },
-                {
-					"id": -1,
-					"name": "尾注链接渲染",
-					"pathName": "pages/gitfile/gitfile",
-					"query": "file=1-introduction-to-microservices.md&owner=DocsHome&repo=microservices",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "目录自动定位",
-					"pathName": "pages/gitfile/gitfile",
-					"query": "file=blob/master/README-zh_CN.md&owner=ryanhanwu&repo=How-To-Ask-Questions-The-Smart-Way&withsubscribe=true",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": false,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.12.2",
+  "appid": "wxe60c5750c87916e0",
+  "projectname": "openbooks",
+  "cloudfunctionRoot": "cloud-functions/",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "Account",
+          "pathName": "pages/account/account",
+          "query": ""
+        },
+        {
+          "id": 1,
+          "name": "显示其他网站的图片",
+          "pathName": "pages/readme/readme",
+          "query": "repo=xiaoxiunique / tool-tips",
+          "scene": null
+        },
+        {
+          "id": 2,
+          "name": "Gitfile",
+          "pathName": "pages/gitfile/gitfile",
+          "query": "file=blob/master/201708/microservice-for-failure.md&owner=jasonGeng88&repo=blog&withsubscribe=true",
+          "scene": null
+        },
+        {
+          "id": 4,
+          "name": "Settings",
+          "pathName": "pages/settings/settings",
+          "query": ""
+        },
+        {
+          "id": 7,
+          "name": "Wiki",
+          "pathName": "pages/readme/readme",
+          "query": "repo=alibaba / Sentinel",
+          "scene": null
+        },
+        {
+          "id": 5,
+          "name": "defaultNotMaster",
+          "pathName": "pages/readme/readme",
+          "query": "repo=RGLab / flowWorkspace",
+          "scene": 1047
+        },
+        {
+          "id": -1,
+          "name": "ShowCode",
+          "pathName": "pages/readme/readme",
+          "query": "repo=QzwJuHao / AndroidMore",
+          "scene": null
+        },
+        {
+          "id": 8,
+          "name": "Resume",
+          "pathName": "pages/resume/resume",
+          "query": "name=ZhuPeng",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "Top Null",
+          "pathName": "pages/readme/readme",
+          "query": "repo=wzpan / wukong-robot",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "TableLinkMissing",
+          "pathName": "pages/readme/readme",
+          "query": "repo=faif / python-patterns",
+          "scene": null
+        },
+        {
+          "id": 11,
+          "name": "Code",
+          "pathName": "https://github.com/faif/python-patterns/patterns/creational/abstract_factory.py",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 11,
+          "name": "OriginGitHubLink",
+          "pathName": "https://github.com/MLEveryday/100-Days-Of-ML-Code#id",
+          "query": "",
+          "scene": 1058
+        },
+        {
+          "id": 12,
+          "name": "Issue",
+          "pathName": "pages/issue/issue",
+          "query": "issue=https://api.github.com/repos/selfteaching/the-craft-of-selfteaching/issues/398",
+          "scene": null
+        },
+        {
+          "id": 13,
+          "name": "NewIssue",
+          "pathName": "pages/newissue/newissue",
+          "query": "url=https://github.com/ZhuPeng/mp-githubtrending",
+          "scene": null
+        },
+        {
+          "id": 15,
+          "name": "Dir",
+          "pathName": "pages/gitdir/gitdir",
+          "query": "apiurl=https://api.github.com/repos/ZhuPeng/mp-githubtrending/contents&owner=ZhuPeng&repo=mp-githubtrending",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "Commit",
+          "pathName": "pages/commit/commit",
+          "query": "url=https://api.github.com/repos/faif/python-patterns/commits/6726564f29de8a55e1208e056b4da1611704d6b1",
+          "scene": null
+        },
+        {
+          "id": 16,
+          "name": "Blog",
+          "pathName": "pages/blog/blog",
+          "query": "id=33&jobname=githubblog",
+          "scene": null
+        },
+        {
+          "id": 17,
+          "name": "BlogList",
+          "pathName": "pages/bloglist/bloglist",
+          "query": "jobname=topic&owner=ZhuPeng&repo=findyourhero",
+          "scene": null
+        },
+        {
+          "id": 18,
+          "name": "Search",
+          "pathName": "pages/search/search",
+          "query": "type=issues&query=is%3Apr%20author%3AZhuPeng%20repo%3Akubernetes-retired%2Fcontrib",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "Admin",
+          "pathName": "pages/admin/admin",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "MultiMP",
+          "pathName": "pages/gitfile/gitfile",
+          "query": "owner=ZhuPeng&repo=mp-transform-public&file=https://api.github.com/repos/ZhuPeng/mp-transform-public/contents/example.md",
+          "scene": null
+        },
+        {
+          "id": 21,
+          "name": "图片不显示修复",
+          "pathName": "pages/gitfile/gitfile",
+          "query": "file=ch6-cloud/ch6-01-dist-id.md&owner=chai2010&repo=advanced-go-programming-book",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/bloglist/bloglist",
+          "pathName": "pages/bloglist/bloglist",
+          "query": "repo=RGLab / flowWorkspace",
+          "scene": 1047
+        },
+        {
+          "id": -1,
+          "name": "支持 rst 语法",
+          "pathName": "pages/gitfile/gitfile",
+          "query": "file=blob/master/chapter_deep-learning-basics/index.md&owner=d2l-ai&repo=d2l-zh",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "尾注链接渲染",
+          "pathName": "pages/gitfile/gitfile",
+          "query": "file=1-introduction-to-microservices.md&owner=DocsHome&repo=microservices",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "目录自动定位",
+          "pathName": "pages/gitfile/gitfile",
+          "query": "file=blob/master/README-zh_CN.md&owner=ryanhanwu&repo=How-To-Ask-Questions-The-Smart-Way&withsubscribe=true",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

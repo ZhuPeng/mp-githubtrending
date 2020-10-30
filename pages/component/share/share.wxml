@@ -3,6 +3,6 @@
    <view class="margin-left-right"><text>分享：</text></view>
    <view bindtap="chat" class="margin-left-right"><button class="share-btn" open-type="share"><wux-icon size="{{size}}" type="md-chatboxes" /></button></view>
    <view bindtap="qrcode" class="margin-left-right"><wux-icon size="{{size}}" type="md-aperture" /></view>
-   <view bindtap="minip" class="margin-left-right"><wux-icon size="{{size}}" type="md-today" /></view>
+   <view wx:if="{{insert_minip}}" bindtap="minip" class="margin-left-right"><wux-icon size="{{size}}" type="md-today" /></view>
    <view wx:if="{{share_link}}" bindtap="copy" data-text="{{share_link}}"  class="margin-left-right"><wux-icon size="{{size}}" type="md-share" /></view>
 </view>

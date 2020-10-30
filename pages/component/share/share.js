@@ -6,6 +6,10 @@ Component({
       type: String,
       value: ''
     },
+    insert_minip: {
+      type: Boolean,
+      value: true
+    }
   },
 
   data: {
