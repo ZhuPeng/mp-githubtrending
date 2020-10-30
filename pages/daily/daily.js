@@ -3,25 +3,22 @@ const util = require('../../utils/util.js')
 const gutil = require('../../utils/github.js')
 Page({
   data: {
-    question_url: '',
-    answer_url: '',
     qcontent: '',
     acontent: '',
+    qdata: {},
   },
 
   onLoad: function (options) {
-    var baseurl = 'https://github.com/ZhuPeng/iDayDayUP/blob/main/algo/'
-    var qurl = baseurl + 'a01.md'
-    var aurl = baseurl + 'q01.md'
-    this.setData({
-      question_url: qurl,
-      answer_url: aurl,
+    var self = this
+    cloudclient.callFunctionWithName('question', {type: 'random'}, function(d) {
+      console.log('random: ', d)
+      self.setData({qdata: d})
+      self.getContent('qcontent', d['question_url'])
     })
-    this.getContent('qcontent', qurl)
   },
 
   onClick: function(e) {
-    this.getContent('acontent', this.data.answer_url)
+    this.getContent('acontent', this.data.qdata['answer_url'])
   },
 
   getContent: function(key, url) {
