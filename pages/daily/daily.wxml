@@ -1,5 +1,5 @@
 <md md="{{qcontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
-<formbutton type="primary" wx:if="{{!acontent}}" bind:click="onClick" text="查看答案"/>
+<formbutton type="primary" wx:if="{{qcontent && !acontent}}" bind:click="onClick" text="查看答案"/>
 <md md="{{acontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
 
 <share insert_minip="{{false}}" />
