@@ -1,11 +1,15 @@
 const cloudclient = require('./cloudclient.js')
 const util = require('./util.js')
+var common = require('common.js')
+import { $wuxDialog } from '../third-party/wux-weapp/index'
 module.exports = {
   HandleQrCode,
+  DialogShare,
 }
 
 function HandleQrCode() {
   var [path, param] = util.GetLastestPage()
+  util.Alert("加载中...")
   cloudclient.callFunctionWithQrCode({ page: path, scene: param }, function (d) {
     console.log('qrcode: ', d)
     if (!d.buffer) {
@@ -17,5 +21,34 @@ function HandleQrCode() {
       current: qr,
       urls: [qr]
     })
+  })
+}
+
+function DialogShare() {
+  var k = 'PV-'
+  var cnt = common.GetDateCount(k)
+  common.SetDateCount(k, cnt)
+  if (cnt != 6) {return}
+  $wuxDialog().open({
+    resetOnClose: true,
+    title: '',
+    content: '你可以通过以下方式分享小程序给小伙伴们，你的分享是我们持续优化的动力',
+    verticalButtons: !0,
+    buttons: [{
+            text: '群聊分享',
+            bold: !0,
+            openType: 'share',
+        },
+        {
+            text: '二维码分享',
+            bold: !0,
+            onTap(e) {
+              HandleQrCode()
+            },
+        },
+        {
+            text: '残忍拒绝',
+        },
+    ],
   })
 }

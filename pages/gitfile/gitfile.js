@@ -1,6 +1,7 @@
 const cloudclient = require('../../utils/cloudclient.js')
 const util = require('../../utils/util.js')
 const g = require('../../utils/github.js')
+const qrcode = require('../../utils/qrcode.js')
 Page({
   data: {
     options: {},
@@ -51,6 +52,7 @@ Page({
       
       self.setData({ content: content, spinning: false, url: d.html_url || self.data.url})
       self.scrollHitoryTop()
+      qrcode.DialogShare()
     })
   },
 

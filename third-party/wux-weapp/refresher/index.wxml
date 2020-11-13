@@ -1,4 +1,4 @@
-<view style="{{ style }}" bindtouchstart="bindtouchstart" bindtouchmove="bindtouchmove" bindtouchend="bindtouchend">
+<view style="{{ style }}" bindtouchstart="onTouchStart" catchtouchmove="{{ refreshing || loading ? 'noop' : '' }}" capture-bind:touchmove="onTouchMove" bindtouchend="onTouchEnd">
     <view class="{{ classes.wrap }}">
         <view class="{{ classes.content }}">
             <view class="{{ classes.iconPulling }}">
@@ -12,4 +12,11 @@
         </view>
     </view>
     <slot></slot>
+    <view class="{{ classes.lWrap }}">
+        <view class="{{ classes.lContent }}">
+            <text wx:if="{{ !noData }}" class="{{ classes.rIcon }}"></text>
+            <text class="{{ classes.loadingText }}" wx:if="{{ !noData && isShowLoadingText }}">{{ loadingText }}</text>
+            <view wx:if="{{ noData }}">{{ loadNoDataText }}</view>
+        </view>
+    </view>
 </view>
