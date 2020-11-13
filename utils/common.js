@@ -7,6 +7,32 @@ module.exports = {
   ArrayContains,
   FindGitHubUrl,
   isImageFile,
+  GetDateCount,
+  SetDateCount,
+}
+
+function getDate() {
+  var d = new Date()
+  return d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate() + '-' + d.getHours()
+}
+
+function getDay() {
+  var d = new Date()
+  return d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate()
+}
+
+function GetKey(prefix) {
+  return prefix + getDay()
+}
+
+function GetDateCount(prefix) {
+  var cnt = wx.getStorageSync(GetKey(prefix))
+  if (!cnt) {cnt = 0}
+  return cnt
+}
+
+function SetDateCount(prefix, cnt) {
+  wx.setStorageSync(GetKey(prefix), 1+cnt)
 }
 
 function FindGitHubUrl(c) {

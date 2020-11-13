@@ -1,5 +1,6 @@
 const cloudclient = require('../../utils/cloudclient.js')
 const util = require('../../utils/util.js')
+const qrcode = require('../../utils/qrcode.js')
 Page({
   data: {
     currentTab: 'hot',
@@ -33,6 +34,7 @@ Page({
         tmp.push(d)
       })
       util.SetDataWithoutSpin(self, { blogs: {'data': tmp}})
+      qrcode.DialogShare()
     })
   },
 

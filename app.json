@@ -25,6 +25,7 @@
   "usingComponents": {
     "wux-fab-button": "third-party/wux-weapp/fab-button/index",
     "wux-card": "third-party/wux-weapp/card/index",
+    "wux-dialog": "third-party/wux-weapp/dialog/index",
     "wux-wing-blank": "third-party/wux-weapp/wing-blank/index",
     "wux-timeago": "third-party/wux-weapp/timeago/index",
     "wux-divider": "third-party/wux-weapp/divider/index",
