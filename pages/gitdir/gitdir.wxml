@@ -14,7 +14,7 @@
   </view>
 </block>
 <view class="padding-bottom padding-top">
-  <ad wx:if="{{list.length}}" unit-id="adunit-ba7d4a61f82bcf58"></ad>
+  <diyad wx:if="{{list.length}}" unit_id="adunit-ba7d4a61f82bcf58"></diyad>
 </view>
 <fabbutton/>
 </view>

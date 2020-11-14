@@ -7,8 +7,8 @@
 <view class="page__bd">
   <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
   <md md="{{content}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
-  <view class="margin-left-right padding-bottom padding-top">
-    <ad wx:if="{{content}}" unit-id="adunit-ba7d4a61f82bcf58"></ad>
+  <view class="padding-bottom padding-top">
+    <diyad wx:if="{{content}}" unit_id="adunit-ba7d4a61f82bcf58"></diyad>
   </view>
   <!-- <subscribe wx:if="{{content && withSubscribe}}" />  -->
   <!-- <fabbutton/> -->

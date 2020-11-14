@@ -339,6 +339,13 @@ async function history(openid, bid) {
   db.collection('blog_history').add({data: {openid, bid, time: new Date().toISOString()}})
 }
 
+async function getRandom() {
+  var cnt = await db.collection('blog').count()
+  var r = Math.floor(Math.random() * (cnt['total'] || 1))
+  var list = await getLastestGitHubBlog(r, "", "") 
+  return list[0]
+}
+
 // 云函数入口函数
 exports.main = async (event, context) => {
   var { type, jobname, id, currentSize, options, order } = event;
@@ -356,6 +363,8 @@ exports.main = async (event, context) => {
     return await db.collection('blog').where({_id: id}).update({
       data: event.data,
     })
+  } else if (type == 'random') {
+    return {data: await getRandom()}
   } else if (type == 'addpv') {
     history(openid, id)
     return await db.collection('blog').where({_id: id}).update({
