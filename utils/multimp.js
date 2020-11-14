@@ -40,6 +40,12 @@ var directTransform = [{
     urlPrefix: 'https://github.com',
     genMPUrl: DefaultGenMPUrl,
 }, {
+    nickname: 'iDayDayUP',
+    appid: 'wx482958efb057c5a7',
+    indexPage: 'pages/daily/daily',
+    urlPrefix: 'https://idaydayup.com',
+    genMPUrl: DefaultIndexMPWithPara,
+}, {
     nickname: 'Readhub',
     appid: 'wxd83c7f07a0b00f1b',
     urlPrefix: 'https://readhub.cn/topic',
@@ -203,6 +209,11 @@ var directTransform = [{
     // https://new.qq.com/omn/TWF20190/TWF2019081200847600.html
     genMPUrl: GenFormatLastPathMPUrl('pages/normal/index?atype=0&id='),
 }]
+
+function DefaultIndexMPWithPara(meta, url) {
+    var p = url.slice(meta.urlPrefix.length, url.length)
+    return meta.indexPage + p
+}
 
 function DefaultGenMPUrl(meta, url) {
     if (url == meta.urlPrefix) {return meta.indexPage}
