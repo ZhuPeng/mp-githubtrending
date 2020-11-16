@@ -28,7 +28,34 @@ function DialogShare() {
   var k = 'PV-'
   var cnt = common.GetDateCount(k)
   common.SetDateCount(k, cnt)
-  if (cnt != 6) {return}
+  if (cnt == 6) {
+    share()
+    return
+  }
+  if (cnt%10==0 && cnt>=10) {
+    insertScreenAd()
+    return
+  }
+}
+
+function insertScreenAd() {
+  var interstitialAd = null
+  if (wx.createInterstitialAd) {
+    interstitialAd = wx.createInterstitialAd({
+      adUnitId: 'adunit-ddca5a05ce71f1cf'
+    })
+    interstitialAd.onLoad(() => {})
+    interstitialAd.onError((err) => {console.error(err)})
+    interstitialAd.onClose(() => {})
+  }
+  if (interstitialAd) {
+    interstitialAd.show().catch((err) => {
+      console.error(err)
+    })
+  }
+}
+
+function share() {
   $wuxDialog().open({
     resetOnClose: true,
     title: '',
