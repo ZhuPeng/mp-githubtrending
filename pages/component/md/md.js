@@ -44,10 +44,11 @@ Component({
         tmp = tmp.replace(reg, d[k])
       }
 
-      var tipsExp = /\[.+\]\[(.+?)\]/g;
+      var tipsExp = /\[.+?\]\[(.+?)\]/g;
       while (match = tipsExp.exec(tmp)) {
         console.log('tipsExp match:', match)
         var tip = match[1]
+        if (tip.indexOf('[') > -1 || tip.indexOf(']') > -1) {continue}
         var imageExp = new RegExp("\\[" + match[1].replace('-', '\\-') + "\\]:\\t(.+?)\\n", "g");
         console.log('imageExp:', imageExp)
         var m
