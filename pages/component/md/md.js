@@ -97,7 +97,7 @@ Component({
         }
         tmp = tmp.replace(match[0], n)
       }
-      var mdMaxLen = 100000
+      var mdMaxLen = 90000
       if (tmp.length > mdMaxLen) {
           util.Alert("文件大小超过一定限制，可能无法展示。")
           console.log("md length: ", tmp.length)
