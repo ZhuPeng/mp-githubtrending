@@ -100,7 +100,7 @@ Component({
       }
       var mdMaxLen = 90000
       if (tmp.length > mdMaxLen) {
-          util.Alert("文件大小超过一定限制，可能无法展示。")
+          util.Alert("文件大小超过限制，加载缓慢请耐心等待。")
           console.log("md length: ", tmp.length)
           this.setData({realMd: tmp.slice(0,mdMaxLen), realMd2: tmp.slice(mdMaxLen,tmp.length)})
       } else {
