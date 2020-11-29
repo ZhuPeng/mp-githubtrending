@@ -6,10 +6,13 @@ Page({
     qcontent: '',
     acontent: '',
     qdata: {},
+    spinning: false,
+    size: 55,
   },
 
   onLoad: function (options) {
     var self = this
+    util.SetDataWithSpin(self, {})
     cloudclient.callFunctionWithName('question', {type: 'random'}, function(d) {
       console.log('random: ', d)
       self.setData({qdata: d})
@@ -18,7 +21,13 @@ Page({
   },
 
   onClick: function(e) {
+    util.SetDataWithSpin(this, {})
     this.getContent('acontent', this.data.qdata['answer_url'])
+  },
+
+  onNext: function(e) {
+    this.setData({acontent: ''})
+    this.onLoad()
   },
 
   getContent: function(key, url) {
@@ -39,7 +48,7 @@ Page({
       }
       var data = {}
       data[key] = content
-      self.setData(data)
+      util.SetDataWithoutSpin(self, data)
     })
   },
 

@@ -43,3 +43,7 @@
   flex-direction: row;
   align-items: left;
 }
+
+.center {
+  justify-content: center;
+}

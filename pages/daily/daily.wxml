@@ -1,7 +1,18 @@
+<view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
 <md md="## 问题"/>
 <md md="{{qcontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
-<formbutton type="primary" wx:if="{{qcontent && !acontent}}" bind:click="onClick" text="查看答案"/>
 <md wx:if="{{acontent}}" md="## 参考答案"/>
-<md md="{{acontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
+<md wx:if="{{acontent}}" md="{{acontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
+
+<view class="center flex-wrp">
+<view wx:if="{{qcontent && !acontent}}" bindtap="onClick" class="margin-left-right">
+  <view style="text-align: center"><wux-icon size="{{size}}" type="md-eye"/></view>
+  <view>查看答案</view>
+</view>
+<view wx:if="{{qcontent}}" bindtap="onNext" class="margin-left-right">
+  <view style="text-align: center"><wux-icon size="{{size}}" type="md-arrow-round-forward"/></view>
+  <view>下一题</view>
+</view>
+</view>
 
 <share insert_minip="{{false}}" />
