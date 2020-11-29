@@ -11,8 +11,31 @@ exports.main = async (event, context) => {
 }
 
 async function getRandom() {
-    var cnt = await db.collection('question').count()
-    var r = Math.floor(Math.random() * (cnt['total'] || 1))
-    var list = await db.collection('question').orderBy('time', 'desc').limit(1).skip(r).get()
-    return list.data[0]
+    var total = {
+        'algo': 8,
+        'cplusplus': 1,
+        'db': 6,
+        'go': 23,
+        'java': 1,
+        'os': 14,
+    }
+    var total_cnt = 0
+    for (k in total) {
+        total_cnt += total[k]
+    }
+    console.log('total question cnt:', total_cnt)
+
+    var base_url = 'https://github.com/ZhuPeng/iDayDayUP/blob/main/'
+    var r = Math.floor(Math.random() * (total_cnt || 1))
+    for (k in total) {
+        if (r > total[k]) {
+            r -= total[k]
+            continue
+        } 
+        if (r < 10) { r = '0' + r}
+        return {
+          'answer_url': base_url + k + '/a' + r + '.md',
+          'question_url': base_url + k + '/q' + r + '.md',
+        }
+    }
 }
