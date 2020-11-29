@@ -26,7 +26,7 @@ async function getRandom() {
     console.log('total question cnt:', total_cnt)
 
     var base_url = 'https://github.com/ZhuPeng/iDayDayUP/blob/main/'
-    var r = Math.floor(Math.random() * (total_cnt || 1))
+    var r = Math.floor(Math.random() * (total_cnt || 0)) + 1
     for (k in total) {
         if (r > total[k]) {
             r -= total[k]
