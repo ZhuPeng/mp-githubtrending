@@ -1,4 +1,7 @@
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
+<wux-toast id="wux-toast" />
+<wux-dialog id="wux-dialog" />
+
 <md md="## 问题"/>
 <md md="{{qcontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
 <md wx:if="{{acontent}}" md="## 参考答案"/>

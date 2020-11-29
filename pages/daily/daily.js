@@ -1,5 +1,6 @@
 const cloudclient = require('../../utils/cloudclient.js')
 const util = require('../../utils/util.js')
+const qrcode = require('../../utils/qrcode.js')
 const gutil = require('../../utils/github.js')
 Page({
   data: {
@@ -31,6 +32,7 @@ Page({
   },
 
   getContent: function(key, url) {
+    qrcode.DialogShare()
     var [owner, repo, file] = util.parseGitHub(url)
     file = gutil.GetRealFile(file)
     var self = this
