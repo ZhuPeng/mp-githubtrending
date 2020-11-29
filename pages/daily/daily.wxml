@@ -4,7 +4,7 @@
 <md wx:if="{{acontent}}" md="## 参考答案"/>
 <md wx:if="{{acontent}}" md="{{acontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
 
-<view class="center flex-wrp">
+<view class="center flex-wrp padding">
 <view wx:if="{{qcontent && !acontent}}" bindtap="onClick" class="margin-left-right">
   <view style="text-align: center"><wux-icon size="{{size}}" type="md-eye"/></view>
   <view>查看答案</view>

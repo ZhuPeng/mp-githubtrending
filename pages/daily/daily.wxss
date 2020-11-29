@@ -1,2 +1,6 @@
 @import '../../app.wxss';
 
+.padding {
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
