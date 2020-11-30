@@ -6,13 +6,10 @@
     "pages/gitfile/gitfile",
     "pages/settings/settings",
     "pages/resume/resume",
-    "pages/search/search",
     "pages/issue/issue",
     "pages/commit/commit",
-    "pages/newissue/newissue",
     "pages/gitdir/gitdir",
-    "pages/blog/blog",
-    "pages/admin/admin"
+    "pages/blog/blog"
   ],
   "window": {
     "backgroundTextStyle": "light",
