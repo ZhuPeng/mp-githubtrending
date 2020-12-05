@@ -26,6 +26,14 @@ module.exports = {
   ShowAd,
   GetYesterday,
   FindGitHubUrl: common.FindGitHubUrl,
+  previewImage: previewImage,
+}
+
+function previewImage(url) {
+  wx.previewImage({
+    current: url,
+    urls: [url]
+  })
 }
 
 function ShowAd() {
