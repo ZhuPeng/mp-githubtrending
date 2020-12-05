@@ -17,10 +17,7 @@ function HandleQrCode() {
       return
     }
     var qr = "data:image/png;base64," + wx.arrayBufferToBase64(d.buffer)
-    wx.previewImage({
-      current: qr,
-      urls: [qr]
-    })
+    util.previewImage(qr)
   })
 }
 
@@ -65,15 +62,20 @@ function share() {
             text: '群聊分享',
             bold: !0,
             openType: 'share',
-        },
-        {
+        }, {
             text: '二维码分享',
             bold: !0,
             onTap(e) {
               HandleQrCode()
             },
-        },
-        {
+        }, {
+            text: '赞赏一下',
+            bold: !0,
+            onTap(e) {
+              var url = 'https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/images/compress_zansang.png'
+              util.previewImage(url)
+            },
+        }, {
             text: '残忍拒绝',
         },
     ],
