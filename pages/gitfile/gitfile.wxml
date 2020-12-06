@@ -5,6 +5,7 @@
   <githead wx:if="{{repo}}" owner="{{owner}}" repo="{{repo}}" />
 </view>
 <view class="page__bd">
+  <official-account></official-account>
   <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
   <md md="{{content}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
   <view class="padding-bottom padding-top">

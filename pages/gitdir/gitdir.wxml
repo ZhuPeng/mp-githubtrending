@@ -1,5 +1,6 @@
 <githead owner="{{owner}}" repo="{{repo}}"/>
 <wux-toast id="wux-toast" />
+<official-account></official-account>
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
 
 <view class="margin-left-right">
