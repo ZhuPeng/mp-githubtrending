@@ -5,6 +5,7 @@ import { $wuxDialog } from '../third-party/wux-weapp/index'
 module.exports = {
   HandleQrCode,
   DialogShare,
+  PreviewZanshang,
 }
 
 function HandleQrCode() {
@@ -52,6 +53,11 @@ function insertScreenAd() {
   }
 }
 
+function PreviewZanshang() {
+  var url = 'https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/images/compress_zansang.png'
+  util.previewImage(url)
+}
+
 function share() {
   $wuxDialog().open({
     resetOnClose: true,
@@ -72,8 +78,7 @@ function share() {
             text: '赞赏一下',
             bold: !0,
             onTap(e) {
-              var url = 'https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/images/compress_zansang.png'
-              util.previewImage(url)
+              PreviewZanshang()
             },
         }, {
             text: '残忍拒绝',
