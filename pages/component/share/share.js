@@ -28,5 +28,8 @@ Component({
     minip: function(e) {
       util.GitHubNavi("https://github.com/ZhuPeng/mp-transform-public")
     },
+    thumbsup: function(e) {
+      qrcode.PreviewZanshang()
+    },
   }
 })

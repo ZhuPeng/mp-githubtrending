@@ -5,4 +5,5 @@
    <view bindtap="qrcode" class="margin-left-right"><wux-icon size="{{size}}" type="md-aperture" /></view>
    <view wx:if="{{insert_minip}}" bindtap="minip" class="margin-left-right"><wux-icon size="{{size}}" type="md-today" /></view>
    <view wx:if="{{share_link}}" bindtap="copy" data-text="{{share_link}}"  class="margin-left-right"><wux-icon size="{{size}}" type="md-share" /></view>
+   <view bindtap="thumbsup" class="margin-left-right"><wux-icon size="{{size}}" type="md-thumbs-up" /></view>
 </view>
