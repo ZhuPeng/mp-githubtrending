@@ -128,10 +128,10 @@ Component({
         return
       }
       var url = this.data.parsedUrl || this.data.url;
-      if (url && util.isGitHubPage(url)) {
-        util.GitHubNavi(url, undefined, true)
-        return
-      } 
+      // if (url && util.isGitHubPage(url)) {
+      //   util.GitHubNavi(url, undefined, true)
+      //   return
+      // } 
       if (url && url.startsWith('/pages/')) {
         wx.navigateTo({ url: url })
         return

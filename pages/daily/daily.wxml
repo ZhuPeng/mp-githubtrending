@@ -18,4 +18,8 @@
 </view>
 </view>
 
+<view wx:if="{{qcontent}}" class="margin-top">
+  <diyad unit_id="adunit-ba7d4a61f82bcf58"></diyad> 
+</view>
+
 <share insert_minip="{{false}}" />
