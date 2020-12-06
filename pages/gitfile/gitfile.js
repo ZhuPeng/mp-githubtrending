@@ -27,6 +27,27 @@ Page({
     }
     var self = this;
 
+    if (util.IsDocFileType(file)) {
+      var url = file
+      if (!url.startsWith('http')) {
+        url = g.GetContentURL(options.owner, options.repo, file)
+      }
+      console.log('download url:', url)
+      wx.downloadFile({
+        url: url,
+        success: function (res) {
+          console.log('dowload success:', res)
+          var Path = res.tempFilePath              //返回的文件临时地址，用于后面打开本地预览所用
+          wx.openDocument({
+            filePath: Path,
+            success: function (res) {console.log('打开成功'); util.SetDataWithoutSpin(self, {})}
+          })
+        },
+        fail: function (res) {console.log('download fail:', res)}
+      })  
+      return
+    }
+
     var apiurl = g.GetAPIURL(options.owner, options.repo, file)
     if (file.startsWith('http')) {
       apiurl = file

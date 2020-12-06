@@ -5,6 +5,7 @@ module.exports = {
   GetAPIURL,
   convert2code,
   convertIpynb,
+  GetContentURL,
 }
 
 function convert2code(code, content) {
@@ -28,6 +29,11 @@ function convertIpynb(content) {
   })
   return md;
 }
+
+function GetContentURL(owner, repo, file) {
+  return 'https://raw.githubusercontent.com/' + owner + '/' + repo + '/master/' + encodeURIComponent(file)
+}
+
 
 function GetAPIURL(owner, repo, file) {
   return 'https://api.github.com/repos/' + owner + '/' + repo + '/contents/' + encodeURIComponent(file)

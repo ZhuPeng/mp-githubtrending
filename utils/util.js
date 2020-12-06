@@ -27,6 +27,15 @@ module.exports = {
   GetYesterday,
   FindGitHubUrl: common.FindGitHubUrl,
   previewImage: previewImage,
+  IsDocFileType,
+}
+
+function IsDocFileType(file) {
+  var docs = ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf']
+  for(var i=0; i<docs.length; i++) {
+    if (file.endsWith('.' + docs[i])) {return true}
+  }
+  return false
 }
 
 function previewImage(url) {
