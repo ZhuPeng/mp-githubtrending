@@ -340,7 +340,7 @@ async function history(openid, bid) {
 }
 
 async function getRandom() {
-  var cnt = await db.collection('blog').count()
+  var cnt = await db.collection('blog').where({'status': 'pub'}).count()
   var r = Math.floor(Math.random() * (cnt['total'] || 1))
   var list = await getLastestGitHubBlog(r, "", "") 
   return list[0]
