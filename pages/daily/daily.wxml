@@ -18,7 +18,7 @@
 </view>
 </view>
 
-<view class="margin-top">
+<view class="recomand">
   <diyad id="ad" num="{{qdata.question_url}}" unit_id="adunit-ba7d4a61f82bcf58"></diyad> 
 </view>
 
