@@ -18,6 +18,7 @@ async function getRandom() {
         'go': 23,
         'java': 1,
         'os': 14,
+        'js': 419,
     }
     var total_cnt = 0
     for (k in total) {
