@@ -3,13 +3,13 @@
 <official-account></official-account>
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
 
-<view class="margin-left-right">
+<view class="margin-left-right padding">
 <block wx:for-items="{{list}}" wx:key="{{item.sha}}">
-  <view wx:if="{{item.type=='dir'}}" class="flex-wrp" >
+  <view class="padding" wx:if="{{item.type=='dir'}}" class="flex-wrp" >
     <wux-icon class="padding-right" size="17" type="ios-folder" />
     <navigator url="{{'/pages/gitdir/gitdir?owner=' + owner + '&repo=' + repo + '&apiurl=' + item.url}}" style="color: blue">{{item.name}}</navigator>
   </view>
-  <view wx:if="{{item.type!='dir'}}" class="flex-wrp" >
+  <view class="padding" wx:if="{{item.type!='dir'}}" class="flex-wrp" >
     <wux-icon class="padding-right" size="17" type="md-document" />
     <navigator url="{{'/pages/gitfile/gitfile?owner=' + owner + '&repo=' + repo + '&file=' + item.path}}" style="color: blue">{{item.name}}</navigator>
   </view>
