@@ -7,10 +7,13 @@
     <view class="padding-right owner"><navigator url="{{'/pages/account/account?owner=' + owner}}" style="color: blue;">{{owner}}</navigator></view>
     <view wx:if="{{repo}}" class="padding-right">/</view>
     <navigator class="padding-right repo" wx:if="{{repo}}" url="{{'/pages/readme/readme?repo=' + owner + '/' + repo}}" style="color: blue;">{{repo}}</navigator>
+
+<!--
     <view wx:if="{{repo}}" class="action-icon flex-wrp">
       <view bindtap="copy" data-text="{{'https://github.com/' + owner + '/' + repo}}"><wux-icon class="padding-right" size="{{iconsize}}" type="md-copy" /></view>
       <wux-icon bindtap="star" size="{{iconsize}}" type="{{isStar ? 'md-star':'md-star-outline'}}" />
     </view>
+-->
     <view wx:if="{{tail}}">{{tail}}</view>
   </view>
 </view>
