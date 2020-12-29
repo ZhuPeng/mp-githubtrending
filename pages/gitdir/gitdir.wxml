@@ -14,6 +14,9 @@
     <navigator url="{{'/pages/gitfile/gitfile?owner=' + owner + '&repo=' + repo + '&file=' + item.path}}" style="color: blue">{{item.name}}</navigator>
   </view>
 </block>
+
+<md md="{{readme}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
+
 <view class="padding-bottom padding-top">
   <diyad wx:if="{{list.length}}" unit_id="adunit-ba7d4a61f82bcf58"></diyad>
 </view>

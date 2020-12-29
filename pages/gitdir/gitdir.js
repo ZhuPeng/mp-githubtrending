@@ -1,11 +1,13 @@
 const cloudclient = require('../../utils/cloudclient.js')
 const util = require('../../utils/util.js')
+const g = require('../../utils/github.js')
 Page({
   data: {
     apiurl: '',
     owner: '',
     repo: '',
     list: [],
+    readme: '',
     spinning: true,
   },
 
@@ -24,6 +26,24 @@ Page({
           url: '/pages/gitdir/gitdir?auto=true&owner=' + self.data.owner + '&repo=' + self.data.repo + '&apiurl=' + c[0].url,
         })
       }
+
+      for(var i=0; i<c.length; i++) {
+        if(c[i].name == 'README.md') {
+          self.loadReadme(c[i].path)
+        }
+      }
+    })
+  },
+
+  loadReadme: function(file) {
+    var apiurl = g.GetAPIURL(this.data.owner, this.data.repo, file)
+    var self = this;
+    cloudclient.callFunction({ type: 'get', path: apiurl, repo: this.data.repo, owner: this.data.owner, disableCache: false}, function(d) {
+      var content = d.content
+      if (d.encoding && d.encoding == 'base64') {
+        content = util.base64Decode(d.content || 'No data found, may be network broken.')
+      }
+      self.setData({readme: content})
     })
   },
 
