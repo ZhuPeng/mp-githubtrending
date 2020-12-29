@@ -15,12 +15,12 @@
   </view>
 </block>
 
-<md md="{{readme}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
+<md class='padding' md="{{readme}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
 
 <view class="padding-bottom padding-top">
   <diyad wx:if="{{list.length}}" unit_id="adunit-ba7d4a61f82bcf58"></diyad>
 </view>
-<fabbutton/>
+<!-- fabbutton/ -->
 </view>
 
 <share share_link="{{'https://github.com/' + owner + '/' + repo}}"/>
