@@ -1,0 +1,4 @@
+<view class='tips flex-wrp'>
+  <view class="margin-left-right"><wux-icon size="16" type="md-megaphone" /></view>
+  <view class='tips-text'>点击右上角···添加小程序，下次使用不迷路。</view>
+</view> 

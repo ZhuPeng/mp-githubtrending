@@ -1,0 +1,13 @@
+Component({
+  properties: {
+
+  },
+
+  data: {
+
+  },
+
+  methods: {
+
+  }
+})

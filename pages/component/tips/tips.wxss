@@ -1,0 +1,13 @@
+@import '../../../app.wxss';
+
+.tips {
+  background-color: aliceblue;
+  display: table;
+}
+
+.tips-text {
+  font-size: small;
+  display: table-cell;
+  vertical-align: middle;
+  width:100%;   
+}
