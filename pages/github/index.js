@@ -2,7 +2,7 @@ const dbutil = require('../../utils/db.js')
 const util = require('../../utils/util.js')
 const cloudclient = require('../../utils/cloudclient.js')
 const db = dbutil.getDB()
-const _ = db.command
+// const _ = db.command
 
 Page({
   data: {

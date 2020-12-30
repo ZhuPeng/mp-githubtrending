@@ -52,6 +52,7 @@
     "blogcard": "pages/component/blogcard/blogcard",
     "share": "pages/component/share/share",
     "diyad": "pages/component/diyad/diyad",
+    "tips": "pages/component/tips/tips",
     "githead": "pages/component/githead/githead"
   },
   "plugins": {},

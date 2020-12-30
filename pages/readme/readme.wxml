@@ -1,6 +1,7 @@
 <view class="page">
   <wux-toast id="wux-toast" />
   <view class="page__hd padding-bottom">
+    <tips/>
     <githead owner="{{query.owner}}" repo="{{query.repo}}" />
     <view class="margin-left-right" bindtap="copy" data-text="{{meta.url}}">
     <view class="weui-media-box__info">
