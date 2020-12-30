@@ -371,7 +371,7 @@ exports.main = async (event, context) => {
       data: {pvcnt: _.inc(1)},
     })
   } else if (type == 'tags') {
-    var t = ['Go', 'Java', '架构设计', 'Python', '算法', '机器学习', 'JavaScript', '云原生', 'Linux', 'Git', '自由职业', '软素质', '英语', '编码规范', '数据库', '设计模式', '微服务', '大数据']
+    var t = ['Go', 'Java', '架构设计', 'Python', '算法', '机器学习', '大学课程', 'JavaScript', '云原生', 'Linux', 'Git', '自由职业', '软素质', '英语', '编码规范', '数据库', '设计模式', '微服务', '大数据', '函数式编程']
     var all = []
     var res = await db.collection('blog_history').where({openid}).limit(1).get()
     if (res.data.length > 0) {
