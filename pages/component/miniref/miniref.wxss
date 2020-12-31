@@ -1,0 +1,8 @@
+@import '../../../app.wxss';
+
+.name {
+  margin-top: -20rpx;
+  text-align: center;
+  font-size: small;
+  margin-bottom: -9rpx;
+}
