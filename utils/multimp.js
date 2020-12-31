@@ -51,6 +51,18 @@ var directTransform = [{
         else { return 'pages/gitfile/gitfile?file=' + filepath + '&owner=' + owner + '&repo=' + repo }
     },
 }, {
+    nickname: 'iDayDayUP',
+    appid: 'wx482958efb057c5a7',
+    indexPage: 'pages/daily/daily',
+    urlPrefix: 'https://idaydayup.com',
+    genMPUrl: DefaultIndexMPWithPara,
+}, {
+    nickname: '开源话题',
+    appid: 'wx0b48bcbd26917a62',
+    indexPage: 'pages/bloglist/bloglist',
+    urlPrefix: 'https://opensourcetopic.com',
+    genMPUrl: DefaultIndexMPWithPara,
+}, {
     nickname: 'Readhub',
     appid: 'wxd83c7f07a0b00f1b',
     urlPrefix: 'https://readhub.cn/topic',
@@ -218,6 +230,35 @@ var directTransform = [{
 function DefaultGenMPUrl(meta, url) {
     if (url == meta.urlPrefix) {return meta.indexPage}
     return url
+}
+
+function isGitHubPage(url) {
+      return url.startsWith("https://github.com/") || url.startsWith("http://github.com/")
+}
+
+function DefaultIndexMPWithPara(meta, url) {
+    var p = url.slice(meta.urlPrefix.length, url.length)
+    return meta.indexPage + p
+}
+
+function parseGitHub(url) {
+    if (!isGitHubPage(url)) {
+        return ["", "", ""]
+    }
+    var arr = url.split('/')
+    if (arr.length == 4){
+        return [arr[3], "", ""]
+    } else if (arr.length == 5) {
+        var repo = arr[4]
+        if (repo.indexOf('#')) {
+            repo = arr[4].split('#')[0]
+        }
+        return [arr[3], repo, ""]
+    } else if (arr.length > 5) {
+        var file = url.slice(("https://github.com/" + arr[3] + "/" + arr[4] + "/").length)
+        return [arr[3], arr[4], file]
+    }
+    return ["", "", ""]
 }
 
 function isGitHubPage(url) {
