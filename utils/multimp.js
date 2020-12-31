@@ -41,7 +41,7 @@ var directTransform = [{
     genMPUrl: function(meta, url) {
         var [owner, repo, filepath] = parseGitHub(url)
         console.log("parseGitHub url:", owner, repo, filepath)
-        if (owner == "") { return 'pages/github/index'}
+        if (owner == "") { return meta.indexPage}
         else if (repo == "") { return 'pages/account/account?owner=' + owner }
         else if (filepath == "") { return 'pages/readme/readme?repo=' + owner + '/' + repo }
         else if (filepath.startsWith('issues/') || filepath.startsWith('pull/')) {
