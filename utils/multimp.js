@@ -34,16 +34,33 @@ function Navi(url) {
 }
 
 var directTransform = [{
-    nickname: 'GitHub Trending Hub',
-    appid: 'wx6204a7df95c7fb21',
-    indexPage: 'pages/github/index',
+    nickname: '开源Books',
+    appid: 'wxe60c5750c87916e0',
+    indexPage: 'pages/bloglist/bloglist',
     urlPrefix: 'https://github.com',
-    genMPUrl: DefaultGenMPUrl,
+    genMPUrl: function(meta, url) {
+        var [owner, repo, filepath] = parseGitHub(url)
+        console.log("parseGitHub url:", owner, repo, filepath)
+        if (owner == "") { return 'pages/github/index'}
+        else if (repo == "") { return 'pages/account/account?owner=' + owner }
+        else if (filepath == "") { return 'pages/readme/readme?repo=' + owner + '/' + repo }
+        else if (filepath.startsWith('issues/') || filepath.startsWith('pull/')) {
+            var issue = 'https://api.github.com/repos/' + owner + '/' + repo + '/' + filepath.replace('pull/', 'issues/')
+            return '/pages/issue/issue?issue='+issue
+        }
+        else { return 'pages/gitfile/gitfile?file=' + filepath + '&owner=' + owner + '&repo=' + repo }
+    },
 }, {
     nickname: 'iDayDayUP',
     appid: 'wx482958efb057c5a7',
     indexPage: 'pages/daily/daily',
     urlPrefix: 'https://idaydayup.com',
+    genMPUrl: DefaultIndexMPWithPara,
+}, {
+    nickname: '开源话题',
+    appid: 'wx0b48bcbd26917a62',
+    indexPage: 'pages/bloglist/bloglist',
+    urlPrefix: 'https://opensourcetopic.com',
     genMPUrl: DefaultIndexMPWithPara,
 }, {
     nickname: 'Readhub',
@@ -210,14 +227,38 @@ var directTransform = [{
     genMPUrl: GenFormatLastPathMPUrl('pages/normal/index?atype=0&id='),
 }]
 
+function DefaultGenMPUrl(meta, url) {
+    if (url == meta.urlPrefix) {return meta.indexPage}
+    return url
+}
+
+function isGitHubPage(url) {
+      return url.startsWith("https://github.com/") || url.startsWith("http://github.com/")
+}
+
 function DefaultIndexMPWithPara(meta, url) {
     var p = url.slice(meta.urlPrefix.length, url.length)
     return meta.indexPage + p
 }
 
-function DefaultGenMPUrl(meta, url) {
-    if (url == meta.urlPrefix) {return meta.indexPage}
-    return url
+function parseGitHub(url) {
+    if (!isGitHubPage(url)) {
+        return ["", "", ""]
+    }
+    var arr = url.split('/')
+    if (arr.length == 4){
+        return [arr[3], "", ""]
+    } else if (arr.length == 5) {
+        var repo = arr[4]
+        if (repo.indexOf('#')) {
+            repo = arr[4].split('#')[0]
+        }
+        return [arr[3], repo, ""]
+    } else if (arr.length > 5) {
+        var file = url.slice(("https://github.com/" + arr[3] + "/" + arr[4] + "/").length)
+        return [arr[3], arr[4], file]
+    }
+    return ["", "", ""]
 }
 
 // url like: <prefix>/xxx/yyy/zzz/<last>.<sufix>
