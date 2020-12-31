@@ -1,13 +1,13 @@
 @import '../../app.wxss';
 
 .padding {
-  margin-top: 130rpx;
-  margin-bottom: 170rpx;
+  margin-top: 120rpx;
+  margin-bottom: 120rpx;
 }
 
 .recomand {
   display: flex;
   align-items: center;
   justify-content: left;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }

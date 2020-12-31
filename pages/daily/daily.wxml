@@ -1,6 +1,7 @@
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
 <wux-toast id="wux-toast" />
 <wux-dialog id="wux-dialog" />
+<miniref question="{{false}}"/>
 
 <md md="## 问题"/>
 <md md="{{qcontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
