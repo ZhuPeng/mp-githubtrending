@@ -1,3 +1,5 @@
 cloud-functions/*/node_modules
 node_modules/
 .*.un~
+.ropeproject/
+package-lock.json
