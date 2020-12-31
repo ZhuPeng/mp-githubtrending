@@ -17,6 +17,7 @@
             </block>
         </wux-tabs>
 <view>
+<miniref wx:if="{{currentTab == 'hot'}}" book="{{false}}"/>
 <block wx:for="{{blogs.data}}" wx:key="idx" wx:for-index="idx">
   <official-account></official-account>
   <view class="card-gap"></view>

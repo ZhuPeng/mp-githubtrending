@@ -53,10 +53,11 @@
     "share": "pages/component/share/share",
     "diyad": "pages/component/diyad/diyad",
     "tips": "pages/component/tips/tips",
+    "miniref": "pages/component/miniref/miniref",
     "githead": "pages/component/githead/githead"
   },
   "plugins": {},
-  "_comment_navi_mp": "csdn jianshu zhihu bilibili tencentvidio baidupan idaydayup 36kr juejin v2ex",
+  "_comment_navi_mp": "csdn jianshu zhihu bilibili tencentvidio baidupan idaydayup 36kr juejin opentopic",
   "navigateToMiniProgramAppIdList": [
     "wx2115aba2ed1f96b9", 
     "wx646159264d261dab", 
@@ -67,7 +68,7 @@
     "wx482958efb057c5a7",
     "wx23551bed0b72cd7f",
     "wx0f72a9f832b78889",
-    "wx1b979cda6b085993"
+    "wx0b48bcbd26917a62"
   ],
   "sitemapLocation": "sitemap.json"
 }
