@@ -1,16 +1,10 @@
 <view class="margin-left-right flex-wrp">
-    <view wx:if="{{book}}" bindtap="onClick" data-set="https://github.com">
-      <view><image class="userinfo-avatar" src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/images/compress_books.logo.jpeg" mode="cover"></image></view>
-      <view class="name">开源技术栈</view>
+  <block wx:for="{{minirefs}}" wx:key="idx" wx:for-index="idx">
+    <view bindtap="onClick" data-set="{{item.url}}">
+      <view><image class="userinfo-avatar" src="{{item.avatar_url}}" mode="cover"></image></view>
+      <view class="name">{{item.name}}</view>
     </view>
-    <view wx:if="{{question}}" bindtap="onClick" data-set="https://idaydayup.com">
-      <view><image class="userinfo-avatar" src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/images/compress_up.logo.png" mode="cover"></image></view>
-      <view class="name">全栈问答</view>
-    </view>
-    <view wx:if="{{topic}}" bindtap="onClick" data-set="https://opensourcetopic.com">
-      <view><image class="userinfo-avatar" src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/images/compress_topic.logo.jpeg" mode="cover"></image></view>
-      <view class="name">开源话题</view>
-    </view>
+  </block>
     <!-- <view class="tag flex-wrp">
       <wux-icon class="padding-right" size="20" type="md-infinite" />
       <view style="font-size: small;">推荐</view>
