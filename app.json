@@ -14,7 +14,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "开源 Books",
+    "navigationBarTitleText": "开源技术栈",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
