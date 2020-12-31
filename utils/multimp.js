@@ -261,30 +261,6 @@ function parseGitHub(url) {
     return ["", "", ""]
 }
 
-function isGitHubPage(url) {
-      return url.startsWith("https://github.com/") || url.startsWith("http://github.com/")
-}
-
-function parseGitHub(url) {
-    if (!isGitHubPage(url)) {
-        return ["", "", ""]
-    }
-    var arr = url.split('/')
-    if (arr.length == 4){
-        return [arr[3], "", ""]
-    } else if (arr.length == 5) {
-        var repo = arr[4]
-        if (repo.indexOf('#')) {
-            repo = arr[4].split('#')[0]
-        }
-        return [arr[3], repo, ""]
-    } else if (arr.length > 5) {
-        var file = url.slice(("https://github.com/" + arr[3] + "/" + arr[4] + "/").length)
-        return [arr[3], arr[4], file]
-    }
-    return ["", "", ""]
-}
-
 // url like: <prefix>/xxx/yyy/zzz/<last>.<sufix>
 function GenFormatLastPathMPUrl(path) {
     function genMPUrl(meta, url) {
