@@ -6,9 +6,9 @@ Component({
 
   attached: function () { 
     var self = this;
-    cloudclient.callFunctionWithName('miniref', {}, function(r) {
-      console.log('minirefs:', r)
-      self.setData({minirefs: r.data})
+    cloudclient.GetConfig(function(r) {
+      console.log('config:', r)
+      self.setData({minirefs: r.minirefs})
     })
   },
 

@@ -9,6 +9,8 @@ module.exports = {
   isImageFile,
   GetDateCount,
   SetDateCount,
+  GetDateData,
+  SetDateData,
 }
 
 function getDate() {
@@ -23,6 +25,16 @@ function getDay() {
 
 function GetKey(prefix) {
   return prefix + getDay()
+}
+
+function GetDateData(prefix) {
+  var d = wx.getStorageSync(GetKey(prefix))
+  if (!d) return undefined;
+  return d
+}
+
+function SetDateData(prefix, data) {
+  wx.setStorageSync(GetKey(prefix), data)
 }
 
 function GetDateCount(prefix) {

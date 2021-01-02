@@ -31,5 +31,5 @@ exports.main = async (event, context) => {
       navi_page: 'pages/rd/rd',
     },
   }
-  return {'data': [miniref['book'], miniref['topic']]}   
+  return {'minirefs': [miniref['book'], miniref['topic']]}   
 }
