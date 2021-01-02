@@ -1,5 +1,6 @@
 const rate = require('./ratelimit.js')
 const util = require('./util.js')
+const common = require('./common.js')
 module.exports = {
   callFunction,
   callFunctionWithBlog,
@@ -8,6 +9,7 @@ module.exports = {
   callFunctionWithSubscribe,
   callFunctionWithName,
   isMsgNotSec,
+  GetConfig,
   callFunctionWithRawResponse
 }
 const version = 'githubv1'
@@ -17,6 +19,15 @@ function callFunction(data, completeFunc) {
     var c = ''
     if (r && r.content) { c = r.content}
     completeFunc(c)
+  })
+}
+
+function GetConfig(callback) {
+  var c = common.GetDateData('config')
+  if (c) {callback(c); return;}
+  callFunctionWithName('config', {}, function(r) {
+    callback(r)
+    common.SetDateData('config', r)
   })
 }
 
