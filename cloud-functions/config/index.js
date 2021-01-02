@@ -31,5 +31,11 @@ exports.main = async (event, context) => {
       navi_page: 'pages/rd/rd',
     },
   }
-  return {'minirefs': [miniref['question'], miniref['topic']]}   
+  return {
+    'minirefs': [miniref['question'], miniref['topic']],
+    'interval': {
+      'share_cnt': 5,
+      'insertion_ad_cnt': 7,
+    },
+  }   
 }
