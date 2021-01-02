@@ -26,11 +26,12 @@ function DialogShare() {
   var k = 'PV-'
   var cnt = common.GetDateCount(k)
   common.SetDateCount(k, cnt)
-  if (cnt == 6) {
+  if (cnt == 5) {
     share()
     return
   }
-  if (cnt%10==0 && cnt>=10) {
+  var adcnt = 8
+  if (cnt%adcnt==0 && cnt>=adcnt) {
     insertScreenAd()
     return
   }
