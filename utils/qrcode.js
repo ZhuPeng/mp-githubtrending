@@ -23,17 +23,21 @@ function HandleQrCode() {
 }
 
 function DialogShare() {
-  var k = 'PV-'
-  var cnt = common.GetDateCount(k)
-  common.SetDateCount(k, cnt)
-  if (cnt == 6) {
-    share()
-    return
-  }
-  if (cnt%10==0 && cnt>=10) {
-    insertScreenAd()
-    return
-  }
+  cloudclient.GetConfig(function (config) {
+    var share_cnt = config.interval.share_cnt
+    var insertion_ad_cnt = config.interval.insertion_ad_cnt
+    var k = 'PV-'
+    var cnt = common.GetDateCount(k)
+    common.SetDateCount(k, cnt)
+    if (cnt == share_cnt) {
+      share()
+      return
+    }
+    if (cnt%insertion_ad_cnt==0 && cnt>=insertion_ad_cnt) {
+      insertScreenAd()
+      return
+    }
+  })
 }
 
 function insertScreenAd() {
