@@ -16,8 +16,9 @@ Page({
   onLoad: function (options) {
     var self = this;
     if(this.data.tags.length == 0){
-      cloudclient.callFunctionWithBlog({type: 'tags'}, function (c) {
-        self.setData({ tags: c })
+      cloudclient.GetConfig(function(r) {
+        console.log('config:', r)
+        self.setData({tags: r.navi_tags})
       })
     }
     wx.getSetting({

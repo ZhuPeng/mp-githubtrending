@@ -10,7 +10,7 @@
                 <image class="tab-icon" src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/newest.png" />
                 <text>最新</text>
             </wux-tab>
-            <block wx:for="{{tags.data}}">
+            <block wx:for="{{tags}}">
               <wux-tab key="tags{{item}}">
                 <text>{{item}}</text>
               </wux-tab>

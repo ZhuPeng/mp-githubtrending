@@ -31,7 +31,10 @@ exports.main = async (event, context) => {
       navi_page: 'pages/rd/rd',
     },
   }
+
+  var t = ['历史记录', 'Go', 'Java', '架构设计', 'Python', '算法', '机器学习', '大学课程', 'JavaScript', '云原生', 'Linux', 'Git', '自由职业', '软素质', '英语', '编码规范', '数据库', '设计模式', '微服务', '大数据', '函数式编程']
   return {
+    'navi_tags': t,
     'minirefs': [miniref['question'], miniref['topic']],
     'interval': {
       'share_cnt': 5,
