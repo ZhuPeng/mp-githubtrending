@@ -1,0 +1,11 @@
+.gray {
+  background: #f2f2f2
+}
+
+.card-gap {
+  margin-bottom: 10px;
+}
+
+.margin-top {
+  margin-top: 10px;
+}

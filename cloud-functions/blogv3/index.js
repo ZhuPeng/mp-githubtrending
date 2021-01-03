@@ -308,6 +308,21 @@ async function _getLastestGitHubBlog(size, order, openid) {
   return list.data
 }
 
+async function GetBlog(condition, orderCol, size) {
+  var list = await db.collection('blog').where(condition).orderBy(orderCol, 'desc').limit(DeltaSize).skip(size-DeltaSize).get()
+  checkGitHubLicense(list.data)
+  var filter = []
+  for(var i=0; i<list.data.length; i++) {
+    var tmp = list.data[i]
+    // '' 为 true，其他任意字符为 false
+    if (tmp.license == 'DENIED') {
+      tmp['isperm'] = 'f'
+    }
+    filter.push(tmp)
+  }
+  return filter
+}
+
 async function getLastest() {
   var all = []
   for (var k in BlogMap) {
@@ -346,9 +361,15 @@ async function getRandom() {
   return list[0]
 }
 
+function newRe(col, q) {
+  var r = {}
+  r[col] = new db.RegExp({regexp: q, options: 'i'})
+  return r
+}
+
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var { type, jobname, id, currentSize, options, order } = event;
+  var { type, jobname, id, currentSize, options, order, query } = event;
   const wxContext = cloud.getWXContext()
   var openid = wxContext.OPENID
   var num = (currentSize || 0) + DeltaSize
@@ -365,6 +386,9 @@ exports.main = async (event, context) => {
     })
   } else if (type == 'random') {
     return {data: await getRandom()}
+  }else if (type == 'search') {
+    var condition = _.and([{status: 'pub'}, _.or([newRe('title', query), newRe('content', query)])])
+    return {data: await GetBlog(condition, 'pvcnt', num)}
   } else if (type == 'addpv') {
     history(openid, id)
     return await db.collection('blog').where({_id: id}).update({

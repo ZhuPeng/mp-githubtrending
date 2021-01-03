@@ -1,3 +1,4 @@
+<view class="gray">
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
 
 <block wx:for="{{blogs.data}}" wx:key="idx" wx:for-index="idx">
@@ -7,3 +8,5 @@
     <ad unit-id="adunit-0844ad65d0e069de"></ad>
   </view>
 </block>
+
+</view>

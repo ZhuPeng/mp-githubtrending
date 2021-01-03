@@ -12,13 +12,13 @@ Page({
   onLoad: function (options) {
     console.log('search:', options)
     this.setData({type: options.type, query: options.query})
-    this.query('Go')
+    this.query('蜕变')
   },
 
   query: function(q) {
     var self = this
     util.SetDataWithSpin(self, {})
-    cloudclient.callFunctionWithBlog({ jobname: 'github', type: 'search', query: q, currentSize: this.data.blogs.data.length, order: 'hot' }, function (c) {
+    cloudclient.callFunctionWithBlog({type: 'search', query: q, currentSize: this.data.blogs.data.length, order: 'hot' }, function (c) {
       var tmp = self.data.blogs['data']
       c['data'].map(function(d) {
         tmp.push(d)
