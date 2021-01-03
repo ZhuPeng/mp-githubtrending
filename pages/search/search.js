@@ -1,5 +1,6 @@
 const util = require('../../utils/util.js')
 const cloudclient = require('../../utils/cloudclient.js')
+const qrcode = require('../../utils/qrcode.js')
 Page({
   data: {
     type: '',
@@ -27,6 +28,7 @@ Page({
   query: function(q) {
     var self = this
     util.SetDataWithSpin(self, {})
+    qrcode.DialogShare()
     cloudclient.callFunctionWithBlog({type: 'search', query: q, currentSize: this.data.blogs.data.length, order: 'hot' }, function (c) {
       var tmp = self.data.blogs['data']
       c['data'].map(function(d) {
