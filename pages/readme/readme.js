@@ -54,6 +54,7 @@ Page({
         self.getGitHubData("commits")
         self.getGitHubData("issues")
         self.genStatsMd(true)
+        qrcode.DialogShare()
     })
   },
 
