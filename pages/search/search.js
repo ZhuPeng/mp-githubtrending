@@ -12,7 +12,16 @@ Page({
   onLoad: function (options) {
     console.log('search:', options)
     this.setData({type: options.type, query: options.query})
-    this.query('蜕变')
+  },
+
+  onChange: function(e) {
+  },
+
+  onConfirm: function(e) {
+    console.log('onConfirm', e)
+    if (!e.detail.value) {return}
+    this.setData({query: e.detail.value, blogs: {'data': []}})
+    this.query(e.detail.value)
   },
 
   query: function(q) {
@@ -25,6 +34,11 @@ Page({
       })
       util.SetDataWithoutSpin(self, { blogs: {'data': tmp}})
     })
+  },
+
+  onReachBottom: function () {
+    console.log("onReachBottom")
+    this.query(this.data.query)
   },
 
   onShareAppMessage: function () {
