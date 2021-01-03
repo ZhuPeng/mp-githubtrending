@@ -1,7 +1,7 @@
-<view class="gray">
 <view class="spin"><wux-spin nested size="large" spinning="{{ spinning }}" tip="Loading..."/></view>
 
-<wux-search-bar clear show-cancel value="{{ query }}" controlled placeholder="搜索" bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />
+<view class="gray">
+<wux-search-bar focus="{{true}}" clear show-cancel value="{{ query }}" controlled placeholder="搜索" bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />
 
 <block wx:for="{{blogs.data}}" wx:key="idx" wx:for-index="idx">
   <view class="card-gap"></view>
@@ -10,5 +10,6 @@
     <ad unit-id="adunit-0844ad65d0e069de"></ad>
   </view>
 </block>
-
 </view>
+
+<share />

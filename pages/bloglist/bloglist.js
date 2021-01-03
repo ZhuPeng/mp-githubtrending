@@ -56,6 +56,11 @@ Page({
     }
   },
 
+  onFocus: function(e) {
+    console.log('onFocus:', e)
+    wx.navigateTo({url: '/pages/search/search'})
+  },
+
   onButtonClick: function () {
     var self = this;
     if (this.data.content == '') {

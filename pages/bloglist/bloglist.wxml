@@ -1,6 +1,11 @@
+<view bindtap="onFocus">
+  <wux-search-bar disabled controlled maxlength="8" />
+</view>
+
 <view class="gray">
 <wux-toast id="wux-toast" />
 <wux-dialog id="wux-dialog" />
+
 <wux-tabs controlled scroll="true" current="{{ currentTab }}" bindchange="onTabChange">
             <wux-tab key="hot">
                 <image class="tab-icon" src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/hot.png" />
@@ -19,6 +24,7 @@
 <view>
 <official-account></official-account>
 <miniref wx:if="{{currentTab == 'hot'}}" book="{{false}}"/>
+
 <block wx:for="{{blogs.data}}" wx:key="idx" wx:for-index="idx">
   
   <view class="card-gap"></view>
