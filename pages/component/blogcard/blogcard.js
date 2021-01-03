@@ -114,7 +114,7 @@ Component({
       })
       if(this.data.isperm.length > 0) {
         util.copyTextWithCallback(this.data.url, function () {
-          util.Alert('未获得作者授权或者其他原因不能在小程序中展示，已为您复制链接，可通过浏览器访问。', 5000)
+          util.Alert('未获得作者授权或者其他原因不能在小程序中展示，已为您复制链接，可通过浏览器访问', 5000)
         })
         return
       }
@@ -139,9 +139,11 @@ Component({
       if (url && url.startsWith('http')) {
         if (multimp.Navi(url) != false) {return} 
       }
-      if (this.data.type != 'card') {this.defaultNavi()}
-      else {util.copyOnlyText(url)}
+      util.copyTextWithCallback(url, function () {
+        util.Alert('链接不能打开，已为您复制链接，可通过浏览器访问', 5000)
+      })
     },
+
     defaultNavi() {
       wx.navigateTo({
         url: '/pages/blog/blog?id=' + this.data.blogid + '&jobname=' + this.data.jobname,
