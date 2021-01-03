@@ -9,6 +9,7 @@
     "pages/issue/issue",
     "pages/commit/commit",
     "pages/gitdir/gitdir",
+    "pages/search/search",
     "pages/blog/blog"
   ],
   "window": {

@@ -1,20 +1,29 @@
-const github = require('../../utils/github.js')
 const util = require('../../utils/util.js')
+const cloudclient = require('../../utils/cloudclient.js')
 Page({
   data: {
     type: '',
     query: '',
     result: [],
-    spinning: true,
+    spinning: false,
+    blogs: {'data': []},
   },
 
   onLoad: function (options) {
     console.log('search:', options)
     this.setData({type: options.type, query: options.query})
+    this.query('Go')
+  },
+
+  query: function(q) {
     var self = this
-    github.Get('/search/' + options.type + '?q=' + options.query, function(r){
-      console.log(r)
-      util.SetDataWithoutSpin(self, {result: r})
+    util.SetDataWithSpin(self, {})
+    cloudclient.callFunctionWithBlog({ jobname: 'github', type: 'search', query: q, currentSize: this.data.blogs.data.length, order: 'hot' }, function (c) {
+      var tmp = self.data.blogs['data']
+      c['data'].map(function(d) {
+        tmp.push(d)
+      })
+      util.SetDataWithoutSpin(self, { blogs: {'data': tmp}})
     })
   },
 
