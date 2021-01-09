@@ -12,6 +12,10 @@ exports.main = async (event, context) => {
   db.collection('history').where({
     requesttime: _.lt(d.toISOString()),
   }).remove()
+  
+  db.collection('blog_history').where({
+    time: _.lt(d.toISOString()),
+  }).remove()
 
   await db.collection('gcache').where({
     time: _.lt(d.toISOString()),
