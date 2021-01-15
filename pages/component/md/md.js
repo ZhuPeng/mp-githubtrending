@@ -31,7 +31,9 @@ Component({
     var self = this;
     cloudclient.GetConfig(function(r) {
       console.log('config:', r)
-      self.setData({cdn: r['github_raw_cdn']})
+      if (r['github_raw_cdn']) {
+        self.setData({cdn: r['github_raw_cdn']})
+      }
     })
   },
 
