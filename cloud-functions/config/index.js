@@ -40,5 +40,6 @@ exports.main = async (event, context) => {
       'share_cnt': 5,
       'insertion_ad_cnt': 7,
     },
+    'github_raw_cdn': 'https://raw.sevencdn.com/',
   }   
 }
