@@ -31,7 +31,10 @@ function convertIpynb(content) {
 }
 
 function GetContentURL(owner, repo, file) {
-  return 'https://raw.githubusercontent.com/' + owner + '/' + repo + '/master/' + encodeURIComponent(file)
+  var c = cloudclient.GetConfig()
+  var cdn = 'https://raw.githubusercontent.com/'
+  if (c && c['github_raw_cdn']) {cdn = c['github_raw_cdn']}
+  return cdn + owner + '/' + repo + '/master/' + encodeURIComponent(file)
 }
 
 

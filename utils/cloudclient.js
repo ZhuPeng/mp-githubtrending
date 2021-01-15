@@ -24,6 +24,16 @@ function callFunction(data, completeFunc) {
 
 function GetConfig(callback) {
   var c = common.GetDateData('config')
+  if (c) {if (callback) callback(c); return c;}
+  callFunctionWithName('config', {}, function(r) {
+    if(callback) callback(r)
+    common.SetDateData('config', r)
+  })
+  return undefined;
+}
+
+function GetConfig(callback) {
+  var c = common.GetDateData('config')
   if (c) {callback(c); return;}
   callFunctionWithName('config', {}, function(r) {
     callback(r)

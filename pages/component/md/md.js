@@ -1,5 +1,6 @@
 const util = require('../../../utils/util.js')
 const multimp = require('../../../utils/multimp.js')
+const cloudclient = require('../../../utils/cloudclient.js')
 Component({
   properties: {
     md: {
@@ -26,10 +27,19 @@ Component({
     },
   },
 
+  attached: function () { 
+    var self = this;
+    cloudclient.GetConfig(function(r) {
+      console.log('config:', r)
+      self.setData({cdn: r['github_raw_cdn']})
+    })
+  },
+
   data: {
     currentDir: "",
     realMd: '',
     realMd2: '',
+    cdn: 'https://raw.githubusercontent.com/',
   },
 
   methods: {
