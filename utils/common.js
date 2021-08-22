@@ -112,6 +112,7 @@ const CodeFileExtentsions = {
   'swift': 'swift',
   'xml': 'markup',
   'wxml': 'markup',
+  'rs': 'java',  // no rust 
   'ipynb': 'python'
 }
 
