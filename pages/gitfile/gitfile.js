@@ -72,7 +72,7 @@ Page({
       }
       
       self.setData({ content: content, spinning: false, url: d.html_url || self.data.url})
-      self.scrollHitoryTop()
+      setTimeout(self.scrollHitoryTop, 700)
       qrcode.DialogShare()
     })
   },
