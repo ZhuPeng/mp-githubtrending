@@ -84,10 +84,11 @@
 					"scene": null
 				},
 				{
-					"id": 4,
-					"name": "Settings",
-					"pathName": "pages/settings/settings",
-					"query": ""
+					"id": 3,
+					"name": "pages/psettings/psettings",
+					"pathName": "pages/psettings/psettings",
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": 7,

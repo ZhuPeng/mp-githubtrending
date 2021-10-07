@@ -54,6 +54,12 @@ Page({
     })
   },
 
+  onSetting: function(){
+    wx.navigateTo({
+      url: '/pages/psettings/psettings',
+    })
+  },
+
   onReady: function () {
 
   },

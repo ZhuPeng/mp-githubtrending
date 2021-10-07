@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/daily/daily"
+    "pages/daily/daily",
+    "pages/psettings/psettings"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,6 +24,7 @@
     "wux-icon": "third-party/wux-weapp/icon/index",
     "wux-spin": "third-party/wux-weapp/spin/index",
     "wux-button": "third-party/wux-weapp/button/index",
+    "wux-switch": "third-party/wux-weapp/switch/index",
     "wux-filterbar": "third-party/wux-weapp/filterbar/index",
     "wux-search-bar": "third-party/wux-weapp/search-bar/index",
     "wux-tabs": "third-party/wux-weapp/tabs/index",

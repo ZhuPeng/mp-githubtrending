@@ -6,20 +6,30 @@ exports.main = async (event, context) => {
     var { type } = event;
     if (type == '' || type == 'random') {
        return await getRandom()
+    } else if (type == 'taglist') {
+        return await getList()
     }
     return {'data': 'Not Support'}
 }
 
-async function getRandom() {
-    var total = {
-        'algo': {'cnt': 8, 'name': '算法'},
-        'cplusplus': {'cnt': 1, 'name': 'C++'},
-        'db': {'cnt': 6, 'name': '数据库'},
-        'go': {'cnt': 23, 'name': 'Go'},
-        'java': {'cnt': 1, 'name': 'Java'},
-        'os': {'cnt': 14, 'name': '操作系统'},
-        'js': {'cnt': 419, 'name': 'JavaScript'},
+var total = {
+    'algo': {'cnt': 8, 'name': '算法'},
+    'cplusplus': {'cnt': 1, 'name': 'C++'},
+    'db': {'cnt': 6, 'name': '数据库'},
+    'go': {'cnt': 23, 'name': 'Go'},
+    'java': {'cnt': 1, 'name': 'Java'},
+    'os': {'cnt': 14, 'name': '操作系统'},
+    'js': {'cnt': 419, 'name': 'JavaScript'},
+}
+
+async function getList() {
+    for (k in total) {
+        total[k]['enable'] = true
     }
+    return total
+}
+
+async function getRandom() {
     var total_cnt = 0
     for (k in total) {
         total_cnt += total[k]['cnt']

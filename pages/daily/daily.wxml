@@ -13,7 +13,7 @@
 <md wx:if="{{acontent}}" md="{{acontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
 
 <view class="center flex-wrp padding">
-<view wx:if="{{qcontent}}" bindtap="onNext" class="margin-left-right">
+<view wx:if="{{qcontent}}" bindtap="onSetting" class="margin-left-right">
   <view style="text-align: center"><wux-icon size="{{size}}" type="md-cog"/></view>
   <view>个性化设置</view>
 </view>
