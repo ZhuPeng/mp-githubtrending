@@ -5,10 +5,18 @@
 
 <md md="## 问题"/>
 <md md="{{qcontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
+<view class="margin-left-right" wx:if="{{qcontent}}">
+  <wux-tag color="green">类别：{{qdata.meta.name}}</wux-tag>
+  <wux-tag color="blue">数量：{{qdata.meta.cnt}}</wux-tag>
+</view>
 <md wx:if="{{acontent}}" md="## 参考答案"/>
 <md wx:if="{{acontent}}" md="{{acontent}}" owner="{{owner}}" repo="{{repo}}" file="{{file}}"></md>
 
 <view class="center flex-wrp padding">
+<view wx:if="{{qcontent}}" bindtap="onNext" class="margin-left-right">
+  <view style="text-align: center"><wux-icon size="{{size}}" type="md-cog"/></view>
+  <view>个性化设置</view>
+</view>
 <view wx:if="{{qcontent && !acontent}}" bindtap="onClick" class="margin-left-right">
   <view style="text-align: center"><wux-icon size="{{size}}" type="md-eye"/></view>
   <view>查看答案</view>
