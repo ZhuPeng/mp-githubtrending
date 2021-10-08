@@ -2,17 +2,32 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 const db = cloud.database()
 exports.main = async (event, context) => {
-    const wxContext = cloud.getWXContext()
+    const {OPENID} = cloud.getWXContext()
+    console.log('event:', event)
     var { type } = event;
     if (type == '' || type == 'random') {
        return await getRandom()
     } else if (type == 'taglist') {
         return await getList()
+    } else if (type == 'tagsetting') {
+        return await tagSetting(event)
     }
     return {'data': 'Not Support'}
 }
 
-var total = {
+async function tagSetting(event) {
+    var {tag, setvalue} = event;
+    if (setvalue == false) {
+        await db.collection('tagsetting').add({
+            data: { tag, setvalue}
+          }).then(res => { console.log(res) }).catch(console.error) 
+    } else {
+        await db.collection('tagsetting').where({tag}).remove()
+    }
+    return {status: 'success'}
+}
+
+var _total = {
     'algo': {'cnt': 8, 'name': '算法'},
     'cplusplus': {'cnt': 1, 'name': 'C++'},
     'db': {'cnt': 6, 'name': '数据库'},
@@ -22,15 +37,32 @@ var total = {
     'js': {'cnt': 419, 'name': 'JavaScript'},
 }
 
+function getTotal() {
+    return JSON.parse(JSON.stringify(_total))
+}
+
 async function getList() {
+    var total = getTotal()
     for (k in total) {
         total[k]['enable'] = true
     }
+    var res = await db.collection('tagsetting').where({}).get()
+    res.data.map(function(d) {
+        total[d['tag']]['enable'] = false
+    })
     return total
 }
 
 async function getRandom() {
     var total_cnt = 0
+    var res = await db.collection('tagsetting').where({}).get()
+    var total = getTotal();
+    if (res.data.length>0) {
+        res.data.map(function(d) {
+            delete total[d['tag']];
+        })
+    }
+    console.log('total:', total)
     for (k in total) {
         total_cnt += total[k]['cnt']
     }
