@@ -29,7 +29,7 @@
   
   <view class="card-gap"></view>
   <blogcard blogid="{{item.id}}" uniqid="{{item._id}}" url="{{item.url}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}" imgstyle="border-radius: 5px;" type="{{item.type}}" username="{{item.username}}" userAvatar="{{item.userAvatar}}" content="{{item.content}}" updateAt="{{item['_crawl_time']}}" pvcnt="{{item.pvcnt}}" license="{{item.license}}" isperm="{{item.isperm}}" ad_image="{{item.ad_image}}"/>
-  <view wx:if="{{(idx+1)%6 == 0}}" class="margin-top">
+  <view wx:if="{{(idx+1)%ad_cnt == 0}}" class="margin-top">
     <ad unit-id="adunit-0844ad65d0e069de"></ad>
   </view>
 </block>

@@ -35,10 +35,11 @@ exports.main = async (event, context) => {
   var t = ['历史记录', 'Go', 'Java', '架构设计', 'Python', '算法', '机器学习', '大学课程', 'JavaScript', '云原生', 'Linux', 'Git', '自由职业', '软素质', '英语', '编码规范', '数据库', '设计模式', '微服务', '大数据', '函数式编程']
   return {
     'navi_tags': t,
-    'minirefs': [miniref['question'], miniref['topic']],
+    // 'minirefs': [miniref['question'], miniref['topic']],
+    'minirefs': [],
     'interval': {
-      'share_cnt': 5,
-      'insertion_ad_cnt': 7,
+      'share_cnt': 10,
+      'insertion_ad_cnt': 10,
     },
     'github_raw_cdn': 'https://raw.sevencdn.com/',
   }   

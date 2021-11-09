@@ -11,6 +11,7 @@ Page({
     options: {},
     content: '',
     auth: false,
+    ad_cnt: 6,
   },
 
   onLoad: function (options) {
@@ -18,7 +19,7 @@ Page({
     if(this.data.tags.length == 0){
       cloudclient.GetConfig(function(r) {
         console.log('config:', r)
-        self.setData({tags: r.navi_tags})
+        self.setData({tags: r.navi_tags, ad_cnt: r.interval.insertion_ad_cnt})
       })
     }
     wx.getSetting({
