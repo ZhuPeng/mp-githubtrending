@@ -20,6 +20,7 @@ Page({
       cloudclient.GetConfig(function(r) {
         console.log('config:', r)
         self.setData({tags: r.navi_tags, ad_cnt: r.interval.insertion_ad_cnt})
+        wx.setNavigationBarTitle({ title: r.title })
       })
     }
     wx.getSetting({

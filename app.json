@@ -15,7 +15,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "开源技术栈",
+    "navigationBarTitleText": "GitHub精选",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
