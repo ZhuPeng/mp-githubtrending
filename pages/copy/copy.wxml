@@ -1,0 +1,8 @@
+<wux-result
+    title="链接已复制"
+    label="链接 {{url}} 小程序无法打开，请在浏览器打开"
+    buttons="{{ buttons }}"
+    extra=""
+    fixed
+    bind:click="onClick"
+/>
