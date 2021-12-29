@@ -15,6 +15,10 @@
                 <image class="tab-icon" src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/newest.png" />
                 <text>最新</text>
             </wux-tab>
+            <wux-tab key="starcnt">
+                <image class="tab-icon" src="https://7465-test-3c9b5e-1-1301419220.tcb.qcloud.la/images/compress_star.png" />
+                <text>Star</text>
+            </wux-tab>
             <block wx:for="{{tags}}">
               <wux-tab key="tags{{item}}">
                 <text>{{item}}</text>
@@ -28,7 +32,7 @@
 <block wx:for="{{blogs.data}}" wx:key="idx" wx:for-index="idx">
   
   <view class="card-gap"></view>
-  <blogcard blogid="{{item.id}}" uniqid="{{item._id}}" url="{{item.url}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}" imgstyle="border-radius: 5px;" type="{{item.type}}" username="{{item.username}}" userAvatar="{{item.userAvatar}}" content="{{item.content}}" updateAt="{{item['_crawl_time']}}" pvcnt="{{item.pvcnt}}" license="{{item.license}}" isperm="{{item.isperm}}" ad_image="{{item.ad_image}}"/>
+  <blogcard blogid="{{item.id}}" uniqid="{{item._id}}" url="{{item.url}}" title="{{item.title}}" jobname="{{item['__tablename__']}}" image_url="{{item['article-image_url']}}" imgstyle="border-radius: 5px;" type="{{item.type}}" username="{{item.username}}" userAvatar="{{item.userAvatar}}" content="{{item.content}}" updateAt="{{item['_crawl_time']}}" pvcnt="{{item.pvcnt}}" starcnt="{{item.starcnt}}" license="{{item.license}}" isperm="{{item.isperm}}" ad_image="{{item.ad_image}}"/>
   <view wx:if="{{(idx+1)%ad_cnt == 0}}" class="margin-top">
     <ad unit-id="adunit-0844ad65d0e069de"></ad>
   </view>

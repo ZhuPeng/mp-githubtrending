@@ -244,24 +244,39 @@ async function getLastestV2ex(size, node) {
   return res
 }
 
+function isNotEmpty(i) {
+  if (i == undefined) {return false}
+  if (typeof(i) == 'string' && i.length == 0) {return false}
+  return true
+}
+
 async function checkGitHubLicense(list) {
   for (var i = 0; i < list.length; i++) {
       var d = list[i]
-      if (d['license'] != undefined && d['license'].length > 0) {continue}
+      if (isNotEmpty(d['license']) && isNotEmpty(d['starcnt'])) {continue}
       if (!utils.isGitHubPage(d['url'])) {continue}
       var [owner, repo, file] = utils.parseGitHub(d['url'])
       if (owner.length == 0 || repo.length == 0) {continue}
+      
       var m = await getRepoMeta(owner, repo)
       if (m == undefined) {continue}
-      var l = ""
-      if (m['license'] == null) {
-        l = "No License"
-      } else if (m['license'] != undefined && m['license']['spdx_id'] != undefined) {
-        l = m['license']['spdx_id']
+
+      if (!isNotEmpty(d['license'])) {
+        var l = ""
+        if (m['license'] == null) {
+          l = "No License"
+        } else if (m['license'] != undefined && m['license']['spdx_id'] != undefined) {
+          l = m['license']['spdx_id']
+        }
+        console.log('license: ', owner, repo, m['license'])
+        if (l != "") {
+          await db.collection('blog').where({_id: d['_id']}).update({data: {license: l}})
+        }
       }
-      console.log('license: ', owner, repo, m['license'])
-      if (l != "") {
-        await db.collection('blog').where({_id: d['_id']}).update({data: {license: l}})
+
+      if (!isNotEmpty(d['starcnt'])) {
+        var star = m['stargazers_count']
+        await db.collection('blog').where({_id: d['_id']}).update({data: {'starcnt': star}})
       }
   }
 }
@@ -285,6 +300,8 @@ async function _getLastestGitHubBlog(size, order, openid) {
   var orderCol = 'pvcnt'
   if (order == 'newest') {
     orderCol = '_crawl_time'
+  } else if (order == 'starcnt') {
+    orderCol = 'starcnt'
   }
   var condition = {status: 'pub', '_crawl_time': _.lt(now)}
   if (order.indexOf('tags') != -1) {

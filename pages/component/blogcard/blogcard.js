@@ -54,6 +54,10 @@ Component({
       type: String,
       value: '0'
     },
+    starcnt: {
+      type: String,
+      value: '0'
+    },
     license: {
       type: String,
       value: ''
