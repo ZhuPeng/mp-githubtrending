@@ -6,3 +6,7 @@
     fixed
     bind:click="onClick"
 />
+
+<view class="padding-bottom padding-top">
+  <diyad unit_id="x"></diyad>
+</view>
