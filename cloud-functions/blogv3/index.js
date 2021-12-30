@@ -282,7 +282,7 @@ async function checkGitHubLicense(list) {
 }
 
 function normalCnt(cnt) {
-  if (cnt < 1000) {return cnt}
+  if (cnt < 1000 || cnt == undefined) {return cnt}
   else {
     return (1.0*cnt/1000).toFixed(1) + 'k'
   }
