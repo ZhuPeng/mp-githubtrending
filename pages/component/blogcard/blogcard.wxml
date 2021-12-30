@@ -20,7 +20,7 @@
 					<text class="read_text">{{starcnt}}</text>
 				</view>
 				<view>
-					<image src="https://7465-test-3c9b5e-books-1301492295.tcb.qcloud.la/compress_read.png"></image>
+					<image src="https://7465-test-3c9b5e-1-1301419220.tcb.qcloud.la/images/compress_read.png"></image>
 					<text class="read_text">{{pvcnt}}</text>
 				</view>
 				<view wx:if="{{license}}">
