@@ -281,6 +281,13 @@ async function checkGitHubLicense(list) {
   }
 }
 
+function normalCnt(cnt) {
+  if (cnt < 1000) {return cnt}
+  else {
+    return (1.0*cnt/1000).toFixed(1) + 'k'
+  }
+}
+
 async function getLastestGitHubBlog(size, order, openid) {
   var data = await _getLastestGitHubBlog(size, order, openid)
   var filter = []
@@ -290,6 +297,8 @@ async function getLastestGitHubBlog(size, order, openid) {
     if (tmp.license == 'DENIED') {
       tmp['isperm'] = 'f'
     }
+    tmp['starcnt'] = normalCnt(tmp['starcnt'])
+    tmp['pvcnt'] = normalCnt(tmp['pvcnt'])
     filter.push(tmp)
   }
   return filter
