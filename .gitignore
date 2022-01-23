@@ -3,3 +3,4 @@ node_modules/
 .*.un~
 .ropeproject/
 package-lock.json
+.DS_Store
