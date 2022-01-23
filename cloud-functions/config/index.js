@@ -39,8 +39,8 @@ exports.main = async (event, context) => {
     // 'minirefs': [miniref['question'], miniref['topic']],
     'minirefs': [],
     'interval': {
-      'share_cnt': 10,
-      'insertion_ad_cnt': 10,
+      'share_cnt': 20,
+      'insertion_ad_cnt': 20,
     },
     'github_raw_cdn': 'https://raw.sevencdn.com/',
   }   
