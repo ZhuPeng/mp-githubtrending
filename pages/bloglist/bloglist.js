@@ -3,7 +3,6 @@ const util = require('../../utils/util.js')
 const qrcode = require('../../utils/qrcode.js')
 Page({
   data: {
-    currentTab: 'hot',
     tags: [],
     blogs: {data: []},
     jobname: '',
@@ -15,6 +14,10 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log('bloglist options:', options)
+    if (options.currentTab == undefined) {
+      options.currentTab = 'hot'
+    }
     var self = this;
     if(this.data.tags.length == 0){
       cloudclient.GetConfig(function(r) {
@@ -31,7 +34,7 @@ Page({
     // wx.setNavigationBarTitle({ title: 'Blog & News' })
     var jobname = options.jobname || 'github'
     util.SetDataWithSpin(this, {jobname: jobname, options})
-    cloudclient.callFunctionWithBlog({ jobname: jobname, currentSize: this.data.blogs.data.length, 'options': options, order: this.data.currentTab }, function (c) {
+    cloudclient.callFunctionWithBlog({ jobname: jobname, currentSize: this.data.blogs.data.length, 'options': options, order: options.currentTab }, function (c) {
       var tmp = self.data.blogs['data']
       c['data'].map(function(d) {
         tmp.push(d)
@@ -43,8 +46,10 @@ Page({
 
   onTabChange: function (e) {
     console.log('onChange', e)
-    this.setData({currentTab: e.detail.key, blogs: {data: []}})
-    this.onLoad(this.data.options)
+    var options = this.data.options
+    options.currentTab = e.detail.key
+    this.setData({options: options, blogs: {data: []}})
+    this.onLoad(options)
   },
 
   onContentChange: function (e) {
