@@ -107,7 +107,7 @@ Component({
         imagesList.map(i => {
           if (!this.isFaceImg(i)) {tmpList.push(i)}
         })
-				// console.log('parsedData:', parsedData, imagesList);
+				console.log('MD parsedData:', parsedData, imagesList);
 				if(this.data.type === 'wemark'){
 					this.setData({
 						parsedData,
