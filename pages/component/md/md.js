@@ -70,13 +70,13 @@ Component({
         }
       }
 
-      var faceRegExp = [/:([a-z_]{1,30}?):/g, /[+*-] (\[[x ]\])/g];
+      var faceRegExp = [/:([a-z_]{1,30}?):/g, /[+*-] (\[[xX ]\])/g];
       faceRegExp.map(f => {
         var tmpreg = tmp
         while (match = f.exec(tmpreg)) {
           if (match[1].startsWith('[')) {
             match[0] = match[1]
-            if (match[1].indexOf('x') > 0) {
+            if (match[1].toLowerCase().indexOf('x') > 0) {
               match[1] = 'white_check_mark'
             } else {
               match[1] = 'white_medium_square'
