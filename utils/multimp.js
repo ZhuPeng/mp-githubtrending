@@ -5,6 +5,7 @@ module.exports = {
 // 在微信小程序中使用
 function Navi(url) {
   var [appid, to] = _Navi(url)
+  if (appid == '') {return false}
   wx.navigateToMiniProgram({
     appId: appid,
     path: to,
@@ -13,7 +14,7 @@ function Navi(url) {
     },
     fail(res) {
       console.log('Navi fail:', res)
-    }
+    },
   })
 }
   
@@ -26,7 +27,7 @@ function _Navi(url) {
       match = i; break;
     }
   }
-  if (match == -1) {return false}
+  if (match == -1) {return ['', '']}
   var trans = directTransform[match]
   var urlPrefix = trans.urlPrefix
   var nickname = trans.nickname
