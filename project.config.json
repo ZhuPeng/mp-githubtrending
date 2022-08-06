@@ -81,7 +81,7 @@
 					"id": 2,
 					"name": "Gitfile",
 					"pathName": "pages/gitfile/gitfile",
-					"query": "file=blob/master/201708/microservice-for-failure.md&owner=jasonGeng88&repo=blog&withsubscribe=true",
+					"query": "file=https://czekster.github.io/markov/MC-for-programmers2022.pdf",
 					"scene": null
 				},
 				{
@@ -263,6 +263,13 @@
 					"name": "pages/copy/copy",
 					"pathName": "pages/copy/copy",
 					"query": "url=https://lana-k.github.io/sqliteviz/",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/readme/readme",
+					"pathName": "pages/readme/readme",
+					"query": "repo=xioacd99 / study-is-wonderful",
 					"scene": null
 				}
 			]
