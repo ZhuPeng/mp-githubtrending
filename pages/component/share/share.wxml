@@ -6,4 +6,5 @@
    <view wx:if="{{insert_minip}}" bindtap="minip" class="margin-left-right"><wux-icon size="{{size}}" type="md-today" /></view>
    <view wx:if="{{share_link}}" bindtap="copy" data-text="{{share_link}}"  class="margin-left-right"><wux-icon size="{{size}}" type="md-share" /></view>
    <!-- <view bindtap="thumbsup" class="margin-left-right"><wux-icon size="{{size}}" type="md-thumbs-up" /></view>  -->
+   <view class="margin-left-right"><button class="share-btn" open-type="contact"><wux-icon size="{{size}}" type="logo-github" /></button></view>
 </view>
